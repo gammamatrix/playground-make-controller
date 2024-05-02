@@ -1,0 +1,36 @@
+{
+    "namespace": "Acme\\Demo\\Api",
+    "type": "playground-api",
+    "class": "RocketController",
+    "organization": "Acme",
+    "package": "acme-demo-api",
+    "name": "Rocket",
+    "slug": "rocket",
+    "route": "acme.demo.api.rockets",
+    "module": "Demo",
+    "module_label": "Demo",
+    "module_slug": "demo",
+    "view": "acme-demo-api::rocket",
+    "model": "Rocket",
+    "playground": true,
+    "privilege": "acme-demo-api:rocket",
+    "table": "demo_rockets",
+    "models": {
+        "Rocket": "resources/configurations/acme-demo/model.rocket.json"
+    },
+    "policies": [
+        "resources/configurations/acme-demo-api/rocket/policy.json"
+    ],
+    "requests": [
+        "resources/configurations/acme-demo-api/rocket/request.destroy.json",
+        "resources/configurations/acme-demo-api/rocket/request.index.json",
+        "resources/configurations/acme-demo-api/rocket/request.restore.json",
+        "resources/configurations/acme-demo-api/rocket/request.show.json",
+        "resources/configurations/acme-demo-api/rocket/request.store.json",
+        "resources/configurations/acme-demo-resource/rocket/request.update.json"
+    ],
+    "resources": [
+        "resources/configurations/acme-demo-api/rocket/resource.json",
+        "resources/configurations/acme-demo-api/rocket/resource.collection.json"
+    ]
+}
