@@ -1,0 +1,260 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+namespace {{ namespace }};
+{{ use }}use {{ namespacedRequest }}\DestroyRequest;
+use {{ namespacedRequest }}\IndexRequest;
+use {{ namespacedRequest }}\RestoreRequest;
+use {{ namespacedRequest }}\ShowRequest;
+use {{ namespacedRequest }}\StoreRequest;
+use {{ namespacedRequest }}\UpdateRequest;
+use {{ namespacedModel }};
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * \{{ namespace }}\{{ class }}
+ */
+class {{ class }} extends {{ extends }}{{ implements }}
+{
+{{ use_class }}{{ constants }}{{ properties }}    /**
+     * Remove the API {{ modelLabel }} resource from storage.
+     *
+     * @route DELETE /api/{{ modelSlugPlural }}/{{{ modelVariable }}} {{ modelSlugPlural }}.destroy
+     */
+    public function destroy(
+        {{ model }} ${{ modelVariable }},
+        DestroyRequest $request
+    ): Response {
+        $validated = $request->validated();
+
+        if (empty($validated['force'])) {
+            ${{ modelVariable }}->delete();
+        } else {
+            ${{ modelVariable }}->forceDelete();
+        }
+
+        return response()->noContent();
+    }
+
+    /**
+     * Lock the {{ modelLabel }} resource in storage.
+     *
+     * @route PUT /api/{{ modelSlugPlural }}/lock/{{{ modelVariable }}} {{ modelSlugPlural }}.lock
+     */
+    public function lock({{ model }} ${{ modelVariable }}): JsonResponse
+    {
+        $user = Auth::getUser();
+
+        $transformer = new {{ model }}Transformer();
+
+        ${{ modelVariable }}->locked = true;
+
+        ${{ modelVariable }}->save();
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'id'              => ${{ modelVariable }}->id,
+            'timestamp'       => Carbon::now()->toJson(),
+        ];
+
+        $fractal = fractal(${{ modelVariable }}, $transformer);
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond();
+    }
+
+    /**
+     * Display a listing of {{ modelLabel }} resources.
+     *
+     * @route GET /api/{{ modelSlugPlural }} {{ modelSlugPlural }}.index
+     */
+    public function index(
+        IndexRequest $request
+    ): JsonResponse {
+        $user = Auth::getUser();
+
+        $validated = $request->validated();
+
+        ${{ modelSlugPlural }} = {{ model }}::filter($validated['filter'] ?? [])
+            ->sort($validated['sort'] ?? [])
+            ->paginate($validated['per_page'])
+            ->appends($validated);
+
+        $transformer = new {{ model }}Transformer();
+
+        $fractal = fractal(${{ modelSlugPlural }}, $transformer, new ResponseSerializer());
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'columns'         => $request->getPaginationColumns(),
+            'dates'           => $request->getPaginationDates(),
+            'flags'           => $request->getPaginationFlags(),
+            'ids'             => $request->getPaginationIds(),
+            'rules'           => $request->rules(),
+            'sortable'        => $request->getSortable(),
+            'timestamp'       => Carbon::now()->toJson(),
+            'validated'       => $validated,
+        ];
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond();
+    }
+
+    /**
+     * Restore the API {{ modelLabel }} resource from the trash.
+     *
+     * @route PUT /api/{{ modelSlugPlural }}/restore/{{{ modelVariable }}} {{ modelSlugPlural }}.restore
+     */
+    public function restore(
+        {{ model }} ${{ modelVariable }},
+        RestoreRequest $request
+    ): JsonResponse {
+        $validated = $request->validated();
+
+        $user = Auth::getUser();
+
+        ${{ modelVariable }}->restore();
+
+        $meta = [
+            'id'              => ${{ modelVariable }}->id,
+            'session_user_id' => $user->id,
+            'timestamp'       => Carbon::now()->toJson(),
+            'validated'       => $validated,
+        ];
+
+        $transformer = new {{ model }}Transformer();
+
+        $fractal = fractal(${{ modelVariable }}, $transformer);
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond();
+    }
+
+    /**
+     * Display the API {{ modelLabel }} resource.
+     *
+     * @route GET /api/{{ modelSlugPlural }}/{{{ modelVariable }}} {{ modelSlugPlural }}.show
+     */
+    public function show(
+        {{ model }} ${{ modelVariable }},
+        ShowRequest $request
+    ): JsonResponse {
+        $validated = $request->validated();
+
+        $user = Auth::getUser();
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'id'              => ${{ modelVariable }}->id,
+            'timestamp'       => Carbon::now()->toJson(),
+            'validated'       => $validated,
+        ];
+
+        $transformer = new {{ model }}Transformer();
+
+        $fractal = fractal(${{ modelVariable }}, $transformer);
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond();
+    }
+
+   /**
+     * Store a newly created API {{ modelLabel }} resource in storage.
+     *
+     * @route POST /api/{{ modelSlugPlural }} {{ modelSlugPlural }}.post
+     */
+    public function store(
+        StoreRequest $request
+    ): JsonResponse {
+        $validated = $request->validated();
+
+        $user = Auth::getUser();
+
+        $transformer = new {{ model }}Transformer();
+
+        ${{ modelVariable }} = new {{ model }}($validated);
+
+        ${{ modelVariable }}->save();
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'id'              => ${{ modelVariable }}->id,
+            'timestamp'       => Carbon::now()->toJson(),
+            'validated'       => $validated,
+        ];
+
+        $fractal = fractal(${{ modelVariable }}, $transformer);
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond(201);
+    }
+
+    /**
+     * Unlock the {{ modelLabel }} resource in storage.
+     *
+     * @route DELETE /api/{{ modelSlugPlural }}/lock/{{{ modelVariable }}} {{ modelSlugPlural }}.unlock
+     */
+    public function unlock({{ model }} ${{ modelVariable }}): JsonResponse
+    {
+        $user = Auth::getUser();
+
+        $transformer = new {{ model }}Transformer();
+
+        ${{ modelVariable }}->locked = false;
+
+        ${{ modelVariable }}->save();
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'id'              => ${{ modelVariable }}->id,
+            'timestamp'       => Carbon::now()->toJson(),
+        ];
+
+        $fractal = fractal(${{ modelVariable }}, $transformer);
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond();
+    }
+
+    /**
+     * Update the API {{ modelLabel }} resource in storage.
+     *
+     * @route PATCH /api/{{ modelSlugPlural }}/{{{ modelVariable }}} {{ modelSlugPlural }}.patch
+     */
+    public function update(
+        {{ model }} ${{ modelVariable }},
+        UpdateRequest $request
+    ): JsonResponse {
+        $validated = $request->validated();
+
+        $user = Auth::getUser();
+
+        $transformer = new {{ model }}Transformer();
+
+        ${{ modelVariable }}->update($validated);
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'id'              => ${{ modelVariable }}->id,
+            'timestamp'       => Carbon::now()->toJson(),
+            'validated'       => $validated,
+        ];
+
+        $fractal = fractal(${{ modelVariable }}, $transformer);
+
+        $fractal->addMeta($meta);
+
+        return $fractal->respond();
+    }{{ relationships }}{{ actions }}{{ methods }}
+}
