@@ -20,7 +20,7 @@ Playground Make provides information in the `artisan about` command.
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Playground\Make\ServiceProvider" --tag="playground-config"
+php artisan vendor:publish --provider="Playground\Make\Controller\ServiceProvider" --tag="playground-config"
 ```
 
 See the contents of the published config file: [config/playground-make-controller.php](config/playground-make-controller.php)

@@ -1,0 +1,41 @@
+    /**
+     * Display a listing of {{ modelLabel }} resources.
+     *
+     * @param \{{ namespacedRequest }}\IndexRequest $request
+     *
+     * @route GET /api/{{ modelSlugPlural }} {{ modelSlugPlural }}.index
+     */
+    public function index(
+        IndexRequest $request
+    ): JsonResponse|Response {
+        $user = Auth::getUser();
+
+        $validated = $request->validated();
+
+        ${{ modelSlugPlural }} = {{ model }}::filter($validated['filter'] ?? [])
+            ->sort($validated['sort'] ?? [])
+            ->paginate($validated['per_page'] ?? null)
+            ->appends($validated)
+        ;
+
+        if ($request->expectsJson()) {
+            return new {{ model }}Collection(${{ modelSlugPlural }});
+        }
+
+        $meta = [
+            'session_user_id' => $user->id,
+            'sortable'        => $request->getSortable(),
+            'timestamp'       => Carbon::now()->toJson(),
+            'validated'       => $validated,
+        ];
+
+        $data = [
+            'data' => ${{ modelSlugPlural }},
+            'meta' => $meta,
+        ];
+
+        return view(
+            '{{ view }}/detail',
+            $data
+        );
+    }
