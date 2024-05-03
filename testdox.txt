@@ -1,3 +1,18 @@
 Command (Tests\Feature\Playground\Make\Controller\Console\Commands\About\Command)
  [x] Command about displays package information and succeed with code 0
 
+Command (Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\Command)
+ [x] Command without options or arguments
+ [x] Command skeleton
+
+File (Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\File)
+ [x] Command make controller with force and without skeleton
+ [x] Command make controller with force and with skeleton
+
+Instance (Tests\Unit\Playground\Make\Controller\Configuration\Controller\Instance)
+ [x] Instance
+ [x] Instance apply without options
+ [x] Folder is empty by default
+ [x] Resource controller with file and skeleton
+ [x] Api controller with file and skeleton
+

@@ -1,16 +1,445 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-02 18:16:43</timestamp>
+  <timestamp>2024-05-03 06:31:32</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>5</methodCount>
-    <crapMethodCount>0</crapMethodCount>
-    <crapLoad>0</crapLoad>
-    <totalCrap>16</totalCrap>
-    <crapMethodPercent>0</crapMethodPercent>
+    <methodCount>44</methodCount>
+    <crapMethodCount>11</crapMethodCount>
+    <crapLoad>193</crapLoad>
+    <totalCrap>4674.97</totalCrap>
+    <crapMethodPercent>25</crapMethodPercent>
   </stats>
   <methods>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\MakeCommands</className>
+      <methodName>handle_policies</methodName>
+      <methodSignature>handle_policies(array $policies): void</methodSignature>
+      <fullMethod>handle_policies(array $policies): void</fullMethod>
+      <crap>56</crap>
+      <complexity>7</complexity>
+      <coverage>0</coverage>
+      <crapLoad>7</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\MakeCommands</className>
+      <methodName>handle_requests</methodName>
+      <methodSignature>handle_requests(array $requests): void</methodSignature>
+      <fullMethod>handle_requests(array $requests): void</fullMethod>
+      <crap>90</crap>
+      <complexity>9</complexity>
+      <coverage>0</coverage>
+      <crapLoad>9</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\MakeCommands</className>
+      <methodName>handle_resources</methodName>
+      <methodSignature>handle_resources(array $resources): void</methodSignature>
+      <fullMethod>handle_resources(array $resources): void</fullMethod>
+      <crap>56</crap>
+      <complexity>7</complexity>
+      <coverage>0</coverage>
+      <crapLoad>7</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\MakeCommands</className>
+      <methodName>handle_transformers</methodName>
+      <methodSignature>handle_transformers(array $transformers): void</methodSignature>
+      <fullMethod>handle_transformers(array $transformers): void</fullMethod>
+      <crap>56</crap>
+      <complexity>7</complexity>
+      <coverage>0</coverage>
+      <crapLoad>7</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildPolicies</className>
+      <methodName>skeleton_policy</methodName>
+      <methodSignature>skeleton_policy(string $type): void</methodSignature>
+      <fullMethod>skeleton_policy(string $type): void</fullMethod>
+      <crap>132</crap>
+      <complexity>11</complexity>
+      <coverage>0</coverage>
+      <crapLoad>11</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildRequests</className>
+      <methodName>skeleton_requests</methodName>
+      <methodSignature>skeleton_requests(string $type): void</methodSignature>
+      <fullMethod>skeleton_requests(string $type): void</fullMethod>
+      <crap>380</crap>
+      <complexity>19</complexity>
+      <coverage>0</coverage>
+      <crapLoad>19</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildRequests</className>
+      <methodName>getConfigurationFilename_for_request</methodName>
+      <methodSignature>getConfigurationFilename_for_request(string $name, string $type): string</methodSignature>
+      <fullMethod>getConfigurationFilename_for_request(string $name, string $type): string</fullMethod>
+      <crap>6</crap>
+      <complexity>2</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildResources</className>
+      <methodName>skeleton_resources</methodName>
+      <methodSignature>skeleton_resources(string $type): void</methodSignature>
+      <fullMethod>skeleton_resources(string $type): void</fullMethod>
+      <crap>272</crap>
+      <complexity>16</complexity>
+      <coverage>0</coverage>
+      <crapLoad>16</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildRoutes</className>
+      <methodName>skeleton_routes</methodName>
+      <methodSignature>skeleton_routes(string $type): void</methodSignature>
+      <fullMethod>skeleton_routes(string $type): void</fullMethod>
+      <crap>1190</crap>
+      <complexity>34</complexity>
+      <coverage>0</coverage>
+      <crapLoad>35</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildSwagger</className>
+      <methodName>skeleton_swagger</methodName>
+      <methodSignature>skeleton_swagger(string $type): void</methodSignature>
+      <fullMethod>skeleton_swagger(string $type): void</fullMethod>
+      <crap>1056</crap>
+      <complexity>32</complexity>
+      <coverage>0</coverage>
+      <crapLoad>33</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildTemplates</className>
+      <methodName>skeleton_templates</methodName>
+      <methodSignature>skeleton_templates(string $type): void</methodSignature>
+      <fullMethod>skeleton_templates(string $type): void</fullMethod>
+      <crap>1190</crap>
+      <complexity>34</complexity>
+      <coverage>0</coverage>
+      <crapLoad>35</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>setOptions</methodName>
+      <methodSignature>setOptions(array $options): self</methodSignature>
+      <fullMethod>setOptions(array $options): self</fullMethod>
+      <crap>12.14</crap>
+      <complexity>12</complexity>
+      <coverage>90</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>addModels</methodName>
+      <methodSignature>addModels(array $options): self</methodSignature>
+      <fullMethod>addModels(array $options): self</fullMethod>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>models</methodName>
+      <methodSignature>models(): array</methodSignature>
+      <fullMethod>models(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>policies</methodName>
+      <methodSignature>policies(): array</methodSignature>
+      <fullMethod>policies(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>requests</methodName>
+      <methodSignature>requests(): array</methodSignature>
+      <fullMethod>requests(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>resources</methodName>
+      <methodSignature>resources(): array</methodSignature>
+      <fullMethod>resources(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>templates</methodName>
+      <methodSignature>templates(): array</methodSignature>
+      <fullMethod>templates(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>transformers</methodName>
+      <methodSignature>transformers(): array</methodSignature>
+      <fullMethod>transformers(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>extends</methodName>
+      <methodSignature>extends(): string</methodSignature>
+      <fullMethod>extends(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>extends_use</methodName>
+      <methodSignature>extends_use(): string</methodSignature>
+      <fullMethod>extends_use(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>slug</methodName>
+      <methodSignature>slug(): string</methodSignature>
+      <fullMethod>slug(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>slug_plural</methodName>
+      <methodSignature>slug_plural(): string</methodSignature>
+      <fullMethod>slug_plural(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>model_route</methodName>
+      <methodSignature>model_route(): string</methodSignature>
+      <fullMethod>model_route(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>module_route</methodName>
+      <methodSignature>module_route(): string</methodSignature>
+      <fullMethod>module_route(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>playground</methodName>
+      <methodSignature>playground(): bool</methodSignature>
+      <fullMethod>playground(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>route</methodName>
+      <methodSignature>route(): string</methodSignature>
+      <fullMethod>route(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>privilege</methodName>
+      <methodSignature>privilege(): string</methodSignature>
+      <fullMethod>privilege(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>view</methodName>
+      <methodSignature>view(): string</methodSignature>
+      <fullMethod>view(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>prepareOptions</methodName>
+      <methodSignature>prepareOptions(): void</methodSignature>
+      <fullMethod>prepareOptions(): void</fullMethod>
+      <crap>97.62</crap>
+      <complexity>35</complexity>
+      <coverage>62.89</coverage>
+      <crapLoad>14</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>getConfigurationFilename</methodName>
+      <methodSignature>getConfigurationFilename(): string</methodSignature>
+      <fullMethod>getConfigurationFilename(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>getStub</methodName>
+      <methodSignature>getStub(): string</methodSignature>
+      <fullMethod>getStub(): string</fullMethod>
+      <crap>8.81</crap>
+      <complexity>7</complexity>
+      <coverage>66.67</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>resolveStubPath</methodName>
+      <methodSignature>resolveStubPath($stub): string</methodSignature>
+      <fullMethod>resolveStubPath($stub): string</fullMethod>
+      <crap>15.4</crap>
+      <complexity>7</complexity>
+      <coverage>44.44</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>getDefaultNamespace</methodName>
+      <methodSignature>getDefaultNamespace($rootNamespace): string</methodSignature>
+      <fullMethod>getDefaultNamespace($rootNamespace): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>buildClass</methodName>
+      <methodSignature>buildClass($name): string</methodSignature>
+      <fullMethod>buildClass($name): string</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>94.12</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>finish</methodName>
+      <methodSignature>finish(): ?bool</methodSignature>
+      <fullMethod>finish(): ?bool</fullMethod>
+      <crap>8</crap>
+      <complexity>8</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>skeleton</methodName>
+      <methodSignature>skeleton(): void</methodSignature>
+      <fullMethod>skeleton(): void</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>getConfigurationFilename_for_resource</methodName>
+      <methodSignature>getConfigurationFilename_for_resource(string $name, string $type): string</methodSignature>
+      <fullMethod>getConfigurationFilename_for_resource(string $name, string $type): string</fullMethod>
+      <crap>6</crap>
+      <complexity>2</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>getOptions</methodName>
+      <methodSignature>getOptions(): array</methodSignature>
+      <fullMethod>getOptions(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
     <method>
       <package>Playground\Make\Controller</package>
       <className>Playground\Make\Controller\ServiceProvider</className>
