@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-04 23:20:13</timestamp>
+  <timestamp>2024-05-04 23:49:00</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>50</methodCount>
+    <methodCount>60</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>193</crapLoad>
-    <totalCrap>4696.97</totalCrap>
-    <crapMethodPercent>22</crapMethodPercent>
+    <totalCrap>4723.57</totalCrap>
+    <crapMethodPercent>18.33</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -54,6 +54,28 @@
       <complexity>7</complexity>
       <coverage>0</coverage>
       <crapLoad>7</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Policy</package>
+      <className>Playground\Make\Controller\Building\Policy\BuildRoles</className>
+      <methodName>make_roles_to_view</methodName>
+      <methodSignature>make_roles_to_view(array $searches): string</methodSignature>
+      <fullMethod>make_roles_to_view(array $searches): string</fullMethod>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Policy</package>
+      <className>Playground\Make\Controller\Building\Policy\BuildRoles</className>
+      <methodName>make_roles_for_action</methodName>
+      <methodSignature>make_roles_for_action(array $searches): string</methodSignature>
+      <fullMethod>make_roles_for_action(array $searches): string</fullMethod>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -432,17 +454,6 @@
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
       <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
-      <methodName>resolveStubPath</methodName>
-      <methodSignature>resolveStubPath($stub): string</methodSignature>
-      <fullMethod>resolveStubPath($stub): string</fullMethod>
-      <crap>15.4</crap>
-      <complexity>7</complexity>
-      <coverage>44.44</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Console\Commands</package>
-      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
       <methodName>getDefaultNamespace</methodName>
       <methodSignature>getDefaultNamespace($rootNamespace): string</methodSignature>
       <fullMethod>getDefaultNamespace($rootNamespace): string</fullMethod>
@@ -498,6 +509,105 @@
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
       <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>getOptions</methodName>
+      <methodSignature>getOptions(): array</methodSignature>
+      <fullMethod>getOptions(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>prepareOptions</methodName>
+      <methodSignature>prepareOptions(): void</methodSignature>
+      <fullMethod>prepareOptions(): void</fullMethod>
+      <crap>11</crap>
+      <complexity>11</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>getConfigurationFilename</methodName>
+      <methodSignature>getConfigurationFilename(): string</methodSignature>
+      <fullMethod>getConfigurationFilename(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>buildClass</methodName>
+      <methodSignature>buildClass($name): string</methodSignature>
+      <fullMethod>buildClass($name): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>buildClass_user_model</methodName>
+      <methodSignature>buildClass_user_model(): void</methodSignature>
+      <fullMethod>buildClass_user_model(): void</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>userProviderModelGuard</methodName>
+      <methodSignature>userProviderModelGuard(mixed $guard): string</methodSignature>
+      <fullMethod>userProviderModelGuard(mixed $guard): string</fullMethod>
+      <crap>7</crap>
+      <complexity>7</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>userProviderModel</methodName>
+      <methodSignature>userProviderModel(): string</methodSignature>
+      <fullMethod>userProviderModel(): string</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>getStub</methodName>
+      <methodSignature>getStub()</methodSignature>
+      <fullMethod>getStub()</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>getDefaultNamespace</methodName>
+      <methodSignature>getDefaultNamespace($rootNamespace)</methodSignature>
+      <fullMethod>getDefaultNamespace($rootNamespace)</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
       <methodName>getOptions</methodName>
       <methodSignature>getOptions(): array</methodSignature>
       <fullMethod>getOptions(): array</fullMethod>

@@ -5,9 +5,25 @@ Command (Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMak
  [x] Command without options or arguments
  [x] Command skeleton
 
+Command (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand\Command)
+ [x] Command without options or arguments
+ [x] Command skeleton
+ [x] Command skeleton with roles action
+ [x] Command skeleton with roles view
+ [x] Command skeleton with roles and action view
+ [x] Command userProviderModelGuard with invalid guard
+ [x] Command skeleton with type playground resource
+ [x] Command skeleton with type playground api
+ [x] Command skeleton with type api
+ [x] Command skeleton with type resource
+
 File (Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\File)
  [x] Command make controller with force and without skeleton
  [x] Command make controller with force and with skeleton
+
+File (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand\File)
+ [x] Command make policy with force and without skeleton
+ [x] Command make policy with force and with skeleton
 
 Instance (Tests\Unit\Playground\Make\Controller\Configuration\Controller\Instance)
  [x] Instance
