@@ -6,9 +6,7 @@
 declare(strict_types=1);
 namespace Playground\Make\Controller\Console\Commands;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
 use Playground\Make\Console\Commands\GeneratorCommand;
@@ -437,52 +435,6 @@ class ControllerMakeCommand extends GeneratorCommand
     // }
 
     /**
-     * Resolve the fully-qualified path to the stub.
-     *
-     * @param  string  $stub
-     */
-    protected function resolveStubPath($stub): string
-    {
-        $path = '';
-        $stub_path = config('playground-make.paths.stubs');
-        if (! empty($stub_path)
-            && is_string($stub_path)
-        ) {
-            if (! is_dir($stub_path)) {
-                Log::error(__('playground-make::generator.path.invalid'), [
-                    '$stub_path' => $stub_path,
-                    '$stub' => $stub,
-                ]);
-            } else {
-                $path = sprintf(
-                    '%1$s/%2$s',
-                    // Str::of($stub_path)->finish('/')->toString(),
-                    Str::of($stub_path)->toString(),
-                    $stub
-                );
-            }
-        }
-
-        if (empty($path)) {
-            $path = sprintf(
-                '%1$s/resources/stubs/%2$s',
-                dirname(dirname(dirname(__DIR__))),
-                $stub
-            );
-        }
-
-        if (! file_exists($path)) {
-            $this->components->error(__('playground-make::generator.stub.missing', [
-                'stub_path' => is_string($stub_path) ? $stub_path : gettype($stub_path),
-                'stub' => $stub,
-                'path' => $path,
-            ]));
-        }
-
-        return $path;
-    }
-
-    /**
      * Get the default namespace for the class.
      *
      * @param  string  $rootNamespace
@@ -504,18 +456,6 @@ class ControllerMakeCommand extends GeneratorCommand
     {
 
         $this->buildClass_model($name);
-
-        // $this->searches['namespacedRequest'] = $this->parseClassInput(sprintf(
-        //     '%1$s\Http\Requests\%2$s',
-        //     rtrim($this->c->namespace(), '\\'),
-        //     rtrim($this->c->name(), '\\')
-        // ));
-
-        // $this->searches['namespacedResource'] = $this->parseClassInput(sprintf(
-        //     '%1$s\Http\Resources\%2$s',
-        //     rtrim($this->c->namespace(), '\\'),
-        //     rtrim($this->c->name(), '\\')
-        // ));
 
         $this->searches['namespacedRequest'] = $this->parseClassInput(sprintf(
             '%1$s\Http\Requests',
@@ -554,180 +494,7 @@ class ControllerMakeCommand extends GeneratorCommand
         //     '$this->searches' => $this->searches,
         // ]);
         return parent::buildClass($name);
-        // $controllerNamespace = $this->getNamespace($name);
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$name' => $name,
-        //     '$controllerNamespace' => $controllerNamespace,
-        // ]);
-        // $replace = [];
-
-        // if ($this->option('parent')) {
-        //     $replace = $this->buildParentReplacements();
-        // }
-
-        // if ($this->option('model')) {
-        //     $replace = $this->buildModelReplacements($replace);
-        // }
-
-        // if ($this->option('creatable')) {
-        //     $replace['abort(404);'] = '//';
-        // }
-
-        // $replace["use {$controllerNamespace}\Controller;\n"] = '';
-
-        // return str_replace(
-        //     array_keys($replace), array_values($replace), parent::buildClass($name)
-        // );
     }
-
-    // /**
-    //  * Build the replacements for a parent controller.
-    //  *
-    //  * @return array
-    //  */
-    // protected function buildParentReplacements()
-    // {
-    //     $parentModelClass = $this->parseModel($this->option('parent'));
-
-    //     if (! class_exists($parentModelClass) &&
-    //         confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", default: true)) {
-    //         $this->call('playground:make:model', ['name' => $parentModelClass]);
-    //     }
-
-    //     return [
-    //         'ParentDummyFullModelClass' => $parentModelClass,
-    //         '{{ namespacedParentModel }}' => $parentModelClass,
-    //         '{{namespacedParentModel}}' => $parentModelClass,
-    //         'ParentDummyModelClass' => class_basename($parentModelClass),
-    //         '{{ parentModel }}' => class_basename($parentModelClass),
-    //         '{{parentModel}}' => class_basename($parentModelClass),
-    //         'ParentDummyModelVariable' => lcfirst(class_basename($parentModelClass)),
-    //         '{{ parentModelVariable }}' => lcfirst(class_basename($parentModelClass)),
-    //         '{{parentModelVariable}}' => lcfirst(class_basename($parentModelClass)),
-    //     ];
-    // }
-
-    // /**
-    //  * Build the model replacement values.
-    //  *
-    //  * @return array
-    //  */
-    // protected function buildModelReplacements(array $replace)
-    // {
-    //     $modelClass = $this->parseModel($this->option('model'));
-
-    //     if (! class_exists($modelClass) && confirm("A {$modelClass} model does not exist. Do you want to generate it?", default: true)) {
-    //         $this->call('playground:make:model', ['name' => $modelClass]);
-    //     }
-
-    //     $replace = $this->buildFormRequestReplacements($replace, $modelClass);
-
-    //     return array_merge($replace, [
-    //         'DummyFullModelClass' => $modelClass,
-    //         '{{ namespacedModel }}' => $modelClass,
-    //         '{{namespacedModel}}' => $modelClass,
-    //         'DummyModelClass' => class_basename($modelClass),
-    //         '{{ model }}' => class_basename($modelClass),
-    //         '{{model}}' => class_basename($modelClass),
-    //         'DummyModelVariable' => lcfirst(class_basename($modelClass)),
-    //         '{{ modelVariable }}' => lcfirst(class_basename($modelClass)),
-    //         '{{modelVariable}}' => lcfirst(class_basename($modelClass)),
-    //     ]);
-    // }
-
-    // /**
-    //  * Get the fully-qualified model class name.
-    //  *
-    //  * @param  string  $model
-    //  * @return string
-    //  *
-    //  * @throws \InvalidArgumentException
-    //  */
-    // protected function parseModel($model)
-    // {
-    //     if (preg_match('([^A-Za-z0-9_/\\\\])', $model)) {
-    //         throw new InvalidArgumentException('Model name contains invalid characters.');
-    //     }
-
-    //     return $this->qualifyModel($model);
-    // }
-
-    // /**
-    //  * Build the model replacement values.
-    //  *
-    //  * @param  string  $modelClass
-    //  * @return array
-    //  */
-    // protected function buildFormRequestReplacements(array $replace, $modelClass)
-    // {
-    //     [$namespace, $storeRequestClass, $updateRequestClass] = [
-    //         'Illuminate\\Http', 'Request', 'Request',
-    //     ];
-
-    //     if ($this->option('requests')) {
-    //         $namespace = 'App\\Http\\Requests';
-
-    //         [$storeRequestClass, $updateRequestClass] = $this->generateFormRequests(
-    //             $modelClass, $storeRequestClass, $updateRequestClass
-    //         );
-    //     }
-
-    //     $namespacedRequests = $namespace.'\\'.$storeRequestClass.';';
-
-    //     if ($storeRequestClass !== $updateRequestClass) {
-    //         $namespacedRequests .= PHP_EOL.'use '.$namespace.'\\'.$updateRequestClass.';';
-    //     }
-
-    //     return array_merge($replace, [
-    //         '{{ storeRequest }}' => $storeRequestClass,
-    //         '{{storeRequest}}' => $storeRequestClass,
-    //         '{{ updateRequest }}' => $updateRequestClass,
-    //         '{{updateRequest}}' => $updateRequestClass,
-    //         '{{ namespacedStoreRequest }}' => $namespace.'\\'.$storeRequestClass,
-    //         '{{namespacedStoreRequest}}' => $namespace.'\\'.$storeRequestClass,
-    //         '{{ namespacedUpdateRequest }}' => $namespace.'\\'.$updateRequestClass,
-    //         '{{namespacedUpdateRequest}}' => $namespace.'\\'.$updateRequestClass,
-    //         '{{ namespacedRequests }}' => $namespacedRequests,
-    //         '{{namespacedRequests}}' => $namespacedRequests,
-    //     ]);
-    // }
-
-    // /**
-    //  * Generate the form requests for the given model and classes.
-    //  *
-    //  * @param  string  $modelClass
-    //  * @param  string  $storeRequestClass
-    //  * @param  string  $updateRequestClass
-    //  * @return array
-    //  */
-    // protected function generateFormRequests($modelClass, $storeRequestClass, $updateRequestClass)
-    // {
-    //     $storeRequestClass = 'Store'.class_basename($modelClass).'Request';
-
-    //     $this->call('playground:make:request', [
-    //         'name' => $storeRequestClass,
-    //     ]);
-
-    //     $updateRequestClass = 'Update'.class_basename($modelClass).'Request';
-
-    //     $this->call('playground:make:request', [
-    //         'name' => $updateRequestClass,
-    //     ]);
-
-    //     return [$storeRequestClass, $updateRequestClass];
-    // }
-
-    // /**
-    //  * Execute the console command.
-    //  */
-    // public function handle()
-    // {
-    //     if (parent::handle()) {
-    //         return $this->return_status;
-    //     }
-
-    // }
 
     public function finish(): ?bool
     {
