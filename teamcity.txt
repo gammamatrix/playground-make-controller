@@ -1,5 +1,5 @@
 
-##teamcity[testCount count='10' flowId='1']
+##teamcity[testCount count='14' flowId='1']
 
 ##teamcity[testSuiteStarted name='/app/phpunit.xml.dist' flowId='1']
 
@@ -9,11 +9,11 @@
 
 ##teamcity[testStarted name='test_instance' locationHint='php_qn:///app/tests/Unit/Configuration/Controller/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest::test_instance' flowId='1']
 
-##teamcity[testFinished name='test_instance' duration='156' flowId='1']
+##teamcity[testFinished name='test_instance' duration='155' flowId='1']
 
 ##teamcity[testStarted name='test_instance_apply_without_options' locationHint='php_qn:///app/tests/Unit/Configuration/Controller/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest::test_instance_apply_without_options' flowId='1']
 
-##teamcity[testFinished name='test_instance_apply_without_options' duration='4' flowId='1']
+##teamcity[testFinished name='test_instance_apply_without_options' duration='5' flowId='1']
 
 ##teamcity[testStarted name='test_folder_is_empty_by_default' locationHint='php_qn:///app/tests/Unit/Configuration/Controller/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest::test_folder_is_empty_by_default' flowId='1']
 
@@ -29,6 +29,26 @@
 
 ##teamcity[testSuiteFinished name='Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest' flowId='1']
 
+##teamcity[testSuiteStarted name='Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest' locationHint='php_qn:///app/tests/Unit/Configuration/Policy/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest' flowId='1']
+
+##teamcity[testStarted name='test_instance' locationHint='php_qn:///app/tests/Unit/Configuration/Policy/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest::test_instance' flowId='1']
+
+##teamcity[testFinished name='test_instance' duration='15' flowId='1']
+
+##teamcity[testStarted name='test_instance_apply_without_options' locationHint='php_qn:///app/tests/Unit/Configuration/Policy/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest::test_instance_apply_without_options' flowId='1']
+
+##teamcity[testFinished name='test_instance_apply_without_options' duration='4' flowId='1']
+
+##teamcity[testStarted name='test_folder_is_empty_by_default' locationHint='php_qn:///app/tests/Unit/Configuration/Policy/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest::test_folder_is_empty_by_default' flowId='1']
+
+##teamcity[testFinished name='test_folder_is_empty_by_default' duration='4' flowId='1']
+
+##teamcity[testStarted name='test_test_with_file_and_skeleton' locationHint='php_qn:///app/tests/Unit/Configuration/Policy/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest::test_test_with_file_and_skeleton' flowId='1']
+
+##teamcity[testFinished name='test_test_with_file_and_skeleton' duration='5' flowId='1']
+
+##teamcity[testSuiteFinished name='Tests\Unit\Playground\Make\Controller\Configuration\Policy\InstanceTest' flowId='1']
+
 ##teamcity[testSuiteFinished name='Unit' flowId='1']
 
 ##teamcity[testSuiteStarted name='Feature' flowId='1']
@@ -37,7 +57,7 @@
 
 ##teamcity[testStarted name='test_command_about_displays_package_information_and_succeed_with_code_0' locationHint='php_qn:///app/tests/Feature/Console/Commands/About/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\About\CommandTest::test_command_about_displays_package_information_and_succeed_with_code_0' flowId='1']
 
-##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='343' flowId='1']
+##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='340' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\About\CommandTest' flowId='1']
 
@@ -45,7 +65,7 @@
 
 ##teamcity[testStarted name='test_command_without_options_or_arguments' locationHint='php_qn:///app/tests/Feature/Console/Commands/ControllerMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\CommandTest::test_command_without_options_or_arguments' flowId='1']
 
-##teamcity[testFinished name='test_command_without_options_or_arguments' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_without_options_or_arguments' duration='12' flowId='1']
 
 ##teamcity[testStarted name='test_command_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ControllerMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\CommandTest::test_command_skeleton' flowId='1']
 
@@ -57,11 +77,11 @@
 
 ##teamcity[testStarted name='test_command_make_controller_with_force_and_without_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ControllerMakeCommand/FileTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\FileTest::test_command_make_controller_with_force_and_without_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_controller_with_force_and_without_skeleton' duration='24' flowId='1']
+##teamcity[testFinished name='test_command_make_controller_with_force_and_without_skeleton' duration='22' flowId='1']
 
 ##teamcity[testStarted name='test_command_make_controller_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ControllerMakeCommand/FileTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\FileTest::test_command_make_controller_with_force_and_with_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_controller_with_force_and_with_skeleton' duration='17' flowId='1']
+##teamcity[testFinished name='test_command_make_controller_with_force_and_with_skeleton' duration='15' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\FileTest' flowId='1']
 

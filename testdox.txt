@@ -16,3 +16,9 @@ Instance (Tests\Unit\Playground\Make\Controller\Configuration\Controller\Instanc
  [x] Resource controller with file and skeleton
  [x] Api controller with file and skeleton
 
+Instance (Tests\Unit\Playground\Make\Controller\Configuration\Policy\Instance)
+ [x] Instance
+ [x] Instance apply without options
+ [x] Folder is empty by default
+ [x] Test with file and skeleton
+
