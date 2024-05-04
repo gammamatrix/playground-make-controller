@@ -99,19 +99,10 @@ trait BuildResources
 
             $resource['--module'] = $module;
             $resource['--skeleton'] = true;
-            // $resource = array_merge([
-            //     'name' => $this->argument('name'),
-            // ], $resource);
-            // $resource['name'] = $name;
-            // dump([
-            //     '__METHOD__' => __METHOD__,
-            //     '$resource' => $resource,
-            // ]);
             if (empty($this->call('playground:make:resource', $resource))) {
 
                 $path_resources_packages = $this->getResourcePackageFolder();
 
-                // $file_resource = ('vendor/gammamatrix/playground-stub/resources/playground/matrix/resource/version/resource.test.json');
                 $file_resource = sprintf(
                     '%1$s%2$s/%3$s',
                     $this->laravel->storagePath(),
@@ -119,23 +110,10 @@ trait BuildResources
                     $this->getConfigurationFilename_for_resource($name, $resource_type)
                 );
 
-                // dd([
-                //     '__METHOD__' => __METHOD__,
-                //     '$file_resource' => $file_resource,
-                //     '$path_resources_packages' => $path_resources_packages,
-                //     '$this->configuration' => $this->configuration,
-                //     '$this->laravel->storagePath()' => $this->laravel->storagePath(),
-                // ]);
-
                 if (! in_array($file_resource, $this->c->resources())) {
                     $this->c->resources()[] = $file_resource;
                 }
             }
         }
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->configuration' => $this->configuration,
-        //     '$type' => $type,
-        // ]);
     }
 }

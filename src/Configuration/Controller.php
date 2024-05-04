@@ -1,12 +1,11 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Make\Controller\Configuration;
 
-// use Illuminate\Support\Facades\Log;
 use Playground\Make\Configuration\PrimaryConfiguration;
 
 /**

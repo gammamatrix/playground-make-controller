@@ -42,7 +42,19 @@ trait FileTrait
                 $package_base
             );
 
-        } else {
+        //
+        // Policy
+        //
+
+        } elseif (in_array($type, [
+            'test-policy',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/policy.snippet.json',
+                $package_base
+            );
+
+    } else {
             $file = sprintf(
                 '%1$s/resources/testing/empty.json',
                 $package_base

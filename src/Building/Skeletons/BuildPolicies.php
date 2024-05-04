@@ -86,14 +86,6 @@ trait BuildPolicies
                 Str::of($name)->kebab()
             );
 
-            // dd([
-            //     '__METHOD__' => __METHOD__,
-            //     '$file' => $file,
-            //     '$path_resources_packages' => $path_resources_packages,
-            //     '$this->configuration' => $this->configuration,
-            //     '$this->laravel->storagePath()' => $this->laravel->storagePath(),
-            // ]);
-
             if (! in_array($file, $this->c->policies())) {
                 $this->c->policies()[] = $file;
             }
