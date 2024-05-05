@@ -42,6 +42,68 @@ trait FileTrait
                 $package_base
             );
 
+        } elseif (in_array($type, [
+            'model',
+            'model-backlog',
+            'model-resource',
+            'playground-model',
+            'playground-model-resource',
+            'playground-model-api',
+        ])) {
+                $file = sprintf(
+                    '%1$s/resources/testing/configurations/model.backlog.json',
+                    $package_base
+                );
+
+        //
+        // Policy
+        //
+
+        } elseif (in_array($type, [
+            'test-policy',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/policy.snippet.json',
+                $package_base
+            );
+
+        //
+        // Request
+        //
+
+        } elseif (in_array($type, [
+            'request',
+            'test-request',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/request.json',
+                $package_base
+            );
+
+        //
+        // Route
+        //
+
+        } elseif (in_array($type, [
+            'route',
+            'test-route',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/route.json',
+                $package_base
+            );
+
+        // Resource
+
+        } elseif (in_array($type, [
+            'resource',
+            'test-resource',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/resource.json',
+                $package_base
+            );
+
         } else {
             $file = sprintf(
                 '%1$s/resources/testing/empty.json',

@@ -1,0 +1,27 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+namespace {{ namespace }};
+
+use Playground\Auth\Policies\ModelPolicy;
+
+/**
+ * \{{ namespace }}\{{ class }}
+ */
+class {{ class }} extends ModelPolicy
+{
+    protected string $package = '{{ package }}';
+
+    /**
+     * @var array<int, string> The roles allowed to view the MVC.
+     */
+    protected $rolesToView = [{{ rolesToView }}];
+
+    /**
+     * @var array<int, string> The roles allowed for actions in the MVC.
+     */
+    protected $rolesForAction = [{{ rolesForAction }}];
+}

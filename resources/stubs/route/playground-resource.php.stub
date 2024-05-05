@@ -1,0 +1,109 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| {{module}} Routes: {{name}}
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+Route::group([
+    'prefix' => '{{route_prefix}}',
+    'middleware' => config('{{ package }}.middleware.default'),
+    'namespace' => '\{{namespace}}\Http\Controllers',
+], function () {
+    Route::get('/', [
+        'as' => '{{route}}',
+        'uses' => '{{controller}}@index',
+    ])->can('index', {{model_fqdn}}::class);
+
+    // UI
+
+    Route::get('/create', [
+        'as' => '{{route}}.create',
+        'uses' => '{{controller}}@create',
+    ])->can('create', {{model_fqdn}}::class);
+
+    Route::get('/edit/{{{model_column}}}', [
+        'as' => '{{route}}.edit',
+        'uses' => '{{controller}}@edit',
+    ])->whereUuid('{{model_column}}')
+        ->can('edit', '{{model_column}}');
+
+    // Route::get('/go/{id}', [
+    //     'as' => '{{route}}.go',
+    //     'uses' => '{{controller}}@go',
+    // ]);
+
+    Route::get('/{{{model_column}}}', [
+        'as' => '{{route}}.show',
+        'uses' => '{{controller}}@show',
+    ])->whereUuid('{{model_column}}')
+        ->can('detail', '{{model_column}}');
+
+    // Route::get('/{slug}', [
+    //     'as' => '{{route}}.slug',
+    //     'uses' => '{{controller}}@slug',
+    // ])->where('slug', '[a-zA-Z0-9\-]+');
+
+    // Route::post('/store', [
+    //     'as' => '{{route}}.store',
+    //     'uses' => '{{controller}}@store',
+    // ])->can('store', {{model_fqdn}}::class);
+
+    // API
+
+    Route::put('/lock/{{{model_column}}}', [
+        'as' => '{{route}}.lock',
+        'uses' => '{{controller}}@lock',
+    ])->whereUuid('{{model_column}}')
+        ->can('lock', '{{model_column}}');
+
+    Route::delete('/lock/{{{model_column}}}', [
+        'as' => '{{route}}.unlock',
+        'uses' => '{{controller}}@unlock',
+    ])->whereUuid('{{model_column}}')
+        ->can('unlock', '{{model_column}}');
+
+    Route::delete('/{{{model_column}}}', [
+        'as' => '{{route}}.destroy',
+        'uses' => '{{controller}}@destroy',
+    ])->whereUuid('{{model_column}}')
+        ->can('delete', '{{model_column}}')
+        ->withTrashed();
+
+    Route::put('/restore/{{{model_column}}}', [
+        'as' => '{{route}}.restore',
+        'uses' => '{{controller}}@restore',
+    ])->whereUuid('{{model_column}}')
+        ->can('restore', '{{model_column}}')
+        ->withTrashed();
+
+    Route::post('/', [
+        'as' => '{{route}}.post',
+        'uses' => '{{controller}}@store',
+    ])->can('store', {{model_fqdn}}::class);
+
+    // Route::put('/', [
+    //     'as' => '{{route}}.put',
+    //     'uses' => '{{controller}}@store',
+    // ])->can('store', {{model_fqdn}}::class);
+    //
+    // Route::put('/{{{model_column}}}', [
+    //     'as' => '{{route}}.put.id',
+    //     'uses' => '{{controller}}@store',
+    // ])->whereUuid('{{model_column}}')->can('update', '{{model_column}}');
+
+    Route::patch('/{{{model_column}}}', [
+        'as' => '{{route}}.patch',
+        'uses' => '{{controller}}@update',
+    ])->whereUuid('{{model_column}}')->can('update', '{{model_column}}');
+});

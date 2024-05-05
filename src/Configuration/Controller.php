@@ -1,12 +1,11 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Make\Controller\Configuration;
 
-// use Illuminate\Support\Facades\Log;
 use Playground\Make\Configuration\PrimaryConfiguration;
 
 /**
@@ -45,13 +44,14 @@ class Controller extends PrimaryConfiguration
         'privilege' => '',
         'route' => '',
         'view' => '',
+        'implements' => [],
         'uses' => [],
     ];
 
-    /**
-     * @var array<string, string>
-     */
-    protected array $models = [];
+    // /**
+    //  * @var array<string, string>
+    //  */
+    // protected array $models = [];
 
     /**
      * @var array<int, string>
@@ -109,9 +109,9 @@ class Controller extends PrimaryConfiguration
         //     $this->withPolicies = ! empty($options['withPolicies']);
         // }
 
-        if (array_key_exists('playground', $options)) {
-            $this->playground = ! empty($options['playground']);
-        }
+        // if (array_key_exists('playground', $options)) {
+        //     $this->playground = ! empty($options['playground']);
+        // }
 
         if (! empty($options['module_route'])
             && is_string($options['module_route'])
@@ -143,34 +143,16 @@ class Controller extends PrimaryConfiguration
             $this->view = $options['view'];
         }
 
-        $this->addModels($options);
-
         return $this;
     }
 
-    /**
-     * @param array<string, mixed> $options
-     */
-    public function addModels(array $options): self
-    {
-        if (! empty($options['models'])
-            && is_array($options['models'])
-        ) {
-            foreach ($options['models'] as $key => $file) {
-                $this->addMappedClassTo('models', $key, $file);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    public function models(): array
-    {
-        return $this->models;
-    }
+    // /**
+    //  * @return array<string, string>
+    //  */
+    // public function models(): array
+    // {
+    //     return $this->models;
+    // }
 
     /**
      * @return array<int, string>
@@ -212,15 +194,15 @@ class Controller extends PrimaryConfiguration
         return $this->transformers;
     }
 
-    public function extends(): string
-    {
-        return $this->extends;
-    }
+    // public function extends(): string
+    // {
+    //     return $this->extends;
+    // }
 
-    public function extends_use(): string
-    {
-        return $this->extends_use;
-    }
+    // public function extends_use(): string
+    // {
+    //     return $this->extends_use;
+    // }
 
     public function slug(): string
     {
@@ -242,10 +224,10 @@ class Controller extends PrimaryConfiguration
         return $this->module_route;
     }
 
-    public function playground(): bool
-    {
-        return $this->playground;
-    }
+    // public function playground(): bool
+    // {
+    //     return $this->playground;
+    // }
 
     public function route(): string
     {

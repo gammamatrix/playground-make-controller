@@ -250,17 +250,12 @@ trait BuildRequests
                 //     '$file_request' => $file_request,
                 //     '$path_resources_packages' => $path_resources_packages,
                 //     // '$this->c' => $this->c,
-                //     '$this->laravel->storagePath()' => $this->laravel->storagePath(),
                 // ]);
 
                 if (! in_array($file_request, $this->c->requests())) {
                     $this->c->requests()[] = $file_request;
                 }
             }
-            // dd([
-            //     '__METHOD__' => __METHOD__,
-            //     '$this->configuration' => $this->configuration,
-            // ]);
         }
     }
 

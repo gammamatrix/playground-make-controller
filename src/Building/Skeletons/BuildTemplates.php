@@ -23,8 +23,6 @@ trait BuildTemplates
         $organization = $this->hasOption('organization') ? $this->option('organization') : '';
         $package = $this->hasOption('package') ? $this->option('package') : '';
 
-        // $layout = 'playground::layouts.site';
-
         if (empty($model) && ! empty($this->c->model()) && is_string($this->c->model())) {
             $model = $this->c->model();
         }
@@ -99,7 +97,7 @@ trait BuildTemplates
             //     '$options' => $options,
             //     '$file_request' => $file_request,
             //     // '$path_resources_templates' => $path_resources_templates,
-            //     // '$this->configuration' => $this->configuration,
+            //     // '$this->c' => $this->c,
             //     // '$this->laravel->storagePath()' => $this->laravel->storagePath(),
             // ]);
 

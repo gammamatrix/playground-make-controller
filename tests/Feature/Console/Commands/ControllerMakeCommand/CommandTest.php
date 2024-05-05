@@ -12,7 +12,7 @@ use Playground\Make\Controller\Console\Commands\ControllerMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
 
 /**
- * \Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand
+ * \Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\CommandTest
  */
 #[CoversClass(ControllerMakeCommand::class)]
 class CommandTest extends TestCase
@@ -24,7 +24,7 @@ class CommandTest extends TestCase
          */
         $result = $this->artisan('playground:make:controller');
         $result->assertExitCode(1);
-        $result->expectsOutputToContain( __('playground-make::generator.input.error'));
+        $result->expectsOutputToContain(__('playground-make::generator.input.error'));
     }
 
     public function test_command_skeleton(): void

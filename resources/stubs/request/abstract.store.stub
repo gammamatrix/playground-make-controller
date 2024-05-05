@@ -1,0 +1,56 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+namespace {{ namespace }};
+{{ use }}
+/**
+ * \{{ namespace }}\{{ class }}
+ */
+{{ abstract }}class {{ class }} extends {{ extends }}{{ implements }}
+{
+{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}    public function messages(): array
+    {
+        return [
+            // 'slug.unique' => 'The :attribute has already been taken: :input',
+            'slug.unique' => __('playground::validation.slug.unique'),
+        ];
+    }
+
+    public function rules(): array
+    {
+        $rules = parent::rules();
+
+        if (method_exists($this, 'rules_store_slug_create')) {
+            $this->rules_store_slug_create();
+        }
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '__FILE__' => __FILE__,
+        //     '__LINE__' => __LINE__,
+        //     '$rules' => $rules,
+        // ]);
+
+        // \Log::debug(__METHOD__, [
+        //     '$action' => $action,
+        //     '$rules' => $rules,
+        // ]);
+        return $rules;
+    }
+{{ methods }}
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        parent::prepareForValidation();
+
+        if (method_exists($this, 'prepareForValidationForSlug')) {
+            $this->prepareForValidationForSlug();
+        }
+    }
+}

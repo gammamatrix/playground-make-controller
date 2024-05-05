@@ -1,0 +1,81 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Str;
+
+/**
+ * \{{ namespace }}\StoreSlugTrait
+ */
+trait StoreSlugTrait
+{
+    protected $slug_table = '';
+
+    public function rules_store_slug_create(array &$rules): void
+    {
+        $rules['slug'] = [
+            'nullable',
+            'string',
+        ];
+
+        if ($this->slug_table) {
+            $rules['slug'][] = sprintf('unique:%1$s', $this->slug_table);
+        }
+    }
+
+    public function rules_store_slug_update(array &$rules): void
+    {
+        $rules['slug'] = [
+            'nullable',
+            'string',
+        ];
+
+        if ($this->slug_table) {
+            $rules['slug'][] = sprintf('unique:%1$s,id,%2$s', $this->slug_table, $this->id);
+        }
+    }
+
+    public function prepareForValidationForSlug(): array
+    {
+        // ${{ slug_column }} = $this->get('{{ slug_column }}');
+        // ${{ slug_source }} = $this->get('{{ slug_source }}');
+        $slug = $this->get('slug');
+        $title = $this->get('title');
+        $label = $this->get('label');
+
+        $merge = false;
+
+        if (empty($slug) && (!empty($label) || !empty($title))) {
+            if (!empty($title)) {
+                $merge = true;
+                $slug = Str::of($title)->slug('-')->toString();
+            } elseif (!empty($label)) {
+                $merge = true;
+                $slug = Str::of($label)->slug('-')->toString();
+            }
+        // if (empty(${{ slug_column }}) && !empty(${{ slug_source }})) {
+        //    $merge = true;
+        //    ${{ slug_column }} = Str::of(${{ slug_source }})->slug('-')->toString();
+        } elseif (!empty(${{ slug_column }})) {
+            $merge = true;
+            ${{ slug_column }} = Str::of(${{ slug_column }})->slug('-')->toString();
+        }
+
+        if ($merge) {
+            $this->merge([
+                '{{ slug_column }}' => ${{ slug_column }},
+            ]);
+        }
+
+        return [
+            // '{{ slug_column }}' => ${{ slug_column }},
+            // '{{ slug_source }}' => ${{ slug_source }},
+            'slug' => $slug,
+            'label' => $label,
+            'title' => $title,
+        ];
+    }
+}

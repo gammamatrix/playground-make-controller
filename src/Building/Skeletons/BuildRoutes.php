@@ -95,15 +95,6 @@ trait BuildRoutes
                 Str::of($this->c->name())->kebab()
             );
 
-            // dump([
-            //     '__METHOD__' => __METHOD__,
-            //     '$options' => $options,
-            //     '$file_request' => $file_request,
-            //     // '$path_resources_templates' => $path_resources_templates,
-            //     // '$this->configuration' => $this->configuration,
-            //     // '$this->laravel->storagePath()' => $this->laravel->storagePath(),
-            // ]);
-
             if (! in_array($file_request, $this->c->templates())) {
                 $this->c->templates()[] = $file_request;
             }

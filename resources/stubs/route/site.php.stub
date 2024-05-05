@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| {{module_label}} Routes
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+Route::group([
+    'prefix' => '{{route_prefix}}',
+    'middleware' => [
+        'auth',
+        'web',
+    ],
+    'namespace' => '\{{namespace}}\Http\Controllers',
+], function () {
+
+    Route::get('/', [
+        'as'   => '{{route}}',
+        'uses' => 'IndexController@index',
+    ]);
+
+});
