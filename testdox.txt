@@ -79,6 +79,19 @@ Instance (Tests\Unit\Playground\Make\Controller\Configuration\Request\Instance)
  [x] Folder is empty by default
  [x] Test with file and skeleton
 
+Instance (Tests\Unit\Playground\Make\Controller\Configuration\Resource\Instance)
+ [x] Instance
+ [x] Instance apply without options
+ [x] Folder is empty by default
+ [x] With file and skeleton
+ [x] With file and skeleton as collection
+
+Instance (Tests\Unit\Playground\Make\Controller\Configuration\Route\Instance)
+ [x] Instance
+ [x] Instance apply without options
+ [x] Folder is empty by default
+ [x] With file and skeleton
+
 Model (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Model)
  [x] Command make CreateRequest with force and without skeleton
  [x] Command make IndexRequest with force and with skeleton

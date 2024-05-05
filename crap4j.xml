@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-05 01:55:09</timestamp>
+  <timestamp>2024-05-05 04:28:45</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>80</methodCount>
+    <methodCount>91</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>193</crapLoad>
-    <totalCrap>4850.32</totalCrap>
-    <crapMethodPercent>13.75</crapMethodPercent>
+    <totalCrap>4880.37</totalCrap>
+    <crapMethodPercent>12.09</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -446,8 +446,8 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>13</crap>
-      <complexity>13</complexity>
+      <crap>11</crap>
+      <complexity>11</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -492,17 +492,6 @@
       <fullMethod>addRoleToView(string $role): self</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Configuration</package>
-      <className>Playground\Make\Controller\Configuration\Policy</className>
-      <methodName>model_fqdn</methodName>
-      <methodSignature>model_fqdn(): string</methodSignature>
-      <fullMethod>model_fqdn(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -556,6 +545,138 @@
       <methodName>slug</methodName>
       <methodSignature>slug(): bool</methodSignature>
       <fullMethod>slug(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Resource</className>
+      <methodName>setOptions</methodName>
+      <methodSignature>setOptions(array $options): self</methodSignature>
+      <fullMethod>setOptions(array $options): self</fullMethod>
+      <crap>4.05</crap>
+      <complexity>4</complexity>
+      <coverage>85.71</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Resource</className>
+      <methodName>model_slug</methodName>
+      <methodSignature>model_slug(): string</methodSignature>
+      <fullMethod>model_slug(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Resource</className>
+      <methodName>collection</methodName>
+      <methodSignature>collection(): bool</methodSignature>
+      <fullMethod>collection(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>setOptions</methodName>
+      <methodSignature>setOptions(array $options): self</methodSignature>
+      <fullMethod>setOptions(array $options): self</fullMethod>
+      <crap>19</crap>
+      <complexity>19</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>controller</methodName>
+      <methodSignature>controller(): string</methodSignature>
+      <fullMethod>controller(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>model_column</methodName>
+      <methodSignature>model_column(): string</methodSignature>
+      <fullMethod>model_column(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>model_label</methodName>
+      <methodSignature>model_label(): string</methodSignature>
+      <fullMethod>model_label(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>model_slug</methodName>
+      <methodSignature>model_slug(): string</methodSignature>
+      <fullMethod>model_slug(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>model_slug_plural</methodName>
+      <methodSignature>model_slug_plural(): string</methodSignature>
+      <fullMethod>model_slug_plural(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>route</methodName>
+      <methodSignature>route(): string</methodSignature>
+      <fullMethod>route(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>route_prefix</methodName>
+      <methodSignature>route_prefix(): string</methodSignature>
+      <fullMethod>route_prefix(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Route</className>
+      <methodName>title</methodName>
+      <methodSignature>title(): string</methodSignature>
+      <fullMethod>title(): string</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
