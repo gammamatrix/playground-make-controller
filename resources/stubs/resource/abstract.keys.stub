@@ -1,0 +1,53 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+namespace {{ namespace }};
+
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
+
+/**
+ * \{{ namespace }}\{{ class }}
+ */
+class {{ class }} extends JsonResource
+{
+    /**
+     * @var array<int, string>
+     */
+    protected array $keys = [
+{{keys}}
+    ];
+
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        // $user = $request->user();
+
+        return Arr::only(parent::toArray($request), $this->keys);
+    }
+
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @return array<string, mixed>
+     */
+    public function with(Request $request): array
+    {
+        return [
+            'meta' => [
+                'rules'     => $request->rules(),
+                'timestamp' => Carbon::now()->toJson(),
+            ],
+        ];
+    }
+}
+

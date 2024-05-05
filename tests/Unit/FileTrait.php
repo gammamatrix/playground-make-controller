@@ -42,6 +42,19 @@ trait FileTrait
                 $package_base
             );
 
+        } elseif (in_array($type, [
+            'model',
+            'model-backlog',
+            'model-resource',
+            'playground-model',
+            'playground-model-resource',
+            'playground-model-api',
+        ])) {
+                $file = sprintf(
+                    '%1$s/resources/testing/configurations/model.backlog.json',
+                    $package_base
+                );
+
         //
         // Policy
         //
