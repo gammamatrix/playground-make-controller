@@ -13,13 +13,6 @@ use Playground\Make\Configuration\PrimaryConfiguration;
  */
 class Policy extends PrimaryConfiguration
 {
-    protected string $model_fqdn = '';
-
-    /**
-     * @var array<string, string>
-     */
-    protected array $models = [];
-
     /**
      * @var array<int, string>
      */
@@ -58,12 +51,6 @@ class Policy extends PrimaryConfiguration
     public function setOptions(array $options = []): self
     {
         parent::setOptions($options);
-
-        if (! empty($options['model_fqdn'])
-            && is_string($options['model_fqdn'])
-        ) {
-            $this->model_fqdn = $options['model_fqdn'];
-        }
 
         if (! empty($options['rolesForAction'])
             && is_array($options['rolesForAction'])
@@ -120,10 +107,5 @@ class Policy extends PrimaryConfiguration
         }
 
         return $this;
-    }
-
-    public function model_fqdn(): string
-    {
-        return $this->model_fqdn;
     }
 }

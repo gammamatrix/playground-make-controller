@@ -1,0 +1,14 @@
+{
+    "class": "BacklogResource",
+    "name": "Backlog",
+    "namespace": "Playground\\Matrix\\Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "type": "playground-resource",
+    "modelspace": "Playground\\Matrix\\Models",
+    "model": "\\Playground\\Matrix\\Models\\Backlog",
+    "slug": "backlog",
+    "route": "matrix.resource.backlogs",
+    "view": "playground-matrix-resource",
+    "table": "matrix_backlogs"
+}

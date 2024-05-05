@@ -1,0 +1,24 @@
+{
+    "class": "contacts",
+    "controller": "ContactController",
+    "extends": "",
+    "name": "Contact",
+    "folder": "contact",
+    "namespace": "GammaMatrix/Playground/Crm/Resource",
+    "model": "GammaMatrix/Playground/Crm/Models/Contact",
+    "model_column": "contact",
+    "model_label": "Contact",
+    "model_slug_plural": "contacts",
+    "module": "",
+    "module_slug": "",
+    "organization": "GammaMatrix",
+    "package": "playground-crm-resource",
+    "config": "playground-crm-resource",
+    "type": "playground-resource",
+    "route": "playground.crm.resource.contacts",
+    "route_prefix": "resource/crm/contacts",
+    "title": "Contact",
+    "models": {
+        "Contact": "resources/testing/configurations/test.model.crm.contact.json"
+    }
+}

@@ -55,10 +55,11 @@ trait FileTrait
             );
 
         //
-        // Policy
+        // Request
         //
 
         } elseif (in_array($type, [
+            'request',
             'test-request',
         ])) {
             $file = sprintf(
@@ -66,7 +67,31 @@ trait FileTrait
                 $package_base
             );
 
-    } else {
+        //
+        // Route
+        //
+
+        } elseif (in_array($type, [
+            'route',
+            'test-route',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/route.json',
+                $package_base
+            );
+
+        // Resource
+
+        } elseif (in_array($type, [
+            'resource',
+            'test-resource',
+        ])) {
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/resource.json',
+                $package_base
+            );
+
+        } else {
             $file = sprintf(
                 '%1$s/resources/testing/empty.json',
                 $package_base
