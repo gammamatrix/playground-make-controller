@@ -16,6 +16,11 @@ class Policy extends PrimaryConfiguration
     protected string $model_fqdn = '';
 
     /**
+     * @var array<string, string>
+     */
+    protected array $models = [];
+
+    /**
      * @var array<int, string>
      */
     protected array $rolesForAction = [];
@@ -40,7 +45,9 @@ class Policy extends PrimaryConfiguration
         'namespace' => '',
         'organization' => '',
         'package' => '',
+        'playground' => false,
         // properties
+        'models' => [],
         'rolesForAction' => [],
         'rolesToView' => [],
     ];

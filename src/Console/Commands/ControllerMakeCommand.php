@@ -366,7 +366,7 @@ class ControllerMakeCommand extends GeneratorCommand
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$this->searches' => $this->searches,
-        //     '$this->configuration' => $this->configuration,
+        //     '$this->c' => $this->c,
         //     '$this->arguments()' => $this->arguments(),
         //     '$this->options()' => $this->options(),
         //     '$type' => $type,
@@ -391,12 +391,6 @@ class ControllerMakeCommand extends GeneratorCommand
 
         return $this->resolveStubPath($template);
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->options()' => $this->options(),
-        //     '$this->configuration' => $this->configuration,
-        // ]);
-
         // if ($type = $this->option('type')) {
         //     $stub = "/laravel/controller.{$type}.stub";
         // } elseif ($this->option('parent')) {
@@ -412,27 +406,7 @@ class ControllerMakeCommand extends GeneratorCommand
         // } elseif ($this->option('resource')) {
         //     $stub = '/laravel/controller.stub';
         // }
-
-        // if ($this->option('api') && is_null($stub)) {
-        //     $stub = '/laravel/controller.api.stub';
-        // } elseif ($this->option('api') && ! is_null($stub) && ! $this->option('invokable')) {
-        //     $stub = str_replace('.stub', '.api.stub', $stub);
-        // }
-
-        // $stub ??= '/laravel/controller.plain.stub';
-
-        // return $this->resolveStubPath($controller);
     }
-
-    // /**
-    //  * Resolve the fully-qualified path to the stub.
-    //  *
-    //  * @param  string  $stub
-    //  */
-    // protected function resolveStubPath($stub): string
-    // {
-    //     return $this->laravel->basePath(sprintf('%1$s/%2$s', static::STUBS, $stub));
-    // }
 
     /**
      * Get the default namespace for the class.
@@ -454,7 +428,6 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function buildClass($name): string
     {
-
         $this->buildClass_model($name);
 
         $this->searches['namespacedRequest'] = $this->parseClassInput(sprintf(

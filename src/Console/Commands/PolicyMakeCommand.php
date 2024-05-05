@@ -18,7 +18,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
 
-use function Laravel\Prompts\suggest;
+// use function Laravel\Prompts\suggest;
 
 /**
  * \Playground\Make\Controller\Console\Commands\PolicyMakeCommand

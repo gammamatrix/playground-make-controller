@@ -1,0 +1,43 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+namespace {{ namespace }};
+{{ use }}
+use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
+
+/**
+ * \{{ namespace }}\{{ class }}
+ */
+abstract class {{ class }} extends BaseFormRequest
+{
+    public const RULES = [];
+
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        $user = $this->user();
+
+        if (empty($user)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     */
+    public function rules(): array
+    {
+        $rules = is_array(static::RULES) ? static::RULES : [];
+
+        return $rules;
+    }
+}

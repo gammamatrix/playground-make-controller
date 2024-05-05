@@ -1,0 +1,11 @@
+{
+    "abstract": true,
+    "class": "FormRequest",
+    "name": "FormRequest",
+    "namespace": "Acme\\Demo",
+    "organization": "Acme",
+    "package": "acme-demo",
+    "type": "abstract",
+    "extends": "FormRequest",
+    "extends_use": "Illuminate\\Foundation\\Http\\FormRequest"
+}
