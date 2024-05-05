@@ -1,3 +1,11 @@
+Abstract (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Abstract)
+ [x] Command make abstract request with force and without skeleton
+ [x] Command make abstract request with force and with skeleton
+ [x] Command make abstract index request with force and without skeleton
+ [x] Command make abstract index request with force and with skeleton
+ [x] Command make abstract store request with force and without skeleton
+ [x] Command make abstract store request with force and with skeleton
+
 Command (Tests\Feature\Playground\Make\Controller\Console\Commands\About\Command)
  [x] Command about displays package information and succeed with code 0
 
@@ -17,6 +25,24 @@ Command (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCom
  [x] Command skeleton with type api
  [x] Command skeleton with type resource
 
+Command (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Command)
+ [x] Command without options or arguments
+ [x] Command skeleton
+
+Crud (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Crud)
+ [x] Command make destroy request with force and without skeleton
+ [x] Command make destroy request with force and with skeleton
+ [x] Command make index request with force and without skeleton
+ [x] Command make index request with force and with skeleton
+ [x] Command make store request with force and without skeleton
+ [x] Command make store request with force and with skeleton
+ [x] Command make update request with force and without skeleton
+ [x] Command make update request with force and with skeleton
+ [x] Command make other request with force and without skeleton
+ [x] Command make other request with force and with skeleton
+ [x] Command make default request with force and without skeleton
+ [x] Command make default request with force and with skeleton
+
 File (Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\File)
  [x] Command make controller with force and without skeleton
  [x] Command make controller with force and with skeleton
@@ -24,6 +50,15 @@ File (Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCo
 File (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand\File)
  [x] Command make policy with force and without skeleton
  [x] Command make policy with force and with skeleton
+
+File (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\File)
+ [x] Command make request with force and without skeleton
+ [x] Command make request with force and with skeleton
+
+Index (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Index)
+ [x] Command make FormRequest
+ [x] Command make AbstractIndexRequest
+ [x] Command make AbstractStoreRequest
 
 Instance (Tests\Unit\Playground\Make\Controller\Configuration\Controller\Instance)
  [x] Instance
@@ -37,4 +72,16 @@ Instance (Tests\Unit\Playground\Make\Controller\Configuration\Policy\Instance)
  [x] Instance apply without options
  [x] Folder is empty by default
  [x] Test with file and skeleton
+
+Instance (Tests\Unit\Playground\Make\Controller\Configuration\Request\Instance)
+ [x] Instance
+ [x] Instance apply without options
+ [x] Folder is empty by default
+ [x] Test with file and skeleton
+
+Model (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Model)
+ [x] Command make CreateRequest with force and without skeleton
+ [x] Command make IndexRequest with force and with skeleton
+ [x] Command make IndexRequest with force and with skeleton without model file
+ [x] Command make IndexRequest under Subfolder with force and with skeleton without model file
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-04 23:49:00</timestamp>
+  <timestamp>2024-05-05 01:55:09</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>60</methodCount>
+    <methodCount>80</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>193</crapLoad>
-    <totalCrap>4723.57</totalCrap>
-    <crapMethodPercent>18.33</crapMethodPercent>
+    <totalCrap>4850.32</totalCrap>
+    <crapMethodPercent>13.75</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -75,6 +75,149 @@
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>buildClass_index</methodName>
+      <methodSignature>buildClass_index(string $name): void</methodSignature>
+      <fullMethod>buildClass_index(string $name): void</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>createPaginationTrait</methodName>
+      <methodSignature>createPaginationTrait(string $class, string $template): void</methodSignature>
+      <fullMethod>createPaginationTrait(string $class, string $template): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>buildClass_index_dates</methodName>
+      <methodSignature>buildClass_index_dates(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_dates(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <crap>7.7</crap>
+      <complexity>7</complexity>
+      <coverage>75.76</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>buildClass_index_flags</methodName>
+      <methodSignature>buildClass_index_flags(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_flags(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <crap>11.33</crap>
+      <complexity>10</complexity>
+      <coverage>76.32</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>buildClass_index_ids</methodName>
+      <methodSignature>buildClass_index_ids(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_ids(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <crap>8.61</crap>
+      <complexity>8</complexity>
+      <coverage>78.79</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>buildClass_index_columns</methodName>
+      <methodSignature>buildClass_index_columns(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_columns(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <crap>8.61</crap>
+      <complexity>8</complexity>
+      <coverage>78.79</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
+      <methodName>buildClass_index_sortable</methodName>
+      <methodSignature>buildClass_index_sortable(): void</methodSignature>
+      <fullMethod>buildClass_index_sortable(): void</fullMethod>
+      <crap>10.24</crap>
+      <complexity>10</complexity>
+      <coverage>86.54</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>createTrait</methodName>
+      <methodSignature>createTrait(string $folder, string $class, string $template): void</methodSignature>
+      <fullMethod>createTrait(string $folder, string $class, string $template): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>buildClass_form</methodName>
+      <methodSignature>buildClass_form(string $name): void</methodSignature>
+      <fullMethod>buildClass_form(string $name): void</fullMethod>
+      <crap>13.43</crap>
+      <complexity>13</complexity>
+      <coverage>86.3</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>buildClass_rules_constant</methodName>
+      <methodSignature>buildClass_rules_constant(Playground\Make\Configuration\Model $model): void</methodSignature>
+      <fullMethod>buildClass_rules_constant(Playground\Make\Configuration\Model $model): void</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>95.83</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>buildClass_rules_constant_for_return_url</methodName>
+      <methodSignature>buildClass_rules_constant_for_return_url(int $indent): string</methodSignature>
+      <fullMethod>buildClass_rules_constant_for_return_url(int $indent): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>buildClass_rules_constant_for_only_fillable</methodName>
+      <methodSignature>buildClass_rules_constant_for_only_fillable(Playground\Make\Configuration\Model $model, int $indent): string</methodSignature>
+      <fullMethod>buildClass_rules_constant_for_only_fillable(Playground\Make\Configuration\Model $model, int $indent): string</fullMethod>
+      <crap>14.77</crap>
+      <complexity>14</complexity>
+      <coverage>84.21</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>buildClass_slug_table</methodName>
+      <methodSignature>buildClass_slug_table(): void</methodSignature>
+      <fullMethod>buildClass_slug_table(): void</fullMethod>
+      <crap>5.32</crap>
+      <complexity>3</complexity>
+      <coverage>36.36</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -160,31 +303,9 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>12.14</crap>
-      <complexity>12</complexity>
-      <coverage>90</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Configuration</package>
-      <className>Playground\Make\Controller\Configuration\Controller</className>
-      <methodName>addModels</methodName>
-      <methodSignature>addModels(array $options): self</methodSignature>
-      <fullMethod>addModels(array $options): self</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Configuration</package>
-      <className>Playground\Make\Controller\Configuration\Controller</className>
-      <methodName>models</methodName>
-      <methodSignature>models(): array</methodSignature>
-      <fullMethod>models(): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
+      <crap>11.2</crap>
+      <complexity>11</complexity>
+      <coverage>88.24</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -245,28 +366,6 @@
     <method>
       <package>Playground\Make\Controller\Configuration</package>
       <className>Playground\Make\Controller\Configuration\Controller</className>
-      <methodName>extends</methodName>
-      <methodSignature>extends(): string</methodSignature>
-      <fullMethod>extends(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Configuration</package>
-      <className>Playground\Make\Controller\Configuration\Controller</className>
-      <methodName>extends_use</methodName>
-      <methodSignature>extends_use(): string</methodSignature>
-      <fullMethod>extends_use(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Configuration</package>
-      <className>Playground\Make\Controller\Configuration\Controller</className>
       <methodName>slug</methodName>
       <methodSignature>slug(): string</methodSignature>
       <fullMethod>slug(): string</fullMethod>
@@ -303,17 +402,6 @@
       <methodName>module_route</methodName>
       <methodSignature>module_route(): string</methodSignature>
       <fullMethod>module_route(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Configuration</package>
-      <className>Playground\Make\Controller\Configuration\Controller</className>
-      <methodName>playground</methodName>
-      <methodSignature>playground(): bool</methodSignature>
-      <fullMethod>playground(): bool</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -413,6 +501,61 @@
       <methodName>model_fqdn</methodName>
       <methodSignature>model_fqdn(): string</methodSignature>
       <fullMethod>model_fqdn(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Request</className>
+      <methodName>setOptions</methodName>
+      <methodSignature>setOptions(array $options): self</methodSignature>
+      <fullMethod>setOptions(array $options): self</fullMethod>
+      <crap>5.68</crap>
+      <complexity>5</complexity>
+      <coverage>70</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Request</className>
+      <methodName>abstract</methodName>
+      <methodSignature>abstract(): bool</methodSignature>
+      <fullMethod>abstract(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Request</className>
+      <methodName>pagination</methodName>
+      <methodSignature>pagination(): bool</methodSignature>
+      <fullMethod>pagination(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Request</className>
+      <methodName>store</methodName>
+      <methodSignature>store(): bool</methodSignature>
+      <fullMethod>store(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Request</className>
+      <methodName>slug</methodName>
+      <methodSignature>slug(): bool</methodSignature>
+      <fullMethod>slug(): bool</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -613,6 +756,83 @@
       <fullMethod>getOptions(): array</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>prepareOptions</methodName>
+      <methodSignature>prepareOptions(): void</methodSignature>
+      <fullMethod>prepareOptions(): void</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>getConfigurationFilename</methodName>
+      <methodSignature>getConfigurationFilename(): string</methodSignature>
+      <fullMethod>getConfigurationFilename(): string</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>getStub</methodName>
+      <methodSignature>getStub(): string</methodSignature>
+      <fullMethod>getStub(): string</fullMethod>
+      <crap>9</crap>
+      <complexity>9</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>folder</methodName>
+      <methodSignature>folder(): string</methodSignature>
+      <fullMethod>folder(): string</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>getDefaultNamespace</methodName>
+      <methodSignature>getDefaultNamespace($rootNamespace): string</methodSignature>
+      <fullMethod>getDefaultNamespace($rootNamespace): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>getOptions</methodName>
+      <methodSignature>getOptions(): array</methodSignature>
+      <fullMethod>getOptions(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>buildClass</methodName>
+      <methodSignature>buildClass($name): string</methodSignature>
+      <fullMethod>buildClass($name): string</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
