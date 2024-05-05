@@ -6,6 +6,24 @@ Abstract (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeC
  [x] Command make abstract store request with force and without skeleton
  [x] Command make abstract store request with force and with skeleton
 
+Abstract (Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\Abstract)
+ [x] Command make abstract resource with force and without skeleton
+ [x] Command make abstract resource with force and with skeleton
+ [x] Command make abstract keys resource with force and without skeleton
+ [x] Command make abstract keys resource with force and with skeleton
+
+Api (Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\Api)
+ [x] Command make playground api route with force and without skeleton
+ [x] Command make api route with force and with skeleton
+ [x] Command make api route without model file
+
+Collection (Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\Collection)
+ [x] Command make resource with force and without skeleton
+ [x] Command make collection resource with force and with skeleton
+ [x] Command make named collection resource with force and with skeleton
+ [x] Command make named collection resource with option with force and with skeleton
+ [x] Command make collection resource with option with force and with skeleton
+
 Command (Tests\Feature\Playground\Make\Controller\Console\Commands\About\Command)
  [x] Command about displays package information and succeed with code 0
 
@@ -28,6 +46,15 @@ Command (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCom
 Command (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Command)
  [x] Command without options or arguments
  [x] Command skeleton
+
+Command (Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\Command)
+ [x] Command without options or arguments
+ [x] Command skeleton
+
+Command (Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\Command)
+ [x] Command without options or arguments
+ [x] Command skeleton
+ [x] Command with options
 
 Crud (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Crud)
  [x] Command make destroy request with force and without skeleton
@@ -54,6 +81,10 @@ File (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeComman
 File (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\File)
  [x] Command make request with force and without skeleton
  [x] Command make request with force and with skeleton
+
+File (Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\File)
+ [x] Command make route with force and without skeleton
+ [x] Command make route with force and with skeleton
 
 Index (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Index)
  [x] Command make FormRequest
@@ -92,9 +123,25 @@ Instance (Tests\Unit\Playground\Make\Controller\Configuration\Route\Instance)
  [x] Folder is empty by default
  [x] With file and skeleton
 
+Keys (Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\Keys)
+ [x] Command make keys resource with force and without skeleton
+ [x] Command make keys resource with force and with skeleton
+
 Model (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Model)
  [x] Command make CreateRequest with force and without skeleton
  [x] Command make IndexRequest with force and with skeleton
  [x] Command make IndexRequest with force and with skeleton without model file
  [x] Command make IndexRequest under Subfolder with force and with skeleton without model file
+
+Resource (Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\Resource)
+ [x] Command make playground resource route with force and without skeleton
+ [x] Command make resource route with force and with skeleton
+ [x] Command make resource route without model file
+ [x] Command make playground resource index route with force and without skeleton
+ [x] Command make resource index route with force and with skeleton
+ [x] Command make resource index route without model file
+
+Stub (Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\Stub)
+ [x] Command with invalid stubs path in the config
+ [x] Command with invalid path to stub in the config
 

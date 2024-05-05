@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-05 04:28:45</timestamp>
+  <timestamp>2024-05-05 05:04:40</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>91</methodCount>
+    <methodCount>103</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>193</crapLoad>
-    <totalCrap>4880.37</totalCrap>
-    <crapMethodPercent>12.09</crapMethodPercent>
+    <totalCrap>4924.62</totalCrap>
+    <crapMethodPercent>10.68</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -954,6 +954,138 @@
       <fullMethod>buildClass($name): string</fullMethod>
       <crap>5</crap>
       <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ResourceMakeCommand</className>
+      <methodName>prepareOptions</methodName>
+      <methodSignature>prepareOptions(): void</methodSignature>
+      <fullMethod>prepareOptions(): void</fullMethod>
+      <crap>4.25</crap>
+      <complexity>4</complexity>
+      <coverage>75</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ResourceMakeCommand</className>
+      <methodName>getStub</methodName>
+      <methodSignature>getStub(): string</methodSignature>
+      <fullMethod>getStub(): string</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ResourceMakeCommand</className>
+      <methodName>collection</methodName>
+      <methodSignature>collection(): bool</methodSignature>
+      <fullMethod>collection(): bool</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ResourceMakeCommand</className>
+      <methodName>getDefaultNamespace</methodName>
+      <methodSignature>getDefaultNamespace($rootNamespace): string</methodSignature>
+      <fullMethod>getDefaultNamespace($rootNamespace): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ResourceMakeCommand</className>
+      <methodName>getConfigurationFilename</methodName>
+      <methodSignature>getConfigurationFilename(): string</methodSignature>
+      <fullMethod>getConfigurationFilename(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ResourceMakeCommand</className>
+      <methodName>getOptions</methodName>
+      <methodSignature>getOptions(): array</methodSignature>
+      <fullMethod>getOptions(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>prepareOptions</methodName>
+      <methodSignature>prepareOptions(): void</methodSignature>
+      <fullMethod>prepareOptions(): void</fullMethod>
+      <crap>16</crap>
+      <complexity>16</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>getConfigurationFilename</methodName>
+      <methodSignature>getConfigurationFilename(): string</methodSignature>
+      <fullMethod>getConfigurationFilename(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>qualifyClass</methodName>
+      <methodSignature>qualifyClass($name): string</methodSignature>
+      <fullMethod>qualifyClass($name): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>getStub</methodName>
+      <methodSignature>getStub(): string</methodSignature>
+      <fullMethod>getStub(): string</fullMethod>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>getOptions</methodName>
+      <methodSignature>getOptions(): array</methodSignature>
+      <fullMethod>getOptions(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>getPath</methodName>
+      <methodSignature>getPath($name): string</methodSignature>
+      <fullMethod>getPath($name): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
