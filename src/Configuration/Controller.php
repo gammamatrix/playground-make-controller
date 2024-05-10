@@ -13,6 +13,8 @@ use Playground\Make\Configuration\PrimaryConfiguration;
  */
 class Controller extends PrimaryConfiguration
 {
+    use Concerns\Info;
+
     /**
      * @var array<string, mixed>
      */
@@ -26,6 +28,11 @@ class Controller extends PrimaryConfiguration
         'organization' => '',
         'package' => '',
         'type' => '',
+        'withPolicies' => false,
+        'withRequests' => false,
+        'withRoutes' => false,
+        'withSwagger' => false,
+        'withTests' => false,
         'playground' => false,
         'models' => [],
         'policies' => [],
@@ -47,11 +54,6 @@ class Controller extends PrimaryConfiguration
         'implements' => [],
         'uses' => [],
     ];
-
-    // /**
-    //  * @var array<string, string>
-    //  */
-    // protected array $models = [];
 
     /**
      * @var array<int, string>
@@ -98,6 +100,16 @@ class Controller extends PrimaryConfiguration
 
     protected string $view = '';
 
+    protected bool $withPolicies = false;
+
+    protected bool $withRequests = false;
+
+    protected bool $withRoutes = false;
+
+    protected bool $withSwagger = false;
+
+    protected bool $withTests = false;
+
     /**
      * @param array<string, mixed> $options
      */
@@ -105,9 +117,25 @@ class Controller extends PrimaryConfiguration
     {
         parent::setOptions($options);
 
-        // if (array_key_exists('withPolicies', $options)) {
-        //     $this->withPolicies = ! empty($options['withPolicies']);
-        // }
+        if (array_key_exists('withPolicies', $options)) {
+            $this->withPolicies = ! empty($options['withPolicies']);
+        }
+
+        if (array_key_exists('withRequests', $options)) {
+            $this->withRequests = ! empty($options['withRequests']);
+        }
+
+        if (array_key_exists('withRoutes', $options)) {
+            $this->withRoutes = ! empty($options['withRoutes']);
+        }
+
+        if (array_key_exists('withSwagger', $options)) {
+            $this->withSwagger = ! empty($options['withSwagger']);
+        }
+
+        if (array_key_exists('withTests', $options)) {
+            $this->withTests = ! empty($options['withTests']);
+        }
 
         // if (array_key_exists('playground', $options)) {
         //     $this->playground = ! empty($options['playground']);
@@ -242,5 +270,30 @@ class Controller extends PrimaryConfiguration
     public function view(): string
     {
         return $this->view;
+    }
+
+    public function withPolicies(): bool
+    {
+        return $this->withPolicies;
+    }
+
+    public function withRequests(): bool
+    {
+        return $this->withRequests;
+    }
+
+    public function withRoutes(): bool
+    {
+        return $this->withRoutes;
+    }
+
+    public function withSwagger(): bool
+    {
+        return $this->withSwagger;
+    }
+
+    public function withTests(): bool
+    {
+        return $this->withTests;
     }
 }

@@ -34,7 +34,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         'module_label_plural' => '{{module_label_plural}}',
         'module_route' => '{{module_route}}',
         'module_slug' => '{{module_slug}}',
-        'privilege' => '{{module_privilege}}',
+        'privilege' => '{{privilege}}',
         'table' => '{{table}}',
         'view' => '{{view}}',
     ];
