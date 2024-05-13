@@ -28,6 +28,8 @@ class Controller extends PrimaryConfiguration
         'organization' => '',
         'package' => '',
         'type' => '',
+        'isAbstract' => false,
+        'withBlades' => false,
         'withPolicies' => false,
         'withRequests' => false,
         'withRoutes' => false,
@@ -100,6 +102,10 @@ class Controller extends PrimaryConfiguration
 
     protected string $view = '';
 
+    protected bool $isAbstract = false;
+
+    protected bool $withBlades = false;
+
     protected bool $withPolicies = false;
 
     protected bool $withRequests = false;
@@ -116,6 +122,14 @@ class Controller extends PrimaryConfiguration
     public function setOptions(array $options = []): self
     {
         parent::setOptions($options);
+
+        if (array_key_exists('isAbstract', $options)) {
+            $this->isAbstract = ! empty($options['isAbstract']);
+        }
+
+        if (array_key_exists('withBlades', $options)) {
+            $this->withBlades = ! empty($options['withBlades']);
+        }
 
         if (array_key_exists('withPolicies', $options)) {
             $this->withPolicies = ! empty($options['withPolicies']);
@@ -270,6 +284,16 @@ class Controller extends PrimaryConfiguration
     public function view(): string
     {
         return $this->view;
+    }
+
+    public function isAbstract(): bool
+    {
+        return $this->withBlades;
+    }
+
+    public function withBlades(): bool
+    {
+        return $this->withBlades;
     }
 
     public function withPolicies(): bool

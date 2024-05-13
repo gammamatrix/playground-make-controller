@@ -28,12 +28,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ControllerMakeCommand extends GeneratorCommand
 {
     use Building\MakeCommands;
+
     // use Building\Skeletons\BuildPostman;
     use Building\Skeletons\BuildController;
 
     // use Building\Skeletons\BuildExtends;
     use Building\Skeletons\BuildPackageInfo;
-
     use Building\Skeletons\BuildPolicies;
     use Building\Skeletons\BuildRequests;
     use Building\Skeletons\BuildResources;
@@ -85,7 +85,7 @@ class ControllerMakeCommand extends GeneratorCommand
         'slug_plural' => '',
         'route' => '',
         // 'view' => '',
-
+        'abstract' => '',
         // 'model_attribute'     => 'label',
         // 'model_label'         => 'Backlog',
         // 'model_label_plural'  => 'Backlogs',
@@ -142,6 +142,19 @@ class ControllerMakeCommand extends GeneratorCommand
         $options = $this->options();
 
         $initModel = false;
+
+        if ($this->hasOption('abstract') && $this->option('abstract')) {
+            $this->c->setOptions([
+                'isAbstract' => true,
+            ]);
+            $this->searches['abstract'] = 'abstract ';
+        }
+
+        if ($this->hasOption('blade') && $this->option('blade')) {
+            $this->c->setOptions([
+                'withBlades' => true,
+            ]);
+        }
 
         if ($this->hasOption('policies') && $this->option('policies')) {
             $this->c->setOptions([
@@ -235,18 +248,23 @@ class ControllerMakeCommand extends GeneratorCommand
 
     protected function getConfigurationFilename(): string
     {
-        return sprintf(
-            '%1$s/%2$s.json',
-            Str::of($this->c->name())->before('Controller')->kebab(),
-            Str::of($this->getType())->kebab(),
-        );
+        if ($this->c->type() === 'base') {
+            return 'controller.base.json';
+
+        } else {
+            return sprintf(
+                '%1$s/%2$s.json',
+                Str::of($this->c->name())->before('Controller')->kebab(),
+                Str::of($this->getType())->kebab(),
+            );
+        }
     }
 
     /**
      * @var array<int, string>
      */
     protected array $options_type_suggested = [
-        // 'abstract',
+        'base',
         // 'playground',
         'api',
         'fractal-api',
@@ -261,7 +279,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$this->searches' => $this->searches,
@@ -274,7 +292,9 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $template = 'controller/controller.stub';
 
-        if ($type === 'fractal-api') {
+        if ($type === 'base') {
+            $template = 'controller/base.stub';
+        } elseif ($type === 'fractal-api') {
             $template = 'controller/controller.api.fractal.stub';
         } elseif ($type === 'api') {
             $template = 'controller/controller.api.stub';
@@ -441,9 +461,10 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         return [
             ['api',             null, InputOption::VALUE_NONE,     'Exclude the create and edit methods from the controller'],
-            ['blade',           null, InputOption::VALUE_NONE,     'Generate Blade templates routes'],
+            ['blade',           null, InputOption::VALUE_NONE,     'Generate Blade templates for controller routes'],
             ['type',            null, InputOption::VALUE_REQUIRED, 'Manually specify the controller stub file to use'],
             ['force',           null, InputOption::VALUE_NONE,     'Create the class even if the controller already exists'],
+            ['abstract',        null, InputOption::VALUE_NONE,     'Make the controller abstract'],
             ['skeleton',        null, InputOption::VALUE_NONE,     'Create the skeleton for the controller type'],
             ['test',            null, InputOption::VALUE_NONE,     'Create a test for the controller type'],
             ['invokable',       'i',  InputOption::VALUE_NONE,     'Generate a single method, invokable controller class'],

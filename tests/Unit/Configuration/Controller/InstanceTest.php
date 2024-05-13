@@ -36,6 +36,8 @@ class InstanceTest extends TestCase
         'organization' => '',
         'package' => '',
         'type' => '',
+        'isAbstract' => false,
+        'withBlades' => false,
         'withPolicies' => false,
         'withRequests' => false,
         'withRoutes' => false,

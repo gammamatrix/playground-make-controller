@@ -20,6 +20,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:gammamatrix/playground-make.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:gammamatrix/playground-make-test.git"
         }
     ],
     "require": {
@@ -27,6 +31,7 @@
         "gammamatrix/playground-make": "dev-develop|dev-feature/*"
     },
     "require-dev": {
+        "gammamatrix/playground-make-test": "dev-develop|dev-feature/*",
         "gammamatrix/playground-test": "dev-develop|dev-feature/*"
     },
     "minimum-stability": "dev",
