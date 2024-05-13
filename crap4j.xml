@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-10 19:52:22</timestamp>
+  <timestamp>2024-05-13 01:27:55</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>144</methodCount>
-    <crapMethodCount>11</crapMethodCount>
-    <crapLoad>208</crapLoad>
-    <totalCrap>5855.48</totalCrap>
-    <crapMethodPercent>7.64</crapMethodPercent>
+    <methodCount>146</methodCount>
+    <crapMethodCount>12</crapMethodCount>
+    <crapLoad>218</crapLoad>
+    <totalCrap>5892.97</totalCrap>
+    <crapMethodPercent>8.22</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -534,9 +534,9 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>20.46</crap>
-      <complexity>16</complexity>
-      <coverage>74.07</coverage>
+      <crap>25.93</crap>
+      <complexity>18</complexity>
+      <coverage>70.97</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -666,6 +666,28 @@
       <methodName>view</methodName>
       <methodSignature>view(): string</methodSignature>
       <fullMethod>view(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>isAbstract</methodName>
+      <methodSignature>isAbstract(): bool</methodSignature>
+      <fullMethod>isAbstract(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>withBlades</methodName>
+      <methodSignature>withBlades(): bool</methodSignature>
+      <fullMethod>withBlades(): bool</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -1139,10 +1161,10 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>33.23</crap>
-      <complexity>17</complexity>
-      <coverage>61.7</coverage>
-      <crapLoad>0</crapLoad>
+      <crap>60.24</crap>
+      <complexity>21</complexity>
+      <coverage>55.36</coverage>
+      <crapLoad>10</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
@@ -1150,9 +1172,9 @@
       <methodName>getConfigurationFilename</methodName>
       <methodSignature>getConfigurationFilename(): string</methodSignature>
       <fullMethod>getConfigurationFilename(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
+      <crap>2.01</crap>
+      <complexity>2</complexity>
+      <coverage>85.71</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1161,9 +1183,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>8.81</crap>
-      <complexity>7</complexity>
-      <coverage>66.67</coverage>
+      <crap>10.81</crap>
+      <complexity>8</complexity>
+      <coverage>64.71</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
