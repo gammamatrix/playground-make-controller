@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-13 01:27:55</timestamp>
+  <timestamp>2024-05-17 23:35:25</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>146</methodCount>
-    <crapMethodCount>12</crapMethodCount>
-    <crapLoad>218</crapLoad>
-    <totalCrap>5892.97</totalCrap>
-    <crapMethodPercent>8.22</crapMethodPercent>
+    <methodCount>149</methodCount>
+    <crapMethodCount>9</crapMethodCount>
+    <crapLoad>149</crapLoad>
+    <totalCrap>4262.5</totalCrap>
+    <crapMethodPercent>6.04</crapMethodPercent>
   </stats>
   <methods>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\BuildTests</className>
+      <methodName>createTest</methodName>
+      <methodSignature>createTest(): void</methodSignature>
+      <fullMethod>createTest(): void</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\BuildTests</className>
+      <methodName>command_tests_playground_api</methodName>
+      <methodSignature>command_tests_playground_api(): void</methodSignature>
+      <fullMethod>command_tests_playground_api(): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\BuildTests</className>
+      <methodName>command_tests_playground_resource</methodName>
+      <methodSignature>command_tests_playground_resource(): void</methodSignature>
+      <fullMethod>command_tests_playground_resource(): void</fullMethod>
+      <crap>42</crap>
+      <complexity>6</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
     <method>
       <package>Playground\Make\Controller\Building</package>
       <className>Playground\Make\Controller\Building\MakeCommands</className>
@@ -435,10 +468,10 @@
       <methodName>skeleton_policy</methodName>
       <methodSignature>skeleton_policy(string $type): void</methodSignature>
       <fullMethod>skeleton_policy(string $type): void</fullMethod>
-      <crap>132</crap>
-      <complexity>11</complexity>
-      <coverage>0</coverage>
-      <crapLoad>11</crapLoad>
+      <crap>13.96</crap>
+      <complexity>12</complexity>
+      <coverage>76.12</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -446,10 +479,10 @@
       <methodName>skeleton_requests</methodName>
       <methodSignature>skeleton_requests(string $type): void</methodSignature>
       <fullMethod>skeleton_requests(string $type): void</fullMethod>
-      <crap>380</crap>
-      <complexity>19</complexity>
-      <coverage>0</coverage>
-      <crapLoad>19</crapLoad>
+      <crap>81.75</crap>
+      <complexity>20</complexity>
+      <coverage>46.35</coverage>
+      <crapLoad>11</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -457,9 +490,9 @@
       <methodName>getConfigurationFilename_for_request</methodName>
       <methodSignature>getConfigurationFilename_for_request(string $name, string $type): string</methodSignature>
       <fullMethod>getConfigurationFilename_for_request(string $name, string $type): string</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -468,10 +501,10 @@
       <methodName>skeleton_resources</methodName>
       <methodSignature>skeleton_resources(string $type): void</methodSignature>
       <fullMethod>skeleton_resources(string $type): void</fullMethod>
-      <crap>272</crap>
-      <complexity>16</complexity>
-      <coverage>0</coverage>
-      <crapLoad>16</crapLoad>
+      <crap>18.28</crap>
+      <complexity>17</complexity>
+      <coverage>83.58</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -479,10 +512,10 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>1190</crap>
+      <crap>34.27</crap>
       <complexity>34</complexity>
-      <coverage>0</coverage>
-      <crapLoad>35</crapLoad>
+      <coverage>93.88</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -490,10 +523,10 @@
       <methodName>skeleton_swagger</methodName>
       <methodSignature>skeleton_swagger(string $type): void</methodSignature>
       <fullMethod>skeleton_swagger(string $type): void</fullMethod>
-      <crap>1056</crap>
-      <complexity>32</complexity>
+      <crap>1122</crap>
+      <complexity>33</complexity>
       <coverage>0</coverage>
-      <crapLoad>33</crapLoad>
+      <crapLoad>34</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -501,10 +534,10 @@
       <methodName>skeleton_templates</methodName>
       <methodSignature>skeleton_templates(string $type): void</methodSignature>
       <fullMethod>skeleton_templates(string $type): void</fullMethod>
-      <crap>1190</crap>
-      <complexity>34</complexity>
+      <crap>1260</crap>
+      <complexity>35</complexity>
       <coverage>0</coverage>
-      <crapLoad>35</crapLoad>
+      <crapLoad>36</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Concerns</package>
@@ -1183,9 +1216,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>10.81</crap>
-      <complexity>8</complexity>
-      <coverage>64.71</coverage>
+      <crap>13.05</crap>
+      <complexity>9</complexity>
+      <coverage>63.16</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1216,9 +1249,9 @@
       <methodName>finish</methodName>
       <methodSignature>finish(): ?bool</methodSignature>
       <fullMethod>finish(): ?bool</fullMethod>
-      <crap>8</crap>
-      <complexity>8</complexity>
-      <coverage>100</coverage>
+      <crap>9.03</crap>
+      <complexity>9</complexity>
+      <coverage>92.86</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1238,9 +1271,9 @@
       <methodName>getConfigurationFilename_for_resource</methodName>
       <methodSignature>getConfigurationFilename_for_resource(string $name, string $type): string</methodSignature>
       <fullMethod>getConfigurationFilename_for_resource(string $name, string $type): string</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
