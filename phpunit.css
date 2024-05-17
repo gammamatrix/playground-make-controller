@@ -1,0 +1,21 @@
+/* :root {
+ --phpunit-success-bar: #28a745;
+ --phpunit-success-high: #99cb84;
+ --phpunit-success-medium: #c3e3b5;
+ --phpunit-success-low: #dff0d8;
+ --phpunit-warning: #fcf8e3;
+ --phpunit-warning-bar: #ffc107;
+ --phpunit-danger: #f2dede;
+ --phpunit-danger-bar: #dc3545;
+} */
+
+:root {
+ --phpunit-success-bar: rgba(var(--bs-success-rgb), 1) !important;
+ --phpunit-success-high: rgba(var(--bs-success-rgb), 0.67);
+ --phpunit-success-medium: rgba(var(--bs-success-rgb), 0.33);
+ --phpunit-success-low: rgba(var(--bs-success-rgb), 0.1);
+ --phpunit-warning: rgba(var(--bs-warning-rgb), 0.1);
+ --phpunit-warning-bar: rgba(var(--bs-warning-rgb), 1) !important;
+ --phpunit-danger: rgba(var(--bs-danger-rgb), 0.1);
+ --phpunit-danger-bar: rgba(var(--bs-danger-rgb), 1) !important;
+}

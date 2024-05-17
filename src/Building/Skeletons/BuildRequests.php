@@ -15,6 +15,19 @@ trait BuildRequests
 {
     public function skeleton_requests(string $type): void
     {
+        if (!in_array($type, [
+            'playground-api',
+            'playground-resource',
+            'playground-resource-index',
+        ])) {
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     'NOTE' => 'SKIPPING: skeleton_requests',
+            //     '$type' => $type,
+            // ]);
+            return;
+        }
+
         $requests = [];
 
         $force = $this->hasOption('force') && $this->option('force');
@@ -189,7 +202,7 @@ trait BuildRequests
         } else {
             $requests = [
                 'index' => [
-                    '--type' => 'index',
+                    '--type' => 'default',
                     '--class' => 'IndexRequest',
                 ],
             ];

@@ -15,6 +15,19 @@ trait BuildResources
 {
     public function skeleton_resources(string $type): void
     {
+        if (!in_array($type, [
+            'playground-api',
+            'playground-resource',
+            'playground-resource-index',
+        ])) {
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     'NOTE' => 'SKIPPING: skeleton_resources',
+            //     '$type' => $type,
+            // ]);
+            return;
+        }
+
         $resources = [];
         // dd([
         //     '__METHOD__' => __METHOD__,

@@ -15,6 +15,18 @@ trait BuildRoutes
 {
     public function skeleton_routes(string $type): void
     {
+        if (!in_array($type, [
+            'playground-api',
+            'playground-resource',
+            'playground-resource-index',
+        ])) {
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     'NOTE' => 'SKIPPING: skeleton_routes',
+            //     '$type' => $type,
+            // ]);
+            return;
+        }
         $force = $this->hasOption('force') && $this->option('force');
         $model = $this->hasOption('model') ? $this->option('model') : '';
         $module = $this->hasOption('module') ? $this->option('module') : '';
@@ -83,21 +95,22 @@ trait BuildRoutes
         //     '__METHOD__' => __METHOD__,
         //     '$modelFile' => $modelFile,
         //     '$options' => $options,
+        //     '$this->options()' => $this->options(),
         // ]);
         if (empty($this->call('playground:make:route', $options))) {
 
-            $path_resources_templates = $this->getResourcePackageFolder();
+            // $path_resources_templates = $this->getResourcePackageFolder();
 
-            $file_request = sprintf(
-                '%1$s%2$s/%3$s/route.json',
-                $this->laravel->storagePath(),
-                $path_resources_templates,
-                Str::of($this->c->name())->kebab()
-            );
+            // $file_request = sprintf(
+            //     '%1$s%2$s/%3$s/route.json',
+            //     $this->laravel->storagePath(),
+            //     $path_resources_templates,
+            //     Str::of($this->c->name())->kebab()
+            // );
 
-            if (! in_array($file_request, $this->c->templates())) {
-                $this->c->templates()[] = $file_request;
-            }
+            // if (! in_array($file_request, $this->c->templates())) {
+            //     $this->c->templates()[] = $file_request;
+            // }
         }
     }
 }

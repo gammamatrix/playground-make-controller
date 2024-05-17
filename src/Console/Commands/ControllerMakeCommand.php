@@ -6,6 +6,7 @@
 declare(strict_types=1);
 namespace Playground\Make\Controller\Console\Commands;
 
+use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Support\Str;
 use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
@@ -40,9 +41,11 @@ class ControllerMakeCommand extends GeneratorCommand
     use Building\Skeletons\BuildRoutes;
     use Building\Skeletons\BuildSwagger;
     use Building\Skeletons\BuildTemplates;
+    use Building\BuildTests;
     use Concerns\BuildImplements;
     use Concerns\BuildModel;
     use Concerns\BuildUses;
+    use CreatesMatchingTest;
 
     /**
      * @var class-string<Configuration>
@@ -272,6 +275,7 @@ class ControllerMakeCommand extends GeneratorCommand
         'resource',
         'fractal-resource',
         'playground-resource',
+        'playground-resource-index',
     ];
 
     /**
@@ -302,6 +306,8 @@ class ControllerMakeCommand extends GeneratorCommand
             $template = 'controller/controller.api.stub';
         } elseif ($type === 'playground-resource') {
             $template = 'controller/controller.resource.stub';
+        } elseif ($type === 'playground-resource-index') {
+            $template = 'controller/controller.resource.index.stub';
         } elseif ($type === 'fractal-resource') {
             $template = 'controller/controller.resource.fractal.stub';
         } elseif ($type === 'resource') {
@@ -416,11 +422,16 @@ class ControllerMakeCommand extends GeneratorCommand
         //     $this->handle_transformers($this->c->transformers());
         // }
 
+        if ($this->c->withTests()) {
+            $this->createTest();
+        }
+
         $this->saveConfiguration();
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$this->c' => $this->c,
         //     '$this->searches' => $this->searches,
+        //     '$this->options()' => $this->options(),
         // ]);
 
         return $this->return_status;
@@ -433,10 +444,10 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $type = $this->getConfigurationType();
 
-        // $this->skeleton_requests($type);
-        // $this->skeleton_policy($type);
-        // $this->skeleton_resources($type);
-        // $this->skeleton_routes($type);
+        $this->skeleton_requests($type);
+        $this->skeleton_policy($type);
+        $this->skeleton_resources($type);
+        $this->skeleton_routes($type);
         // $this->skeleton_templates($type);
         // $this->skeleton_swagger($type);
 

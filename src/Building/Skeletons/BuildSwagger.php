@@ -15,6 +15,19 @@ trait BuildSwagger
 {
     public function skeleton_swagger(string $type): void
     {
+        if (!in_array($type, [
+            'playground-api',
+            'playground-resource',
+            'playground-resource-index',
+        ])) {
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     'NOTE' => 'SKIPPING: skeleton_swagger',
+            //     '$type' => $type,
+            // ]);
+            return;
+        }
+
         $force = $this->hasOption('force') && $this->option('force');
         $model = $this->hasOption('model') ? $this->option('model') : '';
         $module = $this->hasOption('module') ? $this->option('module') : '';

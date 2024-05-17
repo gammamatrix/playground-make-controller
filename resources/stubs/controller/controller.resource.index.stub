@@ -1,0 +1,22 @@
+<?php
+/**
+ * {{organization}}
+ */
+
+namespace {{ namespace }};
+
+use Illuminate\View\View;
+{{ use }}
+/**
+ * \{{ namespace }}\{{ class }}
+ */
+class {{ class }} extends {{ extends }}{{ implements }}
+{
+{{ use_class }}{{ constants }}{{ properties }}{{ relationships }}{{ actions }}{{ methods }}    /**
+     * Show the index.
+     */
+    public function index(): View
+    {
+        return view('{{package}}::index');
+    }
+}

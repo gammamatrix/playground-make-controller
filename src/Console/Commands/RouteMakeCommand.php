@@ -205,11 +205,19 @@ class RouteMakeCommand extends GeneratorCommand
 
     protected function getConfigurationFilename(): string
     {
+        // if (in_array($this->c->type(), ['playground-resource-index'])) {
+        //     return sprintf(
+        //         '%1$s.%2$s.json',
+        //         Str::of($this->getType())->kebab(),
+        //         Str::of($this->c->name())->kebab(),
+        //     );
+        // } else {
         return sprintf(
             '%1$s/%2$s.json',
             Str::of($this->c->name())->kebab(),
             Str::of($this->getType())->kebab(),
         );
+        // }
     }
 
     /**
