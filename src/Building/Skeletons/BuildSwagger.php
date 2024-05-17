@@ -15,7 +15,7 @@ trait BuildSwagger
 {
     public function skeleton_swagger(string $type): void
     {
-        if (!in_array($type, [
+        if (! in_array($type, [
             'playground-api',
             'playground-resource',
             'playground-resource-index',

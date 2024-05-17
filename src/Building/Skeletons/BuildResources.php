@@ -15,7 +15,7 @@ trait BuildResources
 {
     public function skeleton_resources(string $type): void
     {
-        if (!in_array($type, [
+        if (! in_array($type, [
             'playground-api',
             'playground-resource',
             'playground-resource-index',

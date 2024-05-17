@@ -36,7 +36,6 @@ trait BuildTests
             // $this->command_tests_playground_service_provider();
         }
 
-
         // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$type' => $type,

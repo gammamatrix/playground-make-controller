@@ -389,7 +389,7 @@ PHP_CODE;
             }
             $this->searches['properties'] .= sprintf(
                 '%2$s    protected string $slug_table = \'%1$s\';',
-                $this->model['table'] ?? '',
+                $this->model?->table() ?? '',
                 PHP_EOL
             );
         }

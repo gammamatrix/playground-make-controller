@@ -28,11 +28,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'playground:make:controller')]
 class ControllerMakeCommand extends GeneratorCommand
 {
+    use Building\BuildTests;
+
     use Building\MakeCommands;
 
     // use Building\Skeletons\BuildPostman;
     use Building\Skeletons\BuildController;
-
     // use Building\Skeletons\BuildExtends;
     use Building\Skeletons\BuildPackageInfo;
     use Building\Skeletons\BuildPolicies;
@@ -41,7 +42,6 @@ class ControllerMakeCommand extends GeneratorCommand
     use Building\Skeletons\BuildRoutes;
     use Building\Skeletons\BuildSwagger;
     use Building\Skeletons\BuildTemplates;
-    use Building\BuildTests;
     use Concerns\BuildImplements;
     use Concerns\BuildModel;
     use Concerns\BuildUses;
