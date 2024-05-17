@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.70155232849274" branch-rate="0" lines-covered="1401" lines-valid="1997" branches-covered="0" branches-valid="0" complexity="700" version="0.4" timestamp="1715988925">
+<coverage line-rate="0.70155232849274" branch-rate="0" lines-covered="1401" lines-valid="1997" branches-covered="0" branches-valid="0" complexity="700" version="0.4" timestamp="1715990351">
   <sources>
     <source>/app/src</source>
   </sources>
@@ -26,14 +26,15 @@
             </method>
             <method name="command_tests_playground_api" signature="" line-rate="0" branch-rate="0" complexity="1">
               <lines>
-                <line number="50" hits="0"/>
+                <line number="49" hits="0"/>
               </lines>
             </method>
             <method name="command_tests_playground_resource" signature="" line-rate="0" branch-rate="0" complexity="6">
               <lines>
-                <line number="114" hits="0"/>
+                <line number="113" hits="0"/>
+                <line number="115" hits="0"/>
                 <line number="116" hits="0"/>
-                <line number="117" hits="0"/>
+                <line number="118" hits="0"/>
                 <line number="119" hits="0"/>
                 <line number="120" hits="0"/>
                 <line number="121" hits="0"/>
@@ -41,20 +42,20 @@
                 <line number="123" hits="0"/>
                 <line number="124" hits="0"/>
                 <line number="125" hits="0"/>
-                <line number="126" hits="0"/>
-                <line number="128" hits="0"/>
+                <line number="127" hits="0"/>
+                <line number="129" hits="0"/>
                 <line number="130" hits="0"/>
-                <line number="131" hits="0"/>
+                <line number="132" hits="0"/>
                 <line number="133" hits="0"/>
-                <line number="134" hits="0"/>
+                <line number="137" hits="0"/>
                 <line number="138" hits="0"/>
-                <line number="139" hits="0"/>
-                <line number="142" hits="0"/>
+                <line number="141" hits="0"/>
+                <line number="143" hits="0"/>
                 <line number="144" hits="0"/>
                 <line number="145" hits="0"/>
                 <line number="146" hits="0"/>
-                <line number="147" hits="0"/>
-                <line number="149" hits="0"/>
+                <line number="148" hits="0"/>
+                <line number="150" hits="0"/>
                 <line number="151" hits="0"/>
                 <line number="152" hits="0"/>
                 <line number="153" hits="0"/>
@@ -64,7 +65,6 @@
                 <line number="157" hits="0"/>
                 <line number="158" hits="0"/>
                 <line number="159" hits="0"/>
-                <line number="160" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -80,10 +80,11 @@
             <line number="31" hits="0"/>
             <line number="32" hits="0"/>
             <line number="34" hits="0"/>
-            <line number="50" hits="0"/>
-            <line number="114" hits="0"/>
+            <line number="49" hits="0"/>
+            <line number="113" hits="0"/>
+            <line number="115" hits="0"/>
             <line number="116" hits="0"/>
-            <line number="117" hits="0"/>
+            <line number="118" hits="0"/>
             <line number="119" hits="0"/>
             <line number="120" hits="0"/>
             <line number="121" hits="0"/>
@@ -91,20 +92,20 @@
             <line number="123" hits="0"/>
             <line number="124" hits="0"/>
             <line number="125" hits="0"/>
-            <line number="126" hits="0"/>
-            <line number="128" hits="0"/>
+            <line number="127" hits="0"/>
+            <line number="129" hits="0"/>
             <line number="130" hits="0"/>
-            <line number="131" hits="0"/>
+            <line number="132" hits="0"/>
             <line number="133" hits="0"/>
-            <line number="134" hits="0"/>
+            <line number="137" hits="0"/>
             <line number="138" hits="0"/>
-            <line number="139" hits="0"/>
-            <line number="142" hits="0"/>
+            <line number="141" hits="0"/>
+            <line number="143" hits="0"/>
             <line number="144" hits="0"/>
             <line number="145" hits="0"/>
             <line number="146" hits="0"/>
-            <line number="147" hits="0"/>
-            <line number="149" hits="0"/>
+            <line number="148" hits="0"/>
+            <line number="150" hits="0"/>
             <line number="151" hits="0"/>
             <line number="152" hits="0"/>
             <line number="153" hits="0"/>
@@ -114,7 +115,6 @@
             <line number="157" hits="0"/>
             <line number="158" hits="0"/>
             <line number="159" hits="0"/>
-            <line number="160" hits="0"/>
           </lines>
         </class>
       </classes>
