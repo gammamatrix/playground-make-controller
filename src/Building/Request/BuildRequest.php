@@ -305,6 +305,18 @@ PHP_CODE;
 
         $casts = $model->casts();
 
+        $required = [];
+
+        if ($model->model_attribute() && $model->model_attribute_required()) {
+
+            if (in_array($this->c->type(), [
+                'store',
+                'update',
+            ])) {
+                $required[] = $model->model_attribute();
+            }
+        }
+
         foreach ($model->fillable() as $i => $column) {
 
             // dump([
@@ -357,6 +369,13 @@ PHP_CODE;
                     $rule .= ', ';
                 }
                 $rule .= sprintf('\'%1$s\'', $cast);
+            }
+
+            if (in_array($column, $required)) {
+                if (! empty($rule)) {
+                    $rule .= ', ';
+                }
+                $rule .= "'required'";
             }
 
             $rules .= str_repeat(' ', $indent);
