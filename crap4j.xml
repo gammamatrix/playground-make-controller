@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-18 06:15:28</timestamp>
+  <timestamp>2024-05-18 19:56:44</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>149</methodCount>
     <crapMethodCount>9</crapMethodCount>
-    <crapLoad>149</crapLoad>
-    <totalCrap>4275.15</totalCrap>
+    <crapLoad>122</crapLoad>
+    <totalCrap>3079.4</totalCrap>
     <crapMethodPercent>6.04</crapMethodPercent>
   </stats>
   <methods>
@@ -39,10 +39,10 @@
       <methodName>command_tests_playground_resource</methodName>
       <methodSignature>command_tests_playground_resource(): void</methodSignature>
       <fullMethod>command_tests_playground_resource(): void</fullMethod>
-      <crap>42</crap>
-      <complexity>6</complexity>
+      <crap>72</crap>
+      <complexity>8</complexity>
       <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
+      <crapLoad>8</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building</package>
@@ -251,6 +251,17 @@
       <crap>5.32</crap>
       <complexity>3</complexity>
       <coverage>36.36</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildBlades</className>
+      <methodName>skeleton_blades</methodName>
+      <methodSignature>skeleton_blades(string $type): void</methodSignature>
+      <fullMethod>skeleton_blades(string $type): void</fullMethod>
+      <crap>34.25</crap>
+      <complexity>34</complexity>
+      <coverage>94</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -527,17 +538,6 @@
       <complexity>33</complexity>
       <coverage>0</coverage>
       <crapLoad>34</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Building\Skeletons</package>
-      <className>Playground\Make\Controller\Building\Skeletons\BuildTemplates</className>
-      <methodName>skeleton_templates</methodName>
-      <methodSignature>skeleton_templates(string $type): void</methodSignature>
-      <fullMethod>skeleton_templates(string $type): void</fullMethod>
-      <crap>1260</crap>
-      <complexity>35</complexity>
-      <coverage>0</coverage>
-      <crapLoad>36</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Concerns</package>
