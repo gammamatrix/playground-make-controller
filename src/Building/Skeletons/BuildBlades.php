@@ -9,11 +9,11 @@ namespace Playground\Make\Controller\Building\Skeletons;
 use Illuminate\Support\Str;
 
 /**
- * \Playground\Make\Controller\Building\Skeletons\BuildTemplates
+ * \Playground\Make\Controller\Building\Skeletons\BuildBlades
  */
-trait BuildTemplates
+trait BuildBlades
 {
-    public function skeleton_templates(string $type): void
+    public function skeleton_blades(string $type): void
     {
         if (! in_array($type, [
             'playground-api',
@@ -22,7 +22,7 @@ trait BuildTemplates
         ])) {
             // dump([
             //     '__METHOD__' => __METHOD__,
-            //     'NOTE' => 'SKIPPING: skeleton_templates',
+            //     'NOTE' => 'SKIPPING: skeleton_blades',
             //     '$type' => $type,
             // ]);
             return;
@@ -94,29 +94,8 @@ trait BuildTemplates
         } elseif ($type === 'playground-api') {
         }
 
-        if (empty($this->call('playground:make:template', $options))) {
+        if (empty($this->call('playground:make:blade', $options))) {
 
-            $path_resources_templates = $this->getResourcePackageFolder();
-
-            $file_request = sprintf(
-                '%1$s%2$s/%3$s/template.json',
-                $this->laravel->storagePath(),
-                $path_resources_templates,
-                Str::of($this->c->name())->kebab()
-            );
-
-            // dump([
-            //     '__METHOD__' => __METHOD__,
-            //     '$options' => $options,
-            //     '$file_request' => $file_request,
-            //     // '$path_resources_templates' => $path_resources_templates,
-            //     // '$this->c' => $this->c,
-            //     // '$this->laravel->storagePath()' => $this->laravel->storagePath(),
-            // ]);
-
-            if (! in_array($file_request, $this->c->templates())) {
-                $this->c->templates()[] = $file_request;
-            }
         }
     }
 }

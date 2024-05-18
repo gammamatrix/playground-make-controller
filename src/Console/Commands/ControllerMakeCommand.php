@@ -33,15 +33,14 @@ class ControllerMakeCommand extends GeneratorCommand
     use Building\MakeCommands;
 
     // use Building\Skeletons\BuildPostman;
+    use Building\Skeletons\BuildBlades;
     use Building\Skeletons\BuildController;
-    // use Building\Skeletons\BuildExtends;
     use Building\Skeletons\BuildPackageInfo;
     use Building\Skeletons\BuildPolicies;
     use Building\Skeletons\BuildRequests;
     use Building\Skeletons\BuildResources;
     use Building\Skeletons\BuildRoutes;
     use Building\Skeletons\BuildSwagger;
-    use Building\Skeletons\BuildTemplates;
     use Concerns\BuildImplements;
     use Concerns\BuildModel;
     use Concerns\BuildUses;
@@ -197,12 +196,14 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $this->prepareOptionsType($options);
 
-        // dd([
+        // dump([
         //     '__METHOD__' => __METHOD__,
-        //     '$this->c' => $this->c,
-        //     '$this->searches' => $this->searches,
+        //     // '$this->c' => $this->c,
+        //     '$this->c->name()' => $this->c->name(),
+        //     '$this->c->type()' => $this->c->type(),
+        //     // '$this->searches' => $this->searches,
         //     // '$this->arguments()' => $this->arguments(),
-        //     '$this->options()' => $this->options(),
+        //     // '$this->options()' => $this->options(),
         // ]);
 
         if (in_array($this->c->type(), [
@@ -448,7 +449,7 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->skeleton_policy($type);
         $this->skeleton_resources($type);
         $this->skeleton_routes($type);
-        // $this->skeleton_templates($type);
+        $this->skeleton_blades($type);
         // $this->skeleton_swagger($type);
 
         $this->saveConfiguration();
@@ -476,6 +477,7 @@ class ControllerMakeCommand extends GeneratorCommand
             ['type',            null, InputOption::VALUE_REQUIRED, 'Manually specify the controller stub file to use'],
             ['force',           null, InputOption::VALUE_NONE,     'Create the class even if the controller already exists'],
             ['abstract',        null, InputOption::VALUE_NONE,     'Make the controller abstract'],
+            ['covers',          null, InputOption::VALUE_NONE,     'Use CoversClass for code coverage'],
             ['skeleton',        null, InputOption::VALUE_NONE,     'Create the skeleton for the controller type'],
             ['test',            null, InputOption::VALUE_NONE,     'Create a test for the controller type'],
             ['invokable',       'i',  InputOption::VALUE_NONE,     'Generate a single method, invokable controller class'],

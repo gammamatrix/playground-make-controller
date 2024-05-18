@@ -20,7 +20,9 @@ class TestCase extends OrchestraTestCase
         return [
             \Playground\ServiceProvider::class,
             \Playground\Make\ServiceProvider::class,
+            \Playground\Make\Blade\ServiceProvider::class,
             \Playground\Make\Controller\ServiceProvider::class,
+            \Playground\Make\Test\ServiceProvider::class,
         ];
     }
 }

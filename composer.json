@@ -23,6 +23,10 @@
         },
         {
             "type": "vcs",
+            "url": "git@github.com:gammamatrix/playground-make-blade.git"
+        },
+        {
+            "type": "vcs",
             "url": "git@github.com:gammamatrix/playground-make-test.git"
         }
     ],
@@ -31,6 +35,7 @@
         "gammamatrix/playground-make": "dev-develop|dev-feature/*"
     },
     "require-dev": {
+        "gammamatrix/playground-make-blade": "dev-develop|dev-feature/*",
         "gammamatrix/playground-make-test": "dev-develop|dev-feature/*",
         "gammamatrix/playground-test": "dev-develop|dev-feature/*"
     },

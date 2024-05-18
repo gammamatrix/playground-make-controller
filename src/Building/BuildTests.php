@@ -110,6 +110,7 @@ trait BuildTests
 
     public function command_tests_playground_resource(): void
     {
+        $withCovers = $this->hasOption('covers') && $this->option('covers');
         $force = $this->hasOption('force') && $this->option('force');
 
         $options = [
@@ -132,6 +133,10 @@ trait BuildTests
             if ($modelFile) {
                 $options['--model-file'] = $modelFile;
             }
+        }
+
+        if ($withCovers) {
+            $options['--covers'] = true;
         }
 
         if ($this->c->skeleton()) {
