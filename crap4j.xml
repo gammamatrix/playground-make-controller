@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-17 23:59:11</timestamp>
+  <timestamp>2024-05-18 06:15:28</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>149</methodCount>
     <crapMethodCount>9</crapMethodCount>
     <crapLoad>149</crapLoad>
-    <totalCrap>4262.5</totalCrap>
+    <totalCrap>4275.15</totalCrap>
     <crapMethodPercent>6.04</crapMethodPercent>
   </stats>
   <methods>
@@ -237,9 +237,9 @@
       <methodName>buildClass_rules_constant_for_only_fillable</methodName>
       <methodSignature>buildClass_rules_constant_for_only_fillable(Playground\Make\Configuration\Model $model, int $indent): string</methodSignature>
       <fullMethod>buildClass_rules_constant_for_only_fillable(Playground\Make\Configuration\Model $model, int $indent): string</fullMethod>
-      <crap>14.77</crap>
-      <complexity>14</complexity>
-      <coverage>84.21</coverage>
+      <crap>27.42</crap>
+      <complexity>19</complexity>
+      <coverage>71.43</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
