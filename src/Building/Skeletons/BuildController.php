@@ -22,16 +22,12 @@ trait BuildController
             if (! empty($options['slug']) && is_string($options['slug'])) {
                 $this->c->setOptions([
                     'slug' => Str::of($options['slug'])->slug('-')->toString(),
+                    'slug_plural' => Str::of($options['slug'])->plural()->slug('-')->toString(),
                 ]);
-            } elseif (! empty($this->c->name()) && is_string($this->c->name())) {
-                $this->c->setOptions([
-                    'slug' => Str::of($this->c->name())->slug('-')->toString(),
-                    'slug_plural' => Str::of($this->c->name())->slug('-')->toString(),
-                ]);
-                $this->searches['slug'] = $this->c->slug();
-                $this->searches['slug_plural'] = $this->c->slug_plural();
             }
         }
+        $this->searches['slug'] = $this->c->slug();
+        $this->searches['slug_plural'] = $this->c->slug_plural();
     }
 
     /**

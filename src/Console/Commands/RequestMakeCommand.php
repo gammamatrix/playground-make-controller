@@ -265,7 +265,7 @@ class RequestMakeCommand extends GeneratorCommand
         } else {
             return rtrim(sprintf(
                 '%1$s\\Http\\Requests',
-                $rootNamespace
+                rtrim($rootNamespace, '\\')
             ), '\\');
         }
     }
@@ -318,7 +318,7 @@ class RequestMakeCommand extends GeneratorCommand
 
         $this->searches['namespacedRequest'] = sprintf(
             '%1$s\Http\Requests\%2$s',
-            rtrim($this->c->namespace(), '\\'),
+            rtrim($this->rootNamespace(), '\\'),
             rtrim($this->c->name(), '\\')
         );
 

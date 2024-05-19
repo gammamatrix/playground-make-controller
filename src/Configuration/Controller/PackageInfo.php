@@ -168,6 +168,11 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
             $this->view = $options['view'];
             $this->properties['view'] = $this->view;
         }
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$this' => $this,
+        // ]);
 
         return $this;
     }

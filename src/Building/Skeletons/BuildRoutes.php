@@ -37,23 +37,23 @@ trait BuildRoutes
 
         // $layout = 'playground::layouts.site';
 
-        if (empty($model) && ! empty($this->c->model()) && is_string($this->c->model())) {
+        if (empty($model)) {
             $model = $this->c->model();
         }
 
-        if (empty($module) && ! empty($this->c->module()) && is_string($this->c->module())) {
+        if (empty($module)) {
             $module = $this->c->module();
         }
 
-        if (empty($namespace) && ! empty($this->c->namespace()) && is_string($this->c->namespace())) {
-            $namespace = $this->c->namespace();
+        if (empty($namespace)) {
+            $namespace = $this->rootNamespace();
         }
 
-        if (empty($package) && ! empty($this->c->package()) && is_string($this->c->package())) {
+        if (empty($package)) {
             $package = $this->c->package();
         }
 
-        if (empty($organization) && ! empty($this->c->organization()) && is_string($this->c->organization())) {
+        if (empty($organization)) {
             $organization = $this->c->organization();
         }
 

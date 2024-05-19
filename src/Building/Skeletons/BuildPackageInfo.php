@@ -61,6 +61,18 @@ trait BuildPackageInfo
         $this->preparePackageInfo_table($packageInfo);
         $this->preparePackageInfo_privilege($packageInfo, $options);
         $this->preparePackageInfo_view($packageInfo, $options);
+
+        $packageInfo->apply();
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$options' => $options,
+        //         '$packageInfo' => $packageInfo,
+        //         '$this->c' => $this->c,
+        //         '$this->c->toArray()' => $this->c->toArray(),
+        //         '$this->c->apply()->toArray()' => $this->c->apply()->toArray(),
+        //     ]);
+        // }
     }
 
     public function preparePackageInfo_table(
@@ -73,6 +85,15 @@ trait BuildPackageInfo
             ]);
         }
         $this->searches['table'] = $packageInfo->table();
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$table' => $table,
+        //         '$this->c->type()' => $this->c->type(),
+        //         '$packageInfo' => $packageInfo,
+        //         '$this->searches[table]' => $this->searches['table'],
+        //     ]);
+        // }
     }
 
     /**
@@ -83,33 +104,69 @@ trait BuildPackageInfo
         array $options = []
     ): void {
 
+        $privilege = $this->c->privilege();
+
         if (! empty($options['privilege']) && is_string($options['privilege'])) {
-            $packageInfo->setOptions([
-                'privilege' => $options['privilege'],
+
+            $privilege = $options['privilege'];
+
+            $this->c->setOptions([
+                'privilege' => $privilege,
             ]);
         }
 
-        $package = $this->c->package();
-        $slug = $this->c->slug();
+        if (! $privilege) {
 
-        if (! $slug && $this->c->skeleton() && $this->model?->model_slug()) {
-            $slug = Str::of($this->model->model_slug())->slug()->toString();
+            $package = $this->c->package();
+
+            if ($package) {
+                $privilege = $package;
+            }
+
+            $slug = $this->c->slug();
+            if ($slug) {
+                if ($privilege) {
+                    $privilege .= ':';
+                }
+                $privilege .= $slug;
+            }
+
+            if (! $this->c->privilege()) {
+                $this->c->setOptions([
+                    'privilege' => $privilege,
+                ]);
+            }
         }
 
-        if (! $packageInfo->privilege()
-            && $package
-            && $slug
-        ) {
-            $packageInfo->setOptions([
-                'privilege' => sprintf(
-                    '%1$s:%2$s',
-                    $package,
-                    $slug
-                ),
-            ]);
+        $model_slug = $this->model?->model_slug();
+
+        if ($model_slug) {
+
+            if ($privilege) {
+                $privilege .= ':';
+            }
+
+            $privilege .= Str::of($model_slug)->slug()->toString();
         }
+
+        $packageInfo->setOptions([
+            'privilege' => $privilege,
+        ]);
 
         $this->searches['privilege'] = $packageInfo->privilege();
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$privilege' => $privilege,
+        //         '$package' => $package,
+        //         '$slug' => $slug,
+        //         '$this->searches[privilege]' => $this->searches['privilege'],
+        //         // '$this->c' => $this->c,
+        //         // '$this->c->toArray()' => $this->c->toArray(),
+        //         '$this->c->privilege()' => $this->c->privilege(),
+        //         '$packageInfo->privilege()' => $packageInfo->privilege(),
+        //     ]);
+        // }
     }
 
     /**
@@ -126,33 +183,68 @@ trait BuildPackageInfo
             return;
         }
 
+        $view = $this->c->view();
+
         if (! empty($options['view']) && is_string($options['view'])) {
-            $packageInfo->setOptions([
-                'view' => $options['view'],
+
+            $view = $options['view'];
+
+            $this->c->setOptions([
+                'view' => $view,
             ]);
         }
 
-        $package = $this->c->package();
-        $slug = $this->c->slug();
+        if (! $view) {
 
-        if (! $slug && $this->c->skeleton() && $this->model?->model_slug()) {
-            $slug = Str::of($this->model->model_slug())->slug()->toString();
+            $package = $this->c->package();
+
+            if ($package) {
+                $view = $package;
+            }
+
+            $slug = $this->c->slug();
+            if ($slug) {
+                if ($view) {
+                    $view .= '::';
+                }
+                $view .= $slug;
+            }
+
+            if (! $this->c->view()) {
+                $this->c->setOptions([
+                    'view' => $view,
+                ]);
+            }
         }
 
-        if (! $packageInfo->view()
-            && $package
-            && $slug
-        ) {
-            $packageInfo->setOptions([
-                'view' => sprintf(
-                    '%1$s::%2$s',
-                    $package,
-                    $slug
-                ),
-            ]);
+        $model_slug = $this->model?->model_slug();
+
+        if ($model_slug) {
+
+            if ($view) {
+                $view .= '::';
+            }
+
+            $view .= Str::of($model_slug)->slug()->toString();
         }
+
+        $packageInfo->setOptions([
+            'view' => $view,
+        ]);
 
         $this->searches['view'] = $packageInfo->view();
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$package' => $package,
+        //         '$slug' => $slug,
+        //         '$this->searches[view]' => $this->searches['view'],
+        //         // '$this->c' => $this->c,
+        //         // '$this->c->toArray()' => $this->c->toArray(),
+        //         '$this->c->view()' => $this->c->view(),
+        //         '$packageInfo->view()' => $packageInfo->view(),
+        //     ]);
+        // }
     }
 
     /**
@@ -205,9 +297,9 @@ trait BuildPackageInfo
     public function preparePackageInfo_module_route(
         PackageInfo $packageInfo
     ): void {
-        if (! $this->c->module_route()) {
+        $route = '';
 
-            $route = '';
+        if (! $this->c->module_route()) {
 
             if ($this->c->package()) {
                 foreach (Str::of($this->c->package())->replace('-', '.')->replace('_', '.')->explode('.') as $value) {
@@ -228,9 +320,45 @@ trait BuildPackageInfo
             $this->c->setOptions([
                 'module_route' => $route,
             ]);
+            // $packageInfo->setOptions([
+            //     'module_route' => $this->c->module_route(),
+            // ]);
+
+            // if ('BacklogController' === $this->c->name()) {
+            //     dump([
+            //         '__METHOD__' => __METHOD__,
+            //         // '$this->c->toArray()' => $this->c->toArray(),
+            //         // '$packageInfo' => $packageInfo,
+            //         // '$this->c' => $this->c,
+            //         '$route' => $route,
+            //         '$this->searches[module_route]' => $this->searches['module_route'],
+            //         '$this->c->type()' => $this->c->type(),
+            //         '$this->c->module_route()' => $this->c->module_route(),
+            //         '$packageInfo->module_route()' => $packageInfo->module_route(),
+            //     ]);
+            // }
 
             $this->searches['module_route'] = $this->c->module_route();
         }
+
+        if (! $packageInfo->module_route()) {
+            $packageInfo->setOptions([
+                'module_route' => $this->c->module_route(),
+            ]);
+        }
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$this->c->toArray()' => $this->c->toArray(),
+        //         '$packageInfo' => $packageInfo,
+        //         '$this->c' => $this->c,
+        //         '$route' => $route,
+        //         '$this->searches[module_route]' => $this->searches['module_route'],
+        //         '$this->c->type()' => $this->c->type(),
+        //         '$this->c->module_route()' => $this->c->module_route(),
+        //         '$packageInfo->module_route()' => $packageInfo->module_route(),
+        //     ]);
+        // }
     }
 
     public function preparePackageInfo_module_slug(
@@ -260,6 +388,7 @@ trait BuildPackageInfo
         $this->preparePackageInfo_model_slug($packageInfo);
         $this->preparePackageInfo_model_slug_plural($packageInfo);
         $this->preparePackageInfo_model_route($packageInfo);
+        $this->preparePackageInfo_model_attribute($packageInfo);
     }
 
     public function preparePackageInfo_model_label(
@@ -272,6 +401,18 @@ trait BuildPackageInfo
         }
 
         $this->searches['model_label'] = $packageInfo->model_label();
+    }
+
+    public function preparePackageInfo_model_attribute(
+        PackageInfo $packageInfo
+    ): void {
+        if (! $packageInfo->model_attribute() && $this->model?->model_attribute()) {
+            $packageInfo->setOptions([
+                'model_attribute' => $this->model->model_attribute(),
+            ]);
+        }
+
+        $this->searches['model_attribute'] = $packageInfo->model_attribute();
     }
 
     public function preparePackageInfo_model_label_plural(
@@ -289,9 +430,10 @@ trait BuildPackageInfo
     public function preparePackageInfo_model_route(
         PackageInfo $packageInfo
     ): void {
-        if (! $this->c->model_route() && $packageInfo->model_slug_plural()) {
+        $route = '';
+        $module_route = $this->c->module_route();
 
-            $route = '';
+        if (! $this->c->model_route() && $packageInfo->model_slug_plural()) {
 
             if ($this->c->package()) {
                 foreach (Str::of($this->c->package())->replace('-', '.')->replace('_', '.')->explode('.') as $value) {
@@ -314,9 +456,28 @@ trait BuildPackageInfo
             $this->c->setOptions([
                 'model_route' => $route,
             ]);
+            $packageInfo->setOptions([
+                'model_route' => $this->c->model_route(),
+            ]);
 
             $this->searches['model_route'] = $this->c->model_route();
         }
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$this->c->toArray()' => $this->c->toArray(),
+        //         '$packageInfo' => $packageInfo,
+        //         '$this->c' => $this->c,
+        //         '$route' => $route,
+        //         '$module_route' => $module_route,
+        //         '$this->searches[module_route]' => $this->searches['module_route'],
+        //         '$this->c->type()' => $this->c->type(),
+        //         '$this->c->module_route()' => $this->c->module_route(),
+        //         '$packageInfo->module_route()' => $packageInfo->module_route(),
+        //         '$this->c->model_route()' => $this->c->model_route(),
+        //         '$packageInfo->model_route()' => $packageInfo->model_route(),
+        //     ]);
+        // }
     }
 
     public function preparePackageInfo_model_slug(

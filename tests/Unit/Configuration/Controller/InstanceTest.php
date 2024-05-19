@@ -32,6 +32,7 @@ class InstanceTest extends TestCase
         'module_slug' => '',
         'name' => '',
         'namespace' => '',
+        'fqdn' => '',
         'model' => '',
         'organization' => '',
         'package' => '',
@@ -61,6 +62,7 @@ class InstanceTest extends TestCase
         'view' => '',
         'implements' => [],
         'uses' => [],
+        'packageInfo' => null,
     ];
 
     public function test_instance_apply_without_options(): void

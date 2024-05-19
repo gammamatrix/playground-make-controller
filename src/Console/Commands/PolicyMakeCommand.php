@@ -82,7 +82,7 @@ class PolicyMakeCommand extends GeneratorCommand
     {
         $options = $this->options();
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if (! empty($options['roles-action'])) {
             foreach ($options['roles-action'] as $role) {
@@ -104,6 +104,12 @@ class PolicyMakeCommand extends GeneratorCommand
                 }
             }
         }
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$this->c' => $this->c,
+        //     '$this->c->type()' => $this->c->type(),
+        //     // '$this->c->toArray()' => $this->c->toArray(),
+        // ]);
     }
 
     protected function getConfigurationFilename(): string
@@ -204,7 +210,9 @@ class PolicyMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $this->parseClassInput($rootNamespace).'\\Policies';
+        return Str::of(
+            $this->parseClassInput($rootNamespace)
+        )->finish('\\')->finish('Policies')->toString();
     }
 
     /**

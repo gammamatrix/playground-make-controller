@@ -41,7 +41,7 @@ trait BuildResources
 
         $model = $this->c->model();
         $module = $this->c->module();
-        $namespace = $this->c->namespace();
+        $namespace = $this->rootNamespace();
         $package = $this->c->package();
         $organization = $this->c->organization();
         $extends = $this->c->organization();

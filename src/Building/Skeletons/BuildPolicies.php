@@ -35,7 +35,7 @@ trait BuildPolicies
         $params = [
             'name' => $name,
             '--class' => Str::of($name)->studly()->finish('Policy')->toString(),
-            '--namespace' => $this->c->namespace(),
+            '--namespace' => $this->rootNamespace(),
             '--force' => $force,
             '--package' => $this->c->package(),
             '--organization' => $this->c->organization(),
@@ -87,6 +87,10 @@ trait BuildPolicies
                 'root',
             ];
         }
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$params' => $params,
+        // ]);
 
         if (empty($this->call('playground:make:policy', $params))) {
 

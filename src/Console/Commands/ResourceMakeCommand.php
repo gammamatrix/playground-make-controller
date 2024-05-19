@@ -167,7 +167,9 @@ class ResourceMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $this->parseClassInput($rootNamespace).'\\Http\\Resources';
+        return Str::of(
+            $this->parseClassInput($rootNamespace)
+        )->finish('\\')->finish('Http\\Resources')->toString();
     }
 
     protected function getConfigurationFilename(): string

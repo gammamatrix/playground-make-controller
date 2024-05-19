@@ -24,6 +24,7 @@ class Controller extends PrimaryConfiguration
         'module_slug' => '',
         'name' => '',
         'namespace' => '',
+        'fqdn' => '',
         'model' => '',
         'organization' => '',
         'package' => '',
@@ -55,7 +56,20 @@ class Controller extends PrimaryConfiguration
         'view' => '',
         'implements' => [],
         'uses' => [],
+        'packageInfo' => null,
     ];
+
+    /**
+     * @return array<mixed>
+     */
+    public function toArray(): array
+    {
+        $properties = parent::toArray();
+
+        $properties['packageInfo'] = $this->packageInfo()?->toArray();
+
+        return $properties;
+    }
 
     /**
      * @var array<int, string>

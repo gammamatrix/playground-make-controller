@@ -145,23 +145,23 @@ trait BuildTests
 
         $options['--suite'] = 'feature';
 
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$options' => $options,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
 
         $this->call('playground:make:test', $options);
 
         $options['--type'] = 'playground-resource-controller-model-case';
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$options' => $options,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
         $this->call('playground:make:test', $options);
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$options' => $options,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
     }
 
     // public function command_tests_playground_request_test_case(): void

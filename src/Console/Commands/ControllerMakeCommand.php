@@ -29,7 +29,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ControllerMakeCommand extends GeneratorCommand
 {
     use Building\BuildTests;
-
     use Building\MakeCommands;
 
     // use Building\Skeletons\BuildPostman;
@@ -145,6 +144,85 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $initModel = false;
 
+        $this->prepareOptionsFromOptions();
+
+        $this->prepareOptionsType($options);
+
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     // '$this->c' => $this->c,
+        //     '$this->c->name()' => $this->c->name(),
+        //     '$this->c->type()' => $this->c->type(),
+        //     // '$this->searches' => $this->searches,
+        //     // '$this->arguments()' => $this->arguments(),
+        //     // '$this->options()' => $this->options(),
+        // ]);
+
+        if (in_array($this->c->type(), [
+            'api',
+            'playground-api',
+            'resource',
+            'playground-resource',
+        ])) {
+            $initModel = true;
+        }
+
+        if ($initModel) {
+            $this->initModel($this->c->skeleton());
+
+            $modelFile = $this->getModelFile();
+            if ($modelFile && $this->model?->name()) {
+                $this->c->addMappedClassTo(
+                    'models',
+                    $this->model->name(),
+                    $modelFile
+                );
+            }
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     '$this->getModelFile()' => $this->getModelFile(),
+            //     '$initModel' => $initModel,
+            //     '$modelFile' => $modelFile,
+            //     '$this->c->type()' => $this->c->type(),
+            //     '$this->c->skeleton()' => $this->c->skeleton(),
+            //     // '$this->c' => $this->c->toArray(),
+            //     // '$this->model' => $this->model,
+            //     // '$this->searches' => $this->searches,
+            //     // '$this->arguments()' => $this->arguments(),
+            //     '$this->options()' => $this->options(),
+            //     // '$this->model' => $this->model->toArray(),
+            //     'empty($this->model)' => empty($this->model),
+            // ]);
+        }
+
+        $this->prepareOptionsExtends($options);
+
+        $this->prepareOptionsSlugs($options);
+
+        $this->prepareOptionsRoute($options);
+
+        $this->preparePackageInfo($options);
+
+        $this->saveConfiguration();
+
+        // if ($initModel) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$this->getModelFile()' => $this->getModelFile(),
+        //         '$initModel' => $initModel,
+        //         '$this->c->type()' => $this->c->type(),
+        //         '$this->c->skeleton()' => $this->c->skeleton(),
+        //         '$this->c' => $this->c->toArray(),
+        //         // '$this->model' => $this->model,
+        //         '$this->searches' => $this->searches,
+        //         // '$this->arguments()' => $this->arguments(),
+        //         '$this->options()' => $this->options(),
+        //     ]);
+        // }
+    }
+
+    public function prepareOptionsFromOptions(): void
+    {
         if ($this->hasOption('abstract') && $this->option('abstract')) {
             $this->c->setOptions([
                 'isAbstract' => true,
@@ -187,67 +265,6 @@ class ControllerMakeCommand extends GeneratorCommand
                 'withTests' => true,
             ]);
         }
-
-        if ($this->hasOption('playground') && $this->option('playground')) {
-            $this->c->setOptions([
-                'playground' => true,
-            ]);
-        }
-
-        $this->prepareOptionsType($options);
-
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     // '$this->c' => $this->c,
-        //     '$this->c->name()' => $this->c->name(),
-        //     '$this->c->type()' => $this->c->type(),
-        //     // '$this->searches' => $this->searches,
-        //     // '$this->arguments()' => $this->arguments(),
-        //     // '$this->options()' => $this->options(),
-        // ]);
-
-        if (in_array($this->c->type(), [
-            'api',
-            'playground-api',
-            'resource',
-            'playground-resource',
-        ])) {
-            $initModel = true;
-        }
-
-        if ($initModel) {
-            $this->initModel($this->c->skeleton());
-
-            $modelFile = $this->getModelFile();
-            if ($modelFile && $this->model?->name()) {
-                $this->c->addMappedClassTo(
-                    'models',
-                    $this->model->name(),
-                    $modelFile
-                );
-            }
-        }
-
-        $this->prepareOptionsExtends($options);
-
-        $this->prepareOptionsSlugs($options);
-
-        $this->prepareOptionsRoute($options);
-
-        $this->preparePackageInfo($options);
-
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->getModelFile()' => $this->getModelFile(),
-        //     '$initModel' => $initModel,
-        //     '$this->c->type()' => $this->c->type(),
-        //     '$this->c->skeleton()' => $this->c->skeleton(),
-        //     '$this->c' => $this->c,
-        //     // '$this->model' => $this->model,
-        //     '$this->searches' => $this->searches,
-        //     // '$this->arguments()' => $this->arguments(),
-        //     '$this->options()' => $this->options(),
-        // ]);
     }
 
     protected function getConfigurationFilename(): string
@@ -341,8 +358,9 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $this->parseClassInput($rootNamespace).'\\Http\\Controllers';
-
+        return Str::of(
+            $this->parseClassInput($rootNamespace)
+        )->finish('\\')->finish('Http\\Controllers')->toString();
     }
 
     /**
@@ -358,12 +376,12 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $this->searches['namespacedRequest'] = $this->parseClassInput(sprintf(
             '%1$s\Http\Requests',
-            rtrim($this->c->namespace(), '\\')
+            rtrim($this->rootNamespace(), '\\')
         ));
 
         $this->searches['namespacedResource'] = $this->parseClassInput(sprintf(
             '%1$s\Http\Resources',
-            rtrim($this->c->namespace(), '\\')
+            rtrim($this->rootNamespace(), '\\')
         ));
 
         if (in_array($this->c->type(), [

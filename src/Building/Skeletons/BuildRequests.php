@@ -34,7 +34,7 @@ trait BuildRequests
         $model = $this->c->model();
         $module = $this->c->module();
         $name = Str::of($this->c->name())->before('Controller')->studly()->toString();
-        $namespace = $this->c->namespace();
+        $namespace = $this->rootNamespace();
         $organization = $this->c->organization();
         $package = $this->c->package();
 
