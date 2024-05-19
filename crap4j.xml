@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-18 19:56:44</timestamp>
+  <timestamp>2024-05-19 22:59:10</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>149</methodCount>
+    <methodCount>152</methodCount>
     <crapMethodCount>9</crapMethodCount>
-    <crapLoad>122</crapLoad>
-    <totalCrap>3079.4</totalCrap>
-    <crapMethodPercent>6.04</crapMethodPercent>
+    <crapLoad>114</crapLoad>
+    <totalCrap>2555.61</totalCrap>
+    <crapMethodPercent>5.92</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -259,8 +259,8 @@
       <methodName>skeleton_blades</methodName>
       <methodSignature>skeleton_blades(string $type): void</methodSignature>
       <fullMethod>skeleton_blades(string $type): void</fullMethod>
-      <crap>34.25</crap>
-      <complexity>34</complexity>
+      <crap>24.12</crap>
+      <complexity>24</complexity>
       <coverage>94</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -270,9 +270,9 @@
       <methodName>prepareOptionsSlugs</methodName>
       <methodSignature>prepareOptionsSlugs(array $options): void</methodSignature>
       <fullMethod>prepareOptionsSlugs(array $options): void</fullMethod>
-      <crap>6.56</crap>
-      <complexity>6</complexity>
-      <coverage>75</coverage>
+      <crap>6</crap>
+      <complexity>4</complexity>
+      <coverage>50</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -314,9 +314,9 @@
       <methodName>preparePackageInfo</methodName>
       <methodSignature>preparePackageInfo(array $options): void</methodSignature>
       <fullMethod>preparePackageInfo(array $options): void</fullMethod>
-      <crap>3.47</crap>
+      <crap>3.4</crap>
       <complexity>3</complexity>
-      <coverage>62.5</coverage>
+      <coverage>64.71</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -336,9 +336,9 @@
       <methodName>preparePackageInfo_privilege</methodName>
       <methodSignature>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>9.45</crap>
-      <complexity>9</complexity>
-      <coverage>82.35</coverage>
+      <crap>11.56</crap>
+      <complexity>10</complexity>
+      <coverage>75</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -347,9 +347,9 @@
       <methodName>preparePackageInfo_view</methodName>
       <methodSignature>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>10.6</crap>
-      <complexity>10</complexity>
-      <coverage>81.82</coverage>
+      <crap>12.72</crap>
+      <complexity>11</complexity>
+      <coverage>75.76</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -391,9 +391,9 @@
       <methodName>preparePackageInfo_module_route</methodName>
       <methodSignature>preparePackageInfo_module_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_module_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>7.12</crap>
-      <complexity>7</complexity>
-      <coverage>86.67</coverage>
+      <crap>8.07</crap>
+      <complexity>8</complexity>
+      <coverage>89.47</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -432,6 +432,17 @@
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
+      <methodName>preparePackageInfo_model_attribute</methodName>
+      <methodSignature>preparePackageInfo_model_attribute(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_attribute(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_label_plural</methodName>
       <methodSignature>preparePackageInfo_model_label_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_model_label_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
@@ -446,9 +457,9 @@
       <methodName>preparePackageInfo_model_route</methodName>
       <methodSignature>preparePackageInfo_model_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_model_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>8.12</crap>
+      <crap>8.06</crap>
       <complexity>8</complexity>
-      <coverage>87.5</coverage>
+      <coverage>90</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -523,8 +534,8 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>34.27</crap>
-      <complexity>34</complexity>
+      <crap>24.13</crap>
+      <complexity>24</complexity>
       <coverage>93.88</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -534,10 +545,10 @@
       <methodName>skeleton_swagger</methodName>
       <methodSignature>skeleton_swagger(string $type): void</methodSignature>
       <fullMethod>skeleton_swagger(string $type): void</fullMethod>
-      <crap>1122</crap>
-      <complexity>33</complexity>
+      <crap>552</crap>
+      <complexity>23</complexity>
       <coverage>0</coverage>
-      <crapLoad>34</crapLoad>
+      <crapLoad>23</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Concerns</package>
@@ -556,6 +567,17 @@
       <methodName>packageInfo</methodName>
       <methodSignature>packageInfo(): ?Playground\Make\Controller\Configuration\Controller\PackageInfo</methodSignature>
       <fullMethod>packageInfo(): ?Playground\Make\Controller\Configuration\Controller\PackageInfo</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>toArray</methodName>
+      <methodSignature>toArray(): array</methodSignature>
+      <fullMethod>toArray(): array</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -1194,10 +1216,21 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>60.24</crap>
-      <complexity>21</complexity>
-      <coverage>55.36</coverage>
-      <crapLoad>10</crapLoad>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>prepareOptionsFromOptions</methodName>
+      <methodSignature>prepareOptionsFromOptions(): void</methodSignature>
+      <fullMethod>prepareOptionsFromOptions(): void</fullMethod>
+      <crap>113.23</crap>
+      <complexity>15</complexity>
+      <coverage>24.14</coverage>
+      <crapLoad>12</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
