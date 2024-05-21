@@ -362,6 +362,10 @@ PHP_CODE;
                 // $cast = 'date';
                 // Allows parsing: tomorrow midnight
                 $cast = 'string';
+            } elseif (in_array($cast, [
+                'float',
+            ])) {
+                $cast = 'numeric';
             }
 
             if ($cast) {

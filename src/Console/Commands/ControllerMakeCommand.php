@@ -413,6 +413,14 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->skeleton();
 
             $this->saveConfiguration();
+            // if ('BacklogController' === $this->c->name()) {
+            //     dd([
+            //         '__METHOD__' => __METHOD__,
+            //         '$this->c' => $this->c,
+            //         '$this->searches' => $this->searches,
+            //         // '$this->c->toArray()' => $this->c->toArray(),
+            //     ]);
+            // }
 
             return $this->return_status;
         }
@@ -452,6 +460,14 @@ class ControllerMakeCommand extends GeneratorCommand
         //     '$this->searches' => $this->searches,
         //     '$this->options()' => $this->options(),
         // ]);
+        // if ('BacklogController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$this->c' => $this->c,
+        //         '$this->searches' => $this->searches,
+        //         // '$this->c->toArray()' => $this->c->toArray(),
+        //     ]);
+        // }
 
         return $this->return_status;
     }

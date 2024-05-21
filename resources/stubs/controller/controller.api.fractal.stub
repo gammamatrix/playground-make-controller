@@ -3,7 +3,9 @@
  * {{organization}}
  */
 
+declare(strict_types=1);
 namespace {{ namespace }};
+
 {{ use }}use {{ namespacedRequest }}\DestroyRequest;
 use {{ namespacedRequest }}\IndexRequest;
 use {{ namespacedRequest }}\RestoreRequest;

@@ -12,18 +12,11 @@ use Illuminate\Support\Carbon;
 use {{ model_fqdn }} as {{ model }}Model;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \{{ namespace }}\{{ class }}
+ */
 class {{ class }} extends JsonResource
 {{{class_keys}}
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray(Request $request)
-    {
-        return parent::toArray($request);
-    }
-
     /**
      * Get additional data that should be returned with the resource array.
      *

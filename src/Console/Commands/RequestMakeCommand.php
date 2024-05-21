@@ -169,6 +169,8 @@ class RequestMakeCommand extends GeneratorCommand
         'index',
         'store',
         'update',
+        'create',
+        'edit',
     ];
 
     /**

@@ -40,19 +40,25 @@ class {{ class }} extends {{ extends }}{{ implements }}
     ];
 
     /**
-     * CREATE the {{model_label}} resource in storage.
+     * Create the {{model_label}} resource in storage.
      *
      * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/create {{model_route}}.create
      */
     public function create(
         Requests\{{ model }}\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\{{ model }} {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         ${{model_slug}} = new {{model}}($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = ${{model_slug}}->toArray();
 
@@ -97,11 +99,24 @@ class {{ class }} extends {{ extends }}{{ implements }}
     public function edit(
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\{{ model }} {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = ${{model_slug}}->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -120,17 +135,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = ${{model_slug}}->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
         return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
@@ -147,6 +151,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
     ): Response|RedirectResponse {
 
         $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            ${{model_slug}}->modified_by_id = $user->id;
+        }
 
         if (empty($validated['force'])) {
             ${{model_slug}}->delete();
@@ -181,6 +191,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
+        if ($user?->id) {
+            ${{model_slug}}->modified_by_id = $user->id;
+        }
+
         ${{model_slug}}->locked = true;
 
         ${{model_slug}}->save();
@@ -193,7 +207,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->response($request);
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -294,10 +310,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
+        if ($user?->id) {
+            ${{model_slug}}->modified_by_id = $user->id;
+        }
+
         ${{model_slug}}->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->response($request);
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -335,7 +357,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->response($request);
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -364,10 +388,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}} = new {{ model }}($validated);
 
+        if ($user?->id) {
+            ${{model_slug}}->created_by_id = $user->id;
+        }
+
         ${{model_slug}}->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->response($request);
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -398,10 +428,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->locked = false;
 
+        if ($user?->id) {
+            ${{model_slug}}->modified_by_id = $user->id;
+        }
+
         ${{model_slug}}->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->response($request);
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -432,8 +468,14 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->update($validated);
 
+        if ($user?->id) {
+            ${{model_slug}}->modified_by_id = $user->id;
+        }
+
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->response($request);
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
