@@ -256,8 +256,8 @@ trait BuildPackageInfo
     ): void {
         $this->preparePackageInfo_module_label($packageInfo, $options);
         $this->preparePackageInfo_module_label_plural($packageInfo);
-        $this->preparePackageInfo_module_route($packageInfo);
         $this->preparePackageInfo_module_slug($packageInfo);
+        $this->preparePackageInfo_module_route($packageInfo);
     }
 
     /**
@@ -346,7 +346,7 @@ trait BuildPackageInfo
                 'module_route' => $this->c->module_route(),
             ]);
         }
-        // if ('BacklogController' === $this->c->name()) {
+        // if ('IndexController' === $this->c->name()) {
         //     dd([
         //         '__METHOD__' => __METHOD__,
         //         '$this->c->toArray()' => $this->c->toArray(),
@@ -364,20 +364,42 @@ trait BuildPackageInfo
     public function preparePackageInfo_module_slug(
         PackageInfo $packageInfo
     ): void {
+        $module_slug = '';
         if (! $packageInfo->module_slug()) {
             if ($this->model?->module_slug()) {
-                $packageInfo->setOptions([
-                    'module_slug' => $this->model->module_slug(),
-                ]);
-
-            } elseif ($this->model?->model_singular()) {
-                $packageInfo->setOptions([
-                    'module_slug' => Str::of($this->model->model_singular())->slug()->toString(),
-                ]);
+                $module_slug = $this->model->module_slug();
+            } elseif ($this->model?->module()) {
+                $module_slug = Str::of($this->model->module())->slug()->toString();
             }
+        }
+        if ($module_slug) {
+            $packageInfo->setOptions([
+                'module_slug' => $module_slug,
+            ]);
         }
 
         $this->searches['module_slug'] = $packageInfo->module_slug();
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$packageInfo' => $packageInfo,
+        //     '$module_slug' => $module_slug,
+        //     '$packageInfo->module_slug()' => $packageInfo->module_slug(),
+        //     '$this->searches[module_slug]' => $this->searches['module_slug'],
+        // ]);
+        // if ('IndexController' === $this->c->name()) {
+        //     dd([
+        //         '__METHOD__' => __METHOD__,
+        //         '$this->c->toArray()' => $this->c->toArray(),
+        //         '$packageInfo' => $packageInfo,
+        //         '$this->c' => $this->c,
+        //         '$module_slug' => $module_slug,
+        //         '$packageInfo->module_slug()' => $packageInfo->module_slug(),
+        //         '$this->searches[module_slug]' => $this->searches['module_slug'],
+        //         '$this->c->type()' => $this->c->type(),
+        //         '$this->c->module_slug()' => $this->c->module_slug(),
+        //         '$packageInfo->module_slug()' => $packageInfo->module_slug(),
+        //     ]);
+        // }
     }
 
     public function preparePackageInfo_model(

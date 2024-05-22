@@ -96,6 +96,7 @@ trait BuildRoutes
         //     '$modelFile' => $modelFile,
         //     '$options' => $options,
         //     '$this->options()' => $this->options(),
+        //     '$this->c' => $this->c,
         // ]);
         if (empty($this->call('playground:make:route', $options))) {
 

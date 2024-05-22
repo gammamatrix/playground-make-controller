@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| {{module_label}} Routes
+| {{module}} Routes
 |--------------------------------------------------------------------------
 |
 |
@@ -17,16 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => '{{route_prefix}}',
-    'middleware' => [
-        'auth',
-        'web',
-    ],
+    'middleware' => config('{{package}}.middleware.default'),
     'namespace' => '\{{namespace}}\Http\Controllers',
 ], function () {
 
     Route::get('/', [
         'as'   => '{{route}}',
         'uses' => 'IndexController@index',
-    ]);
+    ]){{route_can}};
 
 });

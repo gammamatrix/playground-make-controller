@@ -53,6 +53,7 @@ class RouteMakeCommand extends GeneratorCommand
         'package' => '',
         'config' => '',
         'route_prefix' => '',
+        'route_can' => '',
     ];
 
     /**
@@ -170,6 +171,15 @@ class RouteMakeCommand extends GeneratorCommand
                     $this->c->module_slug()
                 ),
             ]);
+
+            if ($model_fqdn) {
+                $this->searches['route_can'] = sprintf(
+                    '->can(\'%1$s\', %2$s::class)',
+                    'view',
+                    $this->parseClassInput($model_fqdn)
+                );
+            }
+
         } elseif ($type === 'playground-resource') {
             $this->c->setOptions([
                 'class' => $this->c->module_slug(),
@@ -195,7 +205,7 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        // dump([
+        // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$options' => $options,
         //     '$this->c' => $this->c,
@@ -350,11 +360,17 @@ class RouteMakeCommand extends GeneratorCommand
             'playground-api',
             'playground-api',
             'resource',
-            'resource-index',
-            'playground-resource-index',
             'playground-resource',
         ])) {
             $name = Str::of($name)->plural()->kebab()->toString();
+        } elseif (in_array($this->c->type(), [
+            'resource-index',
+            'playground-resource-index',
+        ])) {
+            $module_slug = $this->c->module_slug();
+            if ($module_slug) {
+                $name = $module_slug;
+            }
         } else {
             $name = Str::of($name)->kebab()->toString();
         }
