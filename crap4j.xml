@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-22 02:52:04</timestamp>
+  <timestamp>2024-05-22 05:06:49</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>152</methodCount>
-    <crapMethodCount>9</crapMethodCount>
-    <crapLoad>114</crapLoad>
-    <totalCrap>2560.85</totalCrap>
-    <crapMethodPercent>5.92</crapMethodPercent>
+    <methodCount>156</methodCount>
+    <crapMethodCount>10</crapMethodCount>
+    <crapLoad>123</crapLoad>
+    <totalCrap>2671.64</totalCrap>
+    <crapMethodPercent>6.41</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -490,9 +490,9 @@
       <methodName>skeleton_policy</methodName>
       <methodSignature>skeleton_policy(string $type): void</methodSignature>
       <fullMethod>skeleton_policy(string $type): void</fullMethod>
-      <crap>13.96</crap>
-      <complexity>12</complexity>
-      <coverage>76.12</coverage>
+      <crap>15.53</crap>
+      <complexity>13</complexity>
+      <coverage>75.36</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -974,9 +974,9 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>11</crap>
-      <complexity>11</complexity>
-      <coverage>100</coverage>
+      <crap>12.05</crap>
+      <complexity>12</complexity>
+      <coverage>92.86</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1020,6 +1020,17 @@
       <fullMethod>addRoleToView(string $role): self</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Policy</className>
+      <methodName>withTests</methodName>
+      <methodSignature>withTests(): bool</methodSignature>
+      <fullMethod>withTests(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1326,9 +1337,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>11</crap>
-      <complexity>11</complexity>
-      <coverage>100</coverage>
+      <crap>14.11</crap>
+      <complexity>13</complexity>
+      <coverage>81.25</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1378,6 +1389,17 @@
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
       <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>finish</methodName>
+      <methodSignature>finish(): ?bool</methodSignature>
+      <fullMethod>finish(): ?bool</fullMethod>
+      <crap>2.06</crap>
+      <complexity>2</complexity>
+      <coverage>75</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
       <methodName>userProviderModel</methodName>
       <methodSignature>userProviderModel(): string</methodSignature>
       <fullMethod>userProviderModel(): string</fullMethod>
@@ -1418,6 +1440,28 @@
       <complexity>1</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>createTest</methodName>
+      <methodSignature>createTest(): void</methodSignature>
+      <fullMethod>createTest(): void</fullMethod>
+      <crap>12</crap>
+      <complexity>3</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\PolicyMakeCommand</className>
+      <methodName>command_tests_playground_policy</methodName>
+      <methodSignature>command_tests_playground_policy(): void</methodSignature>
+      <fullMethod>command_tests_playground_policy(): void</fullMethod>
+      <crap>90</crap>
+      <complexity>9</complexity>
+      <coverage>0</coverage>
+      <crapLoad>9</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
@@ -1625,7 +1669,7 @@
       <fullMethod>getPath($name): string</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
-      <coverage>95.65</coverage>
+      <coverage>95.45</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
