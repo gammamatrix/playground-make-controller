@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-21 06:24:53</timestamp>
+  <timestamp>2024-05-22 02:52:04</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>152</methodCount>
     <crapMethodCount>9</crapMethodCount>
     <crapLoad>114</crapLoad>
-    <totalCrap>2557.26</totalCrap>
+    <totalCrap>2560.85</totalCrap>
     <crapMethodPercent>5.92</crapMethodPercent>
   </stats>
   <methods>
@@ -402,9 +402,9 @@
       <methodName>preparePackageInfo_module_slug</methodName>
       <methodSignature>preparePackageInfo_module_slug(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_module_slug(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>4.43</crap>
-      <complexity>4</complexity>
-      <coverage>70</coverage>
+      <crap>5.02</crap>
+      <complexity>5</complexity>
+      <coverage>90.91</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1568,8 +1568,8 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>16</crap>
-      <complexity>16</complexity>
+      <crap>17</crap>
+      <complexity>17</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1623,9 +1623,9 @@
       <methodName>getPath</methodName>
       <methodSignature>getPath($name): string</methodSignature>
       <fullMethod>getPath($name): string</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>95.65</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
