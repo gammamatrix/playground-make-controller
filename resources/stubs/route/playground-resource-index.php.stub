@@ -22,7 +22,7 @@ Route::group([
 ], function () {
 
     Route::get('/', [
-        'as'   => '{{route}}',
+        'as' => '{{route}}',
         'uses' => 'IndexController@index',
     ]){{route_can}};
 

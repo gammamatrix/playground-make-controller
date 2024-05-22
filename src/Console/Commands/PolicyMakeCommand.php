@@ -6,6 +6,7 @@
 declare(strict_types=1);
 namespace Playground\Make\Controller\Console\Commands;
 
+use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Support\Str;
 use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
@@ -28,6 +29,7 @@ class PolicyMakeCommand extends GeneratorCommand
 {
     use Building\Policy\BuildRoles;
     use Concerns\BuildModel;
+    use CreatesMatchingTest;
 
     /**
      * @var class-string<Configuration>
@@ -81,6 +83,12 @@ class PolicyMakeCommand extends GeneratorCommand
     public function prepareOptions(): void
     {
         $options = $this->options();
+
+        if ($this->hasOption('test') && $this->option('test')) {
+            $this->c->setOptions([
+                'withTests' => true,
+            ]);
+        }
 
         $type = $this->c->type();
 
@@ -163,6 +171,17 @@ class PolicyMakeCommand extends GeneratorCommand
         return is_string($guardProvider) ? $guardProvider : '';
     }
 
+    public function finish(): ?bool
+    {
+        if ($this->c->withTests()) {
+            $this->createTest();
+        }
+
+        $this->saveConfiguration();
+
+        return $this->return_status;
+    }
+
     /**
      * Get the model for the guard's user provider.
      *
@@ -229,6 +248,81 @@ class PolicyMakeCommand extends GeneratorCommand
         $options[] = ['roles-view', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The roles to view.'];
 
         return $options;
+    }
+
+    public function createTest(): void
+    {
+        $type = $this->c->type();
+
+        if (in_array($type, [
+            'abstract',
+        ])) {
+        } elseif (in_array($type, [
+            'playground-api',
+            'playground-resource',
+        ])) {
+            $this->command_tests_playground_policy();
+        }
+
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$type' => $type,
+        //     '$this->options()' => $this->options(),
+        // ]);
+
+    }
+
+    public function command_tests_playground_policy(): void
+    {
+        $withCovers = $this->hasOption('covers') && $this->option('covers');
+        $force = $this->hasOption('force') && $this->option('force');
+        $model = $this->hasOption('model') ? $this->option('model') : '';
+
+        $options = [
+            'name' => 'PolicyTest',
+            // '--namespace' => $this->c->namespace(),
+            '--namespace' => $this->rootNamespace(),
+            '--force' => $force,
+            '--playground' => true,
+            '--package' => $this->c->package(),
+            '--organization' => $this->c->organization(),
+            '--model' => $model,
+            '--module' => $this->c->module(),
+            '--type' => 'policy',
+        ];
+
+        $modelFile = $this->getModelFile();
+
+        if ($this->hasOption('model-file') && $this->option('model-file')) {
+            $options['--model-file'] = $this->option('model-file');
+        } else {
+            if ($modelFile) {
+                $options['--model-file'] = $modelFile;
+            }
+        }
+
+        if ($withCovers) {
+            $options['--covers'] = true;
+        }
+
+        if ($this->c->skeleton()) {
+            $options['--skeleton'] = true;
+        }
+
+        $options['--suite'] = 'unit';
+
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
+
+        $this->call('playground:make:test', $options);
+
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$this->options()' => $this->options(),
+        // ]);
     }
 
     // /**

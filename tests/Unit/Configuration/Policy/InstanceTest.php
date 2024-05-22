@@ -38,6 +38,7 @@ class InstanceTest extends TestCase
         'namespace' => '',
         'organization' => '',
         'package' => '',
+        'withTests' => false,
         'playground' => false,
         // properties
         'models' => [],

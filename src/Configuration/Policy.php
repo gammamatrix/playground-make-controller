@@ -23,6 +23,8 @@ class Policy extends PrimaryConfiguration
      */
     protected array $rolesToView = [];
 
+    protected bool $withTests = false;
+
     /**
      * @var array<string, mixed>
      */
@@ -38,6 +40,7 @@ class Policy extends PrimaryConfiguration
         'namespace' => '',
         'organization' => '',
         'package' => '',
+        'withTests' => false,
         'playground' => false,
         // properties
         'models' => [],
@@ -70,6 +73,10 @@ class Policy extends PrimaryConfiguration
                     $this->addRoleToView($role);
                 }
             }
+        }
+
+        if (array_key_exists('withTests', $options)) {
+            $this->withTests = ! empty($options['withTests']);
         }
 
         return $this;
@@ -107,5 +114,10 @@ class Policy extends PrimaryConfiguration
         }
 
         return $this;
+    }
+
+    public function withTests(): bool
+    {
+        return $this->withTests;
     }
 }

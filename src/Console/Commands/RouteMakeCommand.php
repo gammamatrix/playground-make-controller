@@ -358,7 +358,6 @@ class RouteMakeCommand extends GeneratorCommand
         if (in_array($this->c->type(), [
             'api',
             'playground-api',
-            'playground-api',
             'resource',
             'playground-resource',
         ])) {

@@ -87,6 +87,10 @@ trait BuildPolicies
                 'root',
             ];
         }
+
+        if ($this->c->withTests()) {
+            $params['--test'] = true;
+        }
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$params' => $params,
