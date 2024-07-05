@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-22 05:06:49</timestamp>
+  <timestamp>2024-07-05 22:34:49</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>156</methodCount>
+    <methodCount>157</methodCount>
     <crapMethodCount>10</crapMethodCount>
     <crapLoad>123</crapLoad>
-    <totalCrap>2671.64</totalCrap>
-    <crapMethodPercent>6.41</crapMethodPercent>
+    <totalCrap>2680.99</totalCrap>
+    <crapMethodPercent>6.37</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -303,9 +303,9 @@
       <methodName>prepareOptionsRoute</methodName>
       <methodSignature>prepareOptionsRoute(array $options): void</methodSignature>
       <fullMethod>prepareOptionsRoute(array $options): void</fullMethod>
-      <crap>11.19</crap>
+      <crap>12.47</crap>
       <complexity>9</complexity>
-      <coverage>70</coverage>
+      <coverage>65</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1469,9 +1469,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
-      <coverage>100</coverage>
+      <crap>7.02</crap>
+      <complexity>7</complexity>
+      <coverage>92.59</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1480,9 +1480,9 @@
       <methodName>getConfigurationFilename</methodName>
       <methodSignature>getConfigurationFilename(): string</methodSignature>
       <fullMethod>getConfigurationFilename(): string</fullMethod>
-      <crap>3</crap>
-      <complexity>3</complexity>
-      <coverage>100</coverage>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>94.12</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1491,9 +1491,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>9</crap>
-      <complexity>9</complexity>
-      <coverage>100</coverage>
+      <crap>10</crap>
+      <complexity>10</complexity>
+      <coverage>97.37</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1513,9 +1513,9 @@
       <methodName>getDefaultNamespace</methodName>
       <methodSignature>getDefaultNamespace($rootNamespace): string</methodSignature>
       <fullMethod>getDefaultNamespace($rootNamespace): string</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
+      <crap>3.05</crap>
+      <complexity>3</complexity>
+      <coverage>82.35</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1535,9 +1535,20 @@
       <methodName>buildClass</methodName>
       <methodSignature>buildClass($name): string</methodSignature>
       <fullMethod>buildClass($name): string</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>buildFailedValidation</methodName>
+      <methodSignature>buildFailedValidation(): void</methodSignature>
+      <fullMethod>buildFailedValidation(): void</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
