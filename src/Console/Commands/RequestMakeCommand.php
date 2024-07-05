@@ -74,6 +74,7 @@ class RequestMakeCommand extends GeneratorCommand
         'slug_source' => 'label',
         'prepareForValidation' => '',
         'passedValidation' => '',
+        'failedValidation' => '',
     ];
 
     /**
@@ -103,7 +104,7 @@ class RequestMakeCommand extends GeneratorCommand
     {
         $options = $this->options();
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         // Extends
 
@@ -136,13 +137,25 @@ class RequestMakeCommand extends GeneratorCommand
         $this->searches['extends'] = $this->parseClassInput($this->c->extends());
 
         $this->initModel($this->c->skeleton());
+
+        if (in_array($type, [
+            'form-request',
+        ])) {
+            if (! empty($options['api'])) {
+                $this->buildFailedValidation();
+            }
+        }
     }
 
     protected function getConfigurationFilename(): string
     {
         $this->configurationType = $this->getConfigurationType();
 
-        if ($this->useSubfolder) {
+        if (in_array($this->c->type(), [
+            'form-request',
+        ])) {
+            return 'request.form.json';
+        } elseif ($this->useSubfolder) {
             return sprintf(
                 '%1$s/%2$s%3$s.json',
                 Str::of($this->c->name())->kebab(),
@@ -162,6 +175,7 @@ class RequestMakeCommand extends GeneratorCommand
      * @var array<int, string>
      */
     protected array $options_type_suggested = [
+        'form-request',
         'abstract',
         'abstract-index',
         'abstract-store',
@@ -211,6 +225,10 @@ class RequestMakeCommand extends GeneratorCommand
             'update',
         ])) {
             $template = 'request/update.stub';
+        } elseif (in_array($this->configurationType, [
+            'form-request',
+        ])) {
+            $template = 'request/FormRequest.php.stub';
         } elseif (! empty($this->configurationType)) {
             $template = 'request/request.stub';
             // $this->useSubfolder = true;
@@ -257,8 +275,20 @@ class RequestMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace): string
     {
         $this->useSubfolder = $this->c->class() !== $this->c->name();
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$rootNamespace' => $rootNamespace,
+        //     '$this->c->type()' => $this->c->type(),
+        // ]);
 
-        if ($this->useSubfolder) {
+        if (in_array($this->c->type(), [
+            'form-request',
+        ])) {
+            return Str::of($this->parseClassInput((
+                // TODO should not have to remove this
+                Str::of($rootNamespace)->before('FormRequest')->toString()
+            )))->finish('\\')->finish('Http\\Requests')->toString();
+        } elseif ($this->useSubfolder) {
             return rtrim(sprintf(
                 '%1$s\\Http\\Requests\\%2$s',
                 rtrim($rootNamespace, '\\'),
@@ -286,6 +316,8 @@ class RequestMakeCommand extends GeneratorCommand
         $options[] = ['skeleton', null, InputOption::VALUE_NONE, 'Create the skeleton for the request type'];
         $options[] = ['type', null, InputOption::VALUE_OPTIONAL, 'Specify the request type.'];
         $options[] = ['abstract', null, InputOption::VALUE_NONE, 'Make the request abstract.'];
+        $options[] = ['api', null, InputOption::VALUE_NONE, 'The request is for APIs'];
+        $options[] = ['resource', null, InputOption::VALUE_NONE, 'The request is for resources'];
 
         return $options;
     }
@@ -318,11 +350,13 @@ class RequestMakeCommand extends GeneratorCommand
 
         $this->buildClass_model($name);
 
-        $this->searches['namespacedRequest'] = sprintf(
-            '%1$s\Http\Requests\%2$s',
-            rtrim($this->rootNamespace(), '\\'),
-            rtrim($this->c->name(), '\\')
-        );
+        if ($this->c->name()) {
+            $this->searches['namespacedRequest'] = sprintf(
+                '%1$s\Http\Requests\%2$s',
+                rtrim($this->rootNamespace(), '\\'),
+                rtrim($this->c->name(), '\\')
+            );
+        }
 
         if (in_array($this->c->type(), [
             'index',
@@ -339,5 +373,33 @@ class RequestMakeCommand extends GeneratorCommand
         // ]);
 
         return parent::buildClass($name);
+    }
+
+    protected function buildFailedValidation(): void
+    {
+        $this->searches['failedValidation'] = PHP_EOL;
+
+        $this->searches['failedValidation'] .= <<<PHP_CODE
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function failedValidation(Validator \$validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'errors' => \$validator->errors(),
+        ], 422));
+        // \$exception = \$validator->getException();
+
+        // throw (new \$exception(\$validator))
+        //             ->errorBag(\$this->errorBag)
+        //             ->redirectTo(\$this->getRedirectUrl());
+    }
+PHP_CODE;
+
+        $this->searches['failedValidation'] .= PHP_EOL;
     }
 }
