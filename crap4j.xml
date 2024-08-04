@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-07-05 22:34:49</timestamp>
+  <timestamp>2024-08-04 18:35:53</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>157</methodCount>
     <crapMethodCount>10</crapMethodCount>
-    <crapLoad>123</crapLoad>
-    <totalCrap>2680.99</totalCrap>
+    <crapLoad>125</crapLoad>
+    <totalCrap>2725.6</totalCrap>
     <crapMethodPercent>6.37</crapMethodPercent>
   </stats>
   <methods>
@@ -124,17 +124,6 @@
     <method>
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
-      <methodName>createPaginationTrait</methodName>
-      <methodSignature>createPaginationTrait(string $class, string $template): void</methodSignature>
-      <fullMethod>createPaginationTrait(string $class, string $template): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Building\Request</package>
-      <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
       <methodName>buildClass_index_dates</methodName>
       <methodSignature>buildClass_index_dates(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
       <fullMethod>buildClass_index_dates(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
@@ -190,23 +179,12 @@
     <method>
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
-      <methodName>createTrait</methodName>
-      <methodSignature>createTrait(string $folder, string $class, string $template): void</methodSignature>
-      <fullMethod>createTrait(string $folder, string $class, string $template): void</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Building\Request</package>
-      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
       <methodName>buildClass_form</methodName>
       <methodSignature>buildClass_form(string $name): void</methodSignature>
       <fullMethod>buildClass_form(string $name): void</fullMethod>
-      <crap>13.43</crap>
+      <crap>13</crap>
       <complexity>13</complexity>
-      <coverage>86.3</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -251,6 +229,17 @@
       <crap>5.32</crap>
       <complexity>3</complexity>
       <coverage>36.36</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Request</package>
+      <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
+      <methodName>buildClass_rules_revision</methodName>
+      <methodSignature>buildClass_rules_revision(): void</methodSignature>
+      <fullMethod>buildClass_rules_revision(): void</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -501,10 +490,10 @@
       <methodName>skeleton_requests</methodName>
       <methodSignature>skeleton_requests(string $type): void</methodSignature>
       <fullMethod>skeleton_requests(string $type): void</fullMethod>
-      <crap>81.75</crap>
+      <crap>88.38</crap>
       <complexity>20</complexity>
-      <coverage>46.35</coverage>
-      <crapLoad>11</crapLoad>
+      <coverage>44.5</coverage>
+      <crapLoad>12</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -589,9 +578,9 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>25.93</crap>
-      <complexity>18</complexity>
-      <coverage>70.97</coverage>
+      <crap>29.05</crap>
+      <complexity>19</complexity>
+      <coverage>69.7</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -688,6 +677,17 @@
       <methodName>module_route</methodName>
       <methodSignature>module_route(): string</methodSignature>
       <fullMethod>module_route(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>revision</methodName>
+      <methodSignature>revision(): bool</methodSignature>
+      <fullMethod>revision(): bool</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -1238,10 +1238,10 @@
       <methodName>prepareOptionsFromOptions</methodName>
       <methodSignature>prepareOptionsFromOptions(): void</methodSignature>
       <fullMethod>prepareOptionsFromOptions(): void</fullMethod>
-      <crap>113.23</crap>
-      <complexity>15</complexity>
-      <coverage>24.14</coverage>
-      <crapLoad>12</crapLoad>
+      <crap>142.65</crap>
+      <complexity>17</complexity>
+      <coverage>24.24</coverage>
+      <crapLoad>13</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
@@ -1260,9 +1260,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>13.05</crap>
-      <complexity>9</complexity>
-      <coverage>63.16</coverage>
+      <crap>20.94</crap>
+      <complexity>11</complexity>
+      <coverage>56.52</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1469,9 +1469,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>7.02</crap>
+      <crap>7</crap>
       <complexity>7</complexity>
-      <coverage>92.59</coverage>
+      <coverage>96.15</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
