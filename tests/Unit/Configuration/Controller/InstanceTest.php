@@ -7,8 +7,8 @@ declare(strict_types=1);
 namespace Tests\Unit\Playground\Make\Controller\Configuration\Controller;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tests\Unit\Playground\Make\Controller\TestCase;
 use Playground\Make\Controller\Configuration\Controller;
+use Tests\Unit\Playground\Make\Controller\TestCase;
 
 /**
  * \Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest

@@ -7,8 +7,8 @@ declare(strict_types=1);
 namespace Tests\Unit\Playground\Make\Controller\Configuration\Route;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tests\Unit\Playground\Make\Controller\TestCase;
 use Playground\Make\Controller\Configuration\Route;
+use Tests\Unit\Playground\Make\Controller\TestCase;
 
 /**
  * \Tests\Unit\Playground\Make\Controller\Configuration\Route\InstanceTest
@@ -109,7 +109,6 @@ class InstanceTest extends TestCase
 
         $this->assertNotEmpty($instance->folder());
         $this->assertTrue($instance->skeleton());
-
 
         $this->assertSame('contacts', $instance->class());
         $this->assertSame('ContactController', $instance->controller());

@@ -19,6 +19,7 @@ trait FileTrait
         $file = $this->getResourceFile($type);
         $content = file_exists($file) ? file_get_contents($file) : null;
         $data = $content ? json_decode($content, true) : [];
+
         return is_array($data) ? $data : [];
     }
 
@@ -50,14 +51,14 @@ trait FileTrait
             'playground-model-resource',
             'playground-model-api',
         ])) {
-                $file = sprintf(
-                    '%1$s/resources/testing/configurations/model.backlog.json',
-                    $package_base
-                );
+            $file = sprintf(
+                '%1$s/resources/testing/configurations/model.backlog.json',
+                $package_base
+            );
 
-        //
-        // Policy
-        //
+            //
+            // Policy
+            //
 
         } elseif (in_array($type, [
             'test-policy',
@@ -67,9 +68,9 @@ trait FileTrait
                 $package_base
             );
 
-        //
-        // Request
-        //
+            //
+            // Request
+            //
 
         } elseif (in_array($type, [
             'request',
@@ -80,9 +81,9 @@ trait FileTrait
                 $package_base
             );
 
-        //
-        // Route
-        //
+            //
+            // Route
+            //
 
         } elseif (in_array($type, [
             'route',
@@ -93,7 +94,7 @@ trait FileTrait
                 $package_base
             );
 
-        // Resource
+            // Resource
 
         } elseif (in_array($type, [
             'resource',
