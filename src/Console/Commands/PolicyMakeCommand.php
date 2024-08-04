@@ -6,7 +6,7 @@
 declare(strict_types=1);
 namespace Playground\Make\Controller\Console\Commands;
 
-use Illuminate\Console\Concerns\CreatesMatchingTest;
+// use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Support\Str;
 use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
@@ -29,7 +29,7 @@ class PolicyMakeCommand extends GeneratorCommand
 {
     use Building\Policy\BuildRoles;
     use Concerns\BuildModel;
-    use CreatesMatchingTest;
+    // use CreatesMatchingTest;
 
     /**
      * @var class-string<Configuration>
@@ -173,6 +173,10 @@ class PolicyMakeCommand extends GeneratorCommand
 
     public function finish(): ?bool
     {
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$this->c->withTests()' => $this->c->withTests(),
+        // ]);
         if ($this->c->withTests()) {
             $this->createTest();
         }
@@ -246,6 +250,7 @@ class PolicyMakeCommand extends GeneratorCommand
         $options[] = ['guard', 'g', InputOption::VALUE_OPTIONAL, 'The guard that the policy relies on'];
         $options[] = ['roles-action', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The roles for action.'];
         $options[] = ['roles-view', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The roles to view.'];
+        $options[] = ['test', null, InputOption::VALUE_NONE, 'Create a test for the policy'];
 
         return $options;
     }
@@ -311,7 +316,7 @@ class PolicyMakeCommand extends GeneratorCommand
 
         $options['--suite'] = 'unit';
 
-        // dump([
+        // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$options' => $options,
         // ]);

@@ -4,11 +4,11 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Requests\{{model}};
 
 {{ use }}
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Requests\{{model}}\{{ class }}
  */
 class {{ class }} extends {{ extends }}{{ implements }}
 {

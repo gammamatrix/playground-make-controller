@@ -128,7 +128,7 @@ trait BuildIndex
 
         $slug = false;
 
-        $traits = [];
+        // $traits = [];
 
         if (in_array($this->c->type(), [
             'index',
@@ -219,34 +219,34 @@ trait BuildIndex
     //     }
     // }
 
-    protected function createPaginationTrait(string $class, string $template): void
-    {
-        $path = $this->resolveStubPath($template);
+    // protected function createPaginationTrait(string $class, string $template): void
+    // {
+    //     $path = $this->resolveStubPath($template);
 
-        $stub = $this->files->get($path);
+    //     $stub = $this->files->get($path);
 
-        $this->search_and_replace($stub);
+    //     $this->search_and_replace($stub);
 
-        $file = sprintf('%1$s.php', $class);
+    //     $file = sprintf('%1$s.php', $class);
 
-        $destination = sprintf(
-            '%1$s/%2$s',
-            $this->folder(),
-            $file
-        );
+    //     $destination = sprintf(
+    //         '%1$s/%2$s',
+    //         $this->folder(),
+    //         $file
+    //     );
 
-        $full_path = $this->laravel->storagePath().$destination;
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->folder()' => $this->folder(),
-        //     '$destination' => $destination,
-        //     '$full_path' => $full_path,
-        // ]);
+    //     $full_path = $this->laravel->storagePath().$destination;
+    //     // dd([
+    //     //     '__METHOD__' => __METHOD__,
+    //     //     '$this->folder()' => $this->folder(),
+    //     //     '$destination' => $destination,
+    //     //     '$full_path' => $full_path,
+    //     // ]);
 
-        $this->files->put($full_path, $stub);
+    //     $this->files->put($full_path, $stub);
 
-        $this->components->info(sprintf('%s [%s] created successfully.', $file, $full_path));
-    }
+    //     $this->components->info(sprintf('%s [%s] created successfully.', $file, $full_path));
+    // }
 
     protected function buildClass_index_dates(Filters $filters): void
     {

@@ -14,50 +14,62 @@ use Playground\Make\Configuration\Model;
  */
 trait BuildRequest
 {
-    protected function createTrait(
-        string $folder,
-        string $class,
-        string $template
-    ): void {
-        $path = $this->resolveStubPath($template);
+    // protected function createTrait(
+    //     string $folder,
+    //     string $class,
+    //     string $template
+    // ): void {
+    //     $path = $this->resolveStubPath($template);
 
-        $stub = $this->files->get($path);
+    //     $stub = $this->files->get($path);
 
-        $this->search_and_replace($stub);
+    //     $this->search_and_replace($stub);
 
-        $file = sprintf('%1$s.php', $class);
+    //     $file = sprintf('%1$s.php', $class);
 
-        $destination = sprintf(
-            '%1$s/%2$s',
-            $folder,
-            $file
-        );
+    //     $destination = sprintf(
+    //         '%1$s/%2$s',
+    //         $folder,
+    //         $file
+    //     );
 
-        $full_path = $this->laravel->storagePath().$destination;
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->folder()' => $this->folder(),
-        //     '$destination' => $destination,
-        //     '$full_path' => $full_path,
-        // ]);
+    //     $full_path = $this->laravel->storagePath().$destination;
+    //     // dd([
+    //     //     '__METHOD__' => __METHOD__,
+    //     //     '$this->folder()' => $this->folder(),
+    //     //     '$destination' => $destination,
+    //     //     '$full_path' => $full_path,
+    //     // ]);
 
-        $this->files->put($full_path, $stub);
+    //     $this->files->put($full_path, $stub);
 
-        $this->components->info(sprintf('%s [%s] created successfully.', $file, $full_path));
-    }
+    //     $this->components->info(sprintf('%s [%s] created successfully.', $file, $full_path));
+    // }
 
     protected function buildClass_form(string $name): void
     {
         $model = $this->model;
 
         $extends = 'FormRequest';
-        $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
+        $extends_use = sprintf(
+            '%1$s/Http/Requests/FormRequest',
+            $this->c->namespace()
+        );
+
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$name' => $name,
+        //     '$extends' => $extends,
+        //     '$extends_use' => $extends_use,
+        //     '$this->c->name()' => $this->c->name(),
+        //     '$this->c->namespace()' => $this->c->namespace(),
+        //     '$model->name()' => $model?->name(),
+        //     '$model->namespace()' => $model?->namespace(),
+        // ]);
 
         if (in_array($this->c->type(), [
             'create',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -65,8 +77,6 @@ trait BuildRequest
         } elseif (in_array($this->c->type(), [
             'destroy',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -74,8 +84,6 @@ trait BuildRequest
         } elseif (in_array($this->c->type(), [
             'edit',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -83,8 +91,6 @@ trait BuildRequest
         } elseif (in_array($this->c->type(), [
             'lock',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -92,8 +98,6 @@ trait BuildRequest
         } elseif (in_array($this->c->type(), [
             'restore',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -101,8 +105,6 @@ trait BuildRequest
         } elseif (in_array($this->c->type(), [
             'show',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -113,6 +115,7 @@ trait BuildRequest
             $extends = 'BaseStoreRequest';
             $extends_use = 'Playground/Http/Requests/StoreRequest as BaseStoreRequest';
             $this->buildClass_slug_table();
+            $this->buildClass_rules_revision();
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -120,8 +123,6 @@ trait BuildRequest
         } elseif (in_array($this->c->type(), [
             'unlock',
         ])) {
-            $extends = 'FormRequest';
-            $extends_use = 'Playground/Matrix/Resource/Http/Requests/FormRequest';
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -132,6 +133,7 @@ trait BuildRequest
             $extends = 'BaseUpdateRequest';
             $extends_use = 'Playground/Http/Requests/UpdateRequest as BaseUpdateRequest';
             $this->buildClass_slug_table();
+            $this->buildClass_rules_revision();
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -403,9 +405,15 @@ PHP_CODE;
 
     public function buildClass_slug_table(): void
     {
-        if (in_array($this->searches['extends'], [
-            'AbstractStoreRequest',
-            'AbstractUpdateRequest',
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$this->searches[extends]' => $this->searches['extends'],
+        //     '$this->c->class()' => $this->c->class(),
+        // ]);
+
+        if (in_array($this->c->class(), [
+            'StoreRequest',
+            'UpdateRequest',
         ])) {
             if (! empty($this->searches['properties'])) {
                 $this->searches['properties'] .= PHP_EOL;
@@ -416,5 +424,37 @@ PHP_CODE;
                 PHP_EOL
             );
         }
+    }
+
+    protected function buildClass_rules_revision(): void
+    {
+        $package = $this->c->package();
+
+        $this->searches['methods'] = PHP_EOL.PHP_EOL;
+
+        $this->searches['methods'] .= <<<PHP_CODE
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        \$rules = parent::rules();
+
+        /**
+         * @var array<string, bool> \$revisions
+         */
+        \$revisions = config('$package.revisions');
+
+        if (! empty(\$revisions['optional'])) {
+            \$rules['revision'] = 'bool';
+        }
+
+        return \$rules;
+    }
+PHP_CODE;
+
+        // $this->searches['methods'] .= PHP_EOL;
     }
 }

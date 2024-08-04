@@ -6,7 +6,7 @@
 declare(strict_types=1);
 namespace Playground\Make\Controller\Console\Commands;
 
-use Illuminate\Console\Concerns\CreatesMatchingTest;
+// use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Support\Str;
 use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
@@ -43,7 +43,7 @@ class ControllerMakeCommand extends GeneratorCommand
     use Concerns\BuildImplements;
     use Concerns\BuildModel;
     use Concerns\BuildUses;
-    use CreatesMatchingTest;
+    // use CreatesMatchingTest;
 
     /**
      * @var class-string<Configuration>
@@ -265,6 +265,12 @@ class ControllerMakeCommand extends GeneratorCommand
                 'withTests' => true,
             ]);
         }
+
+        if ($this->hasOption('revision') && $this->option('revision')) {
+            $this->c->setOptions([
+                'revision' => true,
+            ]);
+        }
     }
 
     protected function getConfigurationFilename(): string
@@ -321,9 +327,17 @@ class ControllerMakeCommand extends GeneratorCommand
         } elseif ($type === 'api') {
             $template = 'controller/controller.api.stub';
         } elseif ($type === 'playground-api') {
-            $template = 'controller/controller.api.stub';
+            if ($this->c->revision()) {
+                $template = 'controller/controller.api-revision.stub';
+            } else {
+                $template = 'controller/controller.api.stub';
+            }
         } elseif ($type === 'playground-resource') {
-            $template = 'controller/controller.resource.stub';
+            if ($this->c->revision()) {
+                $template = 'controller/controller.resource-revision.stub';
+            } else {
+                $template = 'controller/controller.resource.stub';
+            }
         } elseif ($type === 'playground-resource-index') {
             $template = 'controller/controller.resource.index.stub';
         } elseif ($type === 'fractal-resource') {
@@ -519,6 +533,7 @@ class ControllerMakeCommand extends GeneratorCommand
             ['module',          null, InputOption::VALUE_OPTIONAL, 'The module that the '.strtolower($this->type).' belongs to'],
             ['parent',          'p', InputOption::VALUE_OPTIONAL,  'Generate a nested resource controller class'],
             ['playground',      null, InputOption::VALUE_NONE,     'Create a Playground controller'],
+            ['revision',        null, InputOption::VALUE_NONE,     'Create a Playground controller with revisions'],
             ['resource',        'r', InputOption::VALUE_NONE,      'Generate a resource controller class'],
             ['policies',        null, InputOption::VALUE_NONE,     'Generate policies for CRUD'],
             ['requests',        'R', InputOption::VALUE_NONE,      'Generate FormRequest classes for store and update'],

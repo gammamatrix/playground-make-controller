@@ -4,13 +4,13 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Requests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
 
 /**
- * \Playground\Matrix\Resource\Http\Requests\FormRequest
+ * \{{ namespace }}\Http\Requests\FormRequest
  */
 class FormRequest extends BaseFormRequest
 {
@@ -24,7 +24,6 @@ class FormRequest extends BaseFormRequest
      */
     public function authorize(): bool
     {
-        // return true;
         $user = $this->user();
 
         if (empty($user)) {

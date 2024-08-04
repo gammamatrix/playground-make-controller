@@ -9,6 +9,7 @@ namespace {{ namespace }}\Http\Controllers;
 {{ use }}use {{ namespacedRequest }};
 use {{ namespacedResource }};
 use {{ namespacedModel }};
+use {{ namespacedModel }}Revision;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
@@ -198,6 +199,144 @@ class {{ class }} extends {{ extends }}{{ implements }}
     }
 
     /**
+     * Restore the {{model_label}} resource from the trash.
+     *
+     * @route PUT /api/{{module_slug}}/{{model_slug_plural}}/revision/{{{model_slug}}_revision} {{model_route}}.revision.restore
+     */
+    public function restoreRevision(
+        {{model_label}}Revision ${{model_slug}}_revision,
+        RestoreRevisionRequest $request
+    ): JsonResponse|{{ model }}Resource {
+        $validated = $request->validated();
+
+        /**
+         * @var {{ model }} ${{model_slug}}
+         */
+        ${{model_slug}} = {{ model }}::where(
+            'id',
+            ${{model_slug}}_revision->{{model_slug}}_id
+        )->firstOrFail();
+
+        $this->saveRevision(${{model_slug}});
+
+        $user = $request->user();
+
+        foreach (${{model_slug}}->getFillable() as $column) {
+            ${{model_slug}}->setAttribute(
+                $column,
+                ${{model_slug}}_revision->getAttributeValue($column)
+            );
+        }
+
+        ${{model_slug}}->save();
+
+        return (new {{ model }}Resource(${{model_slug}}))->additional(['meta' => [
+            'info' => $this->packageInfo,
+        ]])->response($request);
+    }
+
+    /**
+     * Display the {{ model }} revision.
+     *
+     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/revision/{{{model_slug}}_revision} {{model_route}}.revision
+     */
+    public function revision(
+        {{ model }}Revision ${{model_slug}}_revision,
+        ShowRevisionRequest $request
+    ): JsonResponse|{{ model }}RevisionResource {
+        $validated = $request->validated();
+
+        $user = $request->user();
+
+        $meta = [
+            'session_user_id' => $user?->id,
+            'id' => ${{model_slug}}_revision->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
+        ];
+
+        return (new {{ model }}RevisionResource(${{model_slug}}_revision))->additional(['meta' => [
+            'info' => $this->packageInfo,
+        ]])->response($request);
+    }
+
+    /**
+     * Display a listing of {{model_label}} resources.
+     *
+     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}}/revisions {{model_route}}.revisions
+     */
+    public function revisions(
+        {{ model }} ${{model_slug}},
+        RevisionsRequest $request
+    ): JsonResponse|{{ model }}RevisionCollection {
+        $user = $request->user();
+
+        $validated = $request->validated();
+
+        $query = ${{model_slug}}->revisions();
+
+        $query->sort($validated['sort'] ?? null);
+
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
+            $query->filterTrash($validated['filter']['trash'] ?? null);
+
+            $query->filterIds(
+                $request->getPaginationIds(),
+                $validated
+            );
+
+            $query->filterFlags(
+                $request->getPaginationFlags(),
+                $validated
+            );
+
+            $query->filterDates(
+                $request->getPaginationDates(),
+                $validated
+            );
+
+            $query->filterColumns(
+                $request->getPaginationColumns(),
+                $validated
+            );
+        }
+
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate($perPage);
+
+        $paginator->appends($validated);
+
+        return (new {{ model }}RevisionCollection($paginator))->additional(['meta' => [
+            'info' => $this->packageInfo,
+        ]])->response($request);
+    }
+
+    /**
+     * Save a revision of a {{model_label}}.
+     */
+    public function saveRevision({{ model }} ${{model_slug}}): {{ model }}Revision
+    {
+        $revision = new {{ model }}Revision(${{model_slug}}->toArray());
+
+        $revision->created_by_id = ${{model_slug}}->created_by_id;
+        $revision->modified_by_id = ${{model_slug}}->modified_by_id;
+        $revision->owned_by_id = ${{model_slug}}->owned_by_id;
+        $revision->{{model_slug}}_id = ${{model_slug}}->id;
+
+        $r = {{ model }}Revision::where('{{model_slug}}_id', ${{model_slug}}->id)->max('revision');
+        $r = ! is_numeric($r) || empty($r) || $r < 0 ? 0 : (int) $r;
+        $r++;
+
+        $revision->revision = $r;
+        ${{model_slug}}->revision = $r;
+
+        $revision->saveOrFail();
+
+        return $revision;
+    }
+
+    /**
      * Display the {{model_label}} resource.
      *
      * @route GET /api/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.show
@@ -270,6 +409,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\UpdateRequest $request
     ): JsonResponse {
+
+        $this->saveRevision(${{model_slug}});
 
         $validated = $request->validated();
 

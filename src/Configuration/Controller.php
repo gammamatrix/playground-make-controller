@@ -37,6 +37,7 @@ class Controller extends PrimaryConfiguration
         'withSwagger' => false,
         'withTests' => false,
         'playground' => false,
+        'revision' => '',
         'models' => [],
         'policies' => [],
         'requests' => [],
@@ -110,6 +111,8 @@ class Controller extends PrimaryConfiguration
 
     protected bool $playground = false;
 
+    protected bool $revision = false;
+
     protected string $privilege = '';
 
     protected string $route = '';
@@ -168,6 +171,10 @@ class Controller extends PrimaryConfiguration
         // if (array_key_exists('playground', $options)) {
         //     $this->playground = ! empty($options['playground']);
         // }
+
+        if (array_key_exists('revision', $options)) {
+            $this->revision = ! empty($options['revision']);
+        }
 
         if (! empty($options['module_route'])
             && is_string($options['module_route'])
@@ -284,6 +291,11 @@ class Controller extends PrimaryConfiguration
     // {
     //     return $this->playground;
     // }
+
+    public function revision(): bool
+    {
+        return $this->revision;
+    }
 
     public function route(): string
     {

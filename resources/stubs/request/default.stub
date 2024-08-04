@@ -4,13 +4,13 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Requests;
 
 {{ use }}
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Requests\{{ class }}
  */
 class {{ class }} extends FormRequest
 {

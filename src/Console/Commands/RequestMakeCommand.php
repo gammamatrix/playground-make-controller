@@ -142,7 +142,7 @@ class RequestMakeCommand extends GeneratorCommand
             'form-request',
         ])) {
             if (! empty($options['api'])) {
-                $this->buildFailedValidation();
+                // $this->buildFailedValidation();
             }
         }
     }

@@ -72,9 +72,17 @@ trait BuildRequests
                 // $extends = sprintf('%1$s/Http/Requests/FormRequest', $namespace);
             }
 
+            $requests['create'] = [
+                '--type' => 'create',
+                '--class' => 'CreateRequest',
+            ];
             $requests['destroy'] = [
                 '--type' => 'destroy',
                 '--class' => 'DestroyRequest',
+            ];
+            $requests['edit'] = [
+                '--type' => 'edit',
+                '--class' => 'EditRequest',
             ];
             $requests['index'] = [
                 '--type' => 'index',

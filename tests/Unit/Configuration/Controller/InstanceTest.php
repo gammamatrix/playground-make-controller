@@ -45,6 +45,7 @@ class InstanceTest extends TestCase
         'withSwagger' => false,
         'withTests' => false,
         'playground' => false,
+        'revision' => false,
         'models' => [],
         'policies' => [],
         'requests' => [],
