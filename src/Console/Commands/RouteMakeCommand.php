@@ -46,6 +46,9 @@ class RouteMakeCommand extends GeneratorCommand
         'modelVariable' => '',
         'model_column' => '',
         'model_label' => '',
+        'model_parameter' => '',
+        'model_variable' => '',
+        'model_slug' => '',
         'model_slug_plural' => '',
         'module' => '',
         'module_slug' => '',
@@ -130,6 +133,8 @@ class RouteMakeCommand extends GeneratorCommand
         $model_label = $this->c->model_label();
         $model_slug = $this->c->model_slug();
         $model_slug_plural = $this->c->model_slug_plural();
+        $model_parameter = Str::of($this->c->model_slug())->snake()->toString();
+        $model_variable = Str::of($this->c->model_slug())->studly()->toString();
 
         if ($model) {
             if (! $model_column) {
@@ -162,6 +167,8 @@ class RouteMakeCommand extends GeneratorCommand
         $this->searches['model_label'] = $this->c->model_label();
         $this->searches['model_slug'] = $this->c->model_slug();
         $this->searches['model_slug_plural'] = $this->c->model_slug_plural();
+        $this->searches['model_parameter'] = $model_parameter;
+        $this->searches['model_variable'] = $model_parameter;
 
         if ($type === 'playground-resource-index') {
             $this->c->setOptions([
@@ -205,12 +212,15 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$options' => $options,
-        //     '$this->c' => $this->c,
-        //     '$this->searches' => $this->searches,
-        // ]);
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$options' => $options,
+            '$model_slug' => $model_slug,
+            '$model_parameter' => $model_parameter,
+            '$model_variable' => $model_variable,
+            '$this->c' => $this->c,
+            '$this->searches' => $this->searches,
+        ]);
     }
 
     protected function getConfigurationFilename(): string
@@ -299,12 +309,22 @@ class RouteMakeCommand extends GeneratorCommand
 
         $type = $this->getConfigurationType();
 
+        $revision = $this->hasOption('revision') && $this->option('revision');
+
         if ($type === 'playground-resource-index') {
             $route = 'route/playground-resource-index.php.stub';
         } elseif ($type === 'playground-api') {
-            $route = 'route/playground-api.php.stub';
+            if ($revision) {
+                $route = 'route/playground-api-revisions.php.stub';
+            } else {
+                $route = 'route/playground-api.php.stub';
+            }
         } elseif ($type === 'playground-resource') {
-            $route = 'route/playground-resource.php.stub';
+            if ($revision) {
+                $route = 'route/playground-resource.php.stub';
+            } else {
+                $route = 'route/playground-resource.php.stub';
+            }
         }
 
         return $this->resolveStubPath($route);
@@ -329,6 +349,7 @@ class RouteMakeCommand extends GeneratorCommand
             ['package',         null, InputOption::VALUE_OPTIONAL, 'The package of the '.strtolower($this->type)],
             ['preload',         null,  InputOption::VALUE_NONE,    'Preload the existing configuration file for the '.strtolower($this->type)],
             ['skeleton',        null, InputOption::VALUE_NONE,     'Create the skeleton for the '.strtolower($this->type).' type'],
+            ['revision',        null, InputOption::VALUE_NONE,     'Enable revisions for the '.strtolower($this->type).' type'],
             // ['class',           null, InputOption::VALUE_OPTIONAL, 'The class name of the '.strtolower($this->type)],
             // ['extends',         null, InputOption::VALUE_OPTIONAL, 'The class that gets extended for the '.strtolower($this->type)],
             ['file',            null, InputOption::VALUE_OPTIONAL, 'The configuration file of the '.strtolower($this->type)],

@@ -16,7 +16,6 @@ trait BuildBlades
     public function skeleton_blades(string $type): void
     {
         if (! in_array($type, [
-            'playground-api',
             'playground-resource',
             'playground-resource-index',
         ])) {

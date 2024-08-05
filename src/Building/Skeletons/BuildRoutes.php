@@ -81,7 +81,11 @@ trait BuildRoutes
         }
 
         if (! empty($this->c->route()) && is_string($this->c->route())) {
-            $options['--route'] = $this->c->route();
+            $options['--route'] = $this->c->model_route();
+        }
+
+        if ($this->c->revision()) {
+            $options['--revision'] = true;
         }
 
         if ($type === 'api') {
@@ -91,13 +95,13 @@ trait BuildRoutes
         } elseif ($type === 'playground-api') {
         }
 
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$modelFile' => $modelFile,
-        //     '$options' => $options,
-        //     '$this->options()' => $this->options(),
-        //     '$this->c' => $this->c,
-        // ]);
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$modelFile' => $modelFile,
+            '$options' => $options,
+            '$this->options()' => $this->options(),
+            '$this->c' => $this->c,
+        ]);
         if (empty($this->call('playground:make:route', $options))) {
 
             // $path_resources_templates = $this->getResourcePackageFolder();

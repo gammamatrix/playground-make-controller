@@ -37,7 +37,7 @@ class Controller extends PrimaryConfiguration
         'withSwagger' => false,
         'withTests' => false,
         'playground' => false,
-        'revision' => '',
+        'revision' => false,
         'models' => [],
         'policies' => [],
         'requests' => [],

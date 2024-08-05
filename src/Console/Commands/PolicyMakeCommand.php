@@ -27,8 +27,10 @@ use Symfony\Component\Finder\Finder;
 #[AsCommand(name: 'playground:make:policy')]
 class PolicyMakeCommand extends GeneratorCommand
 {
+    use Building\Policy\BuildRevisions;
     use Building\Policy\BuildRoles;
     use Concerns\BuildModel;
+    use Concerns\BuildUses;
     // use CreatesMatchingTest;
 
     /**
@@ -55,6 +57,8 @@ class PolicyMakeCommand extends GeneratorCommand
         'modelVariable' => '',
         'rolesForAction' => '',
         'rolesToView' => '',
+        'revisions' => '',
+        'use' => '',
     ];
 
     /**
@@ -83,6 +87,11 @@ class PolicyMakeCommand extends GeneratorCommand
     public function prepareOptions(): void
     {
         $options = $this->options();
+        $revision = $this->hasOption('revision') && $this->option('revision');
+
+        if (! empty($options['model-file'])) {
+            $this->initModel($this->c->skeleton());
+        }
 
         if ($this->hasOption('test') && $this->option('test')) {
             $this->c->setOptions([
@@ -112,9 +121,18 @@ class PolicyMakeCommand extends GeneratorCommand
                 }
             }
         }
+
+        if ($revision) {
+            $this->make_revision_handling();
+        }
+        // $this->applyConfigurationToSearch();
+
         // dd([
         //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$this->searches' => $this->searches,
         //     '$this->c' => $this->c,
+        //     // '$this->model' => $this->model,
         //     '$this->c->type()' => $this->c->type(),
         //     // '$this->c->toArray()' => $this->c->toArray(),
         // ]);
@@ -251,6 +269,7 @@ class PolicyMakeCommand extends GeneratorCommand
         $options[] = ['roles-action', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The roles for action.'];
         $options[] = ['roles-view', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The roles to view.'];
         $options[] = ['test', null, InputOption::VALUE_NONE, 'Create a test for the policy'];
+        $options[] = ['revision', null, InputOption::VALUE_NONE, 'Enable revisions for the '.strtolower($this->type).' type'];
 
         return $options;
     }

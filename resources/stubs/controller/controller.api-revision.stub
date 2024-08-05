@@ -205,8 +205,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
      */
     public function restoreRevision(
         {{model_label}}Revision ${{model_slug}}_revision,
-        RestoreRevisionRequest $request
-    ): JsonResponse|{{ model }}Resource {
+        Requests\{{ model }}\RestoreRevisionRequest $request
+    ): JsonResponse|Resources\{{ model }} {
         $validated = $request->validated();
 
         /**
@@ -230,7 +230,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->save();
 
-        return (new {{ model }}Resource(${{model_slug}}))->additional(['meta' => [
+        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
             'info' => $this->packageInfo,
         ]])->response($request);
     }
@@ -242,8 +242,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
      */
     public function revision(
         {{ model }}Revision ${{model_slug}}_revision,
-        ShowRevisionRequest $request
-    ): JsonResponse|{{ model }}RevisionResource {
+        Requests\{{ model }}\ShowRevisionRequest $request
+    ): JsonResponse|Resources\{{ model }}Revision {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -256,7 +256,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'info' => $this->packageInfo,
         ];
 
-        return (new {{ model }}RevisionResource(${{model_slug}}_revision))->additional(['meta' => [
+        return (new Resources\{{ model }}Revision(${{model_slug}}_revision))->additional(['meta' => [
             'info' => $this->packageInfo,
         ]])->response($request);
     }
@@ -268,8 +268,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
      */
     public function revisions(
         {{ model }} ${{model_slug}},
-        RevisionsRequest $request
-    ): JsonResponse|{{ model }}RevisionCollection {
+        Requests\{{ model }}\RevisionsRequest $request
+    ): JsonResponse|Resources\{{ model }}RevisionCollection {
         $user = $request->user();
 
         $validated = $request->validated();
@@ -307,7 +307,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $paginator->appends($validated);
 
-        return (new {{ model }}RevisionCollection($paginator))->additional(['meta' => [
+        return (new Resources\{{ model }}RevisionCollection($paginator))->additional(['meta' => [
             'info' => $this->packageInfo,
         ]])->response($request);
     }
@@ -350,13 +350,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ]])->response($request);
     }
 
-   /**
+    /**
      * Store a newly created API {{model_label}} resource in storage.
      *
      * @route POST /api/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
      */
     public function store(
-        StoreRequest $request
+        Requests\{{ model }}\StoreRequest $request
     ): Response|JsonResponse|Resources\{{ model }} {
         $validated = $request->validated();
 

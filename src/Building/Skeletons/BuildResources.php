@@ -45,37 +45,52 @@ trait BuildResources
         $package = $this->c->package();
         $organization = $this->c->organization();
         $extends = $this->c->organization();
+        $revision = $this->c->revision();
 
-        if ($type === 'resource') {
+        if (in_array($type, [
+            'api',
+            'resource',
+            'playground-api',
+            'playground-resource',
+        ])) {
             $resources['resource'] = [
-                '--class' => Str::of($name)->studly()->finish('Resource'),
+                '--class' => Str::of($name)->studly()->before('Resource')->toString(),
                 'name' => $name,
             ];
             $resources['collection'] = [
-                '--class' => Str::of($name)->studly()->finish('Collection'),
+                '--class' => Str::of($name)->studly()->finish('Collection')->toString(),
                 '--collection' => true,
                 'name' => $name.'Collection',
-                // 'name' => $name,
             ];
-        } elseif ($type === 'playground-resource') {
-            $resources['resource'] = [
-                '--class' => Str::of($name)->studly()->finish('Resource'),
-                'name' => $name,
-            ];
-            $resources['collection'] = [
-                '--class' => Str::of($name)->studly()->finish('Collection'),
-                '--collection' => true,
-                'name' => $name.'Collection',
-                // 'name' => $name,
-            ];
+            if ($revision) {
+                $resources['resource-revision'] = [
+                    '--class' => Str::of($name)->studly()->before('Resource')->finish('Revision')->toString(),
+                    'name' => $name.'Revision',
+                ];
+                $resources['collection-revision'] = [
+                    '--class' => Str::of($name)->studly()->finish('RevisionCollection')->toString(),
+                    '--collection' => true,
+                    'name' => $name.'RevisionCollection',
+                ];
+            }
         }
-        // dump([
+
+        $modelFileRevision = '';
+
+        $modelFile = $this->getModelFile();
+        if ($this->hasOption('model-file') && $this->option('model-file')) {
+            $modelFile = $this->option('model-file');
+        }
+        if ($revision && $modelFile && is_string($modelFile)) {
+            $modelFileRevision = Str::of($modelFile)->before('.json')->finish('-revision.json')->toString();
+        }
+        // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$type' => $type,
         //     '$resources' => $resources,
+        //     '$modelFile' => $modelFile,
+        //     '$modelFileRevision' => $modelFileRevision,
         // ]);
-
-        $modelFile = $this->getModelFile();
 
         foreach ($resources as $resource_type => $resource) {
             // dump([
@@ -96,22 +111,37 @@ trait BuildResources
                 $resource['--organization'] = $organization;
             }
             if ($model) {
-                $resource['--model'] = $model;
+                if (in_array($resource_type, [
+                    'resource-revision',
+                    'collection-revision',
+                ])) {
+                    $resource['--model'] = $model.'Revision';
+                } else {
+                    $resource['--model'] = $model;
+                }
             }
             if ($extends) {
                 $resource['--extends'] = $extends;
             }
 
-            if ($this->hasOption('model-file') && $this->option('model-file')) {
-                $resource['--model-file'] = $this->option('model-file');
-            } else {
-                if ($modelFile) {
+            if ($modelFile) {
+                if (in_array($resource_type, [
+                    'resource-revision',
+                    'collection-revision',
+                ])) {
+                    $resource['--model-file'] = $modelFileRevision;
+                } else {
                     $resource['--model-file'] = $modelFile;
                 }
             }
 
             $resource['--module'] = $module;
             $resource['--skeleton'] = true;
+            dump([
+                '__METHOD__' => __METHOD__,
+                '$resource_type' => $resource_type,
+                '$resource' => $resource,
+            ]);
             if (empty($this->call('playground:make:resource', $resource))) {
 
                 $path_resources_packages = $this->getResourcePackageFolder();

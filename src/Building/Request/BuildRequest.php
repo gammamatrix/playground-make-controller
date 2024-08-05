@@ -67,6 +67,8 @@ trait BuildRequest
         //     '$model->namespace()' => $model?->namespace(),
         // ]);
 
+        $buildClass_slug_table = false;
+        $buildClass_rules_revision = false;
         if (in_array($this->c->type(), [
             'create',
         ])) {
@@ -114,8 +116,8 @@ trait BuildRequest
         ])) {
             $extends = 'BaseStoreRequest';
             $extends_use = 'Playground/Http/Requests/StoreRequest as BaseStoreRequest';
-            $this->buildClass_slug_table();
-            $this->buildClass_rules_revision();
+            $buildClass_slug_table = true;
+            $buildClass_rules_revision = true;
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -132,8 +134,8 @@ trait BuildRequest
         ])) {
             $extends = 'BaseUpdateRequest';
             $extends_use = 'Playground/Http/Requests/UpdateRequest as BaseUpdateRequest';
-            $this->buildClass_slug_table();
-            $this->buildClass_rules_revision();
+            $buildClass_slug_table = true;
+            $buildClass_rules_revision = true;
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$this->c' => $this->c,
@@ -180,6 +182,14 @@ trait BuildRequest
         // ]);
         if (! empty($fillable)) {
             $this->buildClass_rules_constant($model);
+        }
+
+        if ($buildClass_slug_table) {
+            $this->buildClass_slug_table();
+        }
+
+        if ($buildClass_rules_revision) {
+            $this->buildClass_rules_revision();
         }
 
         // Types: store
@@ -262,7 +272,7 @@ trait BuildRequest
         //     $this->searches['constants'] .= PHP_EOL;
         // }
 
-        $this->searches['properties'] .= <<<PHP_CODE
+        $this->searches['constants'] .= <<<PHP_CODE
     /**
      * @var array<string, string|array<mixed>>
      */
@@ -415,7 +425,7 @@ PHP_CODE;
             'StoreRequest',
             'UpdateRequest',
         ])) {
-            if (! empty($this->searches['properties'])) {
+            if (! empty($this->searches['constants']) || ! empty($this->searches['properties'])) {
                 $this->searches['properties'] .= PHP_EOL;
             }
             $this->searches['properties'] .= sprintf(

@@ -28,6 +28,7 @@ trait BuildPolicies
             return;
         }
 
+        $revision = $this->hasOption('revision') && $this->option('revision');
         $force = $this->hasOption('force') && $this->option('force');
         $file = $this->option('file');
         $name = Str::of($this->c->name())->before('Controller')->studly()->toString();
@@ -86,6 +87,10 @@ trait BuildPolicies
                 'admin',
                 'root',
             ];
+        }
+
+        if ($revision) {
+            $params['--revision'] = true;
         }
 
         if ($this->c->withTests()) {

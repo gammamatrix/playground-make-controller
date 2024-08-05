@@ -42,6 +42,7 @@ class InstanceTest extends TestCase
         'playground' => false,
         // properties
         'models' => [],
+        'uses' => [],
         'rolesForAction' => [],
         'rolesToView' => [],
     ];

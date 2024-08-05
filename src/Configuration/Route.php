@@ -89,6 +89,12 @@ class Route extends PrimaryConfiguration
             $this->model_label = $options['model_label'];
         }
 
+        if (! empty($options['model_slug'])
+            && is_string($options['model_slug'])
+        ) {
+            $this->model_slug = $options['model_slug'];
+        }
+
         if (! empty($options['model_slug_plural'])
             && is_string($options['model_slug_plural'])
         ) {

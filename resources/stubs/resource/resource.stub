@@ -4,8 +4,9 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Resources;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
@@ -13,7 +14,7 @@ use {{ model_fqdn }} as {{ model }}Model;
 use {{ namespace }}\Http\Requests\FormRequest;
 
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Resources\{{ class }}
  */
 class {{ class }} extends JsonResource
 {{{class_keys}}
@@ -26,15 +27,20 @@ class {{ class }} extends JsonResource
     public function with(Request $request): array
     {
         /**
-         * @var ?{{ model }}Model ${{ model_slug }}
+         * @var ?{{ model }}Model ${{ model_param }}
          */
-        ${{ model_slug }} = $request->route('{{ model_slug }}');
+        ${{ model_param }} = $request->route('{{ model_param }}');
+
+        /**
+         * @var ?Authenticatable $user;
+         */
+        $user = $request->user();
 
         return [
             'meta' => [
-                'id' => ${{ model_slug }}?->id,
+                'id' => ${{ model_param }}?->id,
                 'rules' => $request->rules(),
-                'session_user_id' => $request->user()?->id,
+                'session_user_id' => $user?->getAttributeValue('id'),
                 'timestamp' => Carbon::now()->toJson(),
                 'validated' => $request->validated(),
             ],

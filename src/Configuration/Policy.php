@@ -44,6 +44,7 @@ class Policy extends PrimaryConfiguration
         'playground' => false,
         // properties
         'models' => [],
+        'uses' => [],
         'rolesForAction' => [],
         'rolesToView' => [],
     ];

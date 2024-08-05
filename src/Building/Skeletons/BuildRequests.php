@@ -38,6 +38,13 @@ trait BuildRequests
         $organization = $this->c->organization();
         $package = $this->c->package();
 
+        $revision = $this->c->revision();
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     'NOTE' => 'SKIPPING: skeleton_requests',
+        //     '$type' => $type,
+        // ]);
+
         // $extends = '';
 
         if ($type === 'api') {
@@ -53,6 +60,20 @@ trait BuildRequests
                 '--type' => 'restore',
                 '--class' => 'RestoreRequest',
             ];
+            if ($revision) {
+                $requests['restore-revision'] = [
+                    '--type' => 'restore',
+                    '--class' => 'RestoreRevisionRequest',
+                ];
+                $requests['revisions'] = [
+                    '--type' => 'index',
+                    '--class' => 'RevisionsRequest',
+                ];
+                $requests['show-revision'] = [
+                    '--type' => 'show',
+                    '--class' => 'ShowRevisionRequest',
+                ];
+            }
             $requests['show'] = [
                 '--type' => 'show',
                 '--class' => 'ShowRequest',
@@ -98,6 +119,20 @@ trait BuildRequests
                 '--type' => 'restore',
                 '--class' => 'RestoreRequest',
             ];
+            if ($revision) {
+                $requests['restore-revision'] = [
+                    '--type' => 'restore',
+                    '--class' => 'RestoreRevisionRequest',
+                ];
+                $requests['revisions'] = [
+                    '--type' => 'index',
+                    '--class' => 'RevisionsRequest',
+                ];
+                $requests['show-revision'] = [
+                    '--type' => 'show',
+                    '--class' => 'ShowRevisionRequest',
+                ];
+            }
             $requests['show'] = [
                 '--type' => 'show',
                 '--class' => 'ShowRequest',
@@ -147,6 +182,20 @@ trait BuildRequests
                 '--type' => 'lock',
                 '--class' => 'LockRequest',
             ];
+            if ($revision) {
+                $requests['restore-revision'] = [
+                    '--type' => 'restore',
+                    '--class' => 'RestoreRevisionRequest',
+                ];
+                $requests['revisions'] = [
+                    '--type' => 'index',
+                    '--class' => 'RevisionsRequest',
+                ];
+                $requests['show-revision'] = [
+                    '--type' => 'show',
+                    '--class' => 'ShowRevisionRequest',
+                ];
+            }
             $requests['restore'] = [
                 '--type' => 'restore',
                 '--class' => 'RestoreRequest',
@@ -193,6 +242,20 @@ trait BuildRequests
                 '--type' => 'restore',
                 '--class' => 'RestoreRequest',
             ];
+            if ($revision) {
+                $requests['restore-revision'] = [
+                    '--type' => 'restore',
+                    '--class' => 'RestoreRevisionRequest',
+                ];
+                $requests['revisions'] = [
+                    '--type' => 'index',
+                    '--class' => 'RevisionsRequest',
+                ];
+                $requests['show-revision'] = [
+                    '--type' => 'show',
+                    '--class' => 'ShowRevisionRequest',
+                ];
+            }
             $requests['show'] = [
                 '--type' => 'show',
                 '--class' => 'ShowRequest',
