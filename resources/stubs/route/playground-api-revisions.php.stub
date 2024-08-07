@@ -73,10 +73,6 @@ Route::group([
         'uses' => '{{controller}}@revisions',
     ])->whereUuid('{{model_column}}')->can('revisions', '{{model_column}}');
 
-    Route::post('/{{{model_column}}}/revisions', [
-        'uses' => '{{controller}}@revisions',
-    ])->whereUuid('{{model_column}}')->can('revisions', '{{model_column}}');
-
     Route::get('/revision/{{{model_column}}_revision}', [
         'as' => '{{route}}.revision',
         'uses' => '{{controller}}@revision',
