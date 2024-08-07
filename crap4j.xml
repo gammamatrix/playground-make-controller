@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-05 19:07:36</timestamp>
+  <timestamp>2024-08-07 05:58:32</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>158</methodCount>
-    <crapMethodCount>10</crapMethodCount>
-    <crapLoad>129</crapLoad>
-    <totalCrap>2842.86</totalCrap>
-    <crapMethodPercent>6.33</crapMethodPercent>
+    <crapMethodCount>9</crapMethodCount>
+    <crapLoad>106</crapLoad>
+    <totalCrap>2318.65</totalCrap>
+    <crapMethodPercent>5.7</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -523,9 +523,9 @@
       <methodName>skeleton_resources</methodName>
       <methodSignature>skeleton_resources(string $type): void</methodSignature>
       <fullMethod>skeleton_resources(string $type): void</fullMethod>
-      <crap>23.51</crap>
+      <crap>23.79</crap>
       <complexity>22</complexity>
-      <coverage>85.39</coverage>
+      <coverage>84.52</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -534,9 +534,9 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>25.21</crap>
+      <crap>25.3</crap>
       <complexity>25</complexity>
-      <coverage>93.1</coverage>
+      <coverage>92.16</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -545,10 +545,10 @@
       <methodName>skeleton_swagger</methodName>
       <methodSignature>skeleton_swagger(string $type): void</methodSignature>
       <fullMethod>skeleton_swagger(string $type): void</fullMethod>
-      <crap>552</crap>
-      <complexity>23</complexity>
-      <coverage>0</coverage>
-      <crapLoad>23</crapLoad>
+      <crap>27.28</crap>
+      <complexity>27</complexity>
+      <coverage>92.73</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Concerns</package>
@@ -1568,9 +1568,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>4.07</crap>
+      <crap>4.21</crap>
       <complexity>4</complexity>
-      <coverage>84</coverage>
+      <coverage>76.47</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
