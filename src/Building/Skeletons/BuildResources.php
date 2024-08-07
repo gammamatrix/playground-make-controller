@@ -137,11 +137,11 @@ trait BuildResources
 
             $resource['--module'] = $module;
             $resource['--skeleton'] = true;
-            dump([
-                '__METHOD__' => __METHOD__,
-                '$resource_type' => $resource_type,
-                '$resource' => $resource,
-            ]);
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     '$resource_type' => $resource_type,
+            //     '$resource' => $resource,
+            // ]);
             if (empty($this->call('playground:make:resource', $resource))) {
 
                 $path_resources_packages = $this->getResourcePackageFolder();

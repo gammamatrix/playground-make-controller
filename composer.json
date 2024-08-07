@@ -27,17 +27,22 @@
         },
         {
             "type": "vcs",
+            "url": "git@github.com:gammamatrix/playground-make-swagger.git"
+        },
+        {
+            "type": "vcs",
             "url": "git@github.com:gammamatrix/playground-make-test.git"
         }
     ],
     "require": {
         "php": "^8.2",
-        "gammamatrix/playground-make": "dev-develop|dev-feature/*"
+        "gammamatrix/playground-make": "*"
     },
     "require-dev": {
-        "gammamatrix/playground-make-blade": "dev-develop|dev-feature/*",
-        "gammamatrix/playground-make-test": "dev-develop|dev-feature/*",
-        "gammamatrix/playground-test": "dev-develop|dev-feature/*"
+        "gammamatrix/playground-make-blade": "*",
+        "gammamatrix/playground-make-swagger": "*",
+        "gammamatrix/playground-make-test": "*",
+        "gammamatrix/playground-test": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

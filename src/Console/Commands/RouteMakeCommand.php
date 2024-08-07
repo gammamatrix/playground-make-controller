@@ -212,15 +212,15 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$options' => $options,
-            '$model_slug' => $model_slug,
-            '$model_parameter' => $model_parameter,
-            '$model_variable' => $model_variable,
-            '$this->c' => $this->c,
-            '$this->searches' => $this->searches,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$model_slug' => $model_slug,
+        //     '$model_parameter' => $model_parameter,
+        //     '$model_variable' => $model_variable,
+        //     '$this->c' => $this->c,
+        //     '$this->searches' => $this->searches,
+        // ]);
     }
 
     protected function getConfigurationFilename(): string

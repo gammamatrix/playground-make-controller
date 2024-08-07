@@ -36,6 +36,8 @@ trait BuildSwagger
         $organization = $this->hasOption('organization') ? $this->option('organization') : '';
         $package = $this->hasOption('package') ? $this->option('package') : '';
 
+        $revision = $this->c->revision();
+
         $layout = 'playground::layouts.site';
 
         if (empty($model)) {
@@ -72,13 +74,21 @@ trait BuildSwagger
         ];
 
         $modelFile = $this->getModelFile();
-
+        $modelFileRevision = '';
         if ($this->hasOption('model-file') && $this->option('model-file')) {
             $options['--model-file'] = $this->option('model-file');
         } else {
             if ($modelFile) {
                 $options['--model-file'] = $modelFile;
             }
+        }
+
+        if ($revision && $modelFile && is_string($modelFile)) {
+            $modelFileRevision = Str::of($modelFile)->before('.json')->finish('-revision.json')->toString();
+        }
+
+        if ($modelFileRevision) {
+            $options['--model-revision-file'] = $modelFileRevision;
         }
 
         if ($type === 'api') {

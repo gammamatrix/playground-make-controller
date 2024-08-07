@@ -498,7 +498,7 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->skeleton_resources($type);
         $this->skeleton_routes($type);
         $this->skeleton_blades($type);
-        // $this->skeleton_swagger($type);
+        $this->skeleton_swagger($type);
 
         $this->saveConfiguration();
     }
