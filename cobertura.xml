@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.72674418604651" branch-rate="0" lines-covered="1625" lines-valid="2236" branches-covered="0" branches-valid="0" complexity="745" version="0.4" timestamp="1723019125">
+<coverage line-rate="0.72686633884667" branch-rate="0" lines-covered="1626" lines-valid="2237" branches-covered="0" branches-valid="0" complexity="745" version="0.4" timestamp="1723147038">
   <sources>
     <source>/app/src</source>
   </sources>
@@ -2923,11 +2923,11 @@
         </class>
       </classes>
     </package>
-    <package name="Building/Skeletons/BuildSwagger.php" line-rate="0.92727272727273" branch-rate="0" complexity="27">
+    <package name="Building/Skeletons/BuildSwagger.php" line-rate="0.92857142857143" branch-rate="0" complexity="27">
       <classes>
-        <class name="Playground\Make\Controller\Building\Skeletons\BuildSwagger" filename="Building/Skeletons/BuildSwagger.php" line-rate="0.92727272727273" branch-rate="0" complexity="27">
+        <class name="Playground\Make\Controller\Building\Skeletons\BuildSwagger" filename="Building/Skeletons/BuildSwagger.php" line-rate="0.92857142857143" branch-rate="0" complexity="27">
           <methods>
-            <method name="skeleton_swagger" signature="string $type" line-rate="0.92727272727273" branch-rate="0" complexity="27">
+            <method name="skeleton_swagger" signature="string $type" line-rate="0.92857142857143" branch-rate="0" complexity="27">
               <lines>
                 <line number="18" hits="2"/>
                 <line number="19" hits="2"/>
@@ -2962,28 +2962,29 @@
                 <line number="68" hits="1"/>
                 <line number="69" hits="1"/>
                 <line number="70" hits="1"/>
-                <line number="73" hits="1"/>
+                <line number="71" hits="1"/>
                 <line number="74" hits="1"/>
-                <line number="76" hits="1"/>
+                <line number="75" hits="1"/>
                 <line number="77" hits="1"/>
                 <line number="78" hits="1"/>
-                <line number="79" hits="0"/>
-                <line number="81" hits="1"/>
+                <line number="79" hits="1"/>
+                <line number="80" hits="0"/>
                 <line number="82" hits="1"/>
-                <line number="86" hits="1"/>
-                <line number="87" hits="0"/>
-                <line number="90" hits="1"/>
-                <line number="91" hits="0"/>
-                <line number="94" hits="1"/>
+                <line number="83" hits="1"/>
+                <line number="87" hits="1"/>
+                <line number="88" hits="0"/>
+                <line number="91" hits="1"/>
+                <line number="92" hits="0"/>
                 <line number="95" hits="1"/>
                 <line number="96" hits="1"/>
-                <line number="97" hits="0"/>
-                <line number="100" hits="1"/>
-                <line number="106" hits="1"/>
-                <line number="129" hits="1"/>
-                <line number="131" hits="1"/>
+                <line number="97" hits="1"/>
+                <line number="98" hits="0"/>
+                <line number="101" hits="1"/>
+                <line number="107" hits="1"/>
+                <line number="130" hits="1"/>
                 <line number="132" hits="1"/>
-                <line number="137" hits="1"/>
+                <line number="133" hits="1"/>
+                <line number="138" hits="1"/>
               </lines>
             </method>
           </methods>
@@ -3021,28 +3022,29 @@
             <line number="68" hits="1"/>
             <line number="69" hits="1"/>
             <line number="70" hits="1"/>
-            <line number="73" hits="1"/>
+            <line number="71" hits="1"/>
             <line number="74" hits="1"/>
-            <line number="76" hits="1"/>
+            <line number="75" hits="1"/>
             <line number="77" hits="1"/>
             <line number="78" hits="1"/>
-            <line number="79" hits="0"/>
-            <line number="81" hits="1"/>
+            <line number="79" hits="1"/>
+            <line number="80" hits="0"/>
             <line number="82" hits="1"/>
-            <line number="86" hits="1"/>
-            <line number="87" hits="0"/>
-            <line number="90" hits="1"/>
-            <line number="91" hits="0"/>
-            <line number="94" hits="1"/>
+            <line number="83" hits="1"/>
+            <line number="87" hits="1"/>
+            <line number="88" hits="0"/>
+            <line number="91" hits="1"/>
+            <line number="92" hits="0"/>
             <line number="95" hits="1"/>
             <line number="96" hits="1"/>
-            <line number="97" hits="0"/>
-            <line number="100" hits="1"/>
-            <line number="106" hits="1"/>
-            <line number="129" hits="1"/>
-            <line number="131" hits="1"/>
+            <line number="97" hits="1"/>
+            <line number="98" hits="0"/>
+            <line number="101" hits="1"/>
+            <line number="107" hits="1"/>
+            <line number="130" hits="1"/>
             <line number="132" hits="1"/>
-            <line number="137" hits="1"/>
+            <line number="133" hits="1"/>
+            <line number="138" hits="1"/>
           </lines>
         </class>
       </classes>
