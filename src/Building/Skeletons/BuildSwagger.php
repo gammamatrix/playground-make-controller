@@ -68,6 +68,7 @@ trait BuildSwagger
             '--organization' => $organization,
             '--model' => $model,
             '--module' => $module,
+            '--skeleton' => true,
             // '--preload' => true,
             // '--type' => $type,
             '--type' => '',
