@@ -4,11 +4,12 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Controllers;
 
 {{ use }}use {{ namespacedRequest }};
 use {{ namespacedResource }};
 use {{ namespacedModel }};
+use {{ namespacedModel }}Revision;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -16,7 +17,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Carbon;
 
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Controllers\{{ class }}
  */
 class {{ class }} extends {{ extends }}{{ implements }}
 {
@@ -94,7 +95,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit {{model_route}}.edit
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_slug}}} {{model_route}}.edit
      */
     public function edit(
         {{ model }} ${{model_slug}},
@@ -143,7 +144,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Remove the {{model_label}} resource from storage.
      *
-     * @route DELETE /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.destroy
+     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.destroy
      */
     public function destroy(
         {{ model }} ${{model_slug}},
@@ -180,7 +181,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Lock the {{model_label}} resource in storage.
      *
-     * @route PUT /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.lock
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.lock
      */
     public function lock(
         {{ model }} ${{model_slug}},
@@ -227,7 +228,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Display a listing of {{model_label}} resources.
      *
-     * @route GET /resource/{{module_slug}} {{model_route}}
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}} {{model_route}}
      */
     public function index(
         Requests\{{ model }}\IndexRequest $request
@@ -299,7 +300,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Restore the {{model_label}} resource from the trash.
      *
-     * @route PUT /resource/{{module_slug}}/restore/{{{model_slug}}} {{model_route}}.restore
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_slug}}} {{model_route}}.restore
      */
     public function restore(
         {{ model }} ${{model_slug}},
@@ -335,14 +336,204 @@ class {{ class }} extends {{ extends }}{{ implements }}
     }
 
     /**
+     * Restore the {{model_label}} resource from the trash.
+     *
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/revision/{{{model_slug}}_revision} {{model_route}}.revision.restore
+     */
+    public function restoreRevision(
+        {{model_label}}Revision ${{model_slug}}_revision,
+        Requests\{{ model }}\RestoreRevisionRequest $request
+    ): JsonResponse|Resources\{{ model }} {
+        $validated = $request->validated();
+
+        /**
+         * @var {{ model }} ${{model_slug}}
+         */
+        ${{model_slug}} = {{ model }}::where(
+            'id',
+            ${{model_slug}}_revision->{{model_slug}}_id
+        )->firstOrFail();
+
+        $this->saveRevision(${{model_slug}});
+
+        $user = $request->user();
+
+        foreach (${{model_slug}}->getFillable() as $column) {
+            ${{model_slug}}->setAttribute(
+                $column,
+                ${{model_slug}}_revision->getAttributeValue($column)
+            );
+        }
+
+        ${{model_slug}}->save();
+
+        if ($request->expectsJson()) {
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $returnUrl = $validated['_return_url'] ?? '';
+
+        if ($returnUrl && is_string($returnUrl)) {
+            return redirect($returnUrl);
+        }
+
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['{{model_slug}}' => ${{model_slug}}->id]));
+    }
+
+    /**
+     * Display the {{ model }} revision.
+     *
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/revision/{{{model_slug}}_revision} {{model_route}}.revision
+     */
+    public function revision(
+        {{ model }}Revision ${{model_slug}}_revision,
+        Requests\{{ model }}\ShowRevisionRequest $request
+    ): JsonResponse|View|Resources\{{ model }}Revision {
+
+        if ($request->expectsJson()) {
+            return (new Resources\{{ model }}Revision(${{model_slug}}_revision))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $validated = $request->validated();
+
+        $user = $request->user();
+
+        $meta = [
+            'session_user_id' => $user?->id,
+            'id' => ${{model_slug}}_revision->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
+            'input' => $request->input(),
+        ];
+
+        $data = [
+            'data' => ${{model_slug}}_revision,
+            'meta' => $meta,
+        ];
+
+        return view(sprintf('%1$s/revision', $this->packageInfo['view']), $data);
+    }
+
+    /**
+     * Display a listing of {{model_label}} resources.
+     *
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}}/revisions {{model_route}}.revisions
+     */
+    public function revisions(
+        {{ model }} ${{model_slug}},
+        Requests\{{ model }}\RevisionsRequest $request
+    ): JsonResponse|View|Resources\{{ model }}RevisionCollection {
+        $user = $request->user();
+
+        $validated = $request->validated();
+
+        $query = ${{model_slug}}->revisions();
+
+        $query->sort($validated['sort'] ?? null);
+
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
+            $query->filterTrash($validated['filter']['trash'] ?? null);
+
+            $query->filterIds(
+                $request->getPaginationIds(),
+                $validated
+            );
+
+            $query->filterFlags(
+                $request->getPaginationFlags(),
+                $validated
+            );
+
+            $query->filterDates(
+                $request->getPaginationDates(),
+                $validated
+            );
+
+            $query->filterColumns(
+                $request->getPaginationColumns(),
+                $validated
+            );
+        }
+
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate($perPage);
+
+        $paginator->appends($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\{{ model }}RevisionCollection($paginator))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $meta = [
+            'session_user_id' => $user?->id,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
+        ];
+
+        $data = [
+            'paginator' => $paginator,
+            'meta' => $meta,
+        ];
+
+        return view(sprintf('%1$s/revisions', $this->packageInfo['view']), $data);
+    }
+
+    /**
+     * Save a revision of a {{model_label}}.
+     */
+    public function saveRevision({{ model }} ${{model_slug}}): {{ model }}Revision
+    {
+        $revision = new {{ model }}Revision(${{model_slug}}->toArray());
+
+        $revision->created_by_id = ${{model_slug}}->created_by_id;
+        $revision->modified_by_id = ${{model_slug}}->modified_by_id;
+        $revision->owned_by_id = ${{model_slug}}->owned_by_id;
+        $revision->{{model_slug}}_id = ${{model_slug}}->id;
+
+        $r = {{ model }}Revision::where('{{model_slug}}_id', ${{model_slug}}->id)->max('revision');
+        $r = ! is_numeric($r) || empty($r) || $r < 0 ? 0 : (int) $r;
+        $r++;
+
+        $revision->revision = $r;
+        ${{model_slug}}->revision = $r;
+
+        $revision->saveOrFail();
+
+        return $revision;
+    }
+
+    /**
      * Display the {{model_label}} resource.
      *
-     * @route GET /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.show
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.show
      */
     public function show(
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\ShowRequest $request
     ): JsonResponse|View|Resources\{{ model }} {
+
+        if ($request->expectsJson()) {
+            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $validated = $request->validated();
 
@@ -354,16 +545,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
             'info' => $this->packageInfo,
+            'input' => $request->input(),
         ];
-
-        if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
-            ]])->response($request);
-        }
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => ${{model_slug}},
@@ -376,7 +559,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Store a newly created API {{model_label}} resource in storage.
      *
-     * @route POST /resource/{{module_slug}} {{model_route}}.post
+     * @route POST /resource/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
      */
     public function store(
         Requests\{{ model }}\StoreRequest $request
@@ -415,7 +598,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Unlock the {{model_label}} resource in storage.
      *
-     * @route DELETE /resource/{{module_slug}}/lock/{{{model_slug}}} {{model_route}}.unlock
+     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_slug}}} {{model_route}}.unlock
      */
     public function unlock(
         {{ model }} ${{model_slug}},
@@ -455,22 +638,24 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Update the {{model_label}} resource in storage.
      *
-     * @route PATCH /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.patch
+     * @route PATCH /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.patch
      */
     public function update(
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\UpdateRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
+        $this->saveRevision(${{model_slug}});
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        ${{model_slug}}->update($validated);
-
         if ($user?->id) {
             ${{model_slug}}->modified_by_id = $user->id;
         }
+
+        ${{model_slug}}->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [

@@ -4,7 +4,7 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Controllers;
 
 {{ use }}use {{ namespacedRequest }};
 use {{ namespacedResource }};
@@ -16,7 +16,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Carbon;
 
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Controllers\{{ class }}
  */
 class {{ class }} extends {{ extends }}{{ implements }}
 {
@@ -94,7 +94,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit {{model_route}}.edit
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_slug}}} {{model_route}}.edit
      */
     public function edit(
         {{ model }} ${{model_slug}},
@@ -143,7 +143,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Remove the {{model_label}} resource from storage.
      *
-     * @route DELETE /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.destroy
+     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.destroy
      */
     public function destroy(
         {{ model }} ${{model_slug}},
@@ -180,7 +180,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Lock the {{model_label}} resource in storage.
      *
-     * @route PUT /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.lock
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.lock
      */
     public function lock(
         {{ model }} ${{model_slug}},
@@ -227,7 +227,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Display a listing of {{model_label}} resources.
      *
-     * @route GET /resource/{{module_slug}} {{model_route}}
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}} {{model_route}}
      */
     public function index(
         Requests\{{ model }}\IndexRequest $request
@@ -299,7 +299,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Restore the {{model_label}} resource from the trash.
      *
-     * @route PUT /resource/{{module_slug}}/restore/{{{model_slug}}} {{model_route}}.restore
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_slug}}} {{model_route}}.restore
      */
     public function restore(
         {{ model }} ${{model_slug}},
@@ -337,7 +337,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Display the {{model_label}} resource.
      *
-     * @route GET /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.show
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.show
      */
     public function show(
         {{ model }} ${{model_slug}},
@@ -376,7 +376,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Store a newly created API {{model_label}} resource in storage.
      *
-     * @route POST /resource/{{module_slug}} {{model_route}}.post
+     * @route POST /resource/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
      */
     public function store(
         Requests\{{ model }}\StoreRequest $request
@@ -415,7 +415,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Unlock the {{model_label}} resource in storage.
      *
-     * @route DELETE /resource/{{module_slug}}/lock/{{{model_slug}}} {{model_route}}.unlock
+     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_slug}}} {{model_route}}.unlock
      */
     public function unlock(
         {{ model }} ${{model_slug}},
@@ -455,7 +455,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Update the {{model_label}} resource in storage.
      *
-     * @route PATCH /resource/{{module_slug}}/{{{model_slug}}} {{model_route}}.patch
+     * @route PATCH /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.patch
      */
     public function update(
         {{ model }} ${{model_slug}},

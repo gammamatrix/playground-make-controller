@@ -4,7 +4,7 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Controllers;
 
 {{ use }}use {{ namespacedRequest }}\DestroyRequest;
 use {{ namespacedRequest }}\IndexRequest;
@@ -19,7 +19,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Controllers\{{ class }}
  */
 class {{ class }} extends {{ extends }}{{ implements }}
 {

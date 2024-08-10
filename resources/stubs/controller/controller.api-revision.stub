@@ -60,7 +60,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/edit {{model_route}}.edit
+     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_slug}}} {{model_route}}.edit
      */
     public function edit(
         {{ model }} ${{model_slug}},

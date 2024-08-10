@@ -4,11 +4,11 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Http\Controllers;
 
 {{ use }}
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Http\Controllers\{{ class }}
  */
 class {{ class }} extends {{ extends }}{{ implements }}
 {
