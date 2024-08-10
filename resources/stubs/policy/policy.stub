@@ -4,12 +4,12 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Policies;
 
 use {{ namespacedUserModel }};
 
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Policies\{{ class }}
  */
 class {{ class }}
 {

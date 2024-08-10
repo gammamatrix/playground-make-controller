@@ -4,12 +4,12 @@
  */
 
 declare(strict_types=1);
-namespace {{ namespace }};
+namespace {{ namespace }}\Policies;
 
 use Playground\Auth\Policies\ModelPolicy;
-
+{{use}}
 /**
- * \{{ namespace }}\{{ class }}
+ * \{{ namespace }}\Policies\{{ class }}
  */
 class {{ class }} extends ModelPolicy
 {
@@ -23,5 +23,5 @@ class {{ class }} extends ModelPolicy
     /**
      * @var array<int, string> The roles allowed for actions in the MVC.
      */
-    protected $rolesForAction = [{{ rolesForAction }}];
+    protected $rolesForAction = [{{ rolesForAction }}];{{revisions}}
 }
