@@ -9,7 +9,7 @@
 
 ##teamcity[testStarted name='test_instance' locationHint='php_qn:///app/tests/Unit/Configuration/Controller/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest::test_instance' flowId='1']
 
-##teamcity[testFinished name='test_instance' duration='173' flowId='1']
+##teamcity[testFinished name='test_instance' duration='170' flowId='1']
 
 ##teamcity[testStarted name='test_instance_apply_without_options' locationHint='php_qn:///app/tests/Unit/Configuration/Controller/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Controller\InstanceTest::test_instance_apply_without_options' flowId='1']
 
@@ -53,7 +53,7 @@
 
 ##teamcity[testStarted name='test_instance' locationHint='php_qn:///app/tests/Unit/Configuration/Request/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Request\InstanceTest::test_instance' flowId='1']
 
-##teamcity[testFinished name='test_instance' duration='14' flowId='1']
+##teamcity[testFinished name='test_instance' duration='13' flowId='1']
 
 ##teamcity[testStarted name='test_instance_apply_without_options' locationHint='php_qn:///app/tests/Unit/Configuration/Request/InstanceTest.php::\Tests\Unit\Playground\Make\Controller\Configuration\Request\InstanceTest::test_instance_apply_without_options' flowId='1']
 
@@ -121,7 +121,7 @@
 
 ##teamcity[testStarted name='test_command_about_displays_package_information_and_succeed_with_code_0' locationHint='php_qn:///app/tests/Feature/Console/Commands/About/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\About\CommandTest::test_command_about_displays_package_information_and_succeed_with_code_0' flowId='1']
 
-##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='685' flowId='1']
+##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='676' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\About\CommandTest' flowId='1']
 
@@ -145,7 +145,7 @@
 
 ##teamcity[testStarted name='test_command_make_controller_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ControllerMakeCommand/FileTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\FileTest::test_command_make_controller_with_force_and_with_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_controller_with_force_and_with_skeleton' duration='427' flowId='1']
+##teamcity[testFinished name='test_command_make_controller_with_force_and_with_skeleton' duration='431' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand\FileTest' flowId='1']
 
@@ -181,11 +181,11 @@
 
 ##teamcity[testStarted name='test_command_skeleton_with_type_playground_api' locationHint='php_qn:///app/tests/Feature/Console/Commands/PolicyMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand\CommandTest::test_command_skeleton_with_type_playground_api' flowId='1']
 
-##teamcity[testFinished name='test_command_skeleton_with_type_playground_api' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_skeleton_with_type_playground_api' duration='10' flowId='1']
 
 ##teamcity[testStarted name='test_command_skeleton_with_type_api' locationHint='php_qn:///app/tests/Feature/Console/Commands/PolicyMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand\CommandTest::test_command_skeleton_with_type_api' flowId='1']
 
-##teamcity[testFinished name='test_command_skeleton_with_type_api' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_skeleton_with_type_api' duration='10' flowId='1']
 
 ##teamcity[testStarted name='test_command_skeleton_with_type_resource' locationHint='php_qn:///app/tests/Feature/Console/Commands/PolicyMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand\CommandTest::test_command_skeleton_with_type_resource' flowId='1']
 
@@ -237,7 +237,7 @@
 
 ##teamcity[testStarted name='test_command_without_options_or_arguments' locationHint='php_qn:///app/tests/Feature/Console/Commands/RequestMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\CommandTest::test_command_without_options_or_arguments' flowId='1']
 
-##teamcity[testFinished name='test_command_without_options_or_arguments' duration='9' flowId='1']
+##teamcity[testFinished name='test_command_without_options_or_arguments' duration='10' flowId='1']
 
 ##teamcity[testStarted name='test_command_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/RequestMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\CommandTest::test_command_skeleton' flowId='1']
 
@@ -321,7 +321,7 @@
 
 ##teamcity[testStarted name='test_command_make_AbstractStoreRequest' locationHint='php_qn:///app/tests/Feature/Console/Commands/RequestMakeCommand/IndexTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\IndexTest::test_command_make_AbstractStoreRequest' flowId='1']
 
-##teamcity[testFinished name='test_command_make_AbstractStoreRequest' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_make_AbstractStoreRequest' duration='12' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\IndexTest' flowId='1']
 
@@ -373,11 +373,11 @@
 
 ##teamcity[testStarted name='test_command_make_collection_resource_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/CollectionTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\CollectionTest::test_command_make_collection_resource_with_force_and_with_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_collection_resource_with_force_and_with_skeleton' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_make_collection_resource_with_force_and_with_skeleton' duration='10' flowId='1']
 
 ##teamcity[testStarted name='test_command_make_named_collection_resource_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/CollectionTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\CollectionTest::test_command_make_named_collection_resource_with_force_and_with_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_named_collection_resource_with_force_and_with_skeleton' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_make_named_collection_resource_with_force_and_with_skeleton' duration='10' flowId='1']
 
 ##teamcity[testStarted name='test_command_make_named_collection_resource_with_option_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/CollectionTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\CollectionTest::test_command_make_named_collection_resource_with_option_with_force_and_with_skeleton' flowId='1']
 
@@ -393,11 +393,11 @@
 
 ##teamcity[testStarted name='test_command_without_options_or_arguments' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\CommandTest::test_command_without_options_or_arguments' flowId='1']
 
-##teamcity[testFinished name='test_command_without_options_or_arguments' duration='9' flowId='1']
+##teamcity[testFinished name='test_command_without_options_or_arguments' duration='8' flowId='1']
 
 ##teamcity[testStarted name='test_command_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/CommandTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\CommandTest::test_command_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_skeleton' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_skeleton' duration='10' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\CommandTest' flowId='1']
 
@@ -405,11 +405,11 @@
 
 ##teamcity[testStarted name='test_command_make_keys_resource_with_force_and_without_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/KeysTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\KeysTest::test_command_make_keys_resource_with_force_and_without_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_keys_resource_with_force_and_without_skeleton' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_make_keys_resource_with_force_and_without_skeleton' duration='10' flowId='1']
 
 ##teamcity[testStarted name='test_command_make_keys_resource_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/KeysTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\KeysTest::test_command_make_keys_resource_with_force_and_with_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_keys_resource_with_force_and_with_skeleton' duration='11' flowId='1']
+##teamcity[testFinished name='test_command_make_keys_resource_with_force_and_with_skeleton' duration='10' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\KeysTest' flowId='1']
 
@@ -417,11 +417,11 @@
 
 ##teamcity[testStarted name='test_command_with_invalid_stubs_path_in_the_config' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/StubTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\StubTest::test_command_with_invalid_stubs_path_in_the_config' flowId='1']
 
-##teamcity[testFinished name='test_command_with_invalid_stubs_path_in_the_config' duration='13' flowId='1']
+##teamcity[testFinished name='test_command_with_invalid_stubs_path_in_the_config' duration='12' flowId='1']
 
 ##teamcity[testStarted name='test_command_with_invalid_path_to_stub_in_the_config' locationHint='php_qn:///app/tests/Feature/Console/Commands/ResourceMakeCommand/StubTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\StubTest::test_command_with_invalid_path_to_stub_in_the_config' flowId='1']
 
-##teamcity[testFinished name='test_command_with_invalid_path_to_stub_in_the_config' duration='10' flowId='1']
+##teamcity[testFinished name='test_command_with_invalid_path_to_stub_in_the_config' duration='9' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand\StubTest' flowId='1']
 
@@ -485,7 +485,7 @@
 
 ##teamcity[testStarted name='test_command_make_playground_resource_index_route_with_force_and_without_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/RouteMakeCommand/ResourceTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\ResourceTest::test_command_make_playground_resource_index_route_with_force_and_without_skeleton' flowId='1']
 
-##teamcity[testFinished name='test_command_make_playground_resource_index_route_with_force_and_without_skeleton' duration='16' flowId='1']
+##teamcity[testFinished name='test_command_make_playground_resource_index_route_with_force_and_without_skeleton' duration='17' flowId='1']
 
 ##teamcity[testStarted name='test_command_make_resource_index_route_with_force_and_with_skeleton' locationHint='php_qn:///app/tests/Feature/Console/Commands/RouteMakeCommand/ResourceTest.php::\Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\ResourceTest::test_command_make_resource_index_route_with_force_and_with_skeleton' flowId='1']
 
