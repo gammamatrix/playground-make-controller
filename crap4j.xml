@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-10 19:17:01</timestamp>
+  <timestamp>2024-08-10 21:09:08</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>161</methodCount>
     <crapMethodCount>10</crapMethodCount>
     <crapLoad>118</crapLoad>
-    <totalCrap>2490.07</totalCrap>
+    <totalCrap>2489.49</totalCrap>
     <crapMethodPercent>6.21</crapMethodPercent>
   </stats>
   <methods>
@@ -534,9 +534,9 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>25.3</crap>
-      <complexity>25</complexity>
-      <coverage>92.16</coverage>
+      <crap>24.72</crap>
+      <complexity>23</complexity>
+      <coverage>85.19</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
