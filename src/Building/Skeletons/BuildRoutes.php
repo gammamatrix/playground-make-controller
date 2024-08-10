@@ -80,27 +80,32 @@ trait BuildRoutes
             }
         }
 
-        if (! empty($this->c->route()) && is_string($this->c->route())) {
-            $options['--route'] = $this->c->model_route();
-        }
+        // if (! empty($this->c->route()) && is_string($this->c->route())) {
+        //     $options['--route'] = $this->c->model_route();
+        // }
 
         if ($this->c->revision()) {
             $options['--revision'] = true;
         }
 
         if ($type === 'api') {
+            $options['--route'] = $this->c->model_route();
         } elseif ($type === 'resource') {
+            $options['--route'] = $this->c->model_route();
         } elseif ($type === 'playground-resource') {
+            $options['--route'] = $this->c->model_route();
         } elseif ($type === 'playground-resource-index') {
+            $options['--route'] = $this->c->module_route();
         } elseif ($type === 'playground-api') {
+            $options['--route'] = $this->c->model_route();
         }
 
-        // dump([
+        // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$modelFile' => $modelFile,
         //     '$options' => $options,
         //     '$this->options()' => $this->options(),
-        //     '$this->c' => $this->c,
+        //     // '$this->c' => $this->c,
         // ]);
         if (empty($this->call('playground:make:route', $options))) {
 

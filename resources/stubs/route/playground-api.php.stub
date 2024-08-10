@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| {{module}} Routes: {{name}}
+| {{module}} API Routes: {{name}}
 |--------------------------------------------------------------------------
 |
 |
@@ -64,16 +64,6 @@ Route::group([
         'uses' => '{{controller}}@show',
     ])->whereUuid('{{model_column}}')->can('detail', '{{model_column}}');
 
-    // Route::get('/{slug}', [
-    //     'as' => '{{route}}.slug',
-    //     'uses' => '{{controller}}@slug',
-    // ])->where('slug', '[a-zA-Z0-9\-]+');
-
-    // Route::post('/store', [
-    //     'as' => '{{route}}.store',
-    //     'uses' => '{{controller}}@store',
-    // ])->can('store', {{model_fqdn}}::class);
-
     // API
 
     Route::put('/lock/{{{model_column}}}', [
@@ -89,16 +79,12 @@ Route::group([
     Route::delete('/{{{model_column}}}', [
         'as' => '{{route}}.destroy',
         'uses' => '{{controller}}@destroy',
-    ])->whereUuid('{{model_column}}')
-        ->can('delete', '{{model_column}}')
-        ->withTrashed();
+    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}')->withTrashed();
 
     Route::put('/restore/{{{model_column}}}', [
         'as' => '{{route}}.restore',
         'uses' => '{{controller}}@restore',
-    ])->whereUuid('{{model_column}}')
-        ->can('restore', '{{model_column}}')
-        ->withTrashed();
+    ])->whereUuid('{{model_column}}')->can('restore', '{{model_column}}')->withTrashed();
 
     Route::post('/', [
         'as' => '{{route}}.post',

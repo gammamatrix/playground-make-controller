@@ -182,7 +182,7 @@ class RouteMakeCommand extends GeneratorCommand
             if ($model_fqdn) {
                 $this->searches['route_can'] = sprintf(
                     '->can(\'%1$s\', %2$s::class)',
-                    'view',
+                    'index',
                     $this->parseClassInput($model_fqdn)
                 );
             }
@@ -212,15 +212,18 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$options' => $options,
-        //     '$model_slug' => $model_slug,
-        //     '$model_parameter' => $model_parameter,
-        //     '$model_variable' => $model_variable,
-        //     '$this->c' => $this->c,
-        //     '$this->searches' => $this->searches,
-        // ]);
+        // if ($type === 'playground-resource-index') {
+        //     dump([
+        //         '__METHOD__' => __METHOD__,
+        //         '$type' => $type,
+        //         '$options' => $options,
+        //         '$model_slug' => $model_slug,
+        //         '$model_parameter' => $model_parameter,
+        //         '$model_variable' => $model_variable,
+        //         '$this->c' => $this->c,
+        //         '$this->searches' => $this->searches,
+        //     ]);
+        // }
     }
 
     protected function getConfigurationFilename(): string
@@ -321,7 +324,7 @@ class RouteMakeCommand extends GeneratorCommand
             }
         } elseif ($type === 'playground-resource') {
             if ($revision) {
-                $route = 'route/playground-resource.php.stub';
+                $route = 'route/playground-resource-revisions.php.stub';
             } else {
                 $route = 'route/playground-resource.php.stub';
             }
