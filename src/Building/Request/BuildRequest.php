@@ -268,9 +268,9 @@ trait BuildRequest
 
         $rules .= str_repeat(' ', $indent);
 
-        // if (! empty($this->searches['constants'])) {
-        //     $this->searches['constants'] .= PHP_EOL;
-        // }
+        if (empty($this->searches['use_class']) && empty($this->searches['constants'])) {
+            $this->searches['constants'] .= PHP_EOL;
+        }
 
         $this->searches['constants'] .= <<<PHP_CODE
     /**

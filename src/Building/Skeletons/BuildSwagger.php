@@ -18,7 +18,7 @@ trait BuildSwagger
         if (! in_array($type, [
             'playground-api',
             'playground-resource',
-            'playground-resource-index',
+            // 'playground-resource-index',
         ])) {
             // dump([
             //     '__METHOD__' => __METHOD__,
@@ -96,6 +96,13 @@ trait BuildSwagger
         } elseif ($type === 'resource') {
         } elseif ($type === 'playground-resource') {
         } elseif ($type === 'playground-api') {
+        } else {
+            dump([
+                '__METHOD__' => __METHOD__,
+                '$type' => $type,
+            ]);
+
+            return;
         }
 
         $options['--type'] = 'model';
@@ -104,36 +111,40 @@ trait BuildSwagger
         //     '$options' => $options,
         // ]);
 
-        if (empty($this->call('playground:make:swagger', $options))) {
+        // if (empty($this->call('playground:make:swagger', $options))) {
 
-            // $file_model = sprintf(
-            //     '%1$s%2$s/%3$s/docs.model.json',
-            //     $this->laravel->storagePath(),
-            //     $path_resources_packages,
-            //     Str::of($name)->kebab(),
-            // );
-            // if (! in_array($file_model, $this->c->docs())) {
-            //     $this->c->docs()[] = $file_model;
-            // }
-            // dump([
-            //     '__METHOD__' => __METHOD__,
-            //     '$path_resources_packages' => $path_resources_packages,
-            //     '$file_model' => $file_model,
-            //     '$this->configuration' => $this->configuration,
-            // ]);
-        }
+        //     // $file_model = sprintf(
+        //     //     '%1$s%2$s/%3$s/docs.model.json',
+        //     //     $this->laravel->storagePath(),
+        //     //     $path_resources_packages,
+        //     //     Str::of($name)->kebab(),
+        //     // );
+        //     // if (! in_array($file_model, $this->c->docs())) {
+        //     //     $this->c->docs()[] = $file_model;
+        //     // }
+        //     // dump([
+        //     //     '__METHOD__' => __METHOD__,
+        //     //     '$path_resources_packages' => $path_resources_packages,
+        //     //     '$file_model' => $file_model,
+        //     //     '$this->configuration' => $this->configuration,
+        //     // ]);
+        // }
 
         // art playground:make:controller Board --namespace GammaMatrix/Playground/Matrix/Resource --class BoardController --module Matrix --skeleton --force --type playground-resource --model-file vendor/gammamatrix/playground-stub/resources/playground/matrix/model.board.json
         // art playground:make:controller Board --namespace GammaMatrix/Playground/Matrix/Resource --class BoardController --module Matrix --skeleton --force --type playground-resource --model-file vendor/gammamatrix/playground-stub/resources/playground/matrix/model.board.json
         // art playground:make:controller Epic --namespace GammaMatrix/Playground/Matrix/Resource --class EpicController --module Matrix --skeleton --force --type playground-resource --model-file vendor/gammamatrix/playground-stub/resources/playground/matrix/model.epic.json
         // art playground:make:docs Board --type controller --controller-type playground-resource --namespace GammaMatrix/Playground/Matrix/Resource --model-file vendor/gammamatrix/playground-stub/resources/playground/matrix/model.board.json --preload --module Matrix
-        $options['--type'] = 'controller';
+        $options['--type'] = $type;
 
-        if (! empty($this->c->type())) {
-            $options['--controller-type'] = $this->c->type();
-        }
+        // if (! empty($this->c->type())) {
+        //     $options['--controller-type'] = $this->c->type();
+        // }
 
         // $path_resources_packages = $this->getResourcePackageFolder();
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
 
         if (empty($this->call('playground:make:swagger', $options))) {
 

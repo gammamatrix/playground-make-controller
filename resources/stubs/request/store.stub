@@ -11,8 +11,7 @@ namespace {{ namespace }}\Http\Requests\{{model}};
  * \{{ namespace }}\Http\Requests\{{model}}\{{ class }}
  */
 class {{ class }} extends {{ extends }}{{ implements }}
-{
-{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}{{ rules }}{{ methods }}
+{{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}{{ rules }}{{ methods }}
 
     /**
      * Prepare the data for validation.

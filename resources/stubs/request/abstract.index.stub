@@ -11,8 +11,7 @@ namespace {{ namespace }}\Http\Requests;
  * \{{ namespace }}\Http\Requests\{{ class }}
  */
 {{ abstract }}class {{ class }} extends {{ extends }}{{ implements }}
-{
-{{ use_class }}{{ constants }}
+{{{ use_class }}{{ constants }}
     public const RULES = [
         'perPage' => [
             'nullable',

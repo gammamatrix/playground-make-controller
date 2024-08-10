@@ -305,6 +305,7 @@ trait BuildRequests
                 }
             }
 
+            $request['--test'] = true;
             $request['--skeleton'] = true;
             $request['--module'] = $module;
             // $request = array_merge([

@@ -318,6 +318,7 @@ class RequestMakeCommand extends GeneratorCommand
         $options[] = ['abstract', null, InputOption::VALUE_NONE, 'Make the request abstract.'];
         $options[] = ['api', null, InputOption::VALUE_NONE, 'The request is for APIs'];
         $options[] = ['resource', null, InputOption::VALUE_NONE, 'The request is for resources'];
+        $options[] = ['test', null, InputOption::VALUE_NONE, 'Create a test for the request'];
 
         return $options;
     }
@@ -375,6 +376,21 @@ class RequestMakeCommand extends GeneratorCommand
         return parent::buildClass($name);
     }
 
+    public function finish(): ?bool
+    {
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$this->c->withTests()' => $this->c->withTests(),
+        // ]);
+        if ($this->hasOption('test') && $this->option('test')) {
+            $this->createTest();
+        }
+
+        $this->saveConfiguration();
+
+        return $this->return_status;
+    }
+
     protected function buildFailedValidation(): void
     {
         $this->searches['failedValidation'] = PHP_EOL;
@@ -401,5 +417,120 @@ class RequestMakeCommand extends GeneratorCommand
 PHP_CODE;
 
         $this->searches['failedValidation'] .= PHP_EOL;
+    }
+
+    public function createTest(): void
+    {
+        $type = $this->c->type();
+
+        if (in_array($type, [
+            'abstract',
+            'default',
+        ])) {
+            // No tests created at this step
+        } elseif (in_array($type, [
+            'create',
+            'edit',
+            'destroy',
+            'index',
+            'lock',
+            'restore',
+            'restore-revision',
+            'revisions',
+            'show',
+            'store',
+            'unlock',
+            'update',
+        ])) {
+            $this->command_tests_playground_request($type);
+        } else {
+            dd([
+                '__METHOD__' => __METHOD__,
+                '$type' => $type,
+                '$this->options()' => $this->options(),
+            ]);
+
+        }
+    }
+
+    public function command_tests_playground_request(string $type): void
+    {
+        $withCovers = $this->hasOption('covers') && $this->option('covers');
+        $force = $this->hasOption('force') && $this->option('force');
+        $model = $this->hasOption('model') ? $this->option('model') : '';
+        $revision = $this->hasOption('revision') && $this->option('revision');
+
+        $name = Str::of($type)->studly()->finish('RequestTest')->toString();
+
+        $test_type = 'playground-request-model';
+        if (in_array($type, [
+            'store',
+            'update',
+        ])) {
+            $test_type .= '-'.$type;
+        }
+
+        $options = [
+            'name' => $name,
+            // '--namespace' => $this->c->namespace(),
+            '--namespace' => $this->rootNamespace(),
+            '--force' => $force,
+            '--playground' => true,
+            '--package' => $this->c->package(),
+            '--organization' => $this->c->organization(),
+            '--model' => $model,
+            '--module' => $this->c->module(),
+            '--type' => $test_type,
+        ];
+
+        if (in_array($type, [
+            'store',
+            'update',
+        ])) {
+            $options['--revision'] = true;
+        }
+
+        $modelFile = $this->getModelFile();
+
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$withCovers' => $withCovers,
+        //     '$force' => $force,
+        //     '$type' => $type,
+        //     '$options' => $options,
+        //     '$model' => $model,
+        //     '$modelFile' => $modelFile,
+        // ]);
+
+        if ($this->hasOption('model-file') && $this->option('model-file')) {
+            $options['--model-file'] = $this->option('model-file');
+        } else {
+            if ($modelFile) {
+                $options['--model-file'] = $modelFile;
+            }
+        }
+
+        if ($withCovers) {
+            $options['--covers'] = true;
+        }
+
+        if ($this->c->skeleton()) {
+            $options['--skeleton'] = true;
+        }
+
+        $options['--suite'] = 'unit';
+
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
+
+        $this->call('playground:make:test', $options);
+
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        //     '$this->options()' => $this->options(),
+        // ]);
     }
 }

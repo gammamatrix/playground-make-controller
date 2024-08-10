@@ -11,8 +11,7 @@ namespace {{ namespace }}\Http\Requests\{{model}};
  * \{{ namespace }}\Http\Requests\{{model}}\{{ class }}
  */
 {{ abstract }}class {{ class }} extends {{ extends }}{{ implements }}
-{
-{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}
+{{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}
 
     /**
      * Get the validation rules that apply to the request.

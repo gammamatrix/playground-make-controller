@@ -11,8 +11,7 @@ namespace {{ namespace }}\Http\Requests;
  * \{{ namespace }}\Http\Requests\{{ class }}
  */
 {{ abstract }}class {{ class }} extends {{ extends }}{{ implements }}
-{
-{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}    public function messages(): array
+{{{ use_class }}{{ constants }}{{ properties }}{{ authorize }}{{ messages }}    public function messages(): array
     {
         return [
             // 'slug.unique' => 'The :attribute has already been taken: :input',
