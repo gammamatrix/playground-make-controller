@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-08 19:57:18</timestamp>
+  <timestamp>2024-08-10 19:17:01</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>158</methodCount>
-    <crapMethodCount>9</crapMethodCount>
-    <crapLoad>106</crapLoad>
-    <totalCrap>2318.64</totalCrap>
-    <crapMethodPercent>5.7</crapMethodPercent>
+    <methodCount>161</methodCount>
+    <crapMethodCount>10</crapMethodCount>
+    <crapLoad>118</crapLoad>
+    <totalCrap>2490.07</totalCrap>
+    <crapMethodPercent>6.21</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -204,9 +204,9 @@
       <methodName>buildClass_rules_constant</methodName>
       <methodSignature>buildClass_rules_constant(Playground\Make\Configuration\Model $model): void</methodSignature>
       <fullMethod>buildClass_rules_constant(Playground\Make\Configuration\Model $model): void</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
-      <coverage>95.83</coverage>
+      <crap>7</crap>
+      <complexity>7</complexity>
+      <coverage>96.15</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -501,9 +501,9 @@
       <methodName>skeleton_requests</methodName>
       <methodSignature>skeleton_requests(string $type): void</methodSignature>
       <fullMethod>skeleton_requests(string $type): void</fullMethod>
-      <crap>175.22</crap>
+      <crap>173.44</crap>
       <complexity>24</complexity>
-      <coverage>35.97</coverage>
+      <coverage>36.22</coverage>
       <crapLoad>16</crapLoad>
     </method>
     <method>
@@ -545,9 +545,9 @@
       <methodName>skeleton_swagger</methodName>
       <methodSignature>skeleton_swagger(string $type): void</methodSignature>
       <fullMethod>skeleton_swagger(string $type): void</fullMethod>
-      <crap>27.27</crap>
-      <complexity>27</complexity>
-      <coverage>92.86</coverage>
+      <crap>27.34</crap>
+      <complexity>25</complexity>
+      <coverage>84.48</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1554,6 +1554,17 @@
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
       <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>finish</methodName>
+      <methodSignature>finish(): ?bool</methodSignature>
+      <fullMethod>finish(): ?bool</fullMethod>
+      <crap>3.14</crap>
+      <complexity>3</complexity>
+      <coverage>75</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
       <methodName>buildFailedValidation</methodName>
       <methodSignature>buildFailedValidation(): void</methodSignature>
       <fullMethod>buildFailedValidation(): void</fullMethod>
@@ -1561,6 +1572,28 @@
       <complexity>1</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>createTest</methodName>
+      <methodSignature>createTest(): void</methodSignature>
+      <fullMethod>createTest(): void</fullMethod>
+      <crap>12</crap>
+      <complexity>3</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RequestMakeCommand</className>
+      <methodName>command_tests_playground_request</methodName>
+      <methodSignature>command_tests_playground_request(string $type): void</methodSignature>
+      <fullMethod>command_tests_playground_request(string $type): void</fullMethod>
+      <crap>156</crap>
+      <complexity>12</complexity>
+      <coverage>0</coverage>
+      <crapLoad>12</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
