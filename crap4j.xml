@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-10 23:20:29</timestamp>
+  <timestamp>2024-08-11 16:58:09</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>161</methodCount>
     <crapMethodCount>10</crapMethodCount>
-    <crapLoad>118</crapLoad>
-    <totalCrap>2489.49</totalCrap>
+    <crapLoad>119</crapLoad>
+    <totalCrap>2515.49</totalCrap>
     <crapMethodPercent>6.21</crapMethodPercent>
   </stats>
   <methods>
@@ -1590,10 +1590,10 @@
       <methodName>command_tests_playground_request</methodName>
       <methodSignature>command_tests_playground_request(string $type): void</methodSignature>
       <fullMethod>command_tests_playground_request(string $type): void</fullMethod>
-      <crap>156</crap>
-      <complexity>12</complexity>
+      <crap>182</crap>
+      <complexity>13</complexity>
       <coverage>0</coverage>
-      <crapLoad>12</crapLoad>
+      <crapLoad>13</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
