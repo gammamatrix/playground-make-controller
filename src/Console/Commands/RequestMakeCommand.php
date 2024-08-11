@@ -428,6 +428,11 @@ PHP_CODE;
             'default',
         ])) {
             // No tests created at this step
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     '$type' => $type,
+            //     '$this->options()' => $this->options(),
+            // ]);
         } elseif (in_array($type, [
             'create',
             'edit',
@@ -441,6 +446,7 @@ PHP_CODE;
             'store',
             'unlock',
             'update',
+            'form-request',
         ])) {
             $this->command_tests_playground_request($type);
         } else {
@@ -449,7 +455,6 @@ PHP_CODE;
                 '$type' => $type,
                 '$this->options()' => $this->options(),
             ]);
-
         }
     }
 
@@ -468,6 +473,10 @@ PHP_CODE;
             'update',
         ])) {
             $test_type .= '-'.$type;
+        } elseif (in_array($type, [
+            'form-request',
+        ])) {
+            $test_type = 'playground-request-form';
         }
 
         $options = [
