@@ -13,6 +13,17 @@ use Illuminate\Support\Str;
  */
 trait BuildBlades
 {
+    // protected ?Package $modelPackage = null;
+
+    // public function load_model_package(string $model_package): void
+    // {
+    //     $payload = $this->readJsonFileAsArray($model_package);
+    //     if (! empty($payload)) {
+    //         $this->modelPackage = new Package($payload);
+    //         // $this->modelPackage->apply();
+    //     }
+    // }
+
     public function skeleton_blades(string $type): void
     {
         if (! in_array($type, [
@@ -26,6 +37,9 @@ trait BuildBlades
             // ]);
             return;
         }
+
+        $model_package = $this->hasOption('model-package') && $this->option('model-package') ? $this->option('model-package') : '';
+        // $models = $this->modelPackage?->models() ?? [];
 
         $force = $this->hasOption('force') && $this->option('force');
         $model = $this->hasOption('model') ? $this->option('model') : '';
@@ -57,6 +71,14 @@ trait BuildBlades
 
         $layout = 'playground::layouts.site';
 
+        if (in_array($type, [
+            'playground-resource-index',
+        ])) {
+            $title = $module;
+        } else {
+            $title = Str::of($this->c->name())->snake()->replace('_', ' ')->title()->toString();
+        }
+
         $options = [
             'name' => $name,
             '--namespace' => $namespace,
@@ -67,7 +89,7 @@ trait BuildBlades
             '--module' => $module,
             '--type' => $type,
             '--class' => $name,
-            '--title' => Str::of($this->c->name())->snake()->replace('_', ' ')->title()->toString(),
+            '--title' => $title,
             // '--config' => Str::of($package)->snake()->toString(),
             '--extends' => $layout,
         ];
@@ -80,6 +102,14 @@ trait BuildBlades
             if ($modelFile) {
                 $options['--model-file'] = $modelFile;
             }
+        }
+
+        if ($model_package) {
+            $options['--model-package'] = $model_package;
+        }
+
+        if ($this->c->revision()) {
+            $options['--revision'] = true;
         }
 
         if (! empty($this->c->route()) && is_string($this->c->route())) {

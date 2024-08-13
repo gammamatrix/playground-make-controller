@@ -343,7 +343,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     public function restoreRevision(
         {{model_label}}Revision ${{model_slug}}_revision,
         Requests\{{ model }}\RestoreRevisionRequest $request
-    ): JsonResponse|Resources\{{ model }} {
+    ): JsonResponse|RedirectResponse|Resources\{{ model }} {
         $validated = $request->validated();
 
         /**
