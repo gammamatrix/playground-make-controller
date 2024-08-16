@@ -130,10 +130,10 @@ trait BuildBlades
         } elseif ($type === 'playground-api') {
         }
 
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$options' => $options,
-        ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
 
         if (empty($this->call('playground:make:blade', $options))) {
 

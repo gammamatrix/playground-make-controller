@@ -217,7 +217,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
      * @route POST /api/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
      */
     public function store(
-        StoreRequest $request
+        Requests\{{ model }}\StoreRequest $request
     ): Response|JsonResponse|Resources\{{ model }} {
         $validated = $request->validated();
 
