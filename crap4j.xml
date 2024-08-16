@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-13 22:55:57</timestamp>
+  <timestamp>2024-08-16 05:24:36</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>161</methodCount>
-    <crapMethodCount>10</crapMethodCount>
-    <crapLoad>119</crapLoad>
-    <totalCrap>2521.24</totalCrap>
-    <crapMethodPercent>6.21</crapMethodPercent>
+    <methodCount>163</methodCount>
+    <crapMethodCount>11</crapMethodCount>
+    <crapLoad>131</crapLoad>
+    <totalCrap>2705.18</totalCrap>
+    <crapMethodPercent>6.75</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -17,8 +17,8 @@
       <methodName>createTest</methodName>
       <methodSignature>createTest(): void</methodSignature>
       <fullMethod>createTest(): void</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -32,6 +32,17 @@
       <complexity>1</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building</package>
+      <className>Playground\Make\Controller\Building\BuildTests</className>
+      <methodName>command_tests_playground_resource_index</methodName>
+      <methodSignature>command_tests_playground_resource_index(): void</methodSignature>
+      <fullMethod>command_tests_playground_resource_index(): void</fullMethod>
+      <crap>132</crap>
+      <complexity>11</complexity>
+      <coverage>0</coverage>
+      <crapLoad>11</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building</package>
@@ -259,9 +270,9 @@
       <methodName>skeleton_blades</methodName>
       <methodSignature>skeleton_blades(string $type): void</methodSignature>
       <fullMethod>skeleton_blades(string $type): void</fullMethod>
-      <crap>29.88</crap>
-      <complexity>29</complexity>
-      <coverage>89.83</coverage>
+      <crap>33.65</crap>
+      <complexity>30</complexity>
+      <coverage>84.06</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1238,9 +1249,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
-      <coverage>100</coverage>
+      <crap>8</crap>
+      <complexity>8</complexity>
+      <coverage>96.55</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1263,6 +1274,17 @@
       <crap>2.01</crap>
       <complexity>2</complexity>
       <coverage>85.71</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>load_model_package</methodName>
+      <methodSignature>load_model_package(string $model_package): void</methodSignature>
+      <fullMethod>load_model_package(string $model_package): void</fullMethod>
+      <crap>6</crap>
+      <complexity>2</complexity>
+      <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1304,9 +1326,9 @@
       <methodName>finish</methodName>
       <methodSignature>finish(): ?bool</methodSignature>
       <fullMethod>finish(): ?bool</fullMethod>
-      <crap>9.03</crap>
-      <complexity>9</complexity>
-      <coverage>92.86</coverage>
+      <crap>10.2</crap>
+      <complexity>10</complexity>
+      <coverage>87.5</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1590,10 +1612,10 @@
       <methodName>command_tests_playground_request</methodName>
       <methodSignature>command_tests_playground_request(string $type): void</methodSignature>
       <fullMethod>command_tests_playground_request(string $type): void</fullMethod>
-      <crap>182</crap>
-      <complexity>13</complexity>
+      <crap>210</crap>
+      <complexity>14</complexity>
       <coverage>0</coverage>
-      <crapLoad>13</crapLoad>
+      <crapLoad>14</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
