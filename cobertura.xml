@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.69072597566093" branch-rate="0" lines-covered="1646" lines-valid="2383" branches-covered="0" branches-valid="0" complexity="787" version="0.4" timestamp="1723785876">
+<coverage line-rate="0.69020596889449" branch-rate="0" lines-covered="1642" lines-valid="2379" branches-covered="0" branches-valid="0" complexity="787" version="0.4" timestamp="1723827830">
   <sources>
     <source>/app/src</source>
   </sources>
@@ -1297,11 +1297,11 @@
         </class>
       </classes>
     </package>
-    <package name="Building/Skeletons/BuildBlades.php" line-rate="0.84057971014493" branch-rate="0" complexity="30">
+    <package name="Building/Skeletons/BuildBlades.php" line-rate="0.83076923076923" branch-rate="0" complexity="30">
       <classes>
-        <class name="Playground\Make\Controller\Building\Skeletons\BuildBlades" filename="Building/Skeletons/BuildBlades.php" line-rate="0.84057971014493" branch-rate="0" complexity="30">
+        <class name="Playground\Make\Controller\Building\Skeletons\BuildBlades" filename="Building/Skeletons/BuildBlades.php" line-rate="0.83076923076923" branch-rate="0" complexity="30">
           <methods>
-            <method name="skeleton_blades" signature="string $type" line-rate="0.84057971014493" branch-rate="0" complexity="30">
+            <method name="skeleton_blades" signature="string $type" line-rate="0.83076923076923" branch-rate="0" complexity="30">
               <lines>
                 <line number="29" hits="2"/>
                 <line number="30" hits="2"/>
@@ -1367,10 +1367,6 @@
                 <line number="128" hits="1"/>
                 <line number="129" hits="0"/>
                 <line number="130" hits="0"/>
-                <line number="133" hits="1"/>
-                <line number="134" hits="1"/>
-                <line number="135" hits="1"/>
-                <line number="136" hits="1"/>
                 <line number="138" hits="1"/>
               </lines>
             </method>
@@ -1440,10 +1436,6 @@
             <line number="128" hits="1"/>
             <line number="129" hits="0"/>
             <line number="130" hits="0"/>
-            <line number="133" hits="1"/>
-            <line number="134" hits="1"/>
-            <line number="135" hits="1"/>
-            <line number="136" hits="1"/>
             <line number="138" hits="1"/>
           </lines>
         </class>
