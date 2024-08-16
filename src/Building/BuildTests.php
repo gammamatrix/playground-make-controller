@@ -34,9 +34,13 @@ trait BuildTests
             $this->command_tests_playground_resource();
             // $this->command_tests_playground_request_test_case();
             // $this->command_tests_playground_service_provider();
+        } elseif (in_array($type, [
+            'playground-resource-index',
+        ])) {
+            $this->command_tests_playground_resource_index();
         }
 
-        // dd([
+        // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$type' => $type,
         //     '$this->options()' => $this->options(),
@@ -107,6 +111,56 @@ trait BuildTests
 
     //     // $this->createTest = true;
     // }
+
+    public function command_tests_playground_resource_index(): void
+    {
+        $withCovers = $this->hasOption('covers') && $this->option('covers');
+        $force = $this->hasOption('force') && $this->option('force');
+        $model_package = $this->hasOption('model-package') && $this->option('model-package') ? $this->option('model-package') : '';
+
+        $options = [
+            'name' => 'IndexRouteTest',
+            // '--namespace' => $this->c->namespace(),
+            '--namespace' => $this->rootNamespace(),
+            '--force' => $force,
+            '--playground' => true,
+            '--package' => $this->c->package(),
+            '--organization' => $this->c->organization(),
+            '--module' => $this->c->module(),
+            '--type' => 'playground-resource-index',
+        ];
+
+        $modelFile = $this->getModelFile();
+
+        if ($this->hasOption('model-file') && $this->option('model-file')) {
+            $options['--model-file'] = $this->option('model-file');
+        } else {
+            if ($modelFile) {
+                $options['--model-file'] = $modelFile;
+            }
+        }
+
+        if ($model_package) {
+            $options['--model-package'] = $model_package;
+        }
+
+        if ($withCovers) {
+            $options['--covers'] = true;
+        }
+
+        if ($this->c->skeleton()) {
+            $options['--skeleton'] = true;
+        }
+
+        $options['--suite'] = 'feature';
+
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$options' => $options,
+        // ]);
+
+        $this->call('playground:make:test', $options);
+    }
 
     public function command_tests_playground_resource(): void
     {

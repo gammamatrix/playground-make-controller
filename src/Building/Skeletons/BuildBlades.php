@@ -71,10 +71,17 @@ trait BuildBlades
 
         $layout = 'playground::layouts.site';
 
+        $title = Str::of($name)->studly()->toString();
+
         if (in_array($type, [
+            'playground-resource',
+        ])) {
+            $layout = 'playground::layouts.resource';
+        } elseif (in_array($type, [
             'playground-resource-index',
         ])) {
             $title = $module;
+            $layout = 'playground::layouts.resource.layout';
         } else {
             $title = Str::of($this->c->name())->snake()->replace('_', ' ')->title()->toString();
         }
@@ -122,6 +129,11 @@ trait BuildBlades
         } elseif ($type === 'playground-resource-index') {
         } elseif ($type === 'playground-api') {
         }
+
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$options' => $options,
+        ]);
 
         if (empty($this->call('playground:make:blade', $options))) {
 

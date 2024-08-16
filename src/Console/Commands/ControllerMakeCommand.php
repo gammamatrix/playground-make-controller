@@ -13,6 +13,7 @@ use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfi
 use Playground\Make\Console\Commands\GeneratorCommand;
 use Playground\Make\Controller\Building;
 use Playground\Make\Controller\Configuration\Controller as Configuration;
+use Playground\Make\Package\Configuration\Package;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -49,6 +50,8 @@ class ControllerMakeCommand extends GeneratorCommand
      * @var class-string<Configuration>
      */
     public const CONF = Configuration::class;
+
+    protected ?Package $modelPackage = null;
 
     /**
      * @var PrimaryConfigurationContract&Configuration
@@ -140,6 +143,8 @@ class ControllerMakeCommand extends GeneratorCommand
 
     public function prepareOptions(): void
     {
+        $this->modelPackage = null;
+
         $options = $this->options();
 
         $initModel = false;
@@ -147,6 +152,11 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->prepareOptionsFromOptions();
 
         $this->prepareOptionsType($options);
+
+        $model_package = $this->hasOption('model-package') && is_string($this->option('model-package')) ? $this->option('model-package') : '';
+        if ($model_package) {
+            $this->load_model_package($model_package);
+        }
 
         // dump([
         //     '__METHOD__' => __METHOD__,
@@ -287,6 +297,15 @@ class ControllerMakeCommand extends GeneratorCommand
         }
     }
 
+    public function load_model_package(string $model_package): void
+    {
+        $payload = $this->readJsonFileAsArray($model_package);
+        if (! empty($payload)) {
+            $this->modelPackage = new Package($payload);
+            // $this->modelPackage->apply();
+        }
+    }
+
     /**
      * @var array<int, string>
      */
@@ -409,9 +428,10 @@ class ControllerMakeCommand extends GeneratorCommand
         }
 
         $fqdn = $this->model?->fqdn();
-        // dd([
+        // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$name' => $name,
+        //     '$this->c->type()' => $this->c->type(),
         //     '$fqdn' => $fqdn,
         // ]);
         if ($fqdn) {
@@ -435,6 +455,10 @@ class ControllerMakeCommand extends GeneratorCommand
             //         // '$this->c->toArray()' => $this->c->toArray(),
             //     ]);
             // }
+
+            if ($this->c->withTests()) {
+                $this->createTest();
+            }
 
             return $this->return_status;
         }

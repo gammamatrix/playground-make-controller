@@ -536,6 +536,19 @@ PHP_CODE;
 
         $this->call('playground:make:test', $options);
 
+        if (in_array($type, [
+            'form-request',
+        ])) {
+            $options['--suite'] = 'feature';
+
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     '$options' => $options,
+            // ]);
+
+            $this->call('playground:make:test', $options);
+        }
+
         // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$options' => $options,

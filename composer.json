@@ -27,6 +27,14 @@
         },
         {
             "type": "vcs",
+            "url": "git@github.com:gammamatrix/playground-make-model.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:gammamatrix/playground-make-package.git"
+        },
+        {
+            "type": "vcs",
             "url": "git@github.com:gammamatrix/playground-make-swagger.git"
         },
         {
@@ -40,6 +48,7 @@
     },
     "require-dev": {
         "gammamatrix/playground-make-blade": "*",
+        "gammamatrix/playground-make-package": "*",
         "gammamatrix/playground-make-swagger": "*",
         "gammamatrix/playground-make-test": "*",
         "gammamatrix/playground-test": "*"

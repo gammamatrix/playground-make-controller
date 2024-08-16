@@ -18,7 +18,7 @@ trait BuildPolicies
         if (! in_array($type, [
             'playground-api',
             'playground-resource',
-            'playground-resource-index',
+            // 'playground-resource-index',
         ])) {
             // dump([
             //     '__METHOD__' => __METHOD__,
