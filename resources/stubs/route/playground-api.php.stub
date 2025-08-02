@@ -1,4 +1,5 @@
 <?php
+
 /**
  * {{organization}}
  */
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{{{model_column}}}', [
         'as' => '{{route}}.show',
         'uses' => '{{controller}}@show',
-    ])->whereUuid('{{model_column}}')->can('detail', '{{model_column}}');
+    ])->whereUuid('{{model_column}}')->can('detail', '{{model_column}}')->withTrashed();
 
     // API
 

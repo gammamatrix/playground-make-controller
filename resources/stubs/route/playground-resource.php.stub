@@ -1,4 +1,5 @@
 <?php
+
 /**
  * {{organization}}
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/{{module_slug}}/{{model_column}}',
+    'prefix' => 'resource/{{module_slug}}/{{model_column}}',
     'middleware' => config('{{package}}.middleware.default'),
     'namespace' => '\{{namespace}}\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{{{model_column}}}', [
         'as' => '{{route}}.show',
         'uses' => '{{controller}}@show',
-    ])->whereUuid('{{model_column}}')->can('detail', '{{model_column}}');
+    ])->whereUuid('{{model_column}}')->can('detail', '{{model_column}}')->withTrashed();
 
     // API
 

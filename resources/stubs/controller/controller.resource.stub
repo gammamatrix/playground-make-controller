@@ -1,4 +1,5 @@
 <?php
+
 /**
  * {{organization}}
  */
@@ -466,11 +467,11 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->update($validated);
-
         if ($user?->id) {
             ${{model_slug}}->modified_by_id = $user->id;
         }
+
+        ${{model_slug}}->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [

@@ -323,7 +323,6 @@ PHP_CODE;
 
             if (in_array($this->c->type(), [
                 'store',
-                'update',
             ])) {
                 $required[] = $model->model_attribute();
             }
