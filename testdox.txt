@@ -37,7 +37,7 @@ Command (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCom
  [x] Command skeleton with roles action
  [x] Command skeleton with roles view
  [x] Command skeleton with roles and action view
- [x] Command userProviderModelGuard with invalid guard
+ [x] Command user provider model guard with invalid guard
  [x] Command skeleton with type playground resource
  [x] Command skeleton with type playground api
  [x] Command skeleton with type api
@@ -87,9 +87,9 @@ File (Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand
  [x] Command make route with force and with skeleton
 
 Index (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Index)
- [x] Command make FormRequest
- [x] Command make AbstractIndexRequest
- [x] Command make AbstractStoreRequest
+ [x] Command make form request
+ [x] Command make abstract index request
+ [x] Command make abstract store request
 
 Instance (Tests\Unit\Playground\Make\Controller\Configuration\Controller\Instance)
  [x] Instance
@@ -128,10 +128,10 @@ Keys (Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeComm
  [x] Command make keys resource with force and with skeleton
 
 Model (Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand\Model)
- [x] Command make CreateRequest with force and without skeleton
- [x] Command make IndexRequest with force and with skeleton
- [x] Command make IndexRequest with force and with skeleton without model file
- [x] Command make IndexRequest under Subfolder with force and with skeleton without model file
+ [x] Command make create request with force and without skeleton
+ [x] Command make index request with force and with skeleton
+ [x] Command make index request with force and with skeleton without model file
+ [x] Command make index request under subfolder with force and with skeleton without model file
 
 Resource (Tests\Feature\Playground\Make\Controller\Console\Commands\RouteMakeCommand\Resource)
  [x] Command make playground resource route with force and without skeleton
