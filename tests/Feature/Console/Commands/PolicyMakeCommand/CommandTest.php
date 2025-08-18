@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCommand;
 
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -23,7 +25,7 @@ class CommandTest extends TestCase
          */
         $result = $this->artisan('playground:make:policy');
         $result->assertExitCode(1);
-        $result->expectsOutputToContain( __('playground-make::generator.input.error'));
+        $result->expectsOutputToContain(__('playground-make::generator.input.error'));
     }
 
     public function test_command_skeleton(): void
@@ -62,7 +64,7 @@ class CommandTest extends TestCase
         $result->assertExitCode(0);
     }
 
-    public function test_command_userProviderModelGuard_with_invalid_guard(): void
+    public function test_command_user_provider_model_guard_with_invalid_guard(): void
     {
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage(__('playground-make-controller::generator.Policy.guard.required', [

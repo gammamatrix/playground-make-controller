@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 
 use PHPUnit\Framework\Attributes\CoversClass;

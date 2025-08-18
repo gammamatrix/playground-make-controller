@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Configuration;
 
 use Playground\Make\Configuration\PrimaryConfiguration;
@@ -134,7 +136,7 @@ class Controller extends PrimaryConfiguration
     protected bool $withTests = false;
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {

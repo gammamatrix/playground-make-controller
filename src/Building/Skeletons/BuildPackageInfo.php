@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Building\Skeletons;
 
 use Illuminate\Support\Str;
-use Playground\Make\Configuration\Model;
 use Playground\Make\Controller\Configuration\Controller\PackageInfo;
 
 /**
@@ -35,7 +36,7 @@ trait BuildPackageInfo
     // ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function preparePackageInfo(array $options = []): void
     {
@@ -97,7 +98,7 @@ trait BuildPackageInfo
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function preparePackageInfo_privilege(
         PackageInfo $packageInfo,
@@ -170,7 +171,7 @@ trait BuildPackageInfo
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function preparePackageInfo_view(
         PackageInfo $packageInfo,
@@ -248,7 +249,7 @@ trait BuildPackageInfo
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function preparePackageInfo_module(
         PackageInfo $packageInfo,
@@ -261,7 +262,7 @@ trait BuildPackageInfo
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function preparePackageInfo_module_label(
         PackageInfo $packageInfo,

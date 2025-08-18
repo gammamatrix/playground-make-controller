@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Building;
 
 /**
@@ -12,7 +14,7 @@ namespace Playground\Make\Controller\Building;
 trait MakeCommands
 {
     /**
-     * @param array<int, string> $policies
+     * @param  array<int, string>  $policies
      */
     public function handle_policies(array $policies): void
     {
@@ -46,7 +48,7 @@ trait MakeCommands
     }
 
     /**
-     * @param array<int, string> $requests
+     * @param  array<int, string>  $requests
      */
     public function handle_requests(array $requests): void
     {
@@ -77,7 +79,7 @@ trait MakeCommands
     }
 
     /**
-     * @param array<int, string> $resources
+     * @param  array<int, string>  $resources
      */
     public function handle_resources(array $resources): void
     {
@@ -106,7 +108,7 @@ trait MakeCommands
     }
 
     /**
-     * @param array<int, string> $transformers
+     * @param  array<int, string>  $transformers
      */
     public function handle_transformers(array $transformers): void
     {

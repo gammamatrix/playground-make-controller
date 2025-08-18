@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Building;
 
 /**
@@ -48,9 +50,7 @@ trait BuildTests
 
     }
 
-    public function command_tests_playground_api(): void
-    {
-    }
+    public function command_tests_playground_api(): void {}
 
     // public function command_tests_providers(string $type): void
     // {

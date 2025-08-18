@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Configuration;
 
 use Playground\Make\Configuration\PrimaryConfiguration;
@@ -54,7 +56,7 @@ class Request extends PrimaryConfiguration
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {

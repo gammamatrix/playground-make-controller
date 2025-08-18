@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Configuration\Concerns;
 
 use Playground\Make\Controller\Configuration\Controller\PackageInfo;
@@ -16,7 +18,7 @@ trait Info
     protected ?PackageInfo $packageInfo = null;
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function addPackageInfo(array $options = []): PackageInfo
     {

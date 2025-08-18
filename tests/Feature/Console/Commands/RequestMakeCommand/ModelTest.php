@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand;
 
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -16,7 +18,7 @@ use Tests\Feature\Playground\Make\Controller\TestCase;
 #[CoversClass(RequestMakeCommand::class)]
 class ModelTest extends TestCase
 {
-    public function test_command_make_CreateRequest_with_force_and_without_skeleton(): void
+    public function test_command_make_create_request_with_force_and_without_skeleton(): void
     {
         $command = 'playground:make:request CreateRequest --type create --class CreateRequest --force --namespace Acme/Testing/Resource --package acme-testing-resource --model Acme/Testing/Models/Rocket --extends Acme/Testing/Resource/Http/Requests/FormRequest --model-file resources/testing/configurations/model.rocket.json --skeleton';
 
@@ -27,7 +29,7 @@ class ModelTest extends TestCase
         $result->assertExitCode(0);
     }
 
-    public function test_command_make_IndexRequest_with_force_and_with_skeleton(): void
+    public function test_command_make_index_request_with_force_and_with_skeleton(): void
     {
         $command = 'playground:make:request IndexRequest --type index --class IndexRequest --force --namespace Acme/Testing/Resource --package acme-testing-resource --model Acme/Testing/Models/Rocket --extends Acme/Testing/Resource/Http/Requests/FormRequest --model-file resources/testing/configurations/model.rocket.json --skeleton';
 
@@ -38,7 +40,7 @@ class ModelTest extends TestCase
         $result->assertExitCode(0);
     }
 
-    public function test_command_make_IndexRequest_with_force_and_with_skeleton_without_model_file(): void
+    public function test_command_make_index_request_with_force_and_with_skeleton_without_model_file(): void
     {
         $command = 'playground:make:request IndexRequest --type index --class IndexRequest --force --namespace Acme/Testing/Resource --package acme-testing-resource --model Acme/Testing/Models/Rocket --extends Acme/Testing/Resource/Http/Requests/FormRequest --skeleton';
 
@@ -49,7 +51,7 @@ class ModelTest extends TestCase
         $result->assertExitCode(0);
     }
 
-    public function test_command_make_IndexRequest_under_Subfolder_with_force_and_with_skeleton_without_model_file(): void
+    public function test_command_make_index_request_under_subfolder_with_force_and_with_skeleton_without_model_file(): void
     {
         $command = 'playground:make:request Subfolder --type index --class IndexRequest --force --namespace Acme/Testing/Resource --package acme-testing-resource --model Acme/Testing/Models/Rocket --extends Acme/Testing/Resource/Http/Requests/FormRequest --skeleton';
 

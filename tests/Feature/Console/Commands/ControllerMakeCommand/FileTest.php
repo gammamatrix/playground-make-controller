@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand;
 
 use Illuminate\Support\Facades\Artisan;

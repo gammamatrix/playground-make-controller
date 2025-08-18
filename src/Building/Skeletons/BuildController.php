@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Building\Skeletons;
 
 use Illuminate\Support\Str;
@@ -14,7 +16,7 @@ use Illuminate\Support\Str;
 trait BuildController
 {
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     protected function prepareOptionsSlugs(array $options = []): void
     {
@@ -31,7 +33,7 @@ trait BuildController
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     protected function prepareOptionsExtends(array $options = []): void
     {
@@ -66,7 +68,7 @@ trait BuildController
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     protected function prepareOptionsTypeDefault(array $options = []): string
     {
@@ -90,7 +92,7 @@ trait BuildController
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     protected function prepareOptionsRoute(array $options = []): void
     {

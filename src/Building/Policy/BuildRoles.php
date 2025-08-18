@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Building\Policy;
 
 /**
@@ -12,7 +14,7 @@ namespace Playground\Make\Controller\Building\Policy;
 trait BuildRoles
 {
     /**
-     * @param array<string, string> $searches
+     * @param  array<string, string>  $searches
      */
     protected function make_roles_to_view(array &$searches): string
     {
@@ -48,7 +50,7 @@ trait BuildRoles
     }
 
     /**
-     * @param array<string, string> $searches
+     * @param  array<string, string>  $searches
      */
     protected function make_roles_for_action(array &$searches): string
     {

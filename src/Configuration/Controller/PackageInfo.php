@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Playground\Make\Controller\Configuration\Controller;
 
 use Playground\Make\Configuration;
@@ -82,7 +84,7 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
     ];
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function setOptions(array $options = []): self
     {
