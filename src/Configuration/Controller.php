@@ -202,6 +202,18 @@ class Controller extends PrimaryConfiguration
             $this->privilege = $options['privilege'];
         }
 
+        if (! empty($options['slug'])
+            && is_string($options['slug'])
+        ) {
+            $this->slug = $options['slug'];
+        }
+
+        if (! empty($options['slug_plural'])
+            && is_string($options['slug_plural'])
+        ) {
+            $this->slug_plural = $options['slug_plural'];
+        }
+
         if (! empty($options['view'])
             && is_string($options['view'])
         ) {

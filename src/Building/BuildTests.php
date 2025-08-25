@@ -42,11 +42,11 @@ trait BuildTests
             $this->command_tests_playground_resource_index();
         }
 
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$type' => $type,
-        //     '$this->options()' => $this->options(),
-        // ]);
+//         dump([
+//             '__METHOD__' => __METHOD__,
+//             '$type' => $type,
+//             '$this->options()' => $this->options(),
+//         ]);
 
     }
 

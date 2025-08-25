@@ -55,6 +55,7 @@ trait BuildResources
             'playground-api',
             'playground-resource',
         ])) {
+            $name = $model;
             $resources['resource'] = [
                 '--class' => Str::of($name)->studly()->before('Resource')->toString(),
                 'name' => $name,

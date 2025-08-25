@@ -41,11 +41,14 @@ trait BuildRequests
         $package = $this->c->package();
 
         $revision = $this->c->revision();
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     'NOTE' => 'SKIPPING: skeleton_requests',
-        //     '$type' => $type,
-        // ]);
+//         dump([
+//             '__METHOD__' => __METHOD__,
+//             '$type' => $type,
+//             '$model' => $model,
+//             '$module' => $module,
+//             '$name' => $name,
+//             '$this->c->name()' => $this->c->name(),
+//         ]);
 
         // $extends = '';
 
@@ -313,7 +316,7 @@ trait BuildRequests
             // $request = array_merge([
             //     'name' => $this->argument('name'),
             // ], $request);
-            $request['name'] = $name;
+            $request['name'] = $model;
             // dump([
             //     '__METHOD__' => __METHOD__,
             //     '$request' => $request,
@@ -330,14 +333,14 @@ trait BuildRequests
                     $this->getConfigurationFilename_for_request($name, $request['--type'])
                 );
 
-                // dd([
-                //     '__METHOD__' => __METHOD__,
-                //     '$name' => $name,
-                //     '$request' => $request,
-                //     '$file_request' => $file_request,
-                //     '$path_resources_packages' => $path_resources_packages,
-                //     // '$this->c' => $this->c,
-                // ]);
+//                 dump([
+//                     '__METHOD__' => __METHOD__,
+//                     '$name' => $name,
+//                     '$request' => $request,
+//                     '$file_request' => $file_request,
+//                     '$path_resources_packages' => $path_resources_packages,
+//                     // '$this->c' => $this->c,
+//                 ]);
 
                 if (! in_array($file_request, $this->c->requests())) {
                     $this->c->requests()[] = $file_request;

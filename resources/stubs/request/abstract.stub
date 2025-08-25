@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace {{ namespace }}\Http\Requests;
 
 {{ use }}
@@ -34,12 +35,10 @@ abstract class {{ class }} extends BaseFormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, mixed>
      */
     public function rules(): array
     {
-        $rules = is_array(static::RULES) ? static::RULES : [];
-
-        return $rules;
+        return static::RULES;
     }
 }

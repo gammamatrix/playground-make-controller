@@ -154,6 +154,10 @@ trait BuildPackageInfo
             'privilege' => $privilege,
         ]);
 
+        $this->c->setOptions([
+            'privilege' => $privilege,
+        ]);
+
         $this->searches['privilege'] = $packageInfo->privilege();
         // if ('BacklogController' === $this->c->name()) {
         //     dd([
@@ -230,6 +234,10 @@ trait BuildPackageInfo
         }
 
         $packageInfo->setOptions([
+            'view' => $view,
+        ]);
+
+        $this->c->setOptions([
             'view' => $view,
         ]);
 

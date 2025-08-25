@@ -143,6 +143,63 @@ class ControllerMakeCommand extends GeneratorCommand
 
     protected string $path_destination_folder = 'src/Http/Controllers';
 
+    protected ?Package $package = null;
+
+    public function initPackage(string $file): void
+    {
+        if (! empty($file)) {
+
+            $this->package = new Package(
+                $this->readJsonFileAsArray($file)
+            );
+
+            $this->package->apply();
+        } else {
+            $this->package = null;
+        }
+
+        if ($this->package === null) {
+            return;
+        }
+
+        $this->c->setOptions([
+            //            'class' => '',
+            'config' => $this->package->config(),
+            'module' => $this->package->module(),
+            'module_slug' => $this->package->module_slug(),
+            'name' => $this->package->name(),
+            'namespace' => $this->package->namespace(),
+            //            'fqdn' => '',
+            //            'model' => '',
+            'organization' => $this->package->organization(),
+            'package' => $this->package->package(),
+            'withBlades' => $this->package->withBlades(),
+            'withPolicies' => $this->package->withPolicies(),
+            'withRequests' => $this->package->withRequests(),
+            'withRoutes' => $this->package->withRoutes(),
+            'withSwagger' => $this->package->withSwagger(),
+            'withTests' => $this->package->withTests(),
+            'playground' => $this->package->playground(),
+            'type' => $this->package->type(),
+            //            'slug' => '',
+            //            'slug_plural' => '',
+            //            'model_route' => '',
+            //            'module_route' => '',
+            //            'privilege' => '',
+            //            'route' => '',
+            //            'view' => '',
+        ]);
+
+        //        dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$file' => $file,
+        // //             '$this->options()' => $this->options(),
+        //             '$this->package' => $this->package,
+        //            '$this->c' => $this->c,
+        // //             '$this->model' => $this->model,
+        //         ]);
+    }
+
     public function prepareOptions(): void
     {
         $this->modelPackage = null;
@@ -150,25 +207,32 @@ class ControllerMakeCommand extends GeneratorCommand
         $options = $this->options();
 
         $initModel = false;
+        $initFromPackage = false;
+
+        if ($this->hasOption('package-file')
+            && is_string($this->option('package-file'))
+        ) {
+            $this->initPackage($this->option('package-file'));
+            $initFromPackage = true;
+        }
 
         $this->prepareOptionsFromOptions();
 
         $this->prepareOptionsType($options);
 
-        $model_package = $this->hasOption('model-package') && is_string($this->option('model-package')) ? $this->option('model-package') : '';
-        if ($model_package) {
-            $this->load_model_package($model_package);
-        }
-
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     // '$this->c' => $this->c,
-        //     '$this->c->name()' => $this->c->name(),
-        //     '$this->c->type()' => $this->c->type(),
-        //     // '$this->searches' => $this->searches,
-        //     // '$this->arguments()' => $this->arguments(),
-        //     // '$this->options()' => $this->options(),
-        // ]);
+        //         dump([
+        //             '__METHOD__' => __METHOD__,
+        //             '$options' => $options,
+        //             '$initModel' => $initModel,
+        //             '$this->c' => $this->c,
+        //             '$this->modelPackage' => $this->modelPackage,
+        //             '$this->package' => $this->package,
+        // //             '$this->c->name()' => $this->c->name(),
+        // //             '$this->c->type()' => $this->c->type(),
+        //             // '$this->searches' => $this->searches,
+        //             // '$this->arguments()' => $this->arguments(),
+        //             // '$this->options()' => $this->options(),
+        //         ]);
 
         if (in_array($this->c->type(), [
             'api',
@@ -190,21 +254,22 @@ class ControllerMakeCommand extends GeneratorCommand
                     $modelFile
                 );
             }
-            // dump([
-            //     '__METHOD__' => __METHOD__,
-            //     '$this->getModelFile()' => $this->getModelFile(),
-            //     '$initModel' => $initModel,
-            //     '$modelFile' => $modelFile,
-            //     '$this->c->type()' => $this->c->type(),
-            //     '$this->c->skeleton()' => $this->c->skeleton(),
-            //     // '$this->c' => $this->c->toArray(),
-            //     // '$this->model' => $this->model,
-            //     // '$this->searches' => $this->searches,
-            //     // '$this->arguments()' => $this->arguments(),
-            //     '$this->options()' => $this->options(),
-            //     // '$this->model' => $this->model->toArray(),
-            //     'empty($this->model)' => empty($this->model),
-            // ]);
+
+//             dd([
+//                 '__METHOD__' => __METHOD__,
+//                 '$this->getModelFile()' => $this->getModelFile(),
+//                 '$initModel' => $initModel,
+//                 '$modelFile' => $modelFile,
+//                 '$this->c->type()' => $this->c->type(),
+//                 '$this->c->skeleton()' => $this->c->skeleton(),
+//                 // '$this->c' => $this->c->toArray(),
+//                 // '$this->model' => $this->model,
+//                 // '$this->searches' => $this->searches,
+//                 // '$this->arguments()' => $this->arguments(),
+//                 '$this->options()' => $this->options(),
+//                 // '$this->model' => $this->model->toArray(),
+//                 'empty($this->model)' => empty($this->model),
+//             ]);
         }
 
         $this->prepareOptionsExtends($options);
@@ -215,22 +280,52 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $this->preparePackageInfo($options);
 
-        $this->saveConfiguration();
+        if ($initFromPackage && $this->model) {
 
-        // if ($initModel) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$this->getModelFile()' => $this->getModelFile(),
-        //         '$initModel' => $initModel,
-        //         '$this->c->type()' => $this->c->type(),
-        //         '$this->c->skeleton()' => $this->c->skeleton(),
-        //         '$this->c' => $this->c->toArray(),
-        //         // '$this->model' => $this->model,
-        //         '$this->searches' => $this->searches,
-        //         // '$this->arguments()' => $this->arguments(),
-        //         '$this->options()' => $this->options(),
-        //     ]);
-        // }
+            $attributes = $this->model?->attributes();
+            $hasMany = $this->model?->hasMany();
+
+            $this->c->setOptions([
+                'class' => Str::of($this->model->name())->finish('Controller')->toString(),
+                'fqdn' => Str::of($this->c->namespace())->finish('/Http/Controllers')->toString(),
+                //            'model' => '',
+                'slug' => $this->model->model_slug(),
+                'slug_plural' => $this->model->model_slug_plural(),
+                //            'model_route' => '',
+                //            'module_route' => '',
+                //            'privilege' => '',
+                //            'route' => '',
+                //            'view' => '',
+                'revision' => array_key_exists('revisions', $hasMany) && array_key_exists('revision', $attributes),
+            ]);
+        }
+
+        $this->c->apply();
+        $this->applyConfigurationToSearch();
+//        dd([
+//            '__METHOD__' => __METHOD__,
+//            '$attributes' => $attributes,
+//            '$hasMany' => $hasMany,
+//            '$this->c' => $this->c,
+//            'slug' => $this->model->model_slug(),
+//            'slug_plural' => $this->model->model_slug_plural(),
+////            '$this->model' => $this->model->toArray(),
+//        ]);
+
+        //         if ($initModel) {
+        //             dd([
+        //                 '__METHOD__' => __METHOD__,
+        //                 '$this->getModelFile()' => $this->getModelFile(),
+        //                 '$initModel' => $initModel,
+        //                 '$this->c->type()' => $this->c->type(),
+        //                 '$this->c->skeleton()' => $this->c->skeleton(),
+        //                 '$this->c' => $this->c->toArray(),
+        //                 // '$this->model' => $this->model,
+        //                 '$this->searches' => $this->searches,
+        //                 // '$this->arguments()' => $this->arguments(),
+        //                 '$this->options()' => $this->options(),
+        //             ]);
+        //         }
     }
 
     public function prepareOptionsFromOptions(): void
@@ -299,6 +394,9 @@ class ControllerMakeCommand extends GeneratorCommand
         }
     }
 
+    /**
+     * @deprecated
+     */
     public function load_model_package(string $model_package): void
     {
         $payload = $this->readJsonFileAsArray($model_package);
@@ -440,6 +538,14 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->buildClass_uses($fqdn);
         }
 
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$name' => $name,
+            '$this->c' => $this->c,
+//            '$this->model' => $this->model->toArray(),
+            '$fqdn' => $fqdn,
+        ]);
+
         return parent::buildClass($name);
     }
 
@@ -493,6 +599,8 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->createTest();
         }
 
+        $this->c->apply();
+        $this->applyConfigurationToSearch();
         $this->saveConfiguration();
         // dump([
         //     '__METHOD__' => __METHOD__,
@@ -575,6 +683,7 @@ class ControllerMakeCommand extends GeneratorCommand
             ['file',            null, InputOption::VALUE_OPTIONAL, 'The configuration file of the '.strtolower($this->type)],
             ['model-file',      null, InputOption::VALUE_OPTIONAL, 'The configuration file of the model for the '.strtolower($this->type)],
             ['model-package',   null, InputOption::VALUE_OPTIONAL, 'The model package to use for the '.strtolower($this->type)],
+            ['package-file',      null, InputOption::VALUE_OPTIONAL, 'The configuration file of the package for the '.strtolower($this->type)],
             ['slug',            null, InputOption::VALUE_OPTIONAL, 'The slug of the '.strtolower($this->type)],
             ['route',           null, InputOption::VALUE_OPTIONAL, 'The base route of the '.strtolower($this->type)],
             ['view',            null, InputOption::VALUE_OPTIONAL, 'The base view of the '.strtolower($this->type)],
