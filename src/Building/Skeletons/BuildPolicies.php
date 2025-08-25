@@ -33,8 +33,7 @@ trait BuildPolicies
         $revision = $this->hasOption('revision') && $this->option('revision');
         $force = $this->hasOption('force') && $this->option('force');
         $file = $this->option('file');
-        $name = Str::of($this->c->name())->before('Controller')->studly()->toString();
-
+        $name = $this->c->model();
         $params = [
             'name' => $name,
             '--class' => Str::of($name)->studly()->finish('Policy')->toString(),
