@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2025-08-18 15:09:01</timestamp>
+  <timestamp>2025-08-25 06:37:33</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>163</methodCount>
+    <methodCount>164</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>131</crapLoad>
-    <totalCrap>2704.63</totalCrap>
-    <crapMethodPercent>6.75</crapMethodPercent>
+    <totalCrap>2725.21</totalCrap>
+    <crapMethodPercent>6.71</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -347,9 +347,9 @@
       <methodName>preparePackageInfo_privilege</methodName>
       <methodSignature>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>11.56</crap>
+      <crap>11.15</crap>
       <complexity>10</complexity>
-      <coverage>75</coverage>
+      <coverage>77.42</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -358,9 +358,9 @@
       <methodName>preparePackageInfo_view</methodName>
       <methodSignature>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>12.72</crap>
+      <crap>12.33</crap>
       <complexity>11</complexity>
-      <coverage>75.76</coverage>
+      <coverage>77.78</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -402,9 +402,9 @@
       <methodName>preparePackageInfo_module_route</methodName>
       <methodSignature>preparePackageInfo_module_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_module_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>8.07</crap>
+      <crap>8.01</crap>
       <complexity>8</complexity>
-      <coverage>89.47</coverage>
+      <coverage>94.74</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -468,9 +468,9 @@
       <methodName>preparePackageInfo_model_route</methodName>
       <methodSignature>preparePackageInfo_model_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_model_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>8.06</crap>
+      <crap>8</crap>
       <complexity>8</complexity>
-      <coverage>90</coverage>
+      <coverage>95</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -534,9 +534,9 @@
       <methodName>skeleton_resources</methodName>
       <methodSignature>skeleton_resources(string $type): void</methodSignature>
       <fullMethod>skeleton_resources(string $type): void</fullMethod>
-      <crap>23.79</crap>
+      <crap>23.73</crap>
       <complexity>22</complexity>
-      <coverage>84.52</coverage>
+      <coverage>84.71</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -600,9 +600,9 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>29.05</crap>
-      <complexity>19</complexity>
-      <coverage>69.7</coverage>
+      <crap>34.87</crap>
+      <complexity>23</complexity>
+      <coverage>71.79</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1246,12 +1246,23 @@
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
       <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>initPackage</methodName>
+      <methodSignature>initPackage(string $file): void</methodSignature>
+      <fullMethod>initPackage(string $file): void</fullMethod>
+      <crap>12</crap>
+      <complexity>3</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>8</crap>
-      <complexity>8</complexity>
-      <coverage>96.55</coverage>
+      <crap>11.8</crap>
+      <complexity>10</complexity>
+      <coverage>73.81</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1326,9 +1337,9 @@
       <methodName>finish</methodName>
       <methodSignature>finish(): ?bool</methodSignature>
       <fullMethod>finish(): ?bool</fullMethod>
-      <crap>10.2</crap>
+      <crap>10.14</crap>
       <complexity>10</complexity>
-      <coverage>87.5</coverage>
+      <coverage>88.89</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
