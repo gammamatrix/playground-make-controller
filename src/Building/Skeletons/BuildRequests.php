@@ -41,14 +41,14 @@ trait BuildRequests
         $package = $this->c->package();
 
         $revision = $this->c->revision();
-//         dump([
-//             '__METHOD__' => __METHOD__,
-//             '$type' => $type,
-//             '$model' => $model,
-//             '$module' => $module,
-//             '$name' => $name,
-//             '$this->c->name()' => $this->c->name(),
-//         ]);
+        //         dump([
+        //             '__METHOD__' => __METHOD__,
+        //             '$type' => $type,
+        //             '$model' => $model,
+        //             '$module' => $module,
+        //             '$name' => $name,
+        //             '$this->c->name()' => $this->c->name(),
+        //         ]);
 
         // $extends = '';
 
@@ -92,6 +92,8 @@ trait BuildRequests
                 '--class' => 'UpdateRequest',
             ];
         } elseif ($type === 'playground-api') {
+
+            $name = $model;
 
             if ($namespace) {
                 // $extends = sprintf('%1$s/Http/Requests/%2$s/FormRequest', $namespace, $name);
@@ -159,6 +161,8 @@ trait BuildRequests
                 '--with-store' => true,
             ];
         } elseif ($type === 'playground-resource') {
+
+            $name = $model;
 
             if ($namespace) {
                 // $extends = sprintf('%1$s/Http/Requests/%2$s/FormRequest', $namespace, $name);
@@ -333,14 +337,14 @@ trait BuildRequests
                     $this->getConfigurationFilename_for_request($name, $request['--type'])
                 );
 
-//                 dump([
-//                     '__METHOD__' => __METHOD__,
-//                     '$name' => $name,
-//                     '$request' => $request,
-//                     '$file_request' => $file_request,
-//                     '$path_resources_packages' => $path_resources_packages,
-//                     // '$this->c' => $this->c,
-//                 ]);
+                dump([
+                    '__METHOD__' => __METHOD__,
+                    '$name' => $name,
+                    '$request' => $request,
+                    '$file_request' => $file_request,
+                    '$path_resources_packages' => $path_resources_packages,
+                    // '$this->c' => $this->c,
+                ]);
 
                 if (! in_array($file_request, $this->c->requests())) {
                     $this->c->requests()[] = $file_request;

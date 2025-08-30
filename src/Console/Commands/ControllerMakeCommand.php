@@ -255,21 +255,21 @@ class ControllerMakeCommand extends GeneratorCommand
                 );
             }
 
-//             dd([
-//                 '__METHOD__' => __METHOD__,
-//                 '$this->getModelFile()' => $this->getModelFile(),
-//                 '$initModel' => $initModel,
-//                 '$modelFile' => $modelFile,
-//                 '$this->c->type()' => $this->c->type(),
-//                 '$this->c->skeleton()' => $this->c->skeleton(),
-//                 // '$this->c' => $this->c->toArray(),
-//                 // '$this->model' => $this->model,
-//                 // '$this->searches' => $this->searches,
-//                 // '$this->arguments()' => $this->arguments(),
-//                 '$this->options()' => $this->options(),
-//                 // '$this->model' => $this->model->toArray(),
-//                 'empty($this->model)' => empty($this->model),
-//             ]);
+            //             dd([
+            //                 '__METHOD__' => __METHOD__,
+            //                 '$this->getModelFile()' => $this->getModelFile(),
+            //                 '$initModel' => $initModel,
+            //                 '$modelFile' => $modelFile,
+            //                 '$this->c->type()' => $this->c->type(),
+            //                 '$this->c->skeleton()' => $this->c->skeleton(),
+            //                 // '$this->c' => $this->c->toArray(),
+            //                 // '$this->model' => $this->model,
+            //                 // '$this->searches' => $this->searches,
+            //                 // '$this->arguments()' => $this->arguments(),
+            //                 '$this->options()' => $this->options(),
+            //                 // '$this->model' => $this->model->toArray(),
+            //                 'empty($this->model)' => empty($this->model),
+            //             ]);
         }
 
         $this->prepareOptionsExtends($options);
@@ -302,15 +302,15 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $this->c->apply();
         $this->applyConfigurationToSearch();
-//        dd([
-//            '__METHOD__' => __METHOD__,
-//            '$attributes' => $attributes,
-//            '$hasMany' => $hasMany,
-//            '$this->c' => $this->c,
-//            'slug' => $this->model->model_slug(),
-//            'slug_plural' => $this->model->model_slug_plural(),
-////            '$this->model' => $this->model->toArray(),
-//        ]);
+        //        dd([
+        //            '__METHOD__' => __METHOD__,
+        //            '$attributes' => $attributes,
+        //            '$hasMany' => $hasMany,
+        //            '$this->c' => $this->c,
+        //            'slug' => $this->model->model_slug(),
+        //            'slug_plural' => $this->model->model_slug_plural(),
+        // //            '$this->model' => $this->model->toArray(),
+        //        ]);
 
         //         if ($initModel) {
         //             dd([
@@ -538,13 +538,13 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->buildClass_uses($fqdn);
         }
 
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$name' => $name,
-            '$this->c' => $this->c,
-//            '$this->model' => $this->model->toArray(),
-            '$fqdn' => $fqdn,
-        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$name' => $name,
+        //            '$this->c' => $this->c,
+        // //            '$this->model' => $this->model->toArray(),
+        //            '$fqdn' => $fqdn,
+        //        ]);
 
         return parent::buildClass($name);
     }

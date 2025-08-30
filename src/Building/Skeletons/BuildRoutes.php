@@ -60,7 +60,7 @@ trait BuildRoutes
         }
 
         $options = [
-            'name' => $name,
+            'name' => $model,
             '--namespace' => $namespace,
             '--force' => $force,
             '--package' => $package,

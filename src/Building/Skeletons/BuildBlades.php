@@ -54,6 +54,7 @@ trait BuildBlades
         if (empty($model)) {
             $model = $this->c->model();
         }
+        $name = $model;
 
         if (empty($module)) {
             $module = $this->c->module();
