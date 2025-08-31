@@ -11,11 +11,11 @@ namespace Playground\Make\Controller\Building\Skeletons;
 use Illuminate\Support\Str;
 
 /**
- * \Playground\Make\Controller\Building\Skeletons\BuildSwagger
+ * \Playground\Make\Controller\Building\Skeletons\BuildOpenAPI
  */
-trait BuildSwagger
+trait BuildOpenAPI
 {
-    public function skeleton_swagger(string $type): void
+    public function skeleton_openapi(string $type): void
     {
         if (! in_array($type, [
             'playground-api',
@@ -24,7 +24,7 @@ trait BuildSwagger
         ])) {
             // dump([
             //     '__METHOD__' => __METHOD__,
-            //     'NOTE' => 'SKIPPING: skeleton_swagger',
+            //     'NOTE' => 'SKIPPING: skeleton_openapi',
             //     '$type' => $type,
             // ]);
             return;
@@ -113,7 +113,7 @@ trait BuildSwagger
         //     '$options' => $options,
         // ]);
 
-        // if (empty($this->call('playground:make:swagger', $options))) {
+        // if (empty($this->call('playground:make:openapi', $options))) {
 
         //     // $file_model = sprintf(
         //     //     '%1$s%2$s/%3$s/docs.model.json',
@@ -148,7 +148,7 @@ trait BuildSwagger
         //     '$options' => $options,
         // ]);
 
-        if (empty($this->call('playground:make:swagger', $options))) {
+        if (empty($this->call('playground:make:openapi', $options))) {
 
             // $file_api = sprintf(
             //     '%1$s%2$s/docs.controller.json',

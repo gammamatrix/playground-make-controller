@@ -37,12 +37,12 @@ class ControllerMakeCommand extends GeneratorCommand
     // use Building\Skeletons\BuildPostman;
     use Building\Skeletons\BuildBlades;
     use Building\Skeletons\BuildController;
+    use Building\Skeletons\BuildOpenAPI;
     use Building\Skeletons\BuildPackageInfo;
     use Building\Skeletons\BuildPolicies;
     use Building\Skeletons\BuildRequests;
     use Building\Skeletons\BuildResources;
     use Building\Skeletons\BuildRoutes;
-    use Building\Skeletons\BuildSwagger;
     use Concerns\BuildImplements;
     use Concerns\BuildModel;
     use Concerns\BuildUses;
@@ -177,7 +177,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'withPolicies' => $this->package->withPolicies(),
             'withRequests' => $this->package->withRequests(),
             'withRoutes' => $this->package->withRoutes(),
-            'withSwagger' => $this->package->withSwagger(),
+            'withOpenAPI' => $this->package->withOpenAPI(),
             'withTests' => $this->package->withTests(),
             'playground' => $this->package->playground(),
             'type' => $this->package->type(),
@@ -361,9 +361,9 @@ class ControllerMakeCommand extends GeneratorCommand
             ]);
         }
 
-        if ($this->hasOption('swagger') && $this->option('swagger')) {
+        if ($this->hasOption('openapi') && $this->option('openapi')) {
             $this->c->setOptions([
-                'withSwagger' => true,
+                'withOpenAPI' => true,
             ]);
         }
 
@@ -632,7 +632,7 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->skeleton_resources($type);
         $this->skeleton_routes($type);
         $this->skeleton_blades($type);
-        $this->skeleton_swagger($type);
+        $this->skeleton_openapi($type);
 
         $this->saveConfiguration();
     }
@@ -672,7 +672,7 @@ class ControllerMakeCommand extends GeneratorCommand
             ['policies',        null, InputOption::VALUE_NONE,     'Generate policies for CRUD'],
             ['requests',        'R', InputOption::VALUE_NONE,      'Generate FormRequest classes for store and update'],
             ['routes',          null, InputOption::VALUE_NONE,     'Generate routes for controllers'],
-            ['swagger',         null, InputOption::VALUE_NONE,     'Generate Swagger documentation for routes and models'],
+            ['openapi',         null, InputOption::VALUE_NONE,     'Generate OpenAPI documentation for routes and models'],
             ['singleton',       's', InputOption::VALUE_NONE,      'Generate a singleton resource controller class'],
             ['creatable',       null, InputOption::VALUE_NONE,     'Indicate that a singleton resource should be creatable'],
             ['namespace',       null, InputOption::VALUE_OPTIONAL, 'The namespace of the '.strtolower($this->type)],

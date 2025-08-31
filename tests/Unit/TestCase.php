@@ -25,7 +25,7 @@ class TestCase extends OrchestraTestCase
             \Playground\Make\Blade\ServiceProvider::class,
             \Playground\Make\Controller\ServiceProvider::class,
             \Playground\Make\Package\ServiceProvider::class,
-            \Playground\Make\Swagger\ServiceProvider::class,
+            \Playground\Make\OpenAPI\ServiceProvider::class,
             \Playground\Make\Test\ServiceProvider::class,
         ];
     }
