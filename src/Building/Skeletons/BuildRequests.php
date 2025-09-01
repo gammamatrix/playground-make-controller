@@ -337,14 +337,14 @@ trait BuildRequests
                     $this->getConfigurationFilename_for_request($name, $request['--type'])
                 );
 
-                dump([
-                    '__METHOD__' => __METHOD__,
-                    '$name' => $name,
-                    '$request' => $request,
-                    '$file_request' => $file_request,
-                    '$path_resources_packages' => $path_resources_packages,
-                    // '$this->c' => $this->c,
-                ]);
+//                dump([
+//                    '__METHOD__' => __METHOD__,
+//                    '$name' => $name,
+//                    '$request' => $request,
+//                    '$file_request' => $file_request,
+//                    '$path_resources_packages' => $path_resources_packages,
+//                    // '$this->c' => $this->c,
+//                ]);
 
                 if (! in_array($file_request, $this->c->requests())) {
                     $this->c->requests()[] = $file_request;

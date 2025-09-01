@@ -63,7 +63,7 @@ trait BuildOpenAPI
         }
 
         $options = [
-            'name' => $name,
+            'name' => $model,
             '--namespace' => $namespace,
             '--force' => $force,
             '--package' => $package,
@@ -143,10 +143,10 @@ trait BuildOpenAPI
         // }
 
         // $path_resources_packages = $this->getResourcePackageFolder();
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$options' => $options,
-        // ]);
+//         dd([
+//             '__METHOD__' => __METHOD__,
+//             '$options' => $options,
+//         ]);
 
         if (empty($this->call('playground:make:openapi', $options))) {
 

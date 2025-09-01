@@ -129,15 +129,16 @@ class PolicyMakeCommand extends GeneratorCommand
         }
         // $this->applyConfigurationToSearch();
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$options' => $options,
-        //     '$this->searches' => $this->searches,
-        //     '$this->c' => $this->c,
-        //     // '$this->model' => $this->model,
-        //     '$this->c->type()' => $this->c->type(),
-        //     // '$this->c->toArray()' => $this->c->toArray(),
-        // ]);
+//         dd([
+//             '__METHOD__' => __METHOD__,
+//             '$revision' => $revision,
+//             '$options' => $options,
+//             '$this->searches' => $this->searches,
+//             '$this->c' => $this->c,
+//             // '$this->model' => $this->model,
+//             '$this->c->type()' => $this->c->type(),
+//             // '$this->c->toArray()' => $this->c->toArray(),
+//         ]);
     }
 
     protected function getConfigurationFilename(): string
