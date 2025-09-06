@@ -51,7 +51,7 @@ trait BuildBlades
         $organization = $this->hasOption('organization') ? $this->option('organization') : '';
         $package = $this->hasOption('package') ? $this->option('package') : '';
 
-        if (empty($model)) {
+        if (empty($model) || ! is_string($model)) {
             $model = $this->c->model();
         }
         $name = $model;
@@ -126,20 +126,16 @@ trait BuildBlades
             $options['--route'] = $this->c->route();
         }
 
-        if ($type === 'api') {
-        } elseif ($type === 'resource') {
-        } elseif ($type === 'playground-resource') {
-        } elseif ($type === 'playground-resource-index') {
-        } elseif ($type === 'playground-api') {
-        }
-
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$options' => $options,
         // ]);
 
         if (empty($this->call('playground:make:blade', $options))) {
-
+            // dump([
+            //     '__METHOD__' => __METHOD__,
+            //     '$options' => $options,
+            // ]);
         }
     }
 }

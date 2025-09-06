@@ -101,14 +101,14 @@ class ResourceMakeCommand extends GeneratorCommand
         $this->searches['model_slug'] = $this->c->model_slug();
         $this->searches['model_param'] = Str::of($this->c->model_slug())->replace('-', '_')->toString();
 
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$model_fqdn' => $model_fqdn,
-//            '$this->c' => $this->c,
-//            '$this->searches' => $this->searches,
-//            '$this->arguments()' => $this->arguments(),
-//            '$this->options()' => $this->options(),
-//        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$model_fqdn' => $model_fqdn,
+        //            '$this->c' => $this->c,
+        //            '$this->searches' => $this->searches,
+        //            '$this->arguments()' => $this->arguments(),
+        //            '$this->options()' => $this->options(),
+        //        ]);
     }
 
     /**
@@ -185,11 +185,11 @@ class ResourceMakeCommand extends GeneratorCommand
             Str::of($this->c->name())->beforeLast('Collection')->kebab(),
             $type
         );
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$file' => $file,
-//            '$type' => $type,
-//        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$file' => $file,
+        //            '$type' => $type,
+        //        ]);
 
         return $file;
     }

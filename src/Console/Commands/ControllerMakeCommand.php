@@ -204,6 +204,9 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $this->modelPackage = null;
 
+        /**
+         * @var array<string, mixed> $options
+         */
         $options = $this->options();
 
         $initModel = false;
@@ -282,8 +285,8 @@ class ControllerMakeCommand extends GeneratorCommand
 
         if ($initFromPackage && $this->model) {
 
-            $attributes = $this->model?->attributes();
-            $hasMany = $this->model?->hasMany();
+            $attributes = $this->model->attributes();
+            $hasMany = $this->model->hasMany();
 
             $this->c->setOptions([
                 'class' => Str::of($this->model->name())->finish('Controller')->toString(),
@@ -391,14 +394,15 @@ class ControllerMakeCommand extends GeneratorCommand
                 Str::of($this->c->packageInfo()?->model_slug() ?? $this->c->name())->kebab(),
                 Str::of($this->getType())->kebab(),
             );
-//            dd([
-//                '__METHOD__' => __METHOD__,
-//                '$file' => $file,
-//                '$this->c->name()' => $this->c->name(),
-//                '$this->c->type()' => $this->c->type(),
-//                '$this->getType()' => $this->getType(),
-////                '$this->c' => $this->c,
-//            ]);
+
+            //            dd([
+            //                '__METHOD__' => __METHOD__,
+            //                '$file' => $file,
+            //                '$this->c->name()' => $this->c->name(),
+            //                '$this->c->type()' => $this->c->type(),
+            //                '$this->getType()' => $this->getType(),
+            // //                '$this->c' => $this->c,
+            //            ]);
             return $file;
 
         } else {
@@ -407,16 +411,17 @@ class ControllerMakeCommand extends GeneratorCommand
                 Str::of($this->c->name())->before('Controller')->kebab(),
                 Str::of($this->getType())->kebab(),
             );
-//            if ($this->c->name() === 'CMSResource') {
-//                dd([
-//                    '__METHOD__' => __METHOD__,
-//                    '$file' => $file,
-//                    '$this->c->name()' => $this->c->name(),
-//                    '$this->c->type()' => $this->c->type(),
-//                    '$this->getType()' => $this->getType(),
-//                    '$this->c' => $this->c,
-//                ]);
-//            }
+
+            //            if ($this->c->name() === 'CMSResource') {
+            //                dd([
+            //                    '__METHOD__' => __METHOD__,
+            //                    '$file' => $file,
+            //                    '$this->c->name()' => $this->c->name(),
+            //                    '$this->c->type()' => $this->c->type(),
+            //                    '$this->getType()' => $this->getType(),
+            //                    '$this->c' => $this->c,
+            //                ]);
+            //            }
             return $file;
         }
     }
@@ -565,15 +570,15 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->buildClass_uses($fqdn);
         }
 
-//                dump([
-//                    '__METHOD__' => __METHOD__,
-//                    '$name' => $name,
-//                    '$this->c' => $this->c,
-//                    '$this->searches' => $this->searches,
-////                     '$this->model' => $this->model?->toArray(),
-//                    '$fqdn' => $fqdn,
-//                    '$this->options()' => $this->options(),
-//                ]);
+        //                dump([
+        //                    '__METHOD__' => __METHOD__,
+        //                    '$name' => $name,
+        //                    '$this->c' => $this->c,
+        //                    '$this->searches' => $this->searches,
+        // //                     '$this->model' => $this->model?->toArray(),
+        //                    '$fqdn' => $fqdn,
+        //                    '$this->options()' => $this->options(),
+        //                ]);
 
         return parent::buildClass($name);
     }
@@ -584,14 +589,14 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->skeleton();
 
             $this->saveConfiguration();
-//             if ('PageController' === $this->c->name()) {
-//                 dd([
-//                     '__METHOD__' => __METHOD__,
-//                     '$this->c' => $this->c,
-//                     '$this->searches' => $this->searches,
-//                     // '$this->c->toArray()' => $this->c->toArray(),
-//                 ]);
-//             }
+            //             if ('PageController' === $this->c->name()) {
+            //                 dd([
+            //                     '__METHOD__' => __METHOD__,
+            //                     '$this->c' => $this->c,
+            //                     '$this->searches' => $this->searches,
+            //                     // '$this->c->toArray()' => $this->c->toArray(),
+            //                 ]);
+            //             }
 
             if ($this->c->withTests()) {
                 $this->createTest();

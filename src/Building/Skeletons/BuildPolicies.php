@@ -56,9 +56,7 @@ trait BuildPolicies
             }
         }
 
-        if ($type === 'api') {
-        } elseif ($type === 'resource') {
-        } elseif ($type === 'playground-resource') {
+        if ($type === 'playground-resource') {
             $params['--roles-action'] = [
                 'publisher',
                 'manager',

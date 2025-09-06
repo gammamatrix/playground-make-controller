@@ -33,7 +33,11 @@ trait Info
         if (! empty($options['packageInfo'])
             && is_array($options['packageInfo'])
         ) {
-            $this->packageInfo->setOptions($options['packageInfo']);
+            /**
+             * @var array<string, mixed> $packageInfo
+             */
+            $packageInfo = $options['packageInfo'];
+            $this->packageInfo->setOptions($packageInfo);
         }
 
         $this->packageInfo->apply();

@@ -22,6 +22,7 @@ class InstanceTest extends TestCase
     {
         $instance = new Request;
 
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertInstanceOf(Request::class, $instance);
     }
 
@@ -72,8 +73,6 @@ class InstanceTest extends TestCase
     public function test_folder_is_empty_by_default(): void
     {
         $instance = new Request;
-
-        $this->assertInstanceOf(Request::class, $instance);
 
         $this->assertIsString($instance->folder());
         $this->assertEmpty($instance->folder());

@@ -52,80 +52,28 @@ trait BuildRequests
 
         // $extends = '';
 
-        if ($type === 'api') {
-            $requests['destroy'] = [
-                '--type' => 'destroy',
-                '--class' => 'DestroyRequest',
-            ];
-            $requests['index'] = [
-                '--type' => 'index',
-                '--class' => 'IndexRequest',
-            ];
-            $requests['restore'] = [
-                '--type' => 'restore',
-                '--class' => 'RestoreRequest',
-            ];
-            if ($revision) {
-                $requests['restore-revision'] = [
-                    '--type' => 'restore',
-                    '--class' => 'RestoreRevisionRequest',
-                ];
-                $requests['revisions'] = [
-                    '--type' => 'index',
-                    '--class' => 'RevisionsRequest',
-                ];
-                $requests['show-revision'] = [
-                    '--type' => 'show',
-                    '--class' => 'ShowRevisionRequest',
-                ];
-            }
-            $requests['show'] = [
-                '--type' => 'show',
-                '--class' => 'ShowRequest',
-            ];
-            $requests['store'] = [
-                '--type' => 'store',
-                '--class' => 'StoreRequest',
-            ];
-            $requests['update'] = [
-                '--type' => 'update',
-                '--class' => 'UpdateRequest',
-            ];
-        } elseif ($type === 'playground-api') {
+        // Basic crud
 
+        if (in_array($type, [
+            'playground-api',
+            'playground-resource',
+            'resource',
+            'api',
+        ])) {
             $name = $model;
 
-            if ($namespace) {
-                // $extends = sprintf('%1$s/Http/Requests/%2$s/FormRequest', $namespace, $name);
-                // $extends = sprintf('%1$s/Http/Requests/FormRequest', $namespace);
-            }
-
-            $requests['create'] = [
-                '--type' => 'create',
-                '--class' => 'CreateRequest',
-            ];
             $requests['destroy'] = [
                 '--type' => 'destroy',
                 '--class' => 'DestroyRequest',
             ];
-            $requests['edit'] = [
-                '--type' => 'edit',
-                '--class' => 'EditRequest',
-            ];
+
             $requests['index'] = [
                 '--type' => 'index',
                 '--class' => 'IndexRequest',
                 // '--extends' => 'Playground/Http/Requests/IndexRequest as BaseIndexRequest',
                 '--with-pagination' => true,
             ];
-            $requests['lock'] = [
-                '--type' => 'lock',
-                '--class' => 'LockRequest',
-            ];
-            $requests['restore'] = [
-                '--type' => 'restore',
-                '--class' => 'RestoreRequest',
-            ];
+
             if ($revision) {
                 $requests['restore-revision'] = [
                     '--type' => 'restore',
@@ -140,71 +88,7 @@ trait BuildRequests
                     '--class' => 'ShowRevisionRequest',
                 ];
             }
-            $requests['show'] = [
-                '--type' => 'show',
-                '--class' => 'ShowRequest',
-            ];
-            $requests['store'] = [
-                '--type' => 'store',
-                '--class' => 'StoreRequest',
-                // '--extends' => 'Playground/Http/Requests/StoreRequest as BaseStoreRequest',
-                '--with-store' => true,
-            ];
-            $requests['unlock'] = [
-                '--type' => 'unlock',
-                '--class' => 'UnlockRequest',
-            ];
-            $requests['update'] = [
-                '--type' => 'update',
-                '--class' => 'UpdateRequest',
-                // '--extends' => 'Playground/Http/Requests/UpdateRequest as BaseUpdateRequest',
-                '--with-store' => true,
-            ];
-        } elseif ($type === 'playground-resource') {
 
-            $name = $model;
-
-            if ($namespace) {
-                // $extends = sprintf('%1$s/Http/Requests/%2$s/FormRequest', $namespace, $name);
-                // $extends = sprintf('%1$s/Http/Requests/FormRequest', $namespace);
-            }
-
-            $requests['create'] = [
-                '--type' => 'create',
-                '--class' => 'CreateRequest',
-            ];
-            $requests['destroy'] = [
-                '--type' => 'destroy',
-                '--class' => 'DestroyRequest',
-            ];
-            $requests['edit'] = [
-                '--type' => 'edit',
-                '--class' => 'EditRequest',
-            ];
-            $requests['index'] = [
-                '--type' => 'index',
-                '--class' => 'IndexRequest',
-                // '--extends' => 'Playground/Http/Requests/IndexRequest as BaseIndexRequest',
-                '--with-pagination' => true,
-            ];
-            $requests['lock'] = [
-                '--type' => 'lock',
-                '--class' => 'LockRequest',
-            ];
-            if ($revision) {
-                $requests['restore-revision'] = [
-                    '--type' => 'restore',
-                    '--class' => 'RestoreRevisionRequest',
-                ];
-                $requests['revisions'] = [
-                    '--type' => 'index',
-                    '--class' => 'RevisionsRequest',
-                ];
-                $requests['show-revision'] = [
-                    '--type' => 'show',
-                    '--class' => 'ShowRevisionRequest',
-                ];
-            }
             $requests['restore'] = [
                 '--type' => 'restore',
                 '--class' => 'RestoreRequest',
@@ -219,72 +103,47 @@ trait BuildRequests
                 // '--extends' => 'Playground/Http/Requests/StoreRequest as BaseStoreRequest',
                 '--with-store' => true,
             ];
-            $requests['unlock'] = [
-                '--type' => 'unlock',
-                '--class' => 'UnlockRequest',
-            ];
             $requests['update'] = [
                 '--type' => 'update',
                 '--class' => 'UpdateRequest',
                 // '--extends' => 'Playground/Http/Requests/UpdateRequest as BaseUpdateRequest',
                 '--with-store' => true,
             ];
-        } elseif ($type === 'resource') {
+        }
+
+        // Crud views
+
+        if (in_array($type, [
+            'playground-api',
+            'playground-resource',
+            'resource',
+        ])) {
             $requests['create'] = [
                 '--type' => 'create',
                 '--class' => 'CreateRequest',
             ];
-            $requests['destroy'] = [
-                '--type' => 'destroy',
-                '--class' => 'DestroyRequest',
-            ];
+
             $requests['edit'] = [
                 '--type' => 'edit',
                 '--class' => 'EditRequest',
             ];
-            $requests['index'] = [
-                '--type' => 'index',
-                '--class' => 'IndexRequest',
-                '--with-pagination' => true,
+
+        }
+
+        // Playground actions
+
+        if (in_array($type, [
+            'playground-api',
+            'playground-resource',
+        ])) {
+            $requests['lock'] = [
+                '--type' => 'lock',
+                '--class' => 'LockRequest',
             ];
-            $requests['restore'] = [
-                '--type' => 'restore',
-                '--class' => 'RestoreRequest',
-            ];
-            if ($revision) {
-                $requests['restore-revision'] = [
-                    '--type' => 'restore',
-                    '--class' => 'RestoreRevisionRequest',
-                ];
-                $requests['revisions'] = [
-                    '--type' => 'index',
-                    '--class' => 'RevisionsRequest',
-                ];
-                $requests['show-revision'] = [
-                    '--type' => 'show',
-                    '--class' => 'ShowRevisionRequest',
-                ];
-            }
-            $requests['show'] = [
-                '--type' => 'show',
-                '--class' => 'ShowRequest',
-            ];
-            $requests['store'] = [
-                '--type' => 'store',
-                '--class' => 'StoreRequest',
-                '--with-store' => true,
-            ];
-            $requests['update'] = [
-                '--type' => 'update',
-                '--class' => 'UpdateRequest',
-                '--with-store' => true,
-            ];
-        } else {
-            $requests = [
-                'index' => [
-                    '--type' => 'default',
-                    '--class' => 'IndexRequest',
-                ],
+
+            $requests['unlock'] = [
+                '--type' => 'unlock',
+                '--class' => 'UnlockRequest',
             ];
         }
 
@@ -337,14 +196,14 @@ trait BuildRequests
                     $this->getConfigurationFilename_for_request($name, $request['--type'])
                 );
 
-//                dump([
-//                    '__METHOD__' => __METHOD__,
-//                    '$name' => $name,
-//                    '$request' => $request,
-//                    '$file_request' => $file_request,
-//                    '$path_resources_packages' => $path_resources_packages,
-//                    // '$this->c' => $this->c,
-//                ]);
+                //                dump([
+                //                    '__METHOD__' => __METHOD__,
+                //                    '$name' => $name,
+                //                    '$request' => $request,
+                //                    '$file_request' => $file_request,
+                //                    '$path_resources_packages' => $path_resources_packages,
+                //                    // '$this->c' => $this->c,
+                //                ]);
 
                 if (! in_array($file_request, $this->c->requests())) {
                     $this->c->requests()[] = $file_request;

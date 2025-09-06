@@ -103,7 +103,7 @@ class PolicyMakeCommand extends GeneratorCommand
 
         $type = $this->c->type();
 
-        if (! empty($options['roles-action'])) {
+        if (! empty($options['roles-action']) && is_array($options['roles-action'])) {
             foreach ($options['roles-action'] as $role) {
                 if (is_string($role)
                     && $role
@@ -113,7 +113,7 @@ class PolicyMakeCommand extends GeneratorCommand
                 }
             }
         }
-        if (! empty($options['roles-view'])) {
+        if (! empty($options['roles-view']) && is_array($options['roles-view'])) {
             foreach ($options['roles-view'] as $role) {
                 if (is_string($role)
                     && $role
@@ -129,16 +129,16 @@ class PolicyMakeCommand extends GeneratorCommand
         }
         // $this->applyConfigurationToSearch();
 
-//         dd([
-//             '__METHOD__' => __METHOD__,
-//             '$revision' => $revision,
-//             '$options' => $options,
-//             '$this->searches' => $this->searches,
-//             '$this->c' => $this->c,
-//             // '$this->model' => $this->model,
-//             '$this->c->type()' => $this->c->type(),
-//             // '$this->c->toArray()' => $this->c->toArray(),
-//         ]);
+        //         dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$revision' => $revision,
+        //             '$options' => $options,
+        //             '$this->searches' => $this->searches,
+        //             '$this->c' => $this->c,
+        //             // '$this->model' => $this->model,
+        //             '$this->c->type()' => $this->c->type(),
+        //             // '$this->c->toArray()' => $this->c->toArray(),
+        //         ]);
     }
 
     protected function getConfigurationFilename(): string

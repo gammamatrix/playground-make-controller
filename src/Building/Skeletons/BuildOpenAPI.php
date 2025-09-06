@@ -86,7 +86,7 @@ trait BuildOpenAPI
             }
         }
 
-        if ($revision && $modelFile && is_string($modelFile)) {
+        if ($revision && $modelFile) {
             $modelFileRevision = Str::of($modelFile)->before('.json')->finish('-revision.json')->toString();
         }
 
@@ -94,20 +94,16 @@ trait BuildOpenAPI
             $options['--model-revision-file'] = $modelFileRevision;
         }
 
-        if ($type === 'api') {
-        } elseif ($type === 'resource') {
-        } elseif ($type === 'playground-resource') {
-        } elseif ($type === 'playground-api') {
-        } else {
-            dump([
-                '__METHOD__' => __METHOD__,
-                '$type' => $type,
-            ]);
-
+        if (! in_array($type, [
+            'resource',
+            'api',
+            'playground-resource',
+            'playground-api',
+        ])) {
             return;
         }
 
-        $options['--type'] = 'model';
+        //        $options['--type'] = 'model';
         // dump([
         //     '__METHOD__' => __METHOD__,
         //     '$options' => $options,
@@ -143,10 +139,10 @@ trait BuildOpenAPI
         // }
 
         // $path_resources_packages = $this->getResourcePackageFolder();
-//         dd([
-//             '__METHOD__' => __METHOD__,
-//             '$options' => $options,
-//         ]);
+        //         dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$options' => $options,
+        //         ]);
 
         if (empty($this->call('playground:make:openapi', $options))) {
 

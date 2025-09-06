@@ -90,15 +90,14 @@ trait BuildRoutes
             $options['--revision'] = true;
         }
 
-        if ($type === 'api') {
-            $options['--route'] = $this->c->model_route();
-        } elseif ($type === 'resource') {
-            $options['--route'] = $this->c->model_route();
-        } elseif ($type === 'playground-resource') {
-            $options['--route'] = $this->c->model_route();
-        } elseif ($type === 'playground-resource-index') {
-            $options['--route'] = $this->c->module_route();
-        } elseif ($type === 'playground-api') {
+        if (in_array($type, [
+            'api',
+            'resource',
+            'index',
+            'playground-resource',
+            'playground-resource-index',
+            'playground-api',
+        ])) {
             $options['--route'] = $this->c->model_route();
         }
 

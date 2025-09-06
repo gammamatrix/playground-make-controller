@@ -22,6 +22,7 @@ class InstanceTest extends TestCase
     {
         $instance = new Policy;
 
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertInstanceOf(Policy::class, $instance);
     }
 
@@ -69,8 +70,6 @@ class InstanceTest extends TestCase
     public function test_folder_is_empty_by_default(): void
     {
         $instance = new Policy;
-
-        $this->assertInstanceOf(Policy::class, $instance);
 
         $this->assertIsString($instance->folder());
         $this->assertEmpty($instance->folder());

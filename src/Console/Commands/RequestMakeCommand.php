@@ -265,11 +265,11 @@ class RequestMakeCommand extends GeneratorCommand
                 $this->folder = $this->getDestinationPath();
             }
         }
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$this->folder' => $this->folder,
-//            '$this->c->type()' => $this->c->type(),
-//        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$this->folder' => $this->folder,
+        //            '$this->c->type()' => $this->c->type(),
+        //        ]);
 
         return $this->folder;
     }
@@ -282,11 +282,11 @@ class RequestMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace): string
     {
         $this->useSubfolder = $this->c->class() !== $this->c->name();
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$rootNamespace' => $rootNamespace,
-//            '$this->c->type()' => $this->c->type(),
-//        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$rootNamespace' => $rootNamespace,
+        //            '$this->c->type()' => $this->c->type(),
+        //        ]);
 
         if (in_array($this->c->type(), [
             'form-request',
@@ -508,15 +508,15 @@ PHP_CODE;
 
         $modelFile = $this->getModelFile();
 
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$withCovers' => $withCovers,
-//            '$force' => $force,
-//            '$type' => $type,
-//            '$options' => $options,
-//            '$model' => $model,
-//            '$modelFile' => $modelFile,
-//        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$withCovers' => $withCovers,
+        //            '$force' => $force,
+        //            '$type' => $type,
+        //            '$options' => $options,
+        //            '$model' => $model,
+        //            '$modelFile' => $modelFile,
+        //        ]);
 
         if ($this->hasOption('model-file') && $this->option('model-file')) {
             $options['--model-file'] = $this->option('model-file');

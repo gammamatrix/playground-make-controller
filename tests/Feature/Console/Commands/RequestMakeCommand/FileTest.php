@@ -25,9 +25,9 @@ class FileTest extends TestCase
             'playground:make:request --force --file %1$s',
             $this->getResourceFile('test-request')
         );
-        // dump($command);
-        // $result = $this->withoutMockingConsoleOutput()->artisan($command);
-        // dd(Artisan::output());
+        //         dump($command);
+        //         $result = $this->withoutMockingConsoleOutput()->artisan($command);
+        //         dd(Artisan::output());
 
         /**
          * @var \Illuminate\Testing\PendingCommand $result
@@ -35,7 +35,7 @@ class FileTest extends TestCase
         $result = $this->artisan($command);
         $result->assertExitCode(0);
         $result->expectsOutputToContain('Request [storage/app/stub/acme-demo/src/Http/Requests/FormRequest.php] created successfully.');
-        $result->expectsOutputToContain('The configuration [request.form-request.json] was saved in [storage/app/stub/acme-demo/resources/packages/request.form-request.json].');
+        $result->expectsOutputToContain('The configuration [request.form-request.json] was saved in [storage/app/stub/acme-demo/resources/package/request.form-request.json].');
     }
 
     public function test_command_make_request_with_force_and_with_skeleton(): void
@@ -54,6 +54,6 @@ class FileTest extends TestCase
         $result = $this->artisan($command);
         $result->assertExitCode(0);
         $result->expectsOutputToContain('Request [storage/app/stub/acme-demo/src/Http/Requests/FormRequest.php] created successfully.');
-        $result->expectsOutputToContain('The configuration [request.form-request.json] was saved in [storage/app/stub/acme-demo/resources/packages/request.form-request.json].');
+        $result->expectsOutputToContain('The configuration [request.form-request.json] was saved in [storage/app/stub/acme-demo/resources/package/request.form-request.json].');
     }
 }
