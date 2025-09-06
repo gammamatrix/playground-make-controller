@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2025-08-25 06:37:33</timestamp>
+  <timestamp>2025-09-06 16:06:00</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>164</methodCount>
-    <crapMethodCount>11</crapMethodCount>
-    <crapLoad>131</crapLoad>
-    <totalCrap>2725.21</totalCrap>
-    <crapMethodPercent>6.71</crapMethodPercent>
+    <crapMethodCount>10</crapMethodCount>
+    <crapLoad>115</crapLoad>
+    <totalCrap>2553.38</totalCrap>
+    <crapMethodPercent>6.1</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -270,9 +270,9 @@
       <methodName>skeleton_blades</methodName>
       <methodSignature>skeleton_blades(string $type): void</methodSignature>
       <fullMethod>skeleton_blades(string $type): void</fullMethod>
-      <crap>34.36</crap>
-      <complexity>30</complexity>
-      <coverage>83.08</coverage>
+      <crap>28.17</crap>
+      <complexity>26</complexity>
+      <coverage>85.25</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -317,6 +317,17 @@
       <crap>12.47</crap>
       <complexity>9</complexity>
       <coverage>65</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildOpenAPI</className>
+      <methodName>skeleton_openapi</methodName>
+      <methodSignature>skeleton_openapi(string $type): void</methodSignature>
+      <fullMethod>skeleton_openapi(string $type): void</fullMethod>
+      <crap>21.17</crap>
+      <complexity>21</complexity>
+      <coverage>92.73</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -501,9 +512,9 @@
       <methodName>skeleton_policy</methodName>
       <methodSignature>skeleton_policy(string $type): void</methodSignature>
       <fullMethod>skeleton_policy(string $type): void</fullMethod>
-      <crap>18.52</crap>
-      <complexity>15</complexity>
-      <coverage>75</coverage>
+      <crap>15.87</crap>
+      <complexity>13</complexity>
+      <coverage>74.29</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -512,10 +523,10 @@
       <methodName>skeleton_requests</methodName>
       <methodSignature>skeleton_requests(string $type): void</methodSignature>
       <fullMethod>skeleton_requests(string $type): void</fullMethod>
-      <crap>173.44</crap>
-      <complexity>24</complexity>
-      <coverage>36.22</coverage>
-      <crapLoad>16</crapLoad>
+      <crap>18.44</crap>
+      <complexity>18</complexity>
+      <coverage>88.89</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
@@ -545,20 +556,9 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>24.72</crap>
-      <complexity>23</complexity>
-      <coverage>85.19</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Make\Controller\Building\Skeletons</package>
-      <className>Playground\Make\Controller\Building\Skeletons\BuildSwagger</className>
-      <methodName>skeleton_swagger</methodName>
-      <methodSignature>skeleton_swagger(string $type): void</methodSignature>
-      <fullMethod>skeleton_swagger(string $type): void</fullMethod>
-      <crap>27.34</crap>
-      <complexity>25</complexity>
-      <coverage>84.48</coverage>
+      <crap>19</crap>
+      <complexity>19</complexity>
+      <coverage>96.23</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -806,9 +806,9 @@
     <method>
       <package>Playground\Make\Controller\Configuration</package>
       <className>Playground\Make\Controller\Configuration\Controller</className>
-      <methodName>withSwagger</methodName>
-      <methodSignature>withSwagger(): bool</methodSignature>
-      <fullMethod>withSwagger(): bool</fullMethod>
+      <methodName>withOpenAPI</methodName>
+      <methodSignature>withOpenAPI(): bool</methodSignature>
+      <fullMethod>withOpenAPI(): bool</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -1282,9 +1282,9 @@
       <methodName>getConfigurationFilename</methodName>
       <methodSignature>getConfigurationFilename(): string</methodSignature>
       <fullMethod>getConfigurationFilename(): string</fullMethod>
-      <crap>2.01</crap>
-      <complexity>2</complexity>
-      <coverage>85.71</coverage>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>93.33</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1381,8 +1381,8 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>19.46</crap>
-      <complexity>16</complexity>
+      <crap>22.37</crap>
+      <complexity>18</complexity>
       <coverage>76.19</coverage>
       <crapLoad>0</crapLoad>
     </method>
