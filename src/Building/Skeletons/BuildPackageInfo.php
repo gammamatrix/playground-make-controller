@@ -139,15 +139,20 @@ trait BuildPackageInfo
             }
         }
 
-        $model_slug = $this->model?->model_slug();
+        if (in_array($this->c->type(), [
+            'playground-api',
+            'playground-resource',
+        ])) {
+            $model_slug = $this->model?->model_slug();
 
-        if ($model_slug) {
+            if ($model_slug) {
 
-            if ($privilege) {
-                $privilege .= ':';
+                if ($privilege) {
+                    $privilege .= ':';
+                }
+
+                $privilege .= Str::of($model_slug)->slug()->toString();
             }
-
-            $privilege .= Str::of($model_slug)->slug()->toString();
         }
 
         $packageInfo->setOptions([
@@ -159,19 +164,19 @@ trait BuildPackageInfo
         ]);
 
         $this->searches['privilege'] = $packageInfo->privilege();
-        // if ('BacklogController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$privilege' => $privilege,
-        //         '$package' => $package,
-        //         '$slug' => $slug,
-        //         '$this->searches[privilege]' => $this->searches['privilege'],
-        //         // '$this->c' => $this->c,
-        //         // '$this->c->toArray()' => $this->c->toArray(),
-        //         '$this->c->privilege()' => $this->c->privilege(),
-        //         '$packageInfo->privilege()' => $packageInfo->privilege(),
-        //     ]);
-        // }
+        //         if ('playground-resource-index' === $this->c->type()) {
+        //             dump([
+        //                 '__METHOD__' => __METHOD__,
+        //                 '$privilege' => $privilege,
+        //                 '$package' => $package,
+        //                 '$this->c->name()' => $this->c->name(),
+        //                 '$this->c->type()' => $this->c->type(),
+        //                 // '$this->c' => $this->c,
+        //                 // '$this->c->toArray()' => $this->c->toArray(),
+        //                 '$this->c->privilege()' => $this->c->privilege(),
+        //                 '$packageInfo->privilege()' => $packageInfo->privilege(),
+        //             ]);
+        //         }
     }
 
     /**
@@ -222,15 +227,20 @@ trait BuildPackageInfo
             }
         }
 
-        $model_slug = $this->model?->model_slug();
+        if (in_array($this->c->type(), [
+            'playground-api',
+            'playground-resource',
+        ])) {
+            $model_slug = $this->model?->model_slug();
 
-        if ($model_slug) {
+            if ($model_slug) {
 
-            if ($view) {
-                $view .= '::';
+                if ($view) {
+                    $view .= '::';
+                }
+
+                $view .= Str::of($model_slug)->slug()->toString();
             }
-
-            $view .= Str::of($model_slug)->slug()->toString();
         }
 
         $packageInfo->setOptions([

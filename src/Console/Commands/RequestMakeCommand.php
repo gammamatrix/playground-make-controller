@@ -395,6 +395,13 @@ class RequestMakeCommand extends GeneratorCommand
 
         $this->saveConfiguration();
 
+        //        if ($this->c->type() === 'form-request') {
+        //            dd([
+        //                '__METHOD__' => __METHOD__,
+        //                '$this->c' => $this->c,
+        //                '$this->options()' => $this->options(),
+        //            ]);
+        //        }
         return $this->return_status;
     }
 
@@ -456,6 +463,10 @@ PHP_CODE;
             'form-request',
         ])) {
             $this->command_tests_playground_request($type);
+            //            dump([
+            //                '__METHOD__' => __METHOD__,
+            //                '$type' => $type,
+            //            ]);
         } else {
             dd([
                 '__METHOD__' => __METHOD__,

@@ -59,8 +59,15 @@ trait BuildRoutes
             $organization = $this->c->organization();
         }
 
+        if (in_array($type, [
+            'playground-api',
+            'playground-resource',
+        ])) {
+            $name = $model;
+        }
+
         $options = [
-            'name' => $model,
+            'name' => $name,
             '--namespace' => $namespace,
             '--force' => $force,
             '--package' => $package,
@@ -93,21 +100,33 @@ trait BuildRoutes
         if (in_array($type, [
             'api',
             'resource',
-            'index',
             'playground-resource',
-            'playground-resource-index',
             'playground-api',
         ])) {
             $options['--route'] = $this->c->model_route();
+            //            dd([
+            //                '__METHOD__' => __METHOD__,
+            //                '$name' => $name,
+            //                '$type' => $type,
+            //                '$modelFile' => $modelFile,
+            //                '$options' => $options,
+            //                '$this->options()' => $this->options(),
+            //                '$this->c' => $this->c,
+            //            ]);
+        } elseif (in_array($type, [
+            'index',
+            'playground-resource-index',
+        ])) {
+            $options['--route'] = $this->c->module_route();
         }
 
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$modelFile' => $modelFile,
-        //     '$options' => $options,
-        //     '$this->options()' => $this->options(),
-        //     // '$this->c' => $this->c,
-        // ]);
+        //         dump([
+        //             '__METHOD__' => __METHOD__,
+        //             '$modelFile' => $modelFile,
+        //             '$options' => $options,
+        //             '$this->options()' => $this->options(),
+        //              '$this->c' => $this->c,
+        //         ]);
         if (empty($this->call('playground:make:route', $options))) {
 
             // $path_resources_templates = $this->getResourcePackageFolder();

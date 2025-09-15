@@ -44,7 +44,6 @@ class {{ class }} extends JsonResource
                 'rules' => $request->rules(),
                 'session_user_id' => $user?->getAttributeValue('id'),
                 'timestamp' => Carbon::now()->toJson(),
-                'validated' => $request->validated(),
             ],
         ];
     }

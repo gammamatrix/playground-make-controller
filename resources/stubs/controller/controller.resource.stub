@@ -50,6 +50,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\CreateRequest $request
     ): JsonResponse|View|Resources\{{ model }} {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -57,8 +59,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_slug}} = new {{model}}($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -66,12 +68,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'session_user_id' => $user?->id,
             'id' => null,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => ${{model_slug}},
@@ -90,7 +88,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
             session()->flashInput($flash);
         }
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -103,13 +106,15 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\EditRequest $request
     ): JsonResponse|View|Resources\{{ model }} {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -123,12 +128,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'session_user_id' => $user?->id,
             'id' => ${{model_slug}}->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => ${{model_slug}},
@@ -142,7 +143,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         session()->flashInput($flash);
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -154,6 +160,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\DestroyRequest $request
     ): Response|RedirectResponse {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -179,7 +187,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
             return redirect($returnUrl);
         }
 
-        return redirect(route($this->packageInfo['model_route']));
+        return redirect(route($packageInfo->model_route()));
     }
 
     /**
@@ -191,6 +199,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\LockRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -204,16 +214,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->save();
 
-        $meta = [
-            'session_user_id' => $user?->id,
-            'id' => ${{model_slug}}->id,
-            'timestamp' => Carbon::now()->toJson(),
-            'info' => $this->packageInfo,
-        ];
-
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -225,7 +228,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['{{model_slug}}' => ${{model_slug}}->id]));
     }
 
@@ -238,11 +241,22 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\IndexRequest $request
     ): JsonResponse|View|Resources\{{ model }}Collection {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = {{ model }}::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = {{ model }}::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -277,7 +291,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}Collection($paginator))->response($request);
+            return new Resources\{{ model }}Collection($paginator)->response($request);
         }
 
         $meta = [
@@ -290,7 +304,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'sortable' => $request->getSortable(),
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         $data = [
@@ -298,7 +312,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/index', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -311,6 +330,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\RestoreRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -322,8 +343,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_slug}}->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -335,7 +356,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['{{model_slug}}' => ${{model_slug}}->id]));
     }
 
@@ -349,6 +370,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\ShowRequest $request
     ): JsonResponse|View|Resources\{{ model }} {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -357,25 +380,26 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'session_user_id' => $user?->id,
             'id' => ${{model_slug}}->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => ${{model_slug}},
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/detail', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -386,6 +410,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
     public function store(
         Requests\{{ model }}\StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|Resources\{{ model }} {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -400,8 +426,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_slug}}->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -413,7 +439,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['{{model_slug}}' => ${{model_slug}}->id]));
     }
 
@@ -426,6 +452,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\UnlockRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -440,8 +468,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_slug}}->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -453,7 +481,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['{{model_slug}}' => ${{model_slug}}->id]));
     }
 
@@ -467,6 +495,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\UpdateRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -478,8 +508,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_slug}}->update($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -491,7 +521,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['{{model_slug}}' => ${{model_slug}}->id]));
     }{{ relationships }}{{ actions }}{{ methods }}
 }

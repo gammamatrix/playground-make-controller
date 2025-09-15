@@ -59,6 +59,7 @@ class RouteMakeCommand extends GeneratorCommand
         'config' => '',
         'route_prefix' => '',
         'route_can' => '',
+        'route_base' => '',
     ];
 
     /**
@@ -174,6 +175,9 @@ class RouteMakeCommand extends GeneratorCommand
 
         if ($type === 'playground-resource-index') {
             $this->c->setOptions([
+                'folder' => 'index',
+                'name' => 'Index',
+                'controller' => 'IndexController',
                 'class' => $this->c->module_slug(),
                 'route_prefix' => sprintf(
                     'resource/%1$s',
@@ -215,34 +219,34 @@ class RouteMakeCommand extends GeneratorCommand
         }
 
         // if ($type === 'playground-resource-index') {
-        //     dump([
-        //         '__METHOD__' => __METHOD__,
-        //         '$type' => $type,
-        //         '$options' => $options,
-        //         '$model_slug' => $model_slug,
-        //         '$model_parameter' => $model_parameter,
-        //         '$model_variable' => $model_variable,
-        //         '$this->c' => $this->c,
-        //         '$this->searches' => $this->searches,
-        //     ]);
+        //    dump([
+        //        '__METHOD__' => __METHOD__,
+        //        '$type' => $type,
+        //        '$options' => $options,
+        //        '$model_slug' => $model_slug,
+        //        '$model_parameter' => $model_parameter,
+        //        '$model_variable' => $model_variable,
+        //        '$this->c' => $this->c,
+        //        '$this->searches' => $this->searches,
+        //    ]);
         // }
     }
 
     protected function getConfigurationFilename(): string
     {
-        // if (in_array($this->c->type(), ['playground-resource-index'])) {
-        //     return sprintf(
-        //         '%1$s.%2$s.json',
-        //         Str::of($this->getType())->kebab(),
-        //         Str::of($this->c->name())->kebab(),
-        //     );
-        // } else {
+        if ($this->c->type() === 'playground-resource-index') {
+            return sprintf(
+                '%1$s/%2$s.json',
+                'index',
+                Str::of($this->getType())->kebab(),
+            );
+        }
+
         return sprintf(
             '%1$s/%2$s.json',
             Str::of($this->c->name())->kebab(),
             Str::of($this->getType())->kebab(),
         );
-        // }
     }
 
     /**
@@ -252,14 +256,30 @@ class RouteMakeCommand extends GeneratorCommand
      */
     protected function qualifyClass($name): string
     {
-        $type = $this->getConfigurationType();
-
         if (! $this->c->folder()) {
             $this->c->setOptions([
                 'folder' => Str::of($name)->kebab()->toString(),
             ]);
             $this->searches['folder'] = $this->c->folder();
         }
+
+        //        if (in_array($this->c->type(), [
+        //            'api',
+        //            'playground-api',
+        //            'resource',
+        //            'playground-resource',
+        //        ])) {
+        //            dd([
+        //                '__METHOD__' => __METHOD__,
+        //                '$name' => $name,
+        //                '$this->c->controller()' => $this->c->controller(),
+        //                '$this->c->type()' => $this->c->type(),
+        //                '$this->c->class()' => $this->c->class(),
+        //                 '$this->c' => $this->c,
+        //                // '$this->searches' => $this->searches,
+        //                 '$this->options()' => $this->options(),
+        //            ]);
+        //        }
 
         // if (! $this->c->model_column()) {
 
@@ -282,14 +302,16 @@ class RouteMakeCommand extends GeneratorCommand
         $this->searches['route_prefix'] = $this->c->route_prefix();
 
         // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$name' => $name,
-        //     '$type' => $type,
-        //     '$this->c->class()' => $this->c->class(),
-        //     // '$this->c' => $this->c,
-        //     // '$this->searches' => $this->searches,
-        //     // '$this->options()' => $this->options(),
+        //    '__METHOD__' => __METHOD__,
+        //    '$name' => $name,
+        //    '$this->c->controller()' => $this->c->controller(),
+        //    '$this->c->type()' => $this->c->type(),
+        //    '$this->c->class()' => $this->c->class(),
+        //    // '$this->c' => $this->c,
+        //    // '$this->searches' => $this->searches,
+        //    // '$this->options()' => $this->options(),
         // ]);
+
         return $this->c->class();
     }
 
@@ -388,11 +410,26 @@ class RouteMakeCommand extends GeneratorCommand
             'playground-resource',
         ])) {
             $name = Str::of($name)->plural()->kebab()->toString();
+            //            dd([
+            //                '__METHOD__' => __METHOD__,
+            //                '$name' => $name,
+            //                '$this->folder()' => $this->folder(),
+            //                '$this->c->type()' => $this->c->type(),
+            //                '$this->c' => $this->c,
+            //                '$this->options()' => $this->options(),
+            //            ]);
         } elseif (in_array($this->c->type(), [
             'resource-index',
             'playground-resource-index',
         ])) {
             $module_slug = $this->c->module_slug();
+            //            dump([
+            //                '__METHOD__' => __METHOD__,
+            //                '$module_slug' => $module_slug,
+            //                '$name' => $name,
+            //                '$this->folder()' => $this->folder(),
+            //                '$this->c->type()' => $this->c->type(),
+            //            ]);
             if ($module_slug) {
                 $name = $module_slug;
             }
