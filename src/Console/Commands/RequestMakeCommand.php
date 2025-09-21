@@ -481,7 +481,14 @@ PHP_CODE;
         $withCovers = $this->hasOption('covers') && $this->option('covers');
         $force = $this->hasOption('force') && $this->option('force');
         $model = $this->hasOption('model') ? $this->option('model') : '';
-        $revision = $this->hasOption('revision') && $this->option('revision');
+
+        $attributes = $this->model?->attributes() ?? [];
+        $hasMany = $this->model?->hasMany() ?? [];
+
+        $revision = array_key_exists('revisions', $hasMany) && array_key_exists('revision', $attributes);
+
+
+        $revision = $revision || ($this->hasOption('revision') && $this->option('revision'));
 
         $name = Str::of($type)->studly()->finish('RequestTest')->toString();
 
@@ -514,7 +521,7 @@ PHP_CODE;
             'store',
             'update',
         ])) {
-            $options['--revision'] = true;
+            $options['--revision'] = $revision;
         }
 
         $modelFile = $this->getModelFile();

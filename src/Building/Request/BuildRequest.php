@@ -58,6 +58,11 @@ trait BuildRequest
             $this->c->namespace()
         );
 
+        $attributes = $this->model?->attributes() ?? [];
+        $hasMany = $this->model?->hasMany() ?? [];
+
+        $revision = array_key_exists('revisions', $hasMany) && array_key_exists('revision', $attributes);
+
         // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$name' => $name,
@@ -119,11 +124,17 @@ trait BuildRequest
             $extends = 'BaseStoreRequest';
             $extends_use = 'Playground/Http/Requests/StoreRequest as BaseStoreRequest';
             $buildClass_slug_table = true;
-            $buildClass_rules_revision = true;
-            // dd([
-            //     '__METHOD__' => __METHOD__,
-            //     '$this->c' => $this->c,
-            // ]);
+            $buildClass_rules_revision = $revision;
+//             dd([
+//                 '__METHOD__' => __METHOD__,
+//                 '$revision' => $revision,
+////                 '$hasMany' => $hasMany,
+//                 '$buildClass_rules_revision' => $buildClass_rules_revision,
+//                 '$this->c' => $this->c,
+//                 '$this->options()' => $this->options(),
+//                 '$this->model->revision()' => $this->model->revision(),
+////                 '$this->model->toArray()' => $this->model->toArray(),
+//             ]);
         } elseif (in_array($this->c->type(), [
             'unlock',
         ])) {
@@ -137,11 +148,14 @@ trait BuildRequest
             $extends = 'BaseUpdateRequest';
             $extends_use = 'Playground/Http/Requests/UpdateRequest as BaseUpdateRequest';
             $buildClass_slug_table = true;
-            $buildClass_rules_revision = true;
-            // dd([
-            //     '__METHOD__' => __METHOD__,
-            //     '$this->c' => $this->c,
-            // ]);
+            $buildClass_rules_revision = $revision;
+//             dump([
+//                 '__METHOD__' => __METHOD__,
+//                 '$buildClass_rules_revision' => $buildClass_rules_revision,
+//                 '$this->c' => $this->c,
+//                 '$this->options()' => $this->options(),
+//                 '$this->model->revision()' => $this->model->revision(),
+//             ]);
         } elseif (in_array($this->c->type(), [
             'index',
         ])) {
