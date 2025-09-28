@@ -54,8 +54,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         ${{model_slug}} = new {{model}}($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = ${{model_slug}}->toArray();
 
@@ -243,8 +243,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
             return new Resources\{{ model }}Collection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
-        }
+        ${{model_slug}}->modified_by_id = $user?->id;
 
         ${{model_slug}}->restore();
 
@@ -372,6 +370,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $packageInfo = $this->packageInfo();
 
+        if ($request->expectsJson()) {
+            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -382,12 +386,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => ${{model_slug}},
@@ -419,9 +417,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}} = new {{ model }}($validated);
 
-        if ($user?->id) {
-            ${{model_slug}}->created_by_id = $user->id;
-        }
+        ${{model_slug}}->created_by_id = $user?->id;
 
         ${{model_slug}}->save();
 
@@ -461,9 +457,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->locked = false;
 
-        if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
-        }
+        ${{model_slug}}->modified_by_id = $user?->id;
 
         ${{model_slug}}->save();
 
@@ -501,9 +495,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
-        }
+        ${{model_slug}}->modified_by_id = $user?->id;
 
         ${{model_slug}}->update($validated);
 

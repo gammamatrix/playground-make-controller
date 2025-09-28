@@ -47,14 +47,14 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\CreateRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
+        $validated = $request->validated();
 
         ${{model_slug}} = new {{model}}($validated);
 
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -67,8 +67,11 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\EditRequest $request
     ): JsonResponse|Resources\{{ model }} {
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+
+        $packageInfo = $this->packageInfo();
+
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -109,7 +112,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\LockRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
         $user = $request->user();
 
@@ -121,8 +124,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->save();
 
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -135,11 +138,20 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\IndexRequest $request
     ): JsonResponse|Resources\{{ model }}Collection {
 
-        $user = $request->user();
+        $packageInfo = $this->packageInfo();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = {{ model }}::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = {{ model }}::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -173,7 +185,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $paginator->appends($validated);
 
-        return (new Resources\{{ model }}Collection($paginator))->response($request);
+        return new Resources\{{ model }}Collection($paginator)->response($request);
     }
 
     /**
@@ -186,16 +198,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\RestoreRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
-        if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
-        }
+        ${{model_slug}}->modified_by_id = $user?->id;
 
         ${{model_slug}}->restore();
 
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -208,8 +220,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\ShowRequest $request
     ): JsonResponse|Resources\{{ model }} {
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        $packageInfo = $this->packageInfo();
+
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -221,6 +235,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
     public function store(
         Requests\{{ model }}\StoreRequest $request
     ): Response|JsonResponse|Resources\{{ model }} {
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -231,8 +247,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         ${{model_slug}}->save();
 
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request)->setStatusCode(201);
     }
 
@@ -246,20 +262,18 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\UnlockRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
-        $validated = $request->validated();
+        $packageInfo = $this->packageInfo();
 
         $user = $request->user();
 
         ${{model_slug}}->locked = false;
 
-        if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
-        }
+        ${{model_slug}}->modified_by_id = $user?->id;
 
         ${{model_slug}}->save();
 
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }
 
@@ -273,18 +287,18 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\UpdateRequest $request
     ): JsonResponse {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
-        }
+        ${{model_slug}}->modified_by_id = $user?->id;
 
         ${{model_slug}}->update($validated);
 
-        return (new Resources\{{ model }}(${{model_slug}}))->additional(['meta' => [
-            'info' => $this->packageInfo,
+        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            'info' => $packageInfo,
         ]])->response($request);
     }{{ relationships }}{{ actions }}{{ methods }}
 }

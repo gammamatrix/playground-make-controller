@@ -138,6 +138,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
             '_method' => 'patch',
         ];
 
+        if (! empty($validated['_return_url'])) {
+            $data['_return_url'] = $validated['_return_url'];
+        }
+
         session()->flashInput($flash);
 
         /**
