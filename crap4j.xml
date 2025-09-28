@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2025-09-06 16:06:00</timestamp>
+  <timestamp>2025-09-28 21:31:25</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>164</methodCount>
     <crapMethodCount>10</crapMethodCount>
-    <crapLoad>115</crapLoad>
-    <totalCrap>2553.38</totalCrap>
+    <crapLoad>117</crapLoad>
+    <totalCrap>2622.69</totalCrap>
     <crapMethodPercent>6.1</crapMethodPercent>
   </stats>
   <methods>
@@ -204,9 +204,9 @@
       <methodName>buildClass_form</methodName>
       <methodSignature>buildClass_form(string $name): void</methodSignature>
       <fullMethod>buildClass_form(string $name): void</fullMethod>
-      <crap>15</crap>
-      <complexity>15</complexity>
-      <coverage>100</coverage>
+      <crap>16</crap>
+      <complexity>16</complexity>
+      <coverage>98.63</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -259,9 +259,9 @@
       <methodName>buildClass_rules_revision</methodName>
       <methodSignature>buildClass_rules_revision(): void</methodSignature>
       <fullMethod>buildClass_rules_revision(): void</fullMethod>
-      <crap>1</crap>
+      <crap>2</crap>
       <complexity>1</complexity>
-      <coverage>100</coverage>
+      <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -358,9 +358,9 @@
       <methodName>preparePackageInfo_privilege</methodName>
       <methodSignature>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>11.15</crap>
-      <complexity>10</complexity>
-      <coverage>77.42</coverage>
+      <crap>11.97</crap>
+      <complexity>11</complexity>
+      <coverage>80</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -369,9 +369,9 @@
       <methodName>preparePackageInfo_view</methodName>
       <methodSignature>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>12.33</crap>
-      <complexity>11</complexity>
-      <coverage>77.78</coverage>
+      <crap>13.15</crap>
+      <complexity>12</complexity>
+      <coverage>80</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -556,9 +556,9 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>19</crap>
-      <complexity>19</complexity>
-      <coverage>96.23</coverage>
+      <crap>21.67</crap>
+      <complexity>21</complexity>
+      <coverage>88.52</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1623,10 +1623,10 @@
       <methodName>command_tests_playground_request</methodName>
       <methodSignature>command_tests_playground_request(string $type): void</methodSignature>
       <fullMethod>command_tests_playground_request(string $type): void</fullMethod>
-      <crap>210</crap>
-      <complexity>14</complexity>
+      <crap>272</crap>
+      <complexity>16</complexity>
       <coverage>0</coverage>
-      <crapLoad>14</crapLoad>
+      <crapLoad>16</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
@@ -1711,8 +1711,8 @@
       <methodName>getConfigurationFilename</methodName>
       <methodSignature>getConfigurationFilename(): string</methodSignature>
       <fullMethod>getConfigurationFilename(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
+      <crap>2</crap>
+      <complexity>2</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
