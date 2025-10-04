@@ -305,8 +305,15 @@ trait BuildPackageInfo
         PackageInfo $packageInfo
     ): void {
         if (! $packageInfo->module_label_plural() && $packageInfo->module_label()) {
+            $module = $packageInfo->module_label();
+            if (ctype_upper($module)) {
+                $plural = $module.'s';
+            } else {
+                $plural = Str::of($module)->plural()->toString();
+            }
+
             $packageInfo->setOptions([
-                'module_label_plural' => Str::of($packageInfo->module_label())->plural()->toString(),
+                'module_label_plural' => $plural,
             ]);
         }
 

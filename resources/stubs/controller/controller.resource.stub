@@ -376,8 +376,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
             ]])->response($request);
         }
 
-        $validated = $request->validated();
-
         $user = $request->user();
 
         $meta = [
@@ -424,7 +422,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         if ($request->expectsJson()) {
             return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';

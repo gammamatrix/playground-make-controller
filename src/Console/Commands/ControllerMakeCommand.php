@@ -290,8 +290,8 @@ class ControllerMakeCommand extends GeneratorCommand
 
             $this->c->setOptions([
                 'class' => Str::of($this->model->name())->finish('Controller')->toString(),
+                'name' => Str::of($this->model->name())->finish('Controller')->toString(),
                 'fqdn' => Str::of($this->c->namespace())->finish('/Http/Controllers')->toString(),
-                //            'model' => '',
                 'slug' => $this->model->model_slug(),
                 'slug_plural' => $this->model->model_slug_plural(),
                 //            'model_route' => '',
@@ -305,15 +305,13 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $this->c->apply();
         $this->applyConfigurationToSearch();
-        //        dd([
-        //            '__METHOD__' => __METHOD__,
-        //            '$attributes' => $attributes,
-        //            '$hasMany' => $hasMany,
-        //            '$this->c' => $this->c,
-        //            'slug' => $this->model->model_slug(),
-        //            'slug_plural' => $this->model->model_slug_plural(),
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$options' => $options,
+        //    '$this->c' => $this->c,
+        //    '$this->options()' => $this->options(),
         // //            '$this->model' => $this->model->toArray(),
-        //        ]);
+        // ]);
 
         //         if ($initModel) {
         //             dd([
@@ -388,7 +386,10 @@ class ControllerMakeCommand extends GeneratorCommand
         if ($this->c->type() === 'base') {
             return 'controller.base.json';
 
-        } elseif ($this->c->type() === 'playground-resource') {
+        } elseif (in_array($this->c->type(), [
+            'playground-api',
+            'playground-resource',
+        ])) {
             $file = sprintf(
                 '%1$s/%2$s.json',
                 Str::of($this->c->packageInfo()?->model_slug() ?? $this->c->name())->kebab(),

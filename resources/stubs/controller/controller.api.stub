@@ -13,7 +13,6 @@ use {{ namespacedResource }};
 use {{ namespacedModel }};
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Carbon;
 
 /**
  * \{{ namespace }}\Http\Controllers\{{ class }}
@@ -61,7 +60,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/edit {{model_route}}.edit
+     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_slug}}} {{model_route}}.edit
      */
     public function edit(
         {{ model }} ${{model_slug}},
@@ -220,6 +219,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         {{ model }} ${{model_slug}},
         Requests\{{ model }}\ShowRequest $request
     ): JsonResponse|Resources\{{ model }} {
+
         $packageInfo = $this->packageInfo();
 
         return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
@@ -227,7 +227,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ]])->response($request);
     }
 
-   /**
+    /**
      * Store a newly created API {{model_label}} resource in storage.
      *
      * @route POST /api/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
@@ -235,6 +235,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     public function store(
         Requests\{{ model }}\StoreRequest $request
     ): Response|JsonResponse|Resources\{{ model }} {
+
         $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();

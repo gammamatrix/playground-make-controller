@@ -487,7 +487,6 @@ PHP_CODE;
 
         $revision = array_key_exists('revisions', $hasMany) && array_key_exists('revision', $attributes);
 
-
         $revision = $revision || ($this->hasOption('revision') && $this->option('revision'));
 
         $name = Str::of($type)->studly()->finish('RequestTest')->toString();
