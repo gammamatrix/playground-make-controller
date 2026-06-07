@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand;
 
+use Illuminate\Testing\PendingCommand;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Make\Controller\Console\Commands\RequestMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
@@ -21,7 +22,7 @@ class CommandTest extends TestCase
     public function test_command_without_options_or_arguments(): void
     {
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan('playground:make:request');
         $result->assertExitCode(1);
@@ -31,7 +32,7 @@ class CommandTest extends TestCase
     public function test_command_skeleton(): void
     {
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan('playground:make:request testing --skeleton --force');
         $result->assertExitCode(0);

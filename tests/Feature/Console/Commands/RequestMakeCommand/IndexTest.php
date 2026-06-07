@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\RequestMakeCommand;
 
+use Illuminate\Testing\PendingCommand;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Make\Controller\Console\Commands\RequestMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
@@ -23,7 +24,7 @@ class IndexTest extends TestCase
         $command = 'playground:make:request FormRequest --namespace Acme/Testing/Resource --package acme-testing-resource --class FormRequest --model Illuminate/Database/Eloquent/Model --skeleton --force --type abstract';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -34,7 +35,7 @@ class IndexTest extends TestCase
         $command = 'playground:make:request AbstractIndexRequest --namespace Acme/Testing/Resource --package acme-testing-resource --model Illuminate/Database/Eloquent/Model --class AbstractIndexRequest --extends FormRequest --skeleton --force --type abstract-index --abstract --with-pagination';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -45,7 +46,7 @@ class IndexTest extends TestCase
         $command = 'playground:make:request AbstractStoreRequest --namespace Acme/Testing/Resource --package acme-testing-resource --model Illuminate/Database/Eloquent/Model --class AbstractStoreRequest --extends FormRequest --skeleton --force --type abstract-store --abstract --with-store';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);

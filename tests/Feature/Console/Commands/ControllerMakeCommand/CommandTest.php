@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\ControllerMakeCommand;
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Testing\PendingCommand;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Make\Controller\Console\Commands\ControllerMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
@@ -22,7 +23,7 @@ class CommandTest extends TestCase
     public function test_command_without_options_or_arguments(): void
     {
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan('playground:make:controller');
         $result->assertExitCode(1);
@@ -34,7 +35,7 @@ class CommandTest extends TestCase
         // $result = $this->withoutMockingConsoleOutput()->artisan('playground:make:controller testing --skeleton --force');
         // dd(Artisan::output());
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan('playground:make:controller testing --skeleton --force');
         $result->assertExitCode(0);

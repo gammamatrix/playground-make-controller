@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
@@ -44,7 +45,7 @@ class StubTest extends TestCase
 
     public function test_command_with_invalid_path_to_stub_in_the_config(): void
     {
-        $this->expectException(\Illuminate\Contracts\Filesystem\FileNotFoundException::class);
+        $this->expectException(FileNotFoundException::class);
         $this->expectExceptionMessage('File does not exist at path /tmp/resource/resource.stub.');
 
         config(['playground-make.paths.stubs' => '/tmp']);

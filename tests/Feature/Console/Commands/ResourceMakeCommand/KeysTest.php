@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 
+use Illuminate\Testing\PendingCommand;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
@@ -23,7 +24,7 @@ class KeysTest extends TestCase
         $command = 'playground:make:resource testing --force --type keys';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -34,7 +35,7 @@ class KeysTest extends TestCase
         $command = 'playground:make:resource testing --skeleton --force --type keys';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);

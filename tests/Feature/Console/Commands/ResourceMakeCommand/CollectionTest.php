@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 
+use Illuminate\Testing\PendingCommand;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Make\Controller\Console\Commands\ResourceMakeCommand;
 use Tests\Feature\Playground\Make\Controller\TestCase;
@@ -23,7 +24,7 @@ class CollectionTest extends TestCase
         $command = 'playground:make:resource testing --force --type collection';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -34,7 +35,7 @@ class CollectionTest extends TestCase
         $command = 'playground:make:resource testing --skeleton --force --type collection';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -45,7 +46,7 @@ class CollectionTest extends TestCase
         $command = 'playground:make:resource TestingCollection --skeleton --force';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -56,7 +57,7 @@ class CollectionTest extends TestCase
         $command = 'playground:make:resource Testing --skeleton --force --collection';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
@@ -67,7 +68,7 @@ class CollectionTest extends TestCase
         $command = 'playground:make:resource Testing --skeleton --force --collection';
 
         /**
-         * @var \Illuminate\Testing\PendingCommand $result
+         * @var PendingCommand $result
          */
         $result = $this->artisan($command);
         $result->assertExitCode(0);
