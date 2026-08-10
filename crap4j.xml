@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2025-10-05 17:46:12</timestamp>
+  <timestamp>2026-08-10 06:05:48</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>164</methodCount>
+    <methodCount>168</methodCount>
     <crapMethodCount>10</crapMethodCount>
-    <crapLoad>117</crapLoad>
-    <totalCrap>2624.08</totalCrap>
-    <crapMethodPercent>6.1</crapMethodPercent>
+    <crapLoad>121</crapLoad>
+    <totalCrap>2878.08</totalCrap>
+    <crapMethodPercent>5.95</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -508,6 +508,28 @@
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
+      <methodName>preparePackageInfo_model_variable</methodName>
+      <methodSignature>preparePackageInfo_model_variable(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_variable(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
+      <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
+      <methodName>preparePackageInfo_model_variable_plural</methodName>
+      <methodSignature>preparePackageInfo_model_variable_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_variable_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPolicies</className>
       <methodName>skeleton_policy</methodName>
       <methodSignature>skeleton_policy(string $type): void</methodSignature>
@@ -831,10 +853,10 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>812</crap>
-      <complexity>28</complexity>
+      <crap>1056</crap>
+      <complexity>32</complexity>
       <coverage>0</coverage>
-      <crapLoad>29</crapLoad>
+      <crapLoad>33</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Controller</package>
@@ -908,6 +930,28 @@
       <methodName>model_slug_plural</methodName>
       <methodSignature>model_slug_plural(): string</methodSignature>
       <fullMethod>model_slug_plural(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\PackageInfo</className>
+      <methodName>model_variable</methodName>
+      <methodSignature>model_variable(): string</methodSignature>
+      <fullMethod>model_variable(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\PackageInfo</className>
+      <methodName>model_variable_plural</methodName>
+      <methodSignature>model_variable_plural(): string</methodSignature>
+      <fullMethod>model_variable_plural(): string</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
