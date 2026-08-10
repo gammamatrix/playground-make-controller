@@ -120,13 +120,6 @@ trait BuildRoutes
             $options['--route'] = $this->c->module_route();
         }
 
-        //         dump([
-        //             '__METHOD__' => __METHOD__,
-        //             '$modelFile' => $modelFile,
-        //             '$options' => $options,
-        //             '$this->options()' => $this->options(),
-        //              '$this->c' => $this->c,
-        //         ]);
         if (empty($this->call('playground:make:route', $options))) {
 
             // $path_resources_templates = $this->getResourcePackageFolder();

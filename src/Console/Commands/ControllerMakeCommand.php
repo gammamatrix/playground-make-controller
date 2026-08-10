@@ -109,6 +109,8 @@ class ControllerMakeCommand extends GeneratorCommand
         'model_label' => '',
         'model_label_plural' => '',
         'model_route' => '',
+        'model_variable' => '',
+        'model_variable_plural' => '',
         'model_slug' => '',
         'model_slug_plural' => '',
         'module_label' => '',
@@ -314,18 +316,18 @@ class ControllerMakeCommand extends GeneratorCommand
         // ]);
 
         //         if ($initModel) {
-        //             dd([
-        //                 '__METHOD__' => __METHOD__,
-        //                 '$this->getModelFile()' => $this->getModelFile(),
-        //                 '$initModel' => $initModel,
-        //                 '$this->c->type()' => $this->c->type(),
-        //                 '$this->c->skeleton()' => $this->c->skeleton(),
-        //                 '$this->c' => $this->c->toArray(),
-        //                 // '$this->model' => $this->model,
-        //                 '$this->searches' => $this->searches,
-        //                 // '$this->arguments()' => $this->arguments(),
-        //                 '$this->options()' => $this->options(),
-        //             ]);
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$this->getModelFile()' => $this->getModelFile(),
+        //    '$initModel' => $initModel,
+        //    '$this->c->type()' => $this->c->type(),
+        //    '$this->c->skeleton()' => $this->c->skeleton(),
+        //    '$this->c' => $this->c->toArray(),
+        //    // '$this->model' => $this->model,
+        //    '$this->searches' => $this->searches,
+        //    // '$this->arguments()' => $this->arguments(),
+        //    '$this->options()' => $this->options(),
+        // ]);
         //         }
     }
 

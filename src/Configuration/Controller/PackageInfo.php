@@ -33,6 +33,10 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
 
     protected string $model_slug_plural = '';
 
+    protected string $model_variable = '';
+
+    protected string $model_variable_plural = '';
+
     protected string $module_label = '';
 
     protected string $module_label_plural = '';
@@ -60,6 +64,8 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
         'model_route' => '',
         'model_slug' => '',
         'model_slug_plural' => '',
+        'model_variable' => '',
+        'model_variable_plural' => '',
         'module_label' => '',
         'module_label_plural' => '',
         'module_route' => '',
@@ -69,11 +75,13 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
         // 'view' => '',
 
         // 'model_attribute' => 'label',
-        // 'model_label' => 'Backlog',
-        // 'model_label_plural' => 'Backlogs',
+        // 'model_label' => 'Backlog', // Task List
+        // 'model_label_plural' => 'Backlogs', // Task Lists
         // 'model_route' => 'playground.matrix.resource.backlogs',
-        // 'model_slug' => 'backlog',
-        // 'model_slug_plural' => 'backlogs',
+        // 'model_slug' => 'backlog', // task-list
+        // 'model_slug_plural' => 'backlogs', // task-lists
+        // 'model_variable' => 'backlog', // taskList
+        // 'model_variable_plural' => 'backlogs', // taskLists
         // 'module_label' => 'Matrix',
         // 'module_label_plural' => 'Matrices',
         // 'module_route' => 'playground.matrix.resource',
@@ -126,6 +134,18 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
             && is_string($options['model_slug_plural'])
         ) {
             $this->model_slug_plural = $options['model_slug_plural'];
+        }
+
+        if (! empty($options['model_variable'])
+            && is_string($options['model_variable'])
+        ) {
+            $this->model_variable = $options['model_variable'];
+        }
+
+        if (! empty($options['model_variable_plural'])
+            && is_string($options['model_variable_plural'])
+        ) {
+            $this->model_variable_plural = $options['model_variable_plural'];
         }
 
         if (! empty($options['module_label'])
@@ -212,6 +232,16 @@ class PackageInfo extends Configuration\Configuration implements Configuration\C
     public function model_slug_plural(): string
     {
         return $this->model_slug_plural;
+    }
+
+    public function model_variable(): string
+    {
+        return $this->model_variable;
+    }
+
+    public function model_variable_plural(): string
+    {
+        return $this->model_variable_plural;
     }
 
     public function module_label(): string

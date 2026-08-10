@@ -24,6 +24,7 @@ trait BuildPackageInfo
     //     'model_label' => 'Backlog',
     //     'model_label_plural' => 'Backlogs',
     //     'model_route' => 'playground.matrix.resource.backlogs',
+    //     'model_route_parameter' => 'backlog',
     //     'model_slug' => 'backlog',
     //     'model_slug_plural' => 'backlogs',
     //     'module_label' => 'Matrix',
@@ -151,7 +152,7 @@ trait BuildPackageInfo
                     $privilege .= ':';
                 }
 
-                $privilege .= Str::of($model_slug)->slug()->toString();
+                $privilege .= Str::of($model_slug)->kebab()->toString();
             }
         }
 
@@ -239,7 +240,7 @@ trait BuildPackageInfo
                     $view .= '::';
                 }
 
-                $view .= Str::of($model_slug)->slug()->toString();
+                $view .= Str::of($model_slug)->kebab()->toString();
             }
         }
 
@@ -395,7 +396,7 @@ trait BuildPackageInfo
             if ($this->model?->module_slug()) {
                 $module_slug = $this->model->module_slug();
             } elseif ($this->model?->module()) {
-                $module_slug = Str::of($this->model->module())->slug()->toString();
+                $module_slug = Str::of($this->model->module())->kebab()->toString();
             }
         }
         if ($module_slug) {
@@ -435,6 +436,8 @@ trait BuildPackageInfo
         $this->preparePackageInfo_model_label_plural($packageInfo);
         $this->preparePackageInfo_model_slug($packageInfo);
         $this->preparePackageInfo_model_slug_plural($packageInfo);
+        $this->preparePackageInfo_model_variable($packageInfo);
+        $this->preparePackageInfo_model_variable_plural($packageInfo);
         $this->preparePackageInfo_model_route($packageInfo);
         $this->preparePackageInfo_model_attribute($packageInfo);
     }
@@ -444,7 +447,7 @@ trait BuildPackageInfo
     ): void {
         if (! $packageInfo->model_label() && $this->model?->model_singular()) {
             $packageInfo->setOptions([
-                'model_label' => $this->model->model_singular(),
+                'model_label' => Str::of($this->model->model_singular())->headline()->toString(),
             ]);
         }
 
@@ -468,7 +471,7 @@ trait BuildPackageInfo
     ): void {
         if (! $packageInfo->model_label_plural() && $this->model?->model_plural()) {
             $packageInfo->setOptions([
-                'model_label_plural' => $this->model->model_plural(),
+                'model_label_plural' => Str::of($this->model->model_plural())->headline()->toString(),
             ]);
         }
 
@@ -510,21 +513,21 @@ trait BuildPackageInfo
 
             $this->searches['model_route'] = $this->c->model_route();
         }
-        // if ('BacklogController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$this->c->toArray()' => $this->c->toArray(),
-        //         '$packageInfo' => $packageInfo,
-        //         '$this->c' => $this->c,
-        //         '$route' => $route,
-        //         '$module_route' => $module_route,
-        //         '$this->searches[module_route]' => $this->searches['module_route'],
-        //         '$this->c->type()' => $this->c->type(),
-        //         '$this->c->module_route()' => $this->c->module_route(),
-        //         '$packageInfo->module_route()' => $packageInfo->module_route(),
-        //         '$this->c->model_route()' => $this->c->model_route(),
-        //         '$packageInfo->model_route()' => $packageInfo->model_route(),
-        //     ]);
+        // if ('TaskListController' === $this->c->name()) {
+        // dump([
+        // '__METHOD__' => __METHOD__,
+        // '$this->c->toArray()' => $this->c->toArray(),
+        // '$packageInfo' => $packageInfo,
+        // '$this->c' => $this->c,
+        // '$route' => $route,
+        // '$module_route' => $module_route,
+        // '$this->searches[module_route]' => $this->searches['module_route'],
+        // '$this->c->type()' => $this->c->type(),
+        // '$this->c->module_route()' => $this->c->module_route(),
+        // '$packageInfo->module_route()' => $packageInfo->module_route(),
+        // '$this->c->model_route()' => $this->c->model_route(),
+        // '$packageInfo->model_route()' => $packageInfo->model_route(),
+        // ]);
         // }
     }
 
@@ -539,7 +542,7 @@ trait BuildPackageInfo
 
             } elseif ($this->model?->model_singular()) {
                 $packageInfo->setOptions([
-                    'model_slug' => Str::of($this->model->model_singular())->slug()->toString(),
+                    'model_slug' => Str::of($this->model->model_singular())->kebab()->toString(),
                 ]);
             }
         }
@@ -550,12 +553,41 @@ trait BuildPackageInfo
     public function preparePackageInfo_model_slug_plural(
         PackageInfo $packageInfo
     ): void {
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$this->model?->model_plural()' => $this->model?->model_plural(),
+        //    '$packageInfo->model_slug_plural()' => $packageInfo->model_slug_plural(),
+        // ]);
         if (! $packageInfo->model_slug_plural() && $this->model?->model_plural()) {
             $packageInfo->setOptions([
-                'model_slug_plural' => Str::of($this->model->model_plural())->slug()->toString(),
+                'model_slug_plural' => Str::of($this->model->model_plural())->kebab()->toString(),
             ]);
         }
 
         $this->searches['model_slug_plural'] = $packageInfo->model_slug_plural();
+    }
+
+    public function preparePackageInfo_model_variable(
+        PackageInfo $packageInfo
+    ): void {
+        if (! $packageInfo->model_variable() && $this->model?->model_singular()) {
+            $packageInfo->setOptions([
+                'model_variable' => Str::of($this->model->model_singular())->snake()->toString(),
+            ]);
+        }
+
+        $this->searches['model_variable'] = $packageInfo->model_variable();
+    }
+
+    public function preparePackageInfo_model_variable_plural(
+        PackageInfo $packageInfo
+    ): void {
+        if (! $packageInfo->model_variable_plural() && $this->model?->model_plural()) {
+            $packageInfo->setOptions([
+                'model_variable_plural' => Str::of($this->model->model_plural())->snake()->toString(),
+            ]);
+        }
+
+        $this->searches['model_variable_plural'] = $packageInfo->model_variable_plural();
     }
 }

@@ -50,6 +50,7 @@ class RouteMakeCommand extends GeneratorCommand
         'model_label' => '',
         'model_parameter' => '',
         'model_variable' => '',
+        'model_variable_plural' => '',
         'model_slug' => '',
         'model_slug_plural' => '',
         'module' => '',
@@ -218,12 +219,16 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        // if ($type === 'playground-resource-index') {
+        // if ($model_column === 'task_log') {
         //    dump([
         //        '__METHOD__' => __METHOD__,
         //        '$type' => $type,
         //        '$options' => $options,
+        //        '$model_column' => $model_column,
+        //        '$model_fqdn' => $model_fqdn,
+        //        '$model_label' => $model_label,
         //        '$model_slug' => $model_slug,
+        //        '$model_slug_plural' => $model_slug_plural,
         //        '$model_parameter' => $model_parameter,
         //        '$model_variable' => $model_variable,
         //        '$this->c' => $this->c,

@@ -32,6 +32,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         'model_route' => '{{model_route}}',
         'model_slug' => '{{model_slug}}',
         'model_slug_plural' => '{{model_slug_plural}}',
+        'model_variable' => '{{model_variable}}',
+        'model_variable_plural' => '{{model_variable_plural}}',
         'module_label' => '{{module_label}}',
         'module_label_plural' => '{{module_label_plural}}',
         'module_route' => '{{module_route}}',
@@ -54,10 +56,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $validated = $request->validated();
 
-        ${{model_slug}} = new {{model}}($validated);
+        ${{model_variable}} = new {{model}}($validated);
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
@@ -72,12 +74,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ];
 
         $data = [
-            'data' => ${{model_slug}},
+            'data' => ${{model_variable}},
             'meta' => $meta,
             '_method' => 'post',
         ];
 
-        $flash = ${{model_slug}}->toArray();
+        $flash = ${{model_variable}}->toArray();
 
         if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
@@ -99,10 +101,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_slug}}} {{model_route}}.edit
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_variable}}} {{model_route}}.edit
      */
     public function edit(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\EditRequest $request
     ): JsonResponse|View|Resources\{{ model }} {
 
@@ -111,14 +113,14 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $validated = $request->validated();
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
 
         $user = $request->user();
 
-        $flash = ${{model_slug}}->toArray();
+        $flash = ${{model_variable}}->toArray();
 
         if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
@@ -126,13 +128,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id' => ${{model_slug}}->id,
+            'id' => ${{model_variable}}->id,
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
 
         $data = [
-            'data' => ${{model_slug}},
+            'data' => ${{model_variable}},
             'meta' => $meta,
             '_method' => 'patch',
         ];
@@ -154,10 +156,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Remove the {{model_label}} resource from storage.
      *
-     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.destroy
+     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.destroy
      */
     public function destroy(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\DestroyRequest $request
     ): Response|RedirectResponse {
 
@@ -168,13 +170,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $user = $request->user();
 
         if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
+            ${{model_variable}}->modified_by_id = $user->id;
         }
 
         if (empty($validated['force'])) {
-            ${{model_slug}}->delete();
+            ${{model_variable}}->delete();
         } else {
-            ${{model_slug}}->forceDelete();
+            ${{model_variable}}->forceDelete();
         }
 
         if ($request->expectsJson()) {
@@ -193,10 +195,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Lock the {{model_label}} resource in storage.
      *
-     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.lock
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.lock
      */
     public function lock(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\LockRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
@@ -207,15 +209,15 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $user = $request->user();
 
         if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
+            ${{model_variable}}->modified_by_id = $user->id;
         }
 
-        ${{model_slug}}->locked = true;
+        ${{model_variable}}->locked = true;
 
-        ${{model_slug}}->save();
+        ${{model_variable}}->save();
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
@@ -229,7 +231,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_slug}}' => ${{model_slug}}->id]));
+        ), ['{{model_variable}}' => ${{model_variable}}->id]));
     }
 
     /**
@@ -323,10 +325,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Restore the {{model_label}} resource from the trash.
      *
-     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_slug}}} {{model_route}}.restore
+     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_variable}}} {{model_route}}.restore
      */
     public function restore(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\RestoreRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
@@ -336,12 +338,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->modified_by_id = $user?->id;
+        ${{model_variable}}->modified_by_id = $user?->id;
 
-        ${{model_slug}}->restore();
+        ${{model_variable}}->restore();
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
@@ -355,23 +357,23 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_slug}}' => ${{model_slug}}->id]));
+        ), ['{{model_variable}}' => ${{model_variable}}->id]));
     }
 
     /**
      * Display the {{model_label}} resource.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.show
+     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.show
      */
     public function show(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\ShowRequest $request
     ): JsonResponse|View|Resources\{{ model }} {
 
         $packageInfo = $this->packageInfo();
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
@@ -380,13 +382,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id' => ${{model_slug}}->id,
+            'id' => ${{model_variable}}->id,
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
 
         $data = [
-            'data' => ${{model_slug}},
+            'data' => ${{model_variable}},
             'meta' => $meta,
         ];
 
@@ -413,14 +415,14 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}} = new {{ model }}($validated);
+        ${{model_variable}} = new {{ model }}($validated);
 
-        ${{model_slug}}->created_by_id = $user?->id;
+        ${{model_variable}}->created_by_id = $user?->id;
 
-        ${{model_slug}}->save();
+        ${{model_variable}}->save();
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request)->setStatusCode(201);
         }
@@ -434,16 +436,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_slug}}' => ${{model_slug}}->id]));
+        ), ['{{model_variable}}' => ${{model_variable}}->id]));
     }
 
     /**
      * Unlock the {{model_label}} resource in storage.
      *
-     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_slug}}} {{model_route}}.unlock
+     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_variable}}} {{model_route}}.unlock
      */
     public function unlock(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\UnlockRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
@@ -453,14 +455,14 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->locked = false;
+        ${{model_variable}}->locked = false;
 
-        ${{model_slug}}->modified_by_id = $user?->id;
+        ${{model_variable}}->modified_by_id = $user?->id;
 
-        ${{model_slug}}->save();
+        ${{model_variable}}->save();
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
@@ -474,16 +476,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_slug}}' => ${{model_slug}}->id]));
+        ), ['{{model_variable}}' => ${{model_variable}}->id]));
     }
 
     /**
      * Update the {{model_label}} resource in storage.
      *
-     * @route PATCH /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.patch
+     * @route PATCH /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.patch
      */
     public function update(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\UpdateRequest $request
     ): JsonResponse|RedirectResponse|Resources\{{ model }} {
 
@@ -493,12 +495,12 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->modified_by_id = $user?->id;
+        ${{model_variable}}->modified_by_id = $user?->id;
 
-        ${{model_slug}}->update($validated);
+        ${{model_variable}}->update($validated);
 
         if ($request->expectsJson()) {
-            return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+            return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
@@ -512,6 +514,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_slug}}' => ${{model_slug}}->id]));
+        ), ['{{model_variable}}' => ${{model_variable}}->id]));
     }{{ relationships }}{{ actions }}{{ methods }}
 }

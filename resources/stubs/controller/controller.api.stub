@@ -29,6 +29,8 @@ class {{ class }} extends {{ extends }}{{ implements }}
         'model_route' => '{{model_route}}',
         'model_slug' => '{{model_slug}}',
         'model_slug_plural' => '{{model_slug_plural}}',
+        'model_variable' => '{{model_variable}}',
+        'model_variable_plural' => '{{model_variable_plural}}',
         'module_label' => '{{module_label}}',
         'module_label_plural' => '{{module_label_plural}}',
         'module_route' => '{{module_route}}',
@@ -50,9 +52,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $validated = $request->validated();
 
-        ${{model_slug}} = new {{model}}($validated);
+        ${{model_variable}} = new {{model}}($validated);
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }
@@ -60,16 +62,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_slug}}} {{model_route}}.edit
+     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_variable}}} {{model_route}}.edit
      */
     public function edit(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\EditRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
         $packageInfo = $this->packageInfo();
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }
@@ -77,10 +79,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Remove the {{model_label}} resource from storage.
      *
-     * @route DELETE /api/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.destroy
+     * @route DELETE /api/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.destroy
      */
     public function destroy(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\DestroyRequest $request
     ): Response {
 
@@ -89,13 +91,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $user = $request->user();
 
         if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
+            ${{model_variable}}->modified_by_id = $user->id;
         }
 
         if (empty($validated['force'])) {
-            ${{model_slug}}->delete();
+            ${{model_variable}}->delete();
         } else {
-            ${{model_slug}}->forceDelete();
+            ${{model_variable}}->forceDelete();
         }
 
         return response()->noContent();
@@ -104,10 +106,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Lock the {{model_label}} resource in storage.
      *
-     * @route PUT /api/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.lock
+     * @route PUT /api/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.lock
      */
     public function lock(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\LockRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
@@ -116,14 +118,14 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $user = $request->user();
 
         if ($user?->id) {
-            ${{model_slug}}->modified_by_id = $user->id;
+            ${{model_variable}}->modified_by_id = $user->id;
         }
 
-        ${{model_slug}}->locked = true;
+        ${{model_variable}}->locked = true;
 
-        ${{model_slug}}->save();
+        ${{model_variable}}->save();
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }
@@ -190,10 +192,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Restore the {{model_label}} resource from the trash.
      *
-     * @route PUT /api/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_slug}}} {{model_route}}.restore
+     * @route PUT /api/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_variable}}} {{model_route}}.restore
      */
     public function restore(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\RestoreRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
@@ -201,11 +203,11 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->modified_by_id = $user?->id;
+        ${{model_variable}}->modified_by_id = $user?->id;
 
-        ${{model_slug}}->restore();
+        ${{model_variable}}->restore();
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }
@@ -213,16 +215,16 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Display the {{model_label}} resource.
      *
-     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.show
+     * @route GET /api/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.show
      */
     public function show(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\ShowRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
         $packageInfo = $this->packageInfo();
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }
@@ -242,13 +244,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}} = new {{ model }}($validated);
+        ${{model_variable}} = new {{ model }}($validated);
 
-        ${{model_slug}}->created_by_id = $user?->id;
+        ${{model_variable}}->created_by_id = $user?->id;
 
-        ${{model_slug}}->save();
+        ${{model_variable}}->save();
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request)->setStatusCode(201);
     }
@@ -256,10 +258,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Unlock the {{model_label}} resource in storage.
      *
-     * @route DELETE /api/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_slug}}} {{model_route}}.unlock
+     * @route DELETE /api/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_variable}}} {{model_route}}.unlock
      */
     public function unlock(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\UnlockRequest $request
     ): JsonResponse|Resources\{{ model }} {
 
@@ -267,13 +269,13 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->locked = false;
+        ${{model_variable}}->locked = false;
 
-        ${{model_slug}}->modified_by_id = $user?->id;
+        ${{model_variable}}->modified_by_id = $user?->id;
 
-        ${{model_slug}}->save();
+        ${{model_variable}}->save();
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }
@@ -281,10 +283,10 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Update the {{model_label}} resource in storage.
      *
-     * @route PATCH /api/{{module_slug}}/{{model_slug_plural}}/{{{model_slug}}} {{model_route}}.patch
+     * @route PATCH /api/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.patch
      */
     public function update(
-        {{ model }} ${{model_slug}},
+        {{ model }} ${{model_variable}},
         Requests\{{ model }}\UpdateRequest $request
     ): JsonResponse {
 
@@ -294,11 +296,11 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        ${{model_slug}}->modified_by_id = $user?->id;
+        ${{model_variable}}->modified_by_id = $user?->id;
 
-        ${{model_slug}}->update($validated);
+        ${{model_variable}}->update($validated);
 
-        return new Resources\{{ model }}(${{model_slug}})->additional(['meta' => [
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request);
     }{{ relationships }}{{ actions }}{{ methods }}
