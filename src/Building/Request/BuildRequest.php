@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Playground\Make\Controller\Building\Request;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Playground\Make\Configuration\Model;
 
@@ -352,7 +353,7 @@ PHP_CODE;
             //     '$column' => $column,
             // ]);
             if (empty($column) || ! is_string($column)) {
-                \Log::debug(__METHOD__, [
+                Log::debug(__METHOD__, [
                     'ISSUE' => 'Missing column for rules',
                     '$i' => $i,
                     '$this->model' => $this->model,

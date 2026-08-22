@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Playground\Make\Controller\Building\Request;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Playground\Make\Configuration\Model;
 use Playground\Make\Configuration\Model\Filters;
@@ -271,7 +272,7 @@ trait BuildIndex
 
             $column = $filter->column();
             if (! $column) {
-                \Log::debug(__METHOD__, [
+                Log::debug(__METHOD__, [
                     'ISSUE' => 'Missing column for date',
                     '$i' => $i,
                     '$filter' => $filter,
@@ -348,7 +349,7 @@ PHP_CODE;
 
             $column = $filter->column();
             if (! $column) {
-                \Log::debug(__METHOD__, [
+                Log::debug(__METHOD__, [
                     'ISSUE' => 'Missing column for flag',
                     '$i' => $i,
                     '$filter' => $filter,
@@ -427,7 +428,7 @@ PHP_CODE;
 
             $column = $filter->column();
             if (! $column) {
-                \Log::debug(__METHOD__, [
+                Log::debug(__METHOD__, [
                     'ISSUE' => 'Missing column for id',
                     '$i' => $i,
                     '$filter' => $filter,
@@ -494,7 +495,7 @@ PHP_CODE;
 
             $column = $filter->column();
             if (! $column) {
-                \Log::debug(__METHOD__, [
+                Log::debug(__METHOD__, [
                     'ISSUE' => 'Missing column',
                     '$i' => $i,
                     '$filter' => $filter,
@@ -567,7 +568,7 @@ PHP_CODE;
 
             $column = $filter->column();
             if (! $column) {
-                \Log::debug(__METHOD__, [
+                Log::debug(__METHOD__, [
                     'ISSUE' => 'Missing column for sortable',
                     '$i' => $i,
                     '$filter' => $filter,
