@@ -133,19 +133,21 @@ class RouteMakeCommand extends GeneratorCommand
         $model = $this->model;
 
         $model_column = $this->c->model_column();
-        $model_fqdn = $this->c->model_fqdn();
+        $model_fqdn = '';
         $model_label = $this->c->model_label();
         $model_slug = $this->c->model_slug();
         $model_slug_plural = $this->c->model_slug_plural();
         $model_parameter = Str::of($this->c->model_slug())->snake()->toString();
-        $model_variable = Str::of($this->c->model_slug())->studly()->toString();
+
+        // TODO change other variables here?
+        $model_variable = empty($model) ? 'dummy' : Str::of($model->model_singular())->snake()->toString();
+        $model_variable_plural = empty($model) ? 'dummies' : Str::of($model->model_plural())->snake()->toString();
 
         if ($model) {
+            $model_fqdn = $model->fqdn();
+
             if (! $model_column) {
                 $model_column = Str::of($model->model_slug())->snake()->replace('-', '_')->toString();
-            }
-            if (! $model_fqdn) {
-                $model_fqdn = $model->fqdn();
             }
             if (! $model_label) {
                 $model_label = Str::of($model->name())->title()->toString();
@@ -172,7 +174,8 @@ class RouteMakeCommand extends GeneratorCommand
         $this->searches['model_slug'] = $this->c->model_slug();
         $this->searches['model_slug_plural'] = $this->c->model_slug_plural();
         $this->searches['model_parameter'] = $model_parameter;
-        $this->searches['model_variable'] = $model_parameter;
+        $this->searches['model_variable'] = $model_variable;
+        $this->searches['model_variable_plural'] = $model_variable_plural;
 
         if ($type === 'playground-resource-index') {
             $this->c->setOptions([

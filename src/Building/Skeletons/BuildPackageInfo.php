@@ -445,9 +445,9 @@ trait BuildPackageInfo
     public function preparePackageInfo_model_label(
         PackageInfo $packageInfo
     ): void {
-        if (! $packageInfo->model_label() && $this->model?->model_singular()) {
+        if (! $packageInfo->model_label() && $this->model?->name()) {
             $packageInfo->setOptions([
-                'model_label' => Str::of($this->model->model_singular())->headline()->toString(),
+                'model_label' => Str::of($this->model->name())->headline()->toString(),
             ]);
         }
 
@@ -469,9 +469,9 @@ trait BuildPackageInfo
     public function preparePackageInfo_model_label_plural(
         PackageInfo $packageInfo
     ): void {
-        if (! $packageInfo->model_label_plural() && $this->model?->model_plural()) {
+        if (! $packageInfo->model_label_plural() && $this->model?->name()) {
             $packageInfo->setOptions([
-                'model_label_plural' => Str::of($this->model->model_plural())->headline()->toString(),
+                'model_label_plural' => Str::of($this->model->name())->headline()->plural()->toString(),
             ]);
         }
 
@@ -542,7 +542,7 @@ trait BuildPackageInfo
 
             } elseif ($this->model?->model_singular()) {
                 $packageInfo->setOptions([
-                    'model_slug' => Str::of($this->model->model_singular())->kebab()->toString(),
+                    'model_slug' => Str::of($this->model->name())->kebab()->toString(),
                 ]);
             }
         }
@@ -558,9 +558,9 @@ trait BuildPackageInfo
         //    '$this->model?->model_plural()' => $this->model?->model_plural(),
         //    '$packageInfo->model_slug_plural()' => $packageInfo->model_slug_plural(),
         // ]);
-        if (! $packageInfo->model_slug_plural() && $this->model?->model_plural()) {
+        if (! $packageInfo->model_slug_plural() && $this->model?->name()) {
             $packageInfo->setOptions([
-                'model_slug_plural' => Str::of($this->model->model_plural())->kebab()->toString(),
+                'model_slug_plural' => Str::of($this->model->name())->plural()->kebab()->toString(),
             ]);
         }
 
