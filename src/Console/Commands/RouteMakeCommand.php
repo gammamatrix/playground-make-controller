@@ -122,7 +122,11 @@ class RouteMakeCommand extends GeneratorCommand
 
         if (in_array($type, [
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
         ])) {
             $this->initModel($this->c->skeleton());
             if (! $this->model) {
@@ -199,7 +203,25 @@ class RouteMakeCommand extends GeneratorCommand
 
         } elseif ($type === 'playground-resource') {
             $this->c->setOptions([
-                'class' => $this->c->module_slug(),
+                'class' => $this->c->model_slug_plural(),
+                'route_prefix' => sprintf(
+                    'resource/%1$s/%2$s',
+                    $this->c->module_slug(),
+                    $this->c->model_slug_plural()
+                ),
+            ]);
+        } elseif ($type === 'playground-resource-linked') {
+            $this->c->setOptions([
+                'class' => $this->c->model_slug_plural(),
+                'route_prefix' => sprintf(
+                    'resource/%1$s/%2$s',
+                    $this->c->module_slug(),
+                    $this->c->model_slug_plural()
+                ),
+            ]);
+        } elseif ($type === 'playground-resource-tagged') {
+            $this->c->setOptions([
+                'class' => $this->c->model_slug_plural(),
                 'route_prefix' => sprintf(
                     'resource/%1$s/%2$s',
                     $this->c->module_slug(),
@@ -207,6 +229,24 @@ class RouteMakeCommand extends GeneratorCommand
                 ),
             ]);
         } elseif ($type === 'playground-api') {
+            $this->c->setOptions([
+                'class' => $this->c->model_slug_plural(),
+                'route_prefix' => sprintf(
+                    'api/%1$s/%2$s',
+                    $this->c->module_slug(),
+                    $this->c->model_slug_plural()
+                ),
+            ]);
+        } elseif ($type === 'playground-api-tagged') {
+            $this->c->setOptions([
+                'class' => $this->c->model_slug_plural(),
+                'route_prefix' => sprintf(
+                    'api/%1$s/%2$s',
+                    $this->c->module_slug(),
+                    $this->c->model_slug_plural()
+                ),
+            ]);
+        } elseif ($type === 'playground-api-linked') {
             $this->c->setOptions([
                 'class' => $this->c->model_slug_plural(),
                 'route_prefix' => sprintf(
@@ -332,7 +372,11 @@ class RouteMakeCommand extends GeneratorCommand
         'site',
         'playground-resource-index',
         'playground-resource',
+        'playground-resource-linked',
+        'playground-resource-tagged',
         'playground-api',
+        'playground-api-linked',
+        'playground-api-tagged',
     ];
 
     /**
@@ -348,6 +392,14 @@ class RouteMakeCommand extends GeneratorCommand
 
         if ($type === 'playground-resource-index') {
             $route = 'route/playground-resource-index.php.stub';
+        } elseif ($type === 'playground-api-linked') {
+            $route = 'route/playground-api-linked.php.stub';
+        } elseif ($type === 'playground-api-tagged') {
+            $route = 'route/playground-api-tagged.php.stub';
+        } elseif ($type === 'playground-resource-linked') {
+            $route = 'route/playground-resource-linked.php.stub';
+        } elseif ($type === 'playground-resource-tagged') {
+            $route = 'route/playground-resource-tagged.php.stub';
         } elseif ($type === 'playground-api') {
             if ($revision) {
                 $route = 'route/playground-api-revisions.php.stub';
@@ -412,6 +464,20 @@ class RouteMakeCommand extends GeneratorCommand
         $name = $this->c->name();
 
         if (in_array($this->c->type(), [
+            'playground-api-tagged',
+            'playground-resource-tagged',
+        ])) {
+            if (! Str::endsWith($name, 'ed')) {
+                $name = Str::of($name)->plural()->kebab()->toString();
+            }
+        } elseif (in_array($this->c->type(), [
+            'playground-api-linked',
+            'playground-resource-linked',
+        ])) {
+            if (! Str::endsWith($name, 'ed')) {
+                $name = Str::of($name)->plural()->kebab()->toString();
+            }
+        } elseif (in_array($this->c->type(), [
             'api',
             'playground-api',
             'resource',

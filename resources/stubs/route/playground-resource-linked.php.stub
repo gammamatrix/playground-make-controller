@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| {{module}} Resource Routes: {{name}}
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+Route::group([
+    'prefix' => '{{route_prefix}}',
+    'middleware' => config('{{package}}.middleware.default'),
+    'namespace' => '\{{namespace}}\Http\Controllers',
+], function () {
+
+    // API
+
+    Route::delete('/{{{model_column}}}', [
+        'as' => '{{route}}.destroy',
+        'uses' => '{{controller}}@destroy',
+    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}')->withTrashed();
+
+    Route::post('/', [
+        'as' => '{{route}}.post',
+        'uses' => '{{controller}}@store',
+    ])->can('store', {{model_fqdn}}::class);
+
+    Route::patch('/{{{model_column}}}', [
+        'as' => '{{route}}.patch',
+        'uses' => '{{controller}}@update',
+    ])->whereUuid('{{model_column}}')->can('update', '{{model_column}}');
+});

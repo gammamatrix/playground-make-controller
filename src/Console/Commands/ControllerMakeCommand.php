@@ -242,8 +242,12 @@ class ControllerMakeCommand extends GeneratorCommand
         if (in_array($this->c->type(), [
             'api',
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'resource',
             'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
         ])) {
             $initModel = true;
         }
@@ -390,7 +394,11 @@ class ControllerMakeCommand extends GeneratorCommand
 
         } elseif (in_array($this->c->type(), [
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
         ])) {
             $file = sprintf(
                 '%1$s/%2$s.json',
@@ -450,10 +458,14 @@ class ControllerMakeCommand extends GeneratorCommand
         'api',
         'fractal-api',
         'playground-api',
+        'playground-api-linked',
+        'playground-api-tagged',
         'resource',
         'fractal-resource',
         'playground-resource',
         'playground-resource-index',
+        'playground-resource-linked',
+        'playground-resource-tagged',
     ];
 
     /**
@@ -480,12 +492,20 @@ class ControllerMakeCommand extends GeneratorCommand
             $template = 'controller/controller.api.fractal.stub';
         } elseif ($type === 'api') {
             $template = 'controller/controller.api.stub';
+        } elseif ($type === 'playground-api-linked') {
+            $template = 'controller/controller.api-linked.stub';
+        } elseif ($type === 'playground-api-tagged') {
+            $template = 'controller/controller.api-tagged.stub';
         } elseif ($type === 'playground-api') {
             if ($this->c->revision()) {
                 $template = 'controller/controller.api-revision.stub';
             } else {
                 $template = 'controller/controller.api.stub';
             }
+        } elseif ($type === 'playground-resource-linked') {
+            $template = 'controller/controller.resource-linked.stub';
+        } elseif ($type === 'playground-resource-tagged') {
+            $template = 'controller/controller.resource-tagged.stub';
         } elseif ($type === 'playground-resource') {
             if ($this->c->revision()) {
                 $template = 'controller/controller.resource-revision.stub';
@@ -654,7 +674,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     public function skeleton(): void
     {
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         $this->skeleton_requests($type);
         $this->skeleton_policy($type);
@@ -662,6 +682,12 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->skeleton_routes($type);
         $this->skeleton_blades($type);
         $this->skeleton_openapi($type);
+        dump([
+            '__METHOD__' => __METHOD__,
+            '$this->c' => $this->c,
+            '$this->searches' => $this->searches,
+            '$this->options()' => $this->options(),
+        ]);
 
         $this->saveConfiguration();
     }

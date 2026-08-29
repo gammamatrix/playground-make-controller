@@ -19,8 +19,13 @@ trait BuildRoutes
     {
         if (! in_array($type, [
             'playground-api',
+            // NOTE: linked has update, tagged does not
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
             'playground-resource-index',
+            'playground-resource-linked',
+            'playground-resource-tagged',
         ])) {
             // dump([
             //     '__METHOD__' => __METHOD__,
@@ -113,6 +118,22 @@ trait BuildRoutes
             //                '$this->options()' => $this->options(),
             //                '$this->c' => $this->c,
             //            ]);
+        } elseif (in_array($type, [
+            'playground-resource-linked',
+            'playground-api-linked',
+            'playground-resource-tagged',
+            'playground-api-tagged',
+        ])) {
+            $options['--route'] = $this->c->model_route();
+            dump([
+                '__METHOD__' => __METHOD__,
+                '$name' => $name,
+                '$type' => $type,
+                '$modelFile' => $modelFile,
+                '$options' => $options,
+                '$this->options()' => $this->options(),
+                '$this->c' => $this->c,
+            ]);
         } elseif (in_array($type, [
             'index',
             'playground-resource-index',

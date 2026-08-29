@@ -1,0 +1,119 @@
+<?php
+
+/**
+ * {{organization}}
+ */
+
+declare(strict_types=1);
+
+namespace {{ namespace }}\Http\Controllers;
+
+{{ use }}use {{ namespacedRequest }};
+use {{ namespacedResource }};
+use {{ namespacedModel }};
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+
+/**
+ * \{{ namespace }}\Http\Controllers\{{ class }}
+ */
+class {{ class }} extends {{ extends }}{{ implements }}
+{
+{{ use_class }}{{ constants }}{{ properties }}    /**
+     * @var array<string, string>
+     */
+    public array $packageInfo = [
+        'model_attribute' => '{{model_attribute}}',
+        'model_label' => '{{model_label}}',
+        'model_label_plural' => '{{model_label_plural}}',
+        'model_route' => '{{model_route}}',
+        'model_slug' => '{{model_slug}}',
+        'model_slug_plural' => '{{model_slug_plural}}',
+        'model_variable' => '{{model_variable}}',
+        'model_variable_plural' => '{{model_variable_plural}}',
+        'module_label' => '{{module_label}}',
+        'module_label_plural' => '{{module_label_plural}}',
+        'module_route' => '{{module_route}}',
+        'module_slug' => '{{module_slug}}',
+        'privilege' => '{{privilege}}',
+        'table' => '{{table}}',
+    ];
+
+    /**
+     * Remove the {{model_label}} resource from storage.
+     *
+     * @route DELETE /api/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.destroy
+     */
+    public function destroy(
+        {{ model }} ${{model_variable}},
+        Requests\{{ model }}\DestroyRequest $request
+    ): Response {
+
+        $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            ${{model_variable}}->modified_by_id = $user->id;
+        }
+
+        if (empty($validated['force'])) {
+            ${{model_variable}}->delete();
+        } else {
+            ${{model_variable}}->forceDelete();
+        }
+
+        return response()->noContent();
+    }
+
+    /**
+     * Store a newly created API {{model_label}} resource in storage.
+     *
+     * @route POST /api/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
+     */
+    public function store(
+        Requests\{{ model }}\StoreRequest $request
+    ): Response|JsonResponse|Resources\{{ model }} {
+
+        $packageInfo = $this->packageInfo();
+
+        $validated = $request->validated();
+
+        $user = $request->user();
+
+        ${{model_variable}} = new {{ model }}($validated);
+
+        ${{model_variable}}->created_by_id = $user?->id;
+
+        ${{model_variable}}->save();
+
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
+            'info' => $packageInfo,
+        ]])->response($request)->setStatusCode(201);
+    }
+
+    /**
+     * Update the {{model_label}} resource in storage.
+     *
+     * @route PATCH /api/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.patch
+     */
+    public function update(
+        {{ model }} ${{model_variable}},
+        Requests\{{ model }}\UpdateRequest $request
+    ): JsonResponse {
+
+        $packageInfo = $this->packageInfo();
+
+        $validated = $request->validated();
+
+        $user = $request->user();
+
+        ${{model_variable}}->modified_by_id = $user?->id;
+
+        ${{model_variable}}->update($validated);
+
+        return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
+            'info' => $packageInfo,
+        ]])->response($request);
+    }{{ relationships }}{{ actions }}{{ methods }}
+}
