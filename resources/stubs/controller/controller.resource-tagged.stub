@@ -53,33 +53,21 @@ class {{ class }} extends {{ extends }}{{ implements }}
         Requests\{{ model }}\DestroyRequest $request
     ): Response|RedirectResponse {
 
-        $packageInfo = $this->packageInfo();
-
         $validated = $request->validated();
 
-        $user = $request->user();
+        ${{model_variable}}->delete();
 
-        if ($user?->id) {
-            ${{model_variable}}->modified_by_id = $user->id;
+        if (! $request->expectsJson()) {
+            $returnUrl = $validated['_return_url'] ?? '';
+
+            if ($returnUrl && is_string($returnUrl)) {
+                return redirect($returnUrl);
+            }
+
+            return redirect($this->getRedirectRoute(${{model_variable}}));
         }
 
-        if (empty($validated['force'])) {
-            ${{model_variable}}->delete();
-        } else {
-            ${{model_variable}}->forceDelete();
-        }
-
-        if ($request->expectsJson()) {
-            return response()->noContent();
-        }
-
-        $returnUrl = $validated['_return_url'] ?? '';
-
-        if ($returnUrl && is_string($returnUrl)) {
-            return redirect($returnUrl);
-        }
-
-        return redirect(route($packageInfo->model_route()));
+        return response()->noContent();
     }
 
     /**
@@ -115,9 +103,36 @@ class {{ class }} extends {{ extends }}{{ implements }}
             return redirect($returnUrl);
         }
 
-        return redirect(route(sprintf(
-            '%1$s.show',
-            $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        return redirect($this->getRedirectRoute(${{model_variable}}));
+    }
+
+    private function getRedirectRoute({{ model }} ${{model_variable}}): string
+    {
+        $packageInfo = $this->packageInfo();
+
+        $route = $packageInfo->module_route();
+        $params = [];
+
+        if (! empty(${{model_variable}}->{{primary_model_slug}}_id)) {
+            $params['{{primary_model_slug}}'] = ${{model_variable}}->{{primary_model_slug}}_id;
+            $route = sprintf(
+                '%1$s.{{primary_model_slug_plural}}.show',
+                $packageInfo->module_route()
+            );
+        } elseif (! empty(${{model_variable}}->{{secondary_model_slug}}_id)) {
+            $params['{{secondary_model_slug}}'] = ${{model_variable}}->{{secondary_model_slug}}_id;
+            $route = sprintf(
+                '%1$s.{{secondary_model_slug_plural}}.show',
+                $packageInfo->module_route()
+            );
+        } elseif (! empty(${{model_variable}}->{{tertiary_model_slug}}_id)) {
+            $params['{{tertiary_model_slug}}'] = ${{model_variable}}->{{tertiary_model_slug}}_id;
+            $route = sprintf(
+                '%1$s.{{tertiary_model_slug_plural}}.show',
+                $packageInfo->module_route()
+            );
+        }
+
+        return route($route, $params);
     }
 }

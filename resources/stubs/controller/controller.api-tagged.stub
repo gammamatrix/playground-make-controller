@@ -53,10 +53,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
 
         $user = $request->user();
 
-        if ($user?->id) {
-            ${{model_variable}}->modified_by_id = $user->id;
-        }
-
         if (empty($validated['force'])) {
             ${{model_variable}}->delete();
         } else {

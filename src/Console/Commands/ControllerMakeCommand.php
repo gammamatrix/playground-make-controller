@@ -119,7 +119,13 @@ class ControllerMakeCommand extends GeneratorCommand
         // 'module_slug' => '',
         'table' => '',
         'view' => '',
-
+        // tagged
+        'primary_model_slug' => 'task',
+        'primary_model_slug_plural' => 'tasks',
+        'secondary_model_slug' => 'task_list',
+        'secondary_model_slug_plural' => 'task_lists',
+        'tertiary_model_slug' => 'task_log',
+        'tertiary_model_slug_plural' => 'task_logs',
     ];
 
     /**
@@ -682,12 +688,12 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->skeleton_routes($type);
         $this->skeleton_blades($type);
         $this->skeleton_openapi($type);
-        dump([
-            '__METHOD__' => __METHOD__,
-            '$this->c' => $this->c,
-            '$this->searches' => $this->searches,
-            '$this->options()' => $this->options(),
-        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$this->c' => $this->c,
+        //            '$this->searches' => $this->searches,
+        //            '$this->options()' => $this->options(),
+        //        ]);
 
         $this->saveConfiguration();
     }

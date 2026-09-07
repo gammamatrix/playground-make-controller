@@ -470,8 +470,15 @@ trait BuildPackageInfo
         PackageInfo $packageInfo
     ): void {
         if (! $packageInfo->model_label_plural() && $this->model?->name()) {
+            $name = $this->model->name();
+            if (Str::endsWith($name, ['ed'])) {
+                $name = Str::of($name)->headline()->toString();
+            } else {
+                $name = Str::of($name)->headline()->plural()->toString();
+            }
+
             $packageInfo->setOptions([
-                'model_label_plural' => Str::of($this->model->name())->headline()->plural()->toString(),
+                'model_label_plural' => $name,
             ]);
         }
 
@@ -482,9 +489,8 @@ trait BuildPackageInfo
         PackageInfo $packageInfo
     ): void {
         $route = '';
-        $module_route = $this->c->module_route();
 
-        if (! $this->c->model_route() && $packageInfo->model_slug_plural()) {
+        if (! $this->c->model_route()) {
 
             if ($this->c->package()) {
                 foreach (Str::of($this->c->package())->replace('-', '.')->replace('_', '.')->explode('.') as $value) {
@@ -502,7 +508,13 @@ trait BuildPackageInfo
                 $route .= '.'.$this->c->slug();
             }
 
-            $route .= '.'.$packageInfo->model_slug_plural();
+            if ($this->c->type() === 'playground-resource-linked') {
+                $route .= '.linked';
+            } elseif ($this->c->type() === 'playground-resource-tagged') {
+                $route .= '.tagged';
+            } else {
+                $route .= '.'.$packageInfo->model_slug_plural();
+            }
 
             $this->c->setOptions([
                 'model_route' => $route,
@@ -513,8 +525,8 @@ trait BuildPackageInfo
 
             $this->searches['model_route'] = $this->c->model_route();
         }
-        // if ('TaskListController' === $this->c->name()) {
-        // dump([
+        // if ('TaggedController' === $this->c->name()) {
+        // dd([
         // '__METHOD__' => __METHOD__,
         // '$this->c->toArray()' => $this->c->toArray(),
         // '$packageInfo' => $packageInfo,
@@ -559,8 +571,14 @@ trait BuildPackageInfo
         //    '$packageInfo->model_slug_plural()' => $packageInfo->model_slug_plural(),
         // ]);
         if (! $packageInfo->model_slug_plural() && $this->model?->name()) {
+            $name = $this->model->name();
+            if (Str::endsWith($name, ['ed'])) {
+                $name = Str::of($name)->kebab()->toString();
+            } else {
+                $name = Str::of($name)->plural()->kebab()->toString();
+            }
             $packageInfo->setOptions([
-                'model_slug_plural' => Str::of($this->model->name())->plural()->kebab()->toString(),
+                'model_slug_plural' => $name,
             ]);
         }
 

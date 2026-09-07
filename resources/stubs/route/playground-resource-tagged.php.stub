@@ -27,7 +27,7 @@ Route::group([
     Route::delete('/{{{model_column}}}', [
         'as' => '{{route}}.destroy',
         'uses' => '{{controller}}@destroy',
-    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}')->withTrashed();
+    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}');
 
     Route::post('/', [
         'as' => '{{route}}.post',

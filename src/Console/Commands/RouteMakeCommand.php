@@ -96,7 +96,7 @@ class RouteMakeCommand extends GeneratorCommand
         //     '$this->searches' => $this->searches,
         // ]);
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if (! empty($options['route']) && is_string($options['route'])) {
             $this->c->setOptions([
@@ -146,7 +146,16 @@ class RouteMakeCommand extends GeneratorCommand
         // TODO change other variables here?
         $model_variable = empty($model) ? 'dummy' : Str::of($model->model_singular())->snake()->toString();
         $model_variable_plural = empty($model) ? 'dummies' : Str::of($model->model_plural())->snake()->toString();
-
+        //        if ($type !== 'playground-resource-index') {
+        //            dd([
+        //                '__METHOD__' => __METHOD__,
+        //                //'$model' => $model,
+        //                '$model_fqdn' => $model_fqdn,
+        //                '$options' => $options,
+        //                '$this->c' => $this->c,
+        //                '$this->searches' => $this->searches,
+        //            ]);
+        //        }
         if ($model) {
             $model_fqdn = $model->fqdn();
 
@@ -225,7 +234,7 @@ class RouteMakeCommand extends GeneratorCommand
                 'route_prefix' => sprintf(
                     'resource/%1$s/%2$s',
                     $this->c->module_slug(),
-                    $this->c->model_slug_plural()
+                    $this->c->model_slug()
                 ),
             ]);
         } elseif ($type === 'playground-api') {
@@ -243,7 +252,7 @@ class RouteMakeCommand extends GeneratorCommand
                 'route_prefix' => sprintf(
                     'api/%1$s/%2$s',
                     $this->c->module_slug(),
-                    $this->c->model_slug_plural()
+                    $this->c->model_slug()
                 ),
             ]);
         } elseif ($type === 'playground-api-linked') {
@@ -252,7 +261,7 @@ class RouteMakeCommand extends GeneratorCommand
                 'route_prefix' => sprintf(
                     'api/%1$s/%2$s',
                     $this->c->module_slug(),
-                    $this->c->model_slug_plural()
+                    $this->c->model_slug()
                 ),
             ]);
         } else {
@@ -263,20 +272,20 @@ class RouteMakeCommand extends GeneratorCommand
         }
 
         // if ($model_column === 'task_log') {
-        //    dump([
-        //        '__METHOD__' => __METHOD__,
-        //        '$type' => $type,
-        //        '$options' => $options,
-        //        '$model_column' => $model_column,
-        //        '$model_fqdn' => $model_fqdn,
-        //        '$model_label' => $model_label,
-        //        '$model_slug' => $model_slug,
-        //        '$model_slug_plural' => $model_slug_plural,
-        //        '$model_parameter' => $model_parameter,
-        //        '$model_variable' => $model_variable,
-        //        '$this->c' => $this->c,
-        //        '$this->searches' => $this->searches,
-        //    ]);
+        //            dd([
+        //                '__METHOD__' => __METHOD__,
+        //                '$type' => $type,
+        //                '$options' => $options,
+        //                '$model_column' => $model_column,
+        //                '$model_fqdn' => $model_fqdn,
+        //                '$model_label' => $model_label,
+        //                '$model_slug' => $model_slug,
+        //                '$model_slug_plural' => $model_slug_plural,
+        //                '$model_parameter' => $model_parameter,
+        //                '$model_variable' => $model_variable,
+        //                '$this->c' => $this->c,
+        //                '$this->searches' => $this->searches,
+        //            ]);
         // }
     }
 
@@ -386,7 +395,7 @@ class RouteMakeCommand extends GeneratorCommand
     {
         $route = 'route/site.php.stub';
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         $revision = $this->hasOption('revision') && $this->option('revision');
 
@@ -413,6 +422,11 @@ class RouteMakeCommand extends GeneratorCommand
                 $route = 'route/playground-resource.php.stub';
             }
         }
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$type' => $type,
+        //    '$route' => $route,
+        // ]);
 
         return $this->resolveStubPath($route);
     }
