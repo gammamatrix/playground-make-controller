@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2026-08-22 17:42:48</timestamp>
+  <timestamp>2026-09-08 17:27:57</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>168</methodCount>
     <crapMethodCount>10</crapMethodCount>
     <crapLoad>121</crapLoad>
-    <totalCrap>2879.08</totalCrap>
+    <totalCrap>2921.87</totalCrap>
     <crapMethodPercent>5.95</crapMethodPercent>
   </stats>
   <methods>
@@ -147,8 +147,8 @@
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
       <methodName>buildClass_index_dates</methodName>
-      <methodSignature>buildClass_index_dates(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
-      <fullMethod>buildClass_index_dates(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <methodSignature>buildClass_index_dates(Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_dates(Filters $filters): void</fullMethod>
       <crap>7.7</crap>
       <complexity>7</complexity>
       <coverage>75.76</coverage>
@@ -158,8 +158,8 @@
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
       <methodName>buildClass_index_flags</methodName>
-      <methodSignature>buildClass_index_flags(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
-      <fullMethod>buildClass_index_flags(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <methodSignature>buildClass_index_flags(Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_flags(Filters $filters): void</fullMethod>
       <crap>11.33</crap>
       <complexity>10</complexity>
       <coverage>76.32</coverage>
@@ -169,8 +169,8 @@
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
       <methodName>buildClass_index_ids</methodName>
-      <methodSignature>buildClass_index_ids(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
-      <fullMethod>buildClass_index_ids(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <methodSignature>buildClass_index_ids(Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_ids(Filters $filters): void</fullMethod>
       <crap>8.61</crap>
       <complexity>8</complexity>
       <coverage>78.79</coverage>
@@ -180,8 +180,8 @@
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildIndex</className>
       <methodName>buildClass_index_columns</methodName>
-      <methodSignature>buildClass_index_columns(Playground\Make\Configuration\Model\Filters $filters): void</methodSignature>
-      <fullMethod>buildClass_index_columns(Playground\Make\Configuration\Model\Filters $filters): void</fullMethod>
+      <methodSignature>buildClass_index_columns(Filters $filters): void</methodSignature>
+      <fullMethod>buildClass_index_columns(Filters $filters): void</fullMethod>
       <crap>8.61</crap>
       <complexity>8</complexity>
       <coverage>78.79</coverage>
@@ -213,8 +213,8 @@
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
       <methodName>buildClass_rules_constant</methodName>
-      <methodSignature>buildClass_rules_constant(Playground\Make\Configuration\Model $model): void</methodSignature>
-      <fullMethod>buildClass_rules_constant(Playground\Make\Configuration\Model $model): void</fullMethod>
+      <methodSignature>buildClass_rules_constant(Model $model): void</methodSignature>
+      <fullMethod>buildClass_rules_constant(Model $model): void</fullMethod>
       <crap>7</crap>
       <complexity>7</complexity>
       <coverage>96.15</coverage>
@@ -235,8 +235,8 @@
       <package>Playground\Make\Controller\Building\Request</package>
       <className>Playground\Make\Controller\Building\Request\BuildRequest</className>
       <methodName>buildClass_rules_constant_for_only_fillable</methodName>
-      <methodSignature>buildClass_rules_constant_for_only_fillable(Playground\Make\Configuration\Model $model, int $indent): string</methodSignature>
-      <fullMethod>buildClass_rules_constant_for_only_fillable(Playground\Make\Configuration\Model $model, int $indent): string</fullMethod>
+      <methodSignature>buildClass_rules_constant_for_only_fillable(Model $model, int $indent): string</methodSignature>
+      <fullMethod>buildClass_rules_constant_for_only_fillable(Model $model, int $indent): string</fullMethod>
       <crap>27.81</crap>
       <complexity>20</complexity>
       <coverage>73.08</coverage>
@@ -345,8 +345,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_table</methodName>
-      <methodSignature>preparePackageInfo_table(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_table(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_table(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_table(PackageInfo $packageInfo): void</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -356,8 +356,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_privilege</methodName>
-      <methodSignature>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
-      <fullMethod>preparePackageInfo_privilege(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
+      <methodSignature>preparePackageInfo_privilege(PackageInfo $packageInfo, array $options): void</methodSignature>
+      <fullMethod>preparePackageInfo_privilege(PackageInfo $packageInfo, array $options): void</fullMethod>
       <crap>11.97</crap>
       <complexity>11</complexity>
       <coverage>80</coverage>
@@ -367,8 +367,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_view</methodName>
-      <methodSignature>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
-      <fullMethod>preparePackageInfo_view(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
+      <methodSignature>preparePackageInfo_view(PackageInfo $packageInfo, array $options): void</methodSignature>
+      <fullMethod>preparePackageInfo_view(PackageInfo $packageInfo, array $options): void</fullMethod>
       <crap>13.15</crap>
       <complexity>12</complexity>
       <coverage>80</coverage>
@@ -378,8 +378,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_module</methodName>
-      <methodSignature>preparePackageInfo_module(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
-      <fullMethod>preparePackageInfo_module(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
+      <methodSignature>preparePackageInfo_module(PackageInfo $packageInfo, array $options): void</methodSignature>
+      <fullMethod>preparePackageInfo_module(PackageInfo $packageInfo, array $options): void</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -389,8 +389,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_module_label</methodName>
-      <methodSignature>preparePackageInfo_module_label(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</methodSignature>
-      <fullMethod>preparePackageInfo_module_label(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo, array $options): void</fullMethod>
+      <methodSignature>preparePackageInfo_module_label(PackageInfo $packageInfo, array $options): void</methodSignature>
+      <fullMethod>preparePackageInfo_module_label(PackageInfo $packageInfo, array $options): void</fullMethod>
       <crap>5.93</crap>
       <complexity>5</complexity>
       <coverage>66.67</coverage>
@@ -400,8 +400,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_module_label_plural</methodName>
-      <methodSignature>preparePackageInfo_module_label_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_module_label_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_module_label_plural(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_module_label_plural(PackageInfo $packageInfo): void</fullMethod>
       <crap>4.02</crap>
       <complexity>4</complexity>
       <coverage>88.89</coverage>
@@ -411,8 +411,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_module_route</methodName>
-      <methodSignature>preparePackageInfo_module_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_module_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_module_route(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_module_route(PackageInfo $packageInfo): void</fullMethod>
       <crap>8.01</crap>
       <complexity>8</complexity>
       <coverage>94.74</coverage>
@@ -422,8 +422,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_module_slug</methodName>
-      <methodSignature>preparePackageInfo_module_slug(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_module_slug(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_module_slug(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_module_slug(PackageInfo $packageInfo): void</fullMethod>
       <crap>5.02</crap>
       <complexity>5</complexity>
       <coverage>90.91</coverage>
@@ -433,8 +433,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model</methodName>
-      <methodSignature>preparePackageInfo_model(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_model(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model(PackageInfo $packageInfo): void</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -444,8 +444,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_label</methodName>
-      <methodSignature>preparePackageInfo_model_label(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_label(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_model_label(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_label(PackageInfo $packageInfo): void</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -455,8 +455,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_attribute</methodName>
-      <methodSignature>preparePackageInfo_model_attribute(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_attribute(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_model_attribute(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_attribute(PackageInfo $packageInfo): void</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -466,30 +466,30 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_label_plural</methodName>
-      <methodSignature>preparePackageInfo_model_label_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_label_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>3</crap>
-      <complexity>3</complexity>
-      <coverage>100</coverage>
+      <methodSignature>preparePackageInfo_model_label_plural(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_label_plural(PackageInfo $packageInfo): void</fullMethod>
+      <crap>4.02</crap>
+      <complexity>4</complexity>
+      <coverage>88.89</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_route</methodName>
-      <methodSignature>preparePackageInfo_model_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_route(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>8</crap>
-      <complexity>8</complexity>
-      <coverage>95</coverage>
+      <methodSignature>preparePackageInfo_model_route(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_route(PackageInfo $packageInfo): void</fullMethod>
+      <crap>9.18</crap>
+      <complexity>9</complexity>
+      <coverage>86.96</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_slug</methodName>
-      <methodSignature>preparePackageInfo_model_slug(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_slug(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_model_slug(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_slug(PackageInfo $packageInfo): void</fullMethod>
       <crap>4.43</crap>
       <complexity>4</complexity>
       <coverage>70</coverage>
@@ -499,19 +499,19 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_slug_plural</methodName>
-      <methodSignature>preparePackageInfo_model_slug_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_slug_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
-      <crap>3</crap>
-      <complexity>3</complexity>
-      <coverage>100</coverage>
+      <methodSignature>preparePackageInfo_model_slug_plural(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_slug_plural(PackageInfo $packageInfo): void</fullMethod>
+      <crap>4.02</crap>
+      <complexity>4</complexity>
+      <coverage>88.89</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_variable</methodName>
-      <methodSignature>preparePackageInfo_model_variable(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_variable(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_model_variable(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_variable(PackageInfo $packageInfo): void</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -521,8 +521,8 @@
       <package>Playground\Make\Controller\Building\Skeletons</package>
       <className>Playground\Make\Controller\Building\Skeletons\BuildPackageInfo</className>
       <methodName>preparePackageInfo_model_variable_plural</methodName>
-      <methodSignature>preparePackageInfo_model_variable_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</methodSignature>
-      <fullMethod>preparePackageInfo_model_variable_plural(Playground\Make\Controller\Configuration\Controller\PackageInfo $packageInfo): void</fullMethod>
+      <methodSignature>preparePackageInfo_model_variable_plural(PackageInfo $packageInfo): void</methodSignature>
+      <fullMethod>preparePackageInfo_model_variable_plural(PackageInfo $packageInfo): void</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -578,17 +578,17 @@
       <methodName>skeleton_routes</methodName>
       <methodSignature>skeleton_routes(string $type): void</methodSignature>
       <fullMethod>skeleton_routes(string $type): void</fullMethod>
-      <crap>21.67</crap>
-      <complexity>21</complexity>
-      <coverage>88.52</coverage>
+      <crap>25.56</crap>
+      <complexity>22</complexity>
+      <coverage>80.56</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Concerns</package>
       <className>Playground\Make\Controller\Configuration\Concerns\Info</className>
       <methodName>addPackageInfo</methodName>
-      <methodSignature>addPackageInfo(array $options): Playground\Make\Controller\Configuration\Controller\PackageInfo</methodSignature>
-      <fullMethod>addPackageInfo(array $options): Playground\Make\Controller\Configuration\Controller\PackageInfo</fullMethod>
+      <methodSignature>addPackageInfo(array $options): PackageInfo</methodSignature>
+      <fullMethod>addPackageInfo(array $options): PackageInfo</fullMethod>
       <crap>30</crap>
       <complexity>5</complexity>
       <coverage>0</coverage>
@@ -598,8 +598,8 @@
       <package>Playground\Make\Controller\Configuration\Concerns</package>
       <className>Playground\Make\Controller\Configuration\Concerns\Info</className>
       <methodName>packageInfo</methodName>
-      <methodSignature>packageInfo(): ?Playground\Make\Controller\Configuration\Controller\PackageInfo</methodSignature>
-      <fullMethod>packageInfo(): ?Playground\Make\Controller\Configuration\Controller\PackageInfo</fullMethod>
+      <methodSignature>packageInfo(): ?PackageInfo</methodSignature>
+      <fullMethod>packageInfo(): ?PackageInfo</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -1304,9 +1304,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>12.17</crap>
+      <crap>11.66</crap>
       <complexity>10</complexity>
-      <coverage>72.09</coverage>
+      <coverage>74.47</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1328,7 +1328,7 @@
       <fullMethod>getConfigurationFilename(): string</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>94.44</coverage>
+      <coverage>95.45</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1348,9 +1348,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>20.94</crap>
-      <complexity>11</complexity>
-      <coverage>56.52</coverage>
+      <crap>35.72</crap>
+      <complexity>15</complexity>
+      <coverage>54.84</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1744,9 +1744,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>18</crap>
-      <complexity>18</complexity>
-      <coverage>100</coverage>
+      <crap>28.9</crap>
+      <complexity>22</complexity>
+      <coverage>75.76</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1777,9 +1777,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>7.14</crap>
-      <complexity>7</complexity>
-      <coverage>85.71</coverage>
+      <crap>13.45</crap>
+      <complexity>11</complexity>
+      <coverage>72.73</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1799,9 +1799,9 @@
       <methodName>getPath</methodName>
       <methodSignature>getPath($name): string</methodSignature>
       <fullMethod>getPath($name): string</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
-      <coverage>95.45</coverage>
+      <crap>8.2</crap>
+      <complexity>8</complexity>
+      <coverage>85.29</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
