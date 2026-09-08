@@ -163,8 +163,8 @@ jobs:
             blocks:
               - type: "header"
                 text:
-                  - type: "plain_text"
-                    text: ":warning: CI Build Status for playground-make-controller"
+                  type: "plain_text"
+                  text: ":warning: CI Build Status for playground-make-controller"
               - type: "section"
                 fields:
                   - type: "mrkdwn"
