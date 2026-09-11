@@ -85,15 +85,8 @@ trait BuildResources
             $modelFile = $this->option('model-file');
         }
         if ($revision && $modelFile && is_string($modelFile)) {
-            $modelFileRevision = Str::of($modelFile)->before('.json')->finish('-revision.json')->toString();
+            $modelFileRevision = Str::of($modelFile)->before('/model.json')->finish('-revision/model.json')->toString();
         }
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     '$type' => $type,
-        //     '$resources' => $resources,
-        //     '$modelFile' => $modelFile,
-        //     '$modelFileRevision' => $modelFileRevision,
-        // ]);
 
         foreach ($resources as $resource_type => $resource) {
             // dump([

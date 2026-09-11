@@ -87,7 +87,7 @@ trait BuildOpenAPI
         }
 
         if ($revision && $modelFile) {
-            $modelFileRevision = Str::of($modelFile)->before('.json')->finish('-revision.json')->toString();
+            $modelFileRevision = Str::of($modelFile)->before('/model.json')->finish('-revision/model.json')->toString();
         }
 
         if ($modelFileRevision) {
