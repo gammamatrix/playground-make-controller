@@ -37,7 +37,6 @@ Command (Tests\Feature\Playground\Make\Controller\Console\Commands\PolicyMakeCom
  [x] Command skeleton with roles action
  [x] Command skeleton with roles view
  [x] Command skeleton with roles and action view
- [x] Command user provider model guard with invalid guard
  [x] Command skeleton with type playground resource
  [x] Command skeleton with type playground api
  [x] Command skeleton with type api
