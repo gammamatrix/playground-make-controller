@@ -24,6 +24,16 @@ trait BuildPackageInfo
         $packageInfo = $this->c->addPackageInfo();
 
         if (in_array($this->c->type(), [
+            'base',
+        ])) {
+            $this->preparePackageInfo_module($packageInfo, $options);
+            $this->preparePackageInfo_privilege($packageInfo, $options);
+            $packageInfo->apply();
+
+            return;
+        }
+
+        if (in_array($this->c->type(), [
             'playground-api',
             'playground-resource',
         ]) && ! $this->model) {
@@ -231,6 +241,7 @@ trait BuildPackageInfo
 
         $packageOptions = [
             'module_label_plural' => $module_labels,
+            'module_label' => $module,
             'module_labels' => $module_labels,
         ];
 
@@ -350,17 +361,17 @@ trait BuildPackageInfo
 
         $packageInfo->apply();
 
-        //        if (! in_array($this->c->type(), ['base'])) {
-        //            dump([
-        //                '__METHOD__' => __METHOD__,
-        //                '$this->c->type()' => $this->c->type(),
-        //                '$this->c->toArray()' => $this->c->toArray(),
-        //                '$options' => $options,
-        //                '$route' => $route,
-        //                '$packageInfo' => $packageInfo,
-        //                '$this->searches' => $this->searches,
-        //            ]);
-        //        }
+        // if (in_array($this->c->type(), ['base'])) {
+        //    dd([
+        //        '__METHOD__' => __METHOD__,
+        //        '$this->c->type()' => $this->c->type(),
+        //        '$this->c->toArray()' => $this->c->toArray(),
+        //        '$options' => $options,
+        //        '$route' => $route,
+        //        '$packageInfo' => $packageInfo,
+        //        '$this->searches' => $this->searches,
+        //    ]);
+        // }
     }
 
     public function preparePackageInfo_model_attribute(

@@ -321,6 +321,16 @@ class ControllerMakeCommand extends GeneratorCommand
             //             ]);
         }
 
+        if (in_array($this->c->type(), [
+            'base',
+        ])) {
+            $this->searches['module'] = $this->c->module_label();
+            $this->searches['module_label'] = $this->c->module_label();
+            $this->buildClass_model('');
+            $this->searches['module'] = $this->c->module_label();
+            $this->searches['module_label'] = $this->c->module_label();
+        }
+
         $this->prepareOptionsExtends($options);
 
         $this->prepareOptionsSlugs($options);
@@ -339,7 +349,7 @@ class ControllerMakeCommand extends GeneratorCommand
                 'name' => Str::of($this->model->name())->finish('Controller')->toString(),
                 'fqdn' => Str::of($this->c->namespace())->finish('/Http/Controllers')->toString(),
                 'slug' => $this->model->model_slug(),
-                'slug_plural' => $this->model->model_slug_plural(),
+                'slug_plural' => $this->model->model_slugs(),
                 //            'model_route' => '',
                 //            'module_route' => '',
                 //            'privilege' => '',
@@ -687,12 +697,12 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->c->apply();
         $this->applyConfigurationToSearch();
         $this->saveConfiguration();
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$this->c' => $this->c,
-//            '$this->searches' => $this->searches,
-//            '$this->options()' => $this->options(),
-//        ]);
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$this->c' => $this->c,
+        //            '$this->searches' => $this->searches,
+        //            '$this->options()' => $this->options(),
+        //        ]);
 
         return $this->return_status;
     }

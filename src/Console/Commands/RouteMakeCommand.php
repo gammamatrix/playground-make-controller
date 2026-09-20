@@ -135,6 +135,7 @@ class RouteMakeCommand extends GeneratorCommand
         }
 
         $model = $this->model;
+        $model_fqdn = $this->model?->fqdn();
 
         if (! empty($options['skeleton'])) {
             // TODO the name parameter can probably be removed
@@ -164,15 +165,15 @@ class RouteMakeCommand extends GeneratorCommand
         // }
 
         $model_column = $this->c->model_column();
-        $model_fqdn = '';
-        $model_label = $this->c->model_label();
-        $model_slug = $this->c->model_slug();
-        $model_slug_plural = $this->c->model_slug_plural();
-        $model_parameter = Str::of($this->c->model_slug())->snake()->toString();
-
-        // TODO change other variables here?
-        $model_variable = empty($model) ? 'dummy' : Str::of($model->model_singular())->snake()->toString();
-        $model_variable_plural = empty($model) ? 'dummies' : Str::of($model->model_plural())->snake()->toString();
+        //        $model_fqdn = '';
+        //        $model_label = $this->c->model_label();
+        //        $model_slug = $this->c->model_slug();
+        //        $model_slug_plural = $this->c->model_slug_plural();
+        //        $model_parameter = Str::of($this->c->model_slug())->snake()->toString();
+        //
+        //        // TODO change other variables here?
+        //        $model_variable = empty($model) ? 'dummy' : Str::of($model->model_singular())->snake()->toString();
+        //        $model_variable_plural = empty($model) ? 'dummies' : Str::of($model->model_plural())->snake()->toString();
         //        if ($type !== 'playground-resource-index') {
         //            dd([
         //                '__METHOD__' => __METHOD__,
@@ -183,33 +184,33 @@ class RouteMakeCommand extends GeneratorCommand
         //                '$this->searches' => $this->searches,
         //            ]);
         //        }
-        if ($model) {
-            $model_fqdn = $model->fqdn();
+        //        if ($model) {
+        //            $model_fqdn = $model->fqdn();
+        //
+        //            if (! $model_column) {
+        //                $model_column = Str::of($model->model_slug())->snake()->replace('-', '_')->toString();
+        //            }
+        //            if (! $model_label) {
+        //                $model_label = Str::of($model->name())->title()->toString();
+        //            }
+        //            if (! $model_slug) {
+        //                $model_slug = $model->model_slug();
+        //            }
+        //            if (! $model_slug_plural) {
+        //                $model_slug_plural = $model->model_slug_plural();
+        //            }
+        //        }
 
-            if (! $model_column) {
-                $model_column = Str::of($model->model_slug())->snake()->replace('-', '_')->toString();
-            }
-            if (! $model_label) {
-                $model_label = Str::of($model->name())->title()->toString();
-            }
-            if (! $model_slug) {
-                $model_slug = $model->model_slug();
-            }
-            if (! $model_slug_plural) {
-                $model_slug_plural = $model->model_slug_plural();
-            }
-        }
+        $this->c->setOptions([
+            'model_column' => $this->c->model_slug(),
+            //            'model_fqdn' => $model_fqdn,
+            //            'model_label' => $model_label,
+            //            'model_slug' => $model_slug,
+            //            'model_slug_plural' => $model_slug_plural,
+        ]);
 
-        //        $this->c->setOptions([
-        //            'model_column' => $model_column,
-        //            'model_fqdn' => $model_fqdn,
-        //            'model_label' => $model_label,
-        //            'model_slug' => $model_slug,
-        //            'model_slug_plural' => $model_slug_plural,
-        //        ]);
-
-        //        $this->searches['model_column'] = $this->c->model_column();
-        //        $this->searches['model_fqdn'] = $this->parseClassInput($this->c->model_fqdn());
+        $this->searches['model_column'] = $this->c->model_slug();
+        //                $this->searches['model_fqdn'] = $this->parseClassInput($this->c->model_fqdn());
         //        $this->searches['model_label'] = $this->c->model_label();
         //        $this->searches['model_slug'] = $this->c->model_slug();
         //        $this->searches['model_slug_plural'] = $this->c->model_slug_plural();
@@ -239,25 +240,25 @@ class RouteMakeCommand extends GeneratorCommand
 
         } elseif ($type === 'playground-resource') {
             $this->c->setOptions([
-                'class' => $this->c->model_slug_plural(),
+                'class' => $this->c->model_slugs(),
                 'route_prefix' => sprintf(
                     'resource/%1$s/%2$s',
                     $this->c->module_slug(),
-                    $this->c->model_slug_plural()
+                    $this->c->model_slugs()
                 ),
             ]);
         } elseif ($type === 'playground-resource-linked') {
             $this->c->setOptions([
-                'class' => $this->c->model_slug_plural(),
+                'class' => $this->c->model_slugs(),
                 'route_prefix' => sprintf(
                     'resource/%1$s/%2$s',
                     $this->c->module_slug(),
-                    $this->c->model_slug_plural()
+                    $this->c->model_slugs()
                 ),
             ]);
         } elseif ($type === 'playground-resource-tagged') {
             $this->c->setOptions([
-                'class' => $this->c->model_slug_plural(),
+                'class' => $this->c->model_slugs(),
                 'route_prefix' => sprintf(
                     'resource/%1$s/%2$s',
                     $this->c->module_slug(),
@@ -266,16 +267,16 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         } elseif ($type === 'playground-api') {
             $this->c->setOptions([
-                'class' => $this->c->model_slug_plural(),
+                'class' => $this->c->model_slugs(),
                 'route_prefix' => sprintf(
                     'api/%1$s/%2$s',
                     $this->c->module_slug(),
-                    $this->c->model_slug_plural()
+                    $this->c->model_slugs()
                 ),
             ]);
         } elseif ($type === 'playground-api-tagged') {
             $this->c->setOptions([
-                'class' => $this->c->model_slug_plural(),
+                'class' => $this->c->model_slugs(),
                 'route_prefix' => sprintf(
                     'api/%1$s/%2$s',
                     $this->c->module_slug(),
@@ -284,7 +285,7 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         } elseif ($type === 'playground-api-linked') {
             $this->c->setOptions([
-                'class' => $this->c->model_slug_plural(),
+                'class' => $this->c->model_slugs(),
                 'route_prefix' => sprintf(
                     'api/%1$s/%2$s',
                     $this->c->module_slug(),
@@ -298,22 +299,24 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        //        if ($model_column === 'people') {
-        //            dd([
-        //                '__METHOD__' => __METHOD__,
-        //                '$type' => $type,
-        //                '$options' => $options,
-        //                //                '$model_column' => $model_column,
-        //                //                '$model_fqdn' => $model_fqdn,
-        //                //                '$model_label' => $model_label,
-        //                //                '$model_slug' => $model_slug,
-        //                //                '$model_slug_plural' => $model_slug_plural,
-        //                //                '$model_parameter' => $model_parameter,
-        //                //                '$model_variable' => $model_variable,
-        //                '$this->c' => $this->c,
-        //                '$this->searches' => $this->searches,
-        //            ]);
-        //        }
+        $this->c->apply();
+
+//        //                if ($model_column === 'people') {
+//        dump([
+//            '__METHOD__' => __METHOD__,
+//            '$type' => $type,
+//            '$options' => $options,
+//            //                '$model_column' => $model_column,
+//            //                '$model_fqdn' => $model_fqdn,
+//            //                '$model_label' => $model_label,
+//            //                '$model_slug' => $model_slug,
+//            //                '$model_slug_plural' => $model_slug_plural,
+//            //                '$model_parameter' => $model_parameter,
+//            //                '$model_variable' => $model_variable,
+//            '$this->c' => $this->c,
+//            '$this->searches' => $this->searches,
+//        ]);
+        //                }
     }
 
     protected function getConfigurationFilename(): string
@@ -525,7 +528,7 @@ class RouteMakeCommand extends GeneratorCommand
             'playground-resource',
         ])) {
             // $name = Str::of($name)->plural()->kebab()->toString();
-            $name = $this->c->model_slug_plural();
+            $name = $this->c->model_slugs();
             //            dd([
             //                '__METHOD__' => __METHOD__,
             //                '$name' => $name,
