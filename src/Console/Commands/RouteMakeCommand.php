@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Playground\Make\Controller\Console\Commands;
 
 use Illuminate\Support\Str;
+use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
 use Playground\Make\Console\Commands\GeneratorCommand;
 use Playground\Make\Controller\Configuration\Route as Configuration;
@@ -21,6 +22,8 @@ use Symfony\Component\Console\Input\InputOption;
 #[AsCommand(name: 'playground:make:route')]
 class RouteMakeCommand extends GeneratorCommand
 {
+    use Concerns\BuildModel;
+
     /**
      * @var class-string<Configuration>
      */
@@ -45,14 +48,32 @@ class RouteMakeCommand extends GeneratorCommand
         'namespacedUserModel' => '',
         'user' => '',
         'model' => '',
+        'model_camel' => '',
+        'model_camels' => '',
+        'model_label' => '',
+        'model_labels' => '',
+        'model_lower' => '',
+        'model_lowers' => '',
+        'model_kebab' => '',
+        'model_kebabs' => '',
+        'model_slug' => '',
+        'model_slugs' => '',
+        'model_snake' => '',
+        'model_snakes' => '',
+        'model_studly' => '',
+        'model_studlies' => '',
+        'model_variable' => '',
+        'model_variables' => '',
+        // TODO old model attributes:
         'modelVariable' => '',
         'model_column' => '',
-        'model_label' => '',
+        // 'model_label' => '',
         'model_parameter' => '',
-        'model_variable' => '',
+        // 'model_variable' => '',
         'model_variable_plural' => '',
-        'model_slug' => '',
+        // 'model_slug' => '',
         'model_slug_plural' => '',
+        // other attributes
         'module' => '',
         'module_slug' => '',
         'title' => '',
@@ -89,14 +110,36 @@ class RouteMakeCommand extends GeneratorCommand
     public function prepareOptions(): void
     {
         $options = $this->options();
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$options' => $options,
-        //     '$this->c' => $this->c,
-        //     '$this->searches' => $this->searches,
-        // ]);
+        //         dd([
+        //             '__METHOD__' => __METHOD__,
+        //             '$options' => $options,
+        //             '$this->c' => $this->c,
+        //             '$this->arguments()' => $this->arguments(),
+        //             '$this->searches' => $this->searches,
+        //         ]);
 
         $type = $this->c->type();
+
+        if (in_array($type, [
+            'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
+            'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
+        ])) {
+            $this->initModel($this->c->skeleton());
+            if (! $this->model) {
+                throw new \RuntimeException('Provide a [--model-file] with a [create] section.');
+            }
+        }
+
+        $model = $this->model;
+
+        if (! empty($options['skeleton'])) {
+            // TODO the name parameter can probably be removed
+            $this->buildClass_model($this->c->name());
+        }
 
         if (! empty($options['route']) && is_string($options['route'])) {
             $this->c->setOptions([
@@ -119,22 +162,6 @@ class RouteMakeCommand extends GeneratorCommand
         //     ]);
         //     $this->searches['title'] = $this->c->title();
         // }
-
-        if (in_array($type, [
-            'playground-api',
-            'playground-api-linked',
-            'playground-api-tagged',
-            'playground-resource',
-            'playground-resource-linked',
-            'playground-resource-tagged',
-        ])) {
-            $this->initModel($this->c->skeleton());
-            if (! $this->model) {
-                throw new \RuntimeException('Provide a [--model-file] with a [create] section.');
-            }
-        }
-
-        $model = $this->model;
 
         $model_column = $this->c->model_column();
         $model_fqdn = '';
@@ -169,26 +196,26 @@ class RouteMakeCommand extends GeneratorCommand
                 $model_slug = $model->model_slug();
             }
             if (! $model_slug_plural) {
-                $model_slug_plural = Str::of($model_slug)->plural()->toString();
+                $model_slug_plural = $model->model_slug_plural();
             }
         }
 
-        $this->c->setOptions([
-            'model_column' => $model_column,
-            'model_fqdn' => $model_fqdn,
-            'model_label' => $model_label,
-            'model_slug' => $model_slug,
-            'model_slug_plural' => $model_slug_plural,
-        ]);
+        //        $this->c->setOptions([
+        //            'model_column' => $model_column,
+        //            'model_fqdn' => $model_fqdn,
+        //            'model_label' => $model_label,
+        //            'model_slug' => $model_slug,
+        //            'model_slug_plural' => $model_slug_plural,
+        //        ]);
 
-        $this->searches['model_column'] = $this->c->model_column();
-        $this->searches['model_fqdn'] = $this->parseClassInput($this->c->model_fqdn());
-        $this->searches['model_label'] = $this->c->model_label();
-        $this->searches['model_slug'] = $this->c->model_slug();
-        $this->searches['model_slug_plural'] = $this->c->model_slug_plural();
-        $this->searches['model_parameter'] = $model_parameter;
-        $this->searches['model_variable'] = $model_variable;
-        $this->searches['model_variable_plural'] = $model_variable_plural;
+        //        $this->searches['model_column'] = $this->c->model_column();
+        //        $this->searches['model_fqdn'] = $this->parseClassInput($this->c->model_fqdn());
+        //        $this->searches['model_label'] = $this->c->model_label();
+        //        $this->searches['model_slug'] = $this->c->model_slug();
+        //        $this->searches['model_slug_plural'] = $this->c->model_slug_plural();
+        //        $this->searches['model_parameter'] = $model_parameter;
+        //        $this->searches['model_variable'] = $model_variable;
+        //        $this->searches['model_variable_plural'] = $model_variable_plural;
 
         if ($type === 'playground-resource-index') {
             $this->c->setOptions([
@@ -271,22 +298,22 @@ class RouteMakeCommand extends GeneratorCommand
             ]);
         }
 
-        // if ($model_column === 'task_log') {
+        //        if ($model_column === 'people') {
         //            dd([
         //                '__METHOD__' => __METHOD__,
         //                '$type' => $type,
         //                '$options' => $options,
-        //                '$model_column' => $model_column,
-        //                '$model_fqdn' => $model_fqdn,
-        //                '$model_label' => $model_label,
-        //                '$model_slug' => $model_slug,
-        //                '$model_slug_plural' => $model_slug_plural,
-        //                '$model_parameter' => $model_parameter,
-        //                '$model_variable' => $model_variable,
+        //                //                '$model_column' => $model_column,
+        //                //                '$model_fqdn' => $model_fqdn,
+        //                //                '$model_label' => $model_label,
+        //                //                '$model_slug' => $model_slug,
+        //                //                '$model_slug_plural' => $model_slug_plural,
+        //                //                '$model_parameter' => $model_parameter,
+        //                //                '$model_variable' => $model_variable,
         //                '$this->c' => $this->c,
         //                '$this->searches' => $this->searches,
         //            ]);
-        // }
+        //        }
     }
 
     protected function getConfigurationFilename(): string
@@ -358,16 +385,16 @@ class RouteMakeCommand extends GeneratorCommand
         $this->searches['controller'] = $this->c->controller();
         $this->searches['route_prefix'] = $this->c->route_prefix();
 
-        // dump([
-        //    '__METHOD__' => __METHOD__,
-        //    '$name' => $name,
-        //    '$this->c->controller()' => $this->c->controller(),
-        //    '$this->c->type()' => $this->c->type(),
-        //    '$this->c->class()' => $this->c->class(),
-        //    // '$this->c' => $this->c,
-        //    // '$this->searches' => $this->searches,
-        //    // '$this->options()' => $this->options(),
-        // ]);
+        //         dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$name' => $name,
+        //            '$this->c->controller()' => $this->c->controller(),
+        //            '$this->c->type()' => $this->c->type(),
+        //            '$this->c->class()' => $this->c->class(),
+        //            // '$this->c' => $this->c,
+        //            // '$this->searches' => $this->searches,
+        //            // '$this->options()' => $this->options(),
+        //         ]);
 
         return $this->c->class();
     }
@@ -497,7 +524,8 @@ class RouteMakeCommand extends GeneratorCommand
             'resource',
             'playground-resource',
         ])) {
-            $name = Str::of($name)->plural()->kebab()->toString();
+            // $name = Str::of($name)->plural()->kebab()->toString();
+            $name = $this->c->model_slug_plural();
             //            dd([
             //                '__METHOD__' => __METHOD__,
             //                '$name' => $name,
@@ -530,6 +558,15 @@ class RouteMakeCommand extends GeneratorCommand
             $this->folder(),
             $name
         );
+        // dd([
+        //    '__METHOD__' => __METHOD__,
+        //    '$this->c->model_slug_plural()' => $this->c->model_slug_plural(),
+        //    '$this->c->module_slug()' => $this->c->module_slug(),
+        //    '$path' => $path,
+        //    '$name' => $name,
+        //    '$this->folder()' => $this->folder(),
+        //    '$this->c->type()' => $this->c->type(),
+        // ]);
 
         return $this->laravel->storagePath().$path;
     }

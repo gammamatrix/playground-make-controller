@@ -105,27 +105,50 @@ class ControllerMakeCommand extends GeneratorCommand
         // 'table'               => 'matrix_backlogs',
         // 'view'                => 'playground-matrix-resource::backlog',
 
-        'model_attribute' => 'title',
+        'model_attribute' => '',
+        'model_camel' => '',
+        'model_camels' => '',
         'model_label' => '',
+        'model_labels' => '',
+        'model_lower' => '',
+        'model_lowers' => '',
+        'model_kebab' => '',
+        'model_kebabs' => '',
+        'model_slug' => '',
+        'model_slugs' => '',
+        'model_snake' => '',
+        'model_snakes' => '',
+        'model_studly' => '',
+        'model_studlies' => '',
+        'model_variable' => '',
+        'model_variables' => '',
+        // 'model_label' => '',
         'model_label_plural' => '',
         'model_route' => '',
-        'model_variable' => '',
+        // 'model_variable' => '',
         'model_variable_plural' => '',
-        'model_slug' => '',
+        // 'model_slug' => '',
         'model_slug_plural' => '',
         'module_label' => '',
+        'module_labels' => '',
         'module_label_plural' => '',
         'module_route' => '',
         // 'module_slug' => '',
         'table' => '',
         'view' => '',
         // tagged
-        'primary_model_slug' => 'task',
-        'primary_model_slug_plural' => 'tasks',
-        'secondary_model_slug' => 'task_list',
-        'secondary_model_slug_plural' => 'task_lists',
-        'tertiary_model_slug' => 'task_log',
-        'tertiary_model_slug_plural' => 'task_logs',
+        'primary_model_slug' => '',
+        'primary_model_slug_plural' => '',
+        'secondary_model_slug' => '',
+        'secondary_model_slug_plural' => '',
+        'tertiary_model_slug' => '',
+        'tertiary_model_slug_plural' => '',
+        // 'primary_model_slug' => 'task',
+        // 'primary_model_slug_plural' => 'tasks',
+        // 'secondary_model_slug' => 'task_list',
+        // 'secondary_model_slug_plural' => 'task_lists',
+        // 'tertiary_model_slug' => 'task_log',
+        // 'tertiary_model_slug_plural' => 'task_logs',
     ];
 
     /**
@@ -231,20 +254,30 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $this->prepareOptionsType($options);
 
-        //         dump([
-        //             '__METHOD__' => __METHOD__,
-        //             '$options' => $options,
-        //             '$initModel' => $initModel,
-        //             '$this->c' => $this->c,
-        //             '$this->modelPackage' => $this->modelPackage,
-        //             '$this->package' => $this->package,
-        // //             '$this->c->name()' => $this->c->name(),
-        // //             '$this->c->type()' => $this->c->type(),
-        //             // '$this->searches' => $this->searches,
-        //             // '$this->arguments()' => $this->arguments(),
-        //             // '$this->options()' => $this->options(),
-        //         ]);
-
+        //        if (in_array($this->c->type(), [
+        //            'api',
+        //            'playground-api',
+        //            'playground-api-linked',
+        //            'playground-api-tagged',
+        //            'resource',
+        //            'playground-resource',
+        //            'playground-resource-linked',
+        //            'playground-resource-tagged',
+        //        ])) {
+        //            dump([
+        //                '__METHOD__' => __METHOD__,
+        //                '$options' => $options,
+        //                '$initModel' => $initModel,
+        //                // '$this->c' => $this->c,
+        //                '$this->modelPackage' => $this->modelPackage,
+        //                '$this->package' => $this->package,
+        //                '$this->c->name()' => $this->c->name(),
+        //                '$this->c->type()' => $this->c->type(),
+        //                '$this->searches' => $this->searches,
+        //                '$this->arguments()' => $this->arguments(),
+        //                '$this->options()' => $this->options(),
+        //            ]);
+        //        }
         if (in_array($this->c->type(), [
             'api',
             'playground-api',
@@ -269,17 +302,18 @@ class ControllerMakeCommand extends GeneratorCommand
                     $modelFile
                 );
             }
+            $this->buildClass_model($this->model?->name() ?? '');
 
-            //             dd([
+            //             dump([
             //                 '__METHOD__' => __METHOD__,
             //                 '$this->getModelFile()' => $this->getModelFile(),
             //                 '$initModel' => $initModel,
             //                 '$modelFile' => $modelFile,
             //                 '$this->c->type()' => $this->c->type(),
             //                 '$this->c->skeleton()' => $this->c->skeleton(),
-            //                 // '$this->c' => $this->c->toArray(),
+            //                  '$this->c' => $this->c->toArray(),
             //                 // '$this->model' => $this->model,
-            //                 // '$this->searches' => $this->searches,
+            //                  '$this->searches' => $this->searches,
             //                 // '$this->arguments()' => $this->arguments(),
             //                 '$this->options()' => $this->options(),
             //                 // '$this->model' => $this->model->toArray(),
@@ -325,20 +359,20 @@ class ControllerMakeCommand extends GeneratorCommand
         // //            '$this->model' => $this->model->toArray(),
         // ]);
 
-        //         if ($initModel) {
-        // dump([
-        //    '__METHOD__' => __METHOD__,
-        //    '$this->getModelFile()' => $this->getModelFile(),
-        //    '$initModel' => $initModel,
-        //    '$this->c->type()' => $this->c->type(),
-        //    '$this->c->skeleton()' => $this->c->skeleton(),
-        //    '$this->c' => $this->c->toArray(),
-        //    // '$this->model' => $this->model,
-        //    '$this->searches' => $this->searches,
-        //    // '$this->arguments()' => $this->arguments(),
-        //    '$this->options()' => $this->options(),
-        // ]);
-        //         }
+        //        if ($this->c->class() === 'PeopleController') {
+        //            dump([
+        //                '__METHOD__' => __METHOD__,
+        //                '$this->getModelFile()' => $this->getModelFile(),
+        //                '$initModel' => $initModel,
+        //                '$this->c->type()' => $this->c->type(),
+        //                '$this->c->skeleton()' => $this->c->skeleton(),
+        //                '$this->c' => $this->c->toArray(),
+        //                // '$this->model' => $this->model,
+        //                '$this->searches' => $this->searches,
+        //                '$this->arguments()' => $this->arguments(),
+        //                '$this->options()' => $this->options(),
+        //            ]);
+        //        }
     }
 
     public function prepareOptionsFromOptions(): void
@@ -440,18 +474,6 @@ class ControllerMakeCommand extends GeneratorCommand
             //                ]);
             //            }
             return $file;
-        }
-    }
-
-    /**
-     * @deprecated
-     */
-    public function load_model_package(string $model_package): void
-    {
-        $payload = $this->readJsonFileAsArray($model_package);
-        if (! empty($payload)) {
-            $this->modelPackage = new Package($payload);
-            // $this->modelPackage->apply();
         }
     }
 
@@ -566,7 +588,7 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function buildClass($name): string
     {
-        $this->buildClass_model($name);
+        // $this->buildClass_model($name);
 
         $this->searches['namespacedRequest'] = $this->parseClassInput(sprintf(
             '%1$s\Http\Requests',
@@ -618,14 +640,14 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->skeleton();
 
             $this->saveConfiguration();
-            //             if ('PageController' === $this->c->name()) {
-            //                 dd([
-            //                     '__METHOD__' => __METHOD__,
-            //                     '$this->c' => $this->c,
-            //                     '$this->searches' => $this->searches,
-            //                     // '$this->c->toArray()' => $this->c->toArray(),
-            //                 ]);
-            //             }
+            //            if ($this->c->name() === 'PeopleController') {
+            //                dd([
+            //                    '__METHOD__' => __METHOD__,
+            //                    '$this->c' => $this->c,
+            //                    '$this->searches' => $this->searches,
+            //                    // '$this->c->toArray()' => $this->c->toArray(),
+            //                ]);
+            //            }
 
             if ($this->c->withTests()) {
                 $this->createTest();
@@ -665,12 +687,12 @@ class ControllerMakeCommand extends GeneratorCommand
         $this->c->apply();
         $this->applyConfigurationToSearch();
         $this->saveConfiguration();
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$this->c' => $this->c,
-        //     '$this->searches' => $this->searches,
-        //     '$this->options()' => $this->options(),
-        // ]);
+//        dump([
+//            '__METHOD__' => __METHOD__,
+//            '$this->c' => $this->c,
+//            '$this->searches' => $this->searches,
+//            '$this->options()' => $this->options(),
+//        ]);
 
         return $this->return_status;
     }

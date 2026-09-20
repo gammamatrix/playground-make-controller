@@ -102,6 +102,10 @@ trait BuildRoutes
             $options['--revision'] = true;
         }
 
+        if ($this->hasOption('skeleton') && $this->option('skeleton')) {
+            $options['--skeleton'] = true;
+        }
+
         if (in_array($type, [
             'api',
             'resource',
@@ -142,6 +146,20 @@ trait BuildRoutes
         ])) {
             $options['--route'] = $this->c->module_route();
         }
+        // if (true
+        //    || $type === 'playground-resource-tagged'
+        //    || $type === 'playground-api'
+        // ) {
+        //    dd([
+        //        '__METHOD__' => __METHOD__,
+        //        '$name' => $name,
+        //        '$type' => $type,
+        //        '$modelFile' => $modelFile,
+        //        '$options' => $options,
+        //        '$this->options()' => $this->options(),
+        //        '$this->c' => $this->c,
+        //    ]);
+        // }
 
         if (empty($this->call('playground:make:route', $options))) {
 

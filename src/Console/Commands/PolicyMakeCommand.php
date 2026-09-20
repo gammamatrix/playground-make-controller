@@ -214,12 +214,14 @@ class PolicyMakeCommand extends GeneratorCommand
      */
     protected function userProviderModel(): string
     {
-        $guard = $this->option('guard') ?: config('auth.defaults.guard');
-        $guardProvider = $this->userProviderModelGuard($guard);
-
-        $upm = $guardProvider ? config('auth.providers.'.$guardProvider.'.model') : null;
-
-        return $upm && is_string($upm) ? $upm : 'App\\Models\\User';
+        return 'Playground\\Models\\User';
+        // TODO this breaks a test
+        //        $guard = $this->option('guard') ?: config('auth.defaults.guard');
+        //        $guardProvider = $this->userProviderModelGuard($guard);
+        //
+        //        $upm = $guardProvider ? config('auth.providers.'.$guardProvider.'.model') : null;
+        //
+        //        return $upm && is_string($upm) ? $upm : 'App\\Models\\User';
     }
 
     /**

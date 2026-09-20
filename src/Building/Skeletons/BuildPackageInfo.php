@@ -16,26 +16,6 @@ use Playground\Make\Controller\Configuration\Controller\PackageInfo;
  */
 trait BuildPackageInfo
 {
-    // /**
-    //  * @var array<string, string>
-    //  */
-    // public array $packageInfo = [
-    //     'model_attribute' => 'label',
-    //     'model_label' => 'Backlog',
-    //     'model_label_plural' => 'Backlogs',
-    //     'model_route' => 'playground.matrix.resource.backlogs',
-    //     'model_route_parameter' => 'backlog',
-    //     'model_slug' => 'backlog',
-    //     'model_slug_plural' => 'backlogs',
-    //     'module_label' => 'Matrix',
-    //     'module_label_plural' => 'Matrices',
-    //     'module_route' => 'playground.matrix.resource',
-    //     'module_slug' => 'matrix',
-    //     'privilege' => 'playground-matrix-resource:backlog',
-    //     'table' => 'matrix_backlogs',
-    //     'view' => 'playground-matrix-resource::backlog',
-    // ];
-
     /**
      * @param  array<string, mixed>  $options
      */
@@ -65,16 +45,6 @@ trait BuildPackageInfo
         $this->preparePackageInfo_view($packageInfo, $options);
 
         $packageInfo->apply();
-        // if ('BacklogController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$options' => $options,
-        //         '$packageInfo' => $packageInfo,
-        //         '$this->c' => $this->c,
-        //         '$this->c->toArray()' => $this->c->toArray(),
-        //         '$this->c->apply()->toArray()' => $this->c->apply()->toArray(),
-        //     ]);
-        // }
     }
 
     public function preparePackageInfo_table(
@@ -87,15 +57,6 @@ trait BuildPackageInfo
             ]);
         }
         $this->searches['table'] = $packageInfo->table();
-        // if ('BacklogController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$table' => $table,
-        //         '$this->c->type()' => $this->c->type(),
-        //         '$packageInfo' => $packageInfo,
-        //         '$this->searches[table]' => $this->searches['table'],
-        //     ]);
-        // }
     }
 
     /**
@@ -144,15 +105,15 @@ trait BuildPackageInfo
             'playground-api',
             'playground-resource',
         ])) {
-            $model_slug = $this->model?->model_slug();
+            $model_kebab = $this->model?->model_kebab();
 
-            if ($model_slug) {
+            if ($model_kebab) {
 
                 if ($privilege) {
                     $privilege .= ':';
                 }
 
-                $privilege .= Str::of($model_slug)->kebab()->toString();
+                $privilege .= Str::of($model_kebab)->kebab()->toString();
             }
         }
 
@@ -165,19 +126,6 @@ trait BuildPackageInfo
         ]);
 
         $this->searches['privilege'] = $packageInfo->privilege();
-        //         if ('playground-resource-index' === $this->c->type()) {
-        //             dump([
-        //                 '__METHOD__' => __METHOD__,
-        //                 '$privilege' => $privilege,
-        //                 '$package' => $package,
-        //                 '$this->c->name()' => $this->c->name(),
-        //                 '$this->c->type()' => $this->c->type(),
-        //                 // '$this->c' => $this->c,
-        //                 // '$this->c->toArray()' => $this->c->toArray(),
-        //                 '$this->c->privilege()' => $this->c->privilege(),
-        //                 '$packageInfo->privilege()' => $packageInfo->privilege(),
-        //             ]);
-        //         }
     }
 
     /**
@@ -232,15 +180,15 @@ trait BuildPackageInfo
             'playground-api',
             'playground-resource',
         ])) {
-            $model_slug = $this->model?->model_slug();
+            $model_kebab = $this->model?->model_kebab();
 
-            if ($model_slug) {
+            if ($model_kebab) {
 
                 if ($view) {
                     $view .= '::';
                 }
 
-                $view .= Str::of($model_slug)->kebab()->toString();
+                $view .= $model_kebab;
             }
         }
 
@@ -253,18 +201,6 @@ trait BuildPackageInfo
         ]);
 
         $this->searches['view'] = $packageInfo->view();
-        // if ('BacklogController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$package' => $package,
-        //         '$slug' => $slug,
-        //         '$this->searches[view]' => $this->searches['view'],
-        //         // '$this->c' => $this->c,
-        //         // '$this->c->toArray()' => $this->c->toArray(),
-        //         '$this->c->view()' => $this->c->view(),
-        //         '$packageInfo->view()' => $packageInfo->view(),
-        //     ]);
-        // }
     }
 
     /**
@@ -274,184 +210,157 @@ trait BuildPackageInfo
         PackageInfo $packageInfo,
         array $options = []
     ): void {
-        $this->preparePackageInfo_module_label($packageInfo, $options);
-        $this->preparePackageInfo_module_label_plural($packageInfo);
-        $this->preparePackageInfo_module_slug($packageInfo);
-        $this->preparePackageInfo_module_route($packageInfo);
-    }
-
-    /**
-     * @param  array<string, mixed>  $options
-     */
-    public function preparePackageInfo_module_label(
-        PackageInfo $packageInfo,
-        array $options = []
-    ): void {
         if (! empty($options['module']) && is_string($options['module'])) {
             $packageInfo->setOptions([
                 'module_label' => $options['module'],
             ]);
         }
 
-        if (! $packageInfo->module_label() && $this->model?->module()) {
+        if (! $packageInfo->module_label() && $this->c->module()) {
             $packageInfo->setOptions([
-                'module_label' => $this->model->module(),
+                'module_label' => $this->c->module(),
             ]);
         }
 
-        $this->searches['module_label'] = $packageInfo->module_label();
-    }
+        $module = $packageInfo->module_label();
+        if (ctype_upper($module)) {
+            $module_labels = $module.'s';
+        } else {
+            $module_labels = Str::of($module)->plural()->toString();
+        }
 
-    public function preparePackageInfo_module_label_plural(
-        PackageInfo $packageInfo
-    ): void {
-        if (! $packageInfo->module_label_plural() && $packageInfo->module_label()) {
-            $module = $packageInfo->module_label();
-            if (ctype_upper($module)) {
-                $plural = $module.'s';
+        $packageOptions = [
+            'module_label_plural' => $module_labels,
+            'module_labels' => $module_labels,
+        ];
+
+        $module_slug = $packageInfo->module_slug();
+        if (! $module_slug) {
+            if ($this->model?->module_slug()) {
+                $module_slug = $this->model->module_slug();
             } else {
-                $plural = Str::of($module)->plural()->toString();
+                if (ctype_upper($module)) {
+                    $module_slug = Str::of($module)->lower()->kebab()->toString();
+                } else {
+                    $module_slug = Str::of($module)->kebab()->toString();
+                }
             }
-
-            $packageInfo->setOptions([
-                'module_label_plural' => $plural,
-            ]);
         }
 
-        $this->searches['module_label_plural'] = $packageInfo->module_label_plural();
-    }
+        if ($module_slug) {
+            $packageOptions['module_slug'] = $module_slug;
+        }
 
-    public function preparePackageInfo_module_route(
-        PackageInfo $packageInfo
-    ): void {
-        $route = '';
+        $module_slugs = $packageInfo->module_slugs();
+        if (! $module_slugs) {
+            if ($this->model?->module_slugs()) {
+                $module_slugs = $this->model->module_slugs();
+            } else {
+                if (ctype_upper($module)) {
+                    $module_slugs = Str::of($module)->lower()->plural()->finish('s')->kebab()->toString();
+                } else {
+                    $module_slugs = Str::of($module_labels)->kebab()->toString();
+                }
+            }
+        }
 
-        if (! $this->c->module_route()) {
+        if ($module_slugs) {
+            $packageOptions['module_slugs'] = $module_slugs;
+        }
+
+        $module_route = $this->c->module_route();
+        if (! $module_route) {
 
             if ($this->c->package()) {
                 foreach (Str::of($this->c->package())->replace('-', '.')->replace('_', '.')->explode('.') as $value) {
-                    if (! empty($route)) {
-                        $route .= '.';
+                    if (! empty($module_route)) {
+                        $module_route .= '.';
                     }
-                    $route .= Str::of($value)->slug('-');
+                    $module_route .= Str::of($value)->slug('-');
                 }
             }
 
             if (! empty($this->c->slug_plural())) {
-                $route .= '.'.$this->c->slug_plural();
+                $module_route .= '.'.$this->c->slug_plural();
 
             } elseif (! empty($this->c->slug())) {
-                $route .= '.'.$this->c->slug();
+                $module_route .= '.'.$this->c->slug();
             }
-
-            $this->c->setOptions([
-                'module_route' => $route,
-            ]);
-            // $packageInfo->setOptions([
-            //     'module_route' => $this->c->module_route(),
-            // ]);
-
-            // if ('BacklogController' === $this->c->name()) {
-            //     dump([
-            //         '__METHOD__' => __METHOD__,
-            //         // '$this->c->toArray()' => $this->c->toArray(),
-            //         // '$packageInfo' => $packageInfo,
-            //         // '$this->c' => $this->c,
-            //         '$route' => $route,
-            //         '$this->searches[module_route]' => $this->searches['module_route'],
-            //         '$this->c->type()' => $this->c->type(),
-            //         '$this->c->module_route()' => $this->c->module_route(),
-            //         '$packageInfo->module_route()' => $packageInfo->module_route(),
-            //     ]);
-            // }
-
-            $this->searches['module_route'] = $this->c->module_route();
+            $packageOptions['module_route'] = $module_route;
+            $this->c->setOptions(['module_route' => $module_route]);
         }
 
-        if (! $packageInfo->module_route()) {
-            $packageInfo->setOptions([
-                'module_route' => $this->c->module_route(),
-            ]);
-        }
-        // if ('IndexController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$this->c->toArray()' => $this->c->toArray(),
-        //         '$packageInfo' => $packageInfo,
-        //         '$this->c' => $this->c,
-        //         '$route' => $route,
-        //         '$this->searches[module_route]' => $this->searches['module_route'],
-        //         '$this->c->type()' => $this->c->type(),
-        //         '$this->c->module_route()' => $this->c->module_route(),
-        //         '$packageInfo->module_route()' => $packageInfo->module_route(),
-        //     ]);
-        // }
-    }
+        $packageInfo->setOptions($packageOptions);
 
-    public function preparePackageInfo_module_slug(
-        PackageInfo $packageInfo
-    ): void {
-        $module_slug = '';
-        if (! $packageInfo->module_slug()) {
-            if ($this->model?->module_slug()) {
-                $module_slug = $this->model->module_slug();
-            } elseif ($this->model?->module()) {
-                $module_slug = Str::of($this->model->module())->kebab()->toString();
-            }
-        }
-        if ($module_slug) {
-            $packageInfo->setOptions([
-                'module_slug' => $module_slug,
-            ]);
-        }
-
-        $this->searches['module_slug'] = $packageInfo->module_slug();
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$packageInfo' => $packageInfo,
-        //     '$module_slug' => $module_slug,
-        //     '$packageInfo->module_slug()' => $packageInfo->module_slug(),
-        //     '$this->searches[module_slug]' => $this->searches['module_slug'],
-        // ]);
-        // if ('IndexController' === $this->c->name()) {
-        //     dd([
-        //         '__METHOD__' => __METHOD__,
-        //         '$this->c->toArray()' => $this->c->toArray(),
-        //         '$packageInfo' => $packageInfo,
-        //         '$this->c' => $this->c,
-        //         '$module_slug' => $module_slug,
-        //         '$packageInfo->module_slug()' => $packageInfo->module_slug(),
-        //         '$this->searches[module_slug]' => $this->searches['module_slug'],
-        //         '$this->c->type()' => $this->c->type(),
-        //         '$this->c->module_slug()' => $this->c->module_slug(),
-        //         '$packageInfo->module_slug()' => $packageInfo->module_slug(),
-        //     ]);
-        // }
+        $this->searches['module_label'] = $module;
+        $this->searches['module_label_plural'] = $module_labels;
+        $this->searches['module_labels'] = $module_labels;
+        $this->searches['module_slug'] = $module_slug;
+        $this->searches['module_slugs'] = $module_slugs;
+        $this->searches['module_route'] = $module_route;
     }
 
     public function preparePackageInfo_model(
         PackageInfo $packageInfo
     ): void {
-        $this->preparePackageInfo_model_label($packageInfo);
-        $this->preparePackageInfo_model_label_plural($packageInfo);
-        $this->preparePackageInfo_model_slug($packageInfo);
-        $this->preparePackageInfo_model_slug_plural($packageInfo);
-        $this->preparePackageInfo_model_variable($packageInfo);
-        $this->preparePackageInfo_model_variable_plural($packageInfo);
-        $this->preparePackageInfo_model_route($packageInfo);
-        $this->preparePackageInfo_model_attribute($packageInfo);
-    }
 
-    public function preparePackageInfo_model_label(
-        PackageInfo $packageInfo
-    ): void {
-        if (! $packageInfo->model_label() && $this->model?->name()) {
-            $packageInfo->setOptions([
-                'model_label' => Str::of($this->model->name())->headline()->toString(),
-            ]);
+        $options = [
+            'model_camel' => $this->c->model_camel(),
+            'model_camels' => $this->c->model_camels(),
+            'model_label' => $this->c->model_label(),
+            'model_labels' => $this->c->model_labels(),
+            'model_lower' => $this->c->model_lower(),
+            'model_lowers' => $this->c->model_lowers(),
+            'model_kebab' => $this->c->model_kebab(),
+            'model_kebabs' => $this->c->model_kebabs(),
+            'model_slug' => $this->c->model_slug(),
+            'model_slugs' => $this->c->model_slugs(),
+            'model_snake' => $this->c->model_snake(),
+            'model_snakes' => $this->c->model_snakes(),
+            'model_studly' => $this->c->model_studly(),
+            'model_studlies' => $this->c->model_studlies(),
+            'model_variable' => $this->c->model_variable(),
+            'model_variables' => $this->c->model_variables(),
+            // deprecated attributes:
+            'model_label_plural' => $this->c->model_labels(),
+            'model_variable_plural' => $this->c->model_variables(),
+            'model_slug_plural' => $this->c->model_slugs(),
+        ];
+
+        if ($this->c->type() === 'playground-resource-linked') {
+            $route = 'linked';
+        } elseif ($this->c->type() === 'playground-resource-tagged') {
+            $route = 'tagged';
+        } else {
+            $route = $this->c->model_slugs();
         }
 
-        $this->searches['model_label'] = $packageInfo->model_label();
+        if ($packageInfo->module_route()) {
+            $options['model_route'] = sprintf(
+                '%1$s.%2$s',
+                $packageInfo->module_route(),
+                $route,
+            );
+            $this->searches['model_route'] = $options['model_route'];
+            $this->c->setOptions(['model_route' => $options['model_route']])->apply();
+        }
+
+        $packageInfo->setOptions($options);
+        $this->preparePackageInfo_model_attribute($packageInfo);
+
+        $packageInfo->apply();
+
+        //        if (! in_array($this->c->type(), ['base'])) {
+        //            dump([
+        //                '__METHOD__' => __METHOD__,
+        //                '$this->c->type()' => $this->c->type(),
+        //                '$this->c->toArray()' => $this->c->toArray(),
+        //                '$options' => $options,
+        //                '$route' => $route,
+        //                '$packageInfo' => $packageInfo,
+        //                '$this->searches' => $this->searches,
+        //            ]);
+        //        }
     }
 
     public function preparePackageInfo_model_attribute(
@@ -464,148 +373,5 @@ trait BuildPackageInfo
         }
 
         $this->searches['model_attribute'] = $packageInfo->model_attribute();
-    }
-
-    public function preparePackageInfo_model_label_plural(
-        PackageInfo $packageInfo
-    ): void {
-        if (! $packageInfo->model_label_plural() && $this->model?->name()) {
-            $name = $this->model->name();
-            if (Str::endsWith($name, ['ed'])) {
-                $name = Str::of($name)->headline()->toString();
-            } else {
-                $name = Str::of($name)->headline()->plural()->toString();
-            }
-
-            $packageInfo->setOptions([
-                'model_label_plural' => $name,
-            ]);
-        }
-
-        $this->searches['model_label_plural'] = $packageInfo->model_label_plural();
-    }
-
-    public function preparePackageInfo_model_route(
-        PackageInfo $packageInfo
-    ): void {
-        $route = '';
-
-        if (! $this->c->model_route()) {
-
-            if ($this->c->package()) {
-                foreach (Str::of($this->c->package())->replace('-', '.')->replace('_', '.')->explode('.') as $value) {
-                    if (! empty($route)) {
-                        $route .= '.';
-                    }
-                    $route .= Str::of($value)->slug('-');
-                }
-            }
-
-            if (! empty($this->c->slug_plural())) {
-                $route .= '.'.$this->c->slug_plural();
-
-            } elseif (! empty($this->c->slug())) {
-                $route .= '.'.$this->c->slug();
-            }
-
-            if ($this->c->type() === 'playground-resource-linked') {
-                $route .= '.linked';
-            } elseif ($this->c->type() === 'playground-resource-tagged') {
-                $route .= '.tagged';
-            } else {
-                $route .= '.'.$packageInfo->model_slug_plural();
-            }
-
-            $this->c->setOptions([
-                'model_route' => $route,
-            ]);
-            $packageInfo->setOptions([
-                'model_route' => $this->c->model_route(),
-            ]);
-
-            $this->searches['model_route'] = $this->c->model_route();
-        }
-        // if ('TaggedController' === $this->c->name()) {
-        // dd([
-        // '__METHOD__' => __METHOD__,
-        // '$this->c->toArray()' => $this->c->toArray(),
-        // '$packageInfo' => $packageInfo,
-        // '$this->c' => $this->c,
-        // '$route' => $route,
-        // '$module_route' => $module_route,
-        // '$this->searches[module_route]' => $this->searches['module_route'],
-        // '$this->c->type()' => $this->c->type(),
-        // '$this->c->module_route()' => $this->c->module_route(),
-        // '$packageInfo->module_route()' => $packageInfo->module_route(),
-        // '$this->c->model_route()' => $this->c->model_route(),
-        // '$packageInfo->model_route()' => $packageInfo->model_route(),
-        // ]);
-        // }
-    }
-
-    public function preparePackageInfo_model_slug(
-        PackageInfo $packageInfo
-    ): void {
-        if (! $packageInfo->model_slug()) {
-            if ($this->model?->model_slug()) {
-                $packageInfo->setOptions([
-                    'model_slug' => $this->model->model_slug(),
-                ]);
-
-            } elseif ($this->model?->model_singular()) {
-                $packageInfo->setOptions([
-                    'model_slug' => Str::of($this->model->name())->kebab()->toString(),
-                ]);
-            }
-        }
-
-        $this->searches['model_slug'] = $packageInfo->model_slug();
-    }
-
-    public function preparePackageInfo_model_slug_plural(
-        PackageInfo $packageInfo
-    ): void {
-        // dump([
-        //    '__METHOD__' => __METHOD__,
-        //    '$this->model?->model_plural()' => $this->model?->model_plural(),
-        //    '$packageInfo->model_slug_plural()' => $packageInfo->model_slug_plural(),
-        // ]);
-        if (! $packageInfo->model_slug_plural() && $this->model?->name()) {
-            $name = $this->model->name();
-            if (Str::endsWith($name, ['ed'])) {
-                $name = Str::of($name)->kebab()->toString();
-            } else {
-                $name = Str::of($name)->plural()->kebab()->toString();
-            }
-            $packageInfo->setOptions([
-                'model_slug_plural' => $name,
-            ]);
-        }
-
-        $this->searches['model_slug_plural'] = $packageInfo->model_slug_plural();
-    }
-
-    public function preparePackageInfo_model_variable(
-        PackageInfo $packageInfo
-    ): void {
-        if (! $packageInfo->model_variable() && $this->model?->model_singular()) {
-            $packageInfo->setOptions([
-                'model_variable' => Str::of($this->model->model_singular())->snake()->toString(),
-            ]);
-        }
-
-        $this->searches['model_variable'] = $packageInfo->model_variable();
-    }
-
-    public function preparePackageInfo_model_variable_plural(
-        PackageInfo $packageInfo
-    ): void {
-        if (! $packageInfo->model_variable_plural() && $this->model?->model_plural()) {
-            $packageInfo->setOptions([
-                'model_variable_plural' => Str::of($this->model->model_plural())->snake()->toString(),
-            ]);
-        }
-
-        $this->searches['model_variable_plural'] = $packageInfo->model_variable_plural();
     }
 }

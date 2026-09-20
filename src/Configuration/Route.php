@@ -57,9 +57,25 @@ class Route extends PrimaryConfiguration
         'model' => '',
         'model_column' => '',
         'model_fqdn' => '',
-        'model_label' => '',
-        'model_slug' => '',
+        //        'model_label' => '',
+        //        'model_slug' => '',
         'model_slug_plural' => '',
+        'model_camel' => '',
+        'model_camels' => '',
+        'model_label' => '',
+        'model_labels' => '',
+        'model_lower' => '',
+        'model_lowers' => '',
+        'model_kebab' => '',
+        'model_kebabs' => '',
+        'model_slug' => '',
+        'model_slugs' => '',
+        'model_snake' => '',
+        'model_snakes' => '',
+        'model_studly' => '',
+        'model_studlies' => '',
+        'model_variable' => '',
+        'model_variables' => '',
         'type' => '',
         'route' => '',
         'route_prefix' => '',
@@ -85,6 +101,7 @@ class Route extends PrimaryConfiguration
             $this->model_column = $options['model_column'];
         }
 
+        // TODO some of these can be removed since they are primary attributes.
         if (! empty($options['model_label'])
             && is_string($options['model_label'])
         ) {
