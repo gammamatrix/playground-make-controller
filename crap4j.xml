@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2026-09-20 23:45:42</timestamp>
+  <timestamp>2026-09-28 17:58:01</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>171</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>159</crapLoad>
-    <totalCrap>5813.65</totalCrap>
+    <totalCrap>5813.76</totalCrap>
     <crapMethodPercent>6.43</crapMethodPercent>
   </stats>
   <methods>
@@ -1238,9 +1238,9 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>21</crap>
+      <crap>21.11</crap>
       <complexity>21</complexity>
-      <coverage>96.88</coverage>
+      <coverage>93.75</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1268,9 +1268,9 @@
     <method>
       <package>Playground\Make\Controller\Configuration</package>
       <className>Playground\Make\Controller\Configuration\Route</className>
-      <methodName>model_label</methodName>
-      <methodSignature>model_label(): string</methodSignature>
-      <fullMethod>model_label(): string</fullMethod>
+      <methodName>model_route</methodName>
+      <methodSignature>model_route(): string</methodSignature>
+      <fullMethod>model_route(): string</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -1279,9 +1279,9 @@
     <method>
       <package>Playground\Make\Controller\Configuration</package>
       <className>Playground\Make\Controller\Configuration\Route</className>
-      <methodName>model_slug</methodName>
-      <methodSignature>model_slug(): string</methodSignature>
-      <fullMethod>model_slug(): string</fullMethod>
+      <methodName>module_route</methodName>
+      <methodSignature>module_route(): string</methodSignature>
+      <fullMethod>module_route(): string</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
