@@ -19,11 +19,11 @@ class Route extends PrimaryConfiguration
 
     protected string $model_column = '';
 
-    protected string $model_label = '';
-
-    protected string $model_slug = '';
-
     protected string $model_slug_plural = '';
+
+    protected string $model_route = '';
+
+    protected string $module_route = '';
 
     protected string $route = '';
 
@@ -44,7 +44,10 @@ class Route extends PrimaryConfiguration
         'config' => '',
         'fqdn' => '',
         'module' => '',
+        'module_label' => '',
+        'module_labels' => '',
         'module_slug' => '',
+        'module_slugs' => '',
         'name' => '',
         'namespace' => '',
         'organization' => '',
@@ -59,6 +62,8 @@ class Route extends PrimaryConfiguration
         'model_fqdn' => '',
         //        'model_label' => '',
         //        'model_slug' => '',
+        'model_route' => '',
+        'module_route' => '',
         'model_slug_plural' => '',
         'model_camel' => '',
         'model_camels' => '',
@@ -101,23 +106,22 @@ class Route extends PrimaryConfiguration
             $this->model_column = $options['model_column'];
         }
 
-        // TODO some of these can be removed since they are primary attributes.
-        if (! empty($options['model_label'])
-            && is_string($options['model_label'])
-        ) {
-            $this->model_label = $options['model_label'];
-        }
-
-        if (! empty($options['model_slug'])
-            && is_string($options['model_slug'])
-        ) {
-            $this->model_slug = $options['model_slug'];
-        }
-
         if (! empty($options['model_slug_plural'])
             && is_string($options['model_slug_plural'])
         ) {
             $this->model_slug_plural = $options['model_slug_plural'];
+        }
+
+        if (! empty($options['module_route'])
+            && is_string($options['module_route'])
+        ) {
+            $this->module_route = $options['module_route'];
+        }
+
+        if (! empty($options['model_route'])
+            && is_string($options['model_route'])
+        ) {
+            $this->model_route = $options['model_route'];
         }
 
         if (! empty($options['route'])
@@ -163,14 +167,14 @@ class Route extends PrimaryConfiguration
         return $this->model_column;
     }
 
-    public function model_label(): string
+    public function model_route(): string
     {
-        return $this->model_label;
+        return $this->model_route;
     }
 
-    public function model_slug(): string
+    public function module_route(): string
     {
-        return $this->model_slug;
+        return $this->module_route;
     }
 
     public function model_slug_plural(): string

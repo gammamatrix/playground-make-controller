@@ -301,21 +301,21 @@ class RouteMakeCommand extends GeneratorCommand
 
         $this->c->apply();
 
-//        //                if ($model_column === 'people') {
-//        dump([
-//            '__METHOD__' => __METHOD__,
-//            '$type' => $type,
-//            '$options' => $options,
-//            //                '$model_column' => $model_column,
-//            //                '$model_fqdn' => $model_fqdn,
-//            //                '$model_label' => $model_label,
-//            //                '$model_slug' => $model_slug,
-//            //                '$model_slug_plural' => $model_slug_plural,
-//            //                '$model_parameter' => $model_parameter,
-//            //                '$model_variable' => $model_variable,
-//            '$this->c' => $this->c,
-//            '$this->searches' => $this->searches,
-//        ]);
+        //        //                if ($model_column === 'people') {
+        //        dump([
+        //            '__METHOD__' => __METHOD__,
+        //            '$type' => $type,
+        //            '$options' => $options,
+        //            //                '$model_column' => $model_column,
+        //            //                '$model_fqdn' => $model_fqdn,
+        //            //                '$model_label' => $model_label,
+        //            //                '$model_slug' => $model_slug,
+        //            //                '$model_slug_plural' => $model_slug_plural,
+        //            //                '$model_parameter' => $model_parameter,
+        //            //                '$model_variable' => $model_variable,
+        //            '$this->c' => $this->c,
+        //            '$this->searches' => $this->searches,
+        //        ]);
         //                }
     }
 
