@@ -63,6 +63,7 @@ class Route extends PrimaryConfiguration
         //        'model_label' => '',
         //        'model_slug' => '',
         'model_route' => '',
+        'model_route_param' => '',
         'module_route' => '',
         'model_slug_plural' => '',
         'model_camel' => '',

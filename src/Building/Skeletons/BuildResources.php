@@ -19,8 +19,12 @@ trait BuildResources
     {
         if (! in_array($type, [
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
             'playground-resource-index',
+            'playground-resource-linked',
+            'playground-resource-tagged',
         ])) {
             // dump([
             //     '__METHOD__' => __METHOD__,
@@ -76,6 +80,23 @@ trait BuildResources
                     'name' => $name.'RevisionCollection',
                 ];
             }
+        } elseif (in_array($type, [
+            'playground-api-linked',
+            'playground-api-tagged',
+            'playground-resource-linked',
+            'playground-resource-tagged',
+        ])) {
+            $name = $model;
+            $resources['resource'] = [
+                '--class' => Str::of($name)->studly()->before('Resource')->toString(),
+                'name' => $name,
+            ];
+            // TODO Not sure if collections are needed for either
+            // $resources['collection'] = [
+            //    '--class' => Str::of($name)->studly()->finish('Collection')->toString(),
+            //    '--collection' => true,
+            //    'name' => $name.'Collection',
+            // ];
         }
 
         $modelFileRevision = '';

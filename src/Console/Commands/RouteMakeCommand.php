@@ -202,14 +202,14 @@ class RouteMakeCommand extends GeneratorCommand
         //        }
 
         $this->c->setOptions([
-            'model_column' => $this->c->model_slug(),
+            'model_column' => $this->c->model_snake(),
             //            'model_fqdn' => $model_fqdn,
             //            'model_label' => $model_label,
             //            'model_slug' => $model_slug,
             //            'model_slug_plural' => $model_slug_plural,
         ]);
 
-        $this->searches['model_column'] = $this->c->model_slug();
+        $this->searches['model_column'] = $this->c->model_snake();
         //                $this->searches['model_fqdn'] = $this->parseClassInput($this->c->model_fqdn());
         //        $this->searches['model_label'] = $this->c->model_label();
         //        $this->searches['model_slug'] = $this->c->model_slug();

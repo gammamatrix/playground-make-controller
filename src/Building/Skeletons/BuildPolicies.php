@@ -19,7 +19,11 @@ trait BuildPolicies
     {
         if (! in_array($type, [
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
             // 'playground-resource-index',
         ])) {
             // dump([
@@ -55,38 +59,52 @@ trait BuildPolicies
                 $params['--model-file'] = $modelFile;
             }
         }
+        $params['--roles-action'] = [
+            'publisher',
+            'manager',
+            'admin',
+            'root',
+        ];
+        $params['--roles-view'] = [
+            'user',
+            'staff',
+            'publisher',
+            'manager',
+            'admin',
+            'root',
+        ];
 
-        if ($type === 'playground-resource') {
-            $params['--roles-action'] = [
-                'publisher',
-                'manager',
-                'admin',
-                'root',
-            ];
-            $params['--roles-view'] = [
-                'user',
-                'staff',
-                'publisher',
-                'manager',
-                'admin',
-                'root',
-            ];
-        } elseif ($type === 'playground-api') {
-            $params['--roles-action'] = [
-                'publisher',
-                'manager',
-                'admin',
-                'root',
-            ];
-            $params['--roles-view'] = [
-                'user',
-                'staff',
-                'publisher',
-                'manager',
-                'admin',
-                'root',
-            ];
-        }
+        // if ($type === 'playground-resource') {
+        //    $params['--roles-action'] = [
+        //        'publisher',
+        //        'manager',
+        //        'admin',
+        //        'root',
+        //    ];
+        //    $params['--roles-view'] = [
+        //        'user',
+        //        'staff',
+        //        'publisher',
+        //        'manager',
+        //        'admin',
+        //        'root',
+        //    ];
+        // } elseif ($type === 'playground-api') {
+        //    $params['--roles-action'] = [
+        //        'publisher',
+        //        'manager',
+        //        'admin',
+        //        'root',
+        //    ];
+        //    $params['--roles-view'] = [
+        //        'user',
+        //        'staff',
+        //        'publisher',
+        //        'manager',
+        //        'admin',
+        //        'root',
+        //    ];
+        // }
 
         if ($revision) {
             $params['--revision'] = true;

@@ -19,7 +19,11 @@ trait BuildRequests
     {
         if (! in_array($type, [
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
             // 'playground-resource-index',
         ])) {
             // dump([
@@ -41,14 +45,14 @@ trait BuildRequests
         $package = $this->c->package();
 
         $revision = $this->c->revision();
-        //         dump([
-        //             '__METHOD__' => __METHOD__,
-        //             '$type' => $type,
-        //             '$model' => $model,
-        //             '$module' => $module,
-        //             '$name' => $name,
-        //             '$this->c->name()' => $this->c->name(),
-        //         ]);
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$type' => $type,
+        //     '$model' => $model,
+        //     '$module' => $module,
+        //     '$name' => $name,
+        //     '$this->c->name()' => $this->c->name(),
+        // ]);
 
         // $extends = '';
 
@@ -144,6 +148,48 @@ trait BuildRequests
             $requests['unlock'] = [
                 '--type' => 'unlock',
                 '--class' => 'UnlockRequest',
+            ];
+        }
+
+        // Linked models
+
+        if (in_array($type, [
+            'playground-api-linked',
+            'playground-resource-linked',
+        ])) {
+            $requests['destroy'] = [
+                '--type' => 'destroy',
+                '--class' => 'DestroyRequest',
+            ];
+            $requests['store'] = [
+                '--type' => 'store',
+                '--class' => 'StoreRequest',
+                // '--extends' => 'Playground/Http/Requests/StoreRequest as BaseStoreRequest',
+                '--with-store' => true,
+            ];
+            $requests['update'] = [
+                '--type' => 'update',
+                '--class' => 'UpdateRequest',
+                // '--extends' => 'Playground/Http/Requests/UpdateRequest as BaseUpdateRequest',
+                '--with-store' => true,
+            ];
+        }
+
+        // Tagged models
+
+        if (in_array($type, [
+            'playground-api-tagged',
+            'playground-resource-tagged',
+        ])) {
+            $requests['destroy'] = [
+                '--type' => 'destroy',
+                '--class' => 'DestroyRequest',
+            ];
+            $requests['store'] = [
+                '--type' => 'store',
+                '--class' => 'StoreRequest',
+                // '--extends' => 'Playground/Http/Requests/StoreRequest as BaseStoreRequest',
+                '--with-store' => true,
             ];
         }
 

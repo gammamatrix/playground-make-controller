@@ -129,16 +129,16 @@ class PolicyMakeCommand extends GeneratorCommand
         }
         // $this->applyConfigurationToSearch();
 
-        //         dd([
-        //             '__METHOD__' => __METHOD__,
-        //             '$revision' => $revision,
-        //             '$options' => $options,
-        //             '$this->searches' => $this->searches,
-        //             '$this->c' => $this->c,
-        //             // '$this->model' => $this->model,
-        //             '$this->c->type()' => $this->c->type(),
-        //             // '$this->c->toArray()' => $this->c->toArray(),
-        //         ]);
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$revision' => $revision,
+        //     '$options' => $options,
+        //     '$this->searches' => $this->searches,
+        //     '$this->c' => $this->c,
+        //     // '$this->model' => $this->model,
+        //     '$this->c->type()' => $this->c->type(),
+        //     // '$this->c->toArray()' => $this->c->toArray(),
+        // ]);
     }
 
     protected function getConfigurationFilename(): string
@@ -233,11 +233,19 @@ class PolicyMakeCommand extends GeneratorCommand
     {
         $template = 'policy/policy.stub';
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if ($type === 'playground-resource') {
             $template = 'policy/policy.playground-resource.stub';
+        } elseif ($type === 'playground-resource-linked') {
+            $template = 'policy/policy.playground-resource.stub';
+        } elseif ($type === 'playground-resource-tagged') {
+            $template = 'policy/policy.playground-resource.stub';
         } elseif ($type === 'playground-api') {
+            $template = 'policy/policy.playground-api.stub';
+        } elseif ($type === 'playground-api-linked') {
+            $template = 'policy/policy.playground-api.stub';
+        } elseif ($type === 'playground-api-tagged') {
             $template = 'policy/policy.playground-api.stub';
         } elseif ($type === 'api') {
             $template = 'policy/policy.api.stub';
@@ -288,7 +296,11 @@ class PolicyMakeCommand extends GeneratorCommand
         ])) {
         } elseif (in_array($type, [
             'playground-api',
+            'playground-api-linked',
+            'playground-api-tagged',
             'playground-resource',
+            'playground-resource-linked',
+            'playground-resource-tagged',
         ])) {
             $this->command_tests_playground_policy();
         }

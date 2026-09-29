@@ -63,6 +63,7 @@ class InstanceTest extends TestCase
         'slug' => '',
         'slug_plural' => '',
         'model_route' => '',
+        'model_route_param' => '',
         'module_route' => '',
         'model_camel' => '',
         'model_camels' => '',

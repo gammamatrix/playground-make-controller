@@ -76,7 +76,7 @@ class ResourceMakeCommand extends GeneratorCommand
     {
         $options = $this->options();
 
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if ($this->collection()) {
             $this->type = 'Resource collection';
@@ -116,7 +116,7 @@ class ResourceMakeCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        $type = $this->getConfigurationType();
+        $type = $this->c->type();
 
         $template = 'resource/resource.stub';
 
