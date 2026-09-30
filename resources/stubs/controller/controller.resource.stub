@@ -27,17 +27,33 @@ class {{ class }} extends {{ extends }}{{ implements }}
      */
     public array $packageInfo = [
         'model_attribute' => '{{model_attribute}}',
+        'model_camel' => '{{model_camel}}',
+        'model_camels' => '{{model_camels}}',
+        'model_kebab' => '{{model_kebab}}',
+        'model_kebabs' => '{{model_kebabs}}',
+        'model_lower' => '{{model_lower}}',
+        'model_lowers' => '{{model_lowers}}',
         'model_label' => '{{model_label}}',
-        'model_label_plural' => '{{model_label_plural}}',
+        'model_labels' => '{{model_labels}}',
+        'model_label_plural' => '{{model_labels}}',
         'model_route' => '{{model_route}}',
+        'model_route_param' => '{{model_route_param}}',
         'model_slug' => '{{model_slug}}',
-        'model_slug_plural' => '{{model_slug_plural}}',
+        'model_slugs' => '{{model_slugs}}',
+        'model_slug_plural' => '{{model_slugs}}',
+        'model_snake' => '{{model_snake}}',
+        'model_snakes' => '{{model_snakes}}',
+        'model_studly' => '{{model_studly}}',
+        'model_studlies' => '{{model_studlies}}',
         'model_variable' => '{{model_variable}}',
+        'model_variables' => '{{model_variables}}',
         'model_variable_plural' => '{{model_variable_plural}}',
         'module_label' => '{{module_label}}',
-        'module_label_plural' => '{{module_label_plural}}',
+        'module_labels' => '{{module_labels}}',
+        'module_label_plural' => '{{module_labels}}',
         'module_route' => '{{module_route}}',
         'module_slug' => '{{module_slug}}',
+        'module_slugs' => '{{module_slugs}}',
         'privilege' => '{{privilege}}',
         'table' => '{{table}}',
         'view' => '{{view}}',
@@ -46,7 +62,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Create the {{model_label}} resource in storage.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/create {{model_route}}.create
+     * @route GET /resource/{{module_slug}}/{{model_slugs}}/create {{model_route}}.create
      */
     public function create(
         Requests\{{ model }}\CreateRequest $request
@@ -101,7 +117,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Edit the {{model_label}} resource in storage.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/edit/{{{model_variable}}} {{model_route}}.edit
+     * @route GET /resource/{{module_slug}}/{{model_slugs}}/edit/{{{model_route_param}}} {{model_route}}.edit
      */
     public function edit(
         {{ model }} ${{model_variable}},
@@ -156,7 +172,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Remove the {{model_label}} resource from storage.
      *
-     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.destroy
+     * @route DELETE /resource/{{module_slug}}/{{model_slugs}}/{{{model_route_param}}} {{model_route}}.destroy
      */
     public function destroy(
         {{ model }} ${{model_variable}},
@@ -195,7 +211,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Lock the {{model_label}} resource in storage.
      *
-     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.lock
+     * @route PUT /resource/{{module_slug}}/{{model_slugs}}/{{{model_route_param}}} {{model_route}}.lock
      */
     public function lock(
         {{ model }} ${{model_variable}},
@@ -237,7 +253,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Display a listing of {{model_label}} resources.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}} {{model_route}}
+     * @route GET /resource/{{module_slug}}/{{model_slugs}} {{model_route}}
      */
     public function index(
         Requests\{{ model }}\IndexRequest $request
@@ -325,7 +341,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Restore the {{model_label}} resource from the trash.
      *
-     * @route PUT /resource/{{module_slug}}/{{model_slug_plural}}/restore/{{{model_variable}}} {{model_route}}.restore
+     * @route PUT /resource/{{module_slug}}/{{model_slugs}}/restore/{{{model_route_param}}} {{model_route}}.restore
      */
     public function restore(
         {{ model }} ${{model_variable}},
@@ -363,7 +379,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Display the {{model_label}} resource.
      *
-     * @route GET /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.show
+     * @route GET /resource/{{module_slug}}/{{model_slugs}}/{{{model_route_param}}} {{model_route}}.show
      */
     public function show(
         {{ model }} ${{model_variable}},
@@ -403,7 +419,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Store a newly created API {{model_label}} resource in storage.
      *
-     * @route POST /resource/{{module_slug}}/{{model_slug_plural}} {{model_route}}.post
+     * @route POST /resource/{{module_slug}}/{{model_slugs}} {{model_route}}.post
      */
     public function store(
         Requests\{{ model }}\StoreRequest $request
@@ -442,7 +458,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Unlock the {{model_label}} resource in storage.
      *
-     * @route DELETE /resource/{{module_slug}}/{{model_slug_plural}}/lock/{{{model_variable}}} {{model_route}}.unlock
+     * @route DELETE /resource/{{module_slug}}/{{model_slugs}}/lock/{{{model_route_param}}} {{model_route}}.unlock
      */
     public function unlock(
         {{ model }} ${{model_variable}},
@@ -482,7 +498,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
     /**
      * Update the {{model_label}} resource in storage.
      *
-     * @route PATCH /resource/{{module_slug}}/{{model_slug_plural}}/{{{model_variable}}} {{model_route}}.patch
+     * @route PATCH /resource/{{module_slug}}/{{model_slugs}}/{{{model_route_param}}} {{model_route}}.patch
      */
     public function update(
         {{ model }} ${{model_variable}},

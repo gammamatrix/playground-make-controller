@@ -24,10 +24,10 @@ Route::group([
 
     // API
 
-    Route::delete('/{{{model_column}}}', [
+    Route::delete('/{{{model_route_param}}}', [
         'as' => '{{route}}.destroy',
         'uses' => '{{controller}}@destroy',
-    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}')->withTrashed();
+    ])->whereUuid('{{model_route_param}}')->can('delete', '{{model_route_param}}')->withTrashed();
 
     Route::post('/', [
         'as' => '{{route}}.post',

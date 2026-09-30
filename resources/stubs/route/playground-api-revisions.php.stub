@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/{{module_slug}}/{{model_column}}',
+    'prefix' => 'api/{{module_slug}}/{{model_slug}}',
     'middleware' => config('{{package}}.middleware.default'),
     'namespace' => '\{{namespace}}\Http\Controllers',
 ], function () {
 
-    Route::get('/{{{model_column}}:slug}', [
+    Route::get('/{{{model_route_param}}:slug}', [
         'as' => '{{route}}.slug',
         'uses' => '{{controller}}@show',
     ])->where('slug', '[a-zA-Z0-9\-]+');
@@ -50,61 +50,61 @@ Route::group([
         'uses' => '{{controller}}@create',
     ])->can('create', {{model_fqdn}}::class);
 
-    Route::get('/edit/{{{model_column}}}', [
+    Route::get('/edit/{{{model_route_param}}}', [
         'as' => '{{route}}.edit',
         'uses' => '{{controller}}@edit',
-    ])->whereUuid('{{model_column}}')->can('edit', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('edit', '{{model_route_param}}');
 
     // Route::get('/go/{id}', [
     //     'as' => '{{route}}.go',
     //     'uses' => '{{controller}}@go',
     // ]);
 
-    Route::get('/{{{model_column}}}', [
+    Route::get('/{{{model_route_param}}}', [
         'as' => '{{route}}.show',
         'uses' => '{{controller}}@show',
-    ])->whereUuid('{{model_column}}')->can('detail', '{{model_column}}')->withTrashed();
+    ])->whereUuid('{{model_route_param}}')->can('detail', '{{model_route_param}}')->withTrashed();
 
-    Route::get('/{{{model_column}}}/revisions', [
+    Route::get('/{{{model_route_param}}}/revisions', [
         'as' => '{{route}}.revisions',
         'uses' => '{{controller}}@revisions',
-    ])->whereUuid('{{model_column}}')->can('revisions', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('revisions', '{{model_route_param}}');
 
-    Route::post('/{{{model_column}}}/revisions', [
+    Route::post('/{{{model_route_param}}}/revisions', [
         'uses' => '{{controller}}@revisions',
-    ])->whereUuid('{{model_column}}')->can('revisions', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('revisions', '{{model_route_param}}');
 
-    Route::get('/revision/{{{model_column}}_revision}', [
+    Route::get('/revision/{{{model_route_param}}_revision}', [
         'as' => '{{route}}.revision',
         'uses' => '{{controller}}@revision',
-    ])->whereUuid('{{model_column}}')->can('viewRevision', '{{model_column}}_revision');
+    ])->whereUuid('{{model_route_param}}')->can('viewRevision', '{{model_route_param}}_revision');
 
-    Route::put('/revision/{{{model_column}}_revision}', [
+    Route::put('/revision/{{{model_route_param}}_revision}', [
         'as' => '{{route}}.revision.restore',
         'uses' => '{{controller}}@restoreRevision',
-    ])->whereUuid('{{model_column}}_revision')->can('restoreRevision', '{{model_column}}_revision');
+    ])->whereUuid('{{model_route_param}}_revision')->can('restoreRevision', '{{model_route_param}}_revision');
 
     // API
 
-    Route::put('/lock/{{{model_column}}}', [
+    Route::put('/lock/{{{model_route_param}}}', [
         'as' => '{{route}}.lock',
         'uses' => '{{controller}}@lock',
-    ])->whereUuid('{{model_column}}')->can('lock', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('lock', '{{model_route_param}}');
 
-    Route::delete('/lock/{{{model_column}}}', [
+    Route::delete('/lock/{{{model_route_param}}}', [
         'as' => '{{route}}.unlock',
         'uses' => '{{controller}}@unlock',
-    ])->whereUuid('{{model_column}}')->can('unlock', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('unlock', '{{model_route_param}}');
 
-    Route::delete('/{{{model_column}}}', [
+    Route::delete('/{{{model_route_param}}}', [
         'as' => '{{route}}.destroy',
         'uses' => '{{controller}}@destroy',
-    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}')->withTrashed();
+    ])->whereUuid('{{model_route_param}}')->can('delete', '{{model_route_param}}')->withTrashed();
 
-    Route::put('/restore/{{{model_column}}}', [
+    Route::put('/restore/{{{model_route_param}}}', [
         'as' => '{{route}}.restore',
         'uses' => '{{controller}}@restore',
-    ])->whereUuid('{{model_column}}')->can('restore', '{{model_column}}')->withTrashed();
+    ])->whereUuid('{{model_route_param}}')->can('restore', '{{model_route_param}}')->withTrashed();
 
     Route::post('/', [
         'as' => '{{route}}.post',
@@ -116,13 +116,13 @@ Route::group([
     //     'uses' => '{{controller}}@store',
     // ])->can('store', {{model_fqdn}}::class);
     //
-    // Route::put('/{{{model_column}}}', [
+    // Route::put('/{{{model_route_param}}}', [
     //     'as' => '{{route}}.put.id',
     //     'uses' => '{{controller}}@store',
-    // ])->whereUuid('{{model_column}}')->can('update', '{{model_column}}');
+    // ])->whereUuid('{{model_route_param}}')->can('update', '{{model_route_param}}');
 
-    Route::patch('/{{{model_column}}}', [
+    Route::patch('/{{{model_route_param}}}', [
         'as' => '{{route}}.patch',
         'uses' => '{{controller}}@update',
-    ])->whereUuid('{{model_column}}')->can('update', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('update', '{{model_route_param}}');
 });

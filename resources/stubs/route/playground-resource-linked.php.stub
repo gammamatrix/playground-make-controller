@@ -24,18 +24,18 @@ Route::group([
 
     // API
 
-    Route::delete('/{{{model_column}}}', [
+    Route::delete('/{{{model_route_param}}}', [
         'as' => '{{route}}.destroy',
         'uses' => '{{controller}}@destroy',
-    ])->whereUuid('{{model_column}}')->can('delete', '{{model_column}}')->withTrashed();
+    ])->whereUuid('{{model_route_param}}')->can('delete', '{{model_route_param}}')->withTrashed();
 
     Route::post('/', [
         'as' => '{{route}}.post',
         'uses' => '{{controller}}@store',
     ])->can('store', {{model_fqdn}}::class);
 
-    Route::patch('/{{{model_column}}}', [
+    Route::patch('/{{{model_route_param}}}', [
         'as' => '{{route}}.patch',
         'uses' => '{{controller}}@update',
-    ])->whereUuid('{{model_column}}')->can('update', '{{model_column}}');
+    ])->whereUuid('{{model_route_param}}')->can('update', '{{model_route_param}}');
 });
