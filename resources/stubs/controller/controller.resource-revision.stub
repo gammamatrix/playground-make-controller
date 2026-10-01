@@ -248,7 +248,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        ), ['{{model_route_param}}' => ${{model_variable}}->id]));
     }
 
     /**
@@ -374,7 +374,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        ), ['{{model_route_param}}' => ${{model_variable}}->id]));
     }
 
     /**
@@ -427,7 +427,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        ), ['{{model_route_param}}' => ${{model_variable}}->id]));
     }
 
     /**
@@ -665,7 +665,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        ), ['{{model_route_param}}' => ${{model_variable}}->id]));
     }
 
     /**
@@ -705,7 +705,7 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        ), ['{{model_route_param}}' => ${{model_variable}}->id]));
     }
 
     /**
@@ -745,6 +745,6 @@ class {{ class }} extends {{ extends }}{{ implements }}
         return redirect(route(sprintf(
             '%1$s.show',
             $packageInfo->model_route()
-        ), ['{{model_variable}}' => ${{model_variable}}->id]));
+        ), ['{{model_route_param}}' => ${{model_variable}}->id]));
     }{{ relationships }}{{ actions }}{{ methods }}
 }
