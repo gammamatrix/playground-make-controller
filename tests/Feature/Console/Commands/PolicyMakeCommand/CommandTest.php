@@ -34,7 +34,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --package acme');
         $result->assertExitCode(0);
     }
 
@@ -43,7 +43,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --roles-action admin --roles-action wheel');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --roles-action admin --roles-action wheel --package acme');
         $result->assertExitCode(0);
     }
 
@@ -52,7 +52,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --roles-view admin --roles-view wheel --roles-view user');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --roles-view admin --roles-view wheel --roles-view user --package acme');
         $result->assertExitCode(0);
     }
 
@@ -61,7 +61,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --roles-action admin --roles-action wheel --roles-view admin --roles-view wheel --roles-view user');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --roles-action admin --roles-action wheel --roles-view admin --roles-view wheel --roles-view user --package acme');
         $result->assertExitCode(0);
     }
 
@@ -85,7 +85,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --type playground-resource');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --type playground-resource --package acme');
         $result->assertExitCode(0);
     }
 
@@ -94,7 +94,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --type playground-api');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --type playground-api --package acme');
         $result->assertExitCode(0);
     }
 
@@ -103,7 +103,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --type api');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --type api --package acme');
         $result->assertExitCode(0);
     }
 
@@ -112,7 +112,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:policy testing --skeleton --force --type resource');
+        $result = $this->artisan('playground:make:policy testing --skeleton --force --type resource --package acme');
         $result->assertExitCode(0);
     }
 }

@@ -124,18 +124,24 @@ trait BuildRequest
         ])) {
             $extends = 'BaseStoreRequest';
             $extends_use = 'Playground/Http/Requests/StoreRequest as BaseStoreRequest';
-            $buildClass_slug_table = true;
             $buildClass_rules_revision = $revision;
-            //             dd([
-            //                 '__METHOD__' => __METHOD__,
-            //                 '$revision' => $revision,
-            // //                 '$hasMany' => $hasMany,
-            //                 '$buildClass_rules_revision' => $buildClass_rules_revision,
-            //                 '$this->c' => $this->c,
-            //                 '$this->options()' => $this->options(),
-            //                 '$this->model->revision()' => $this->model->revision(),
-            // //                 '$this->model->toArray()' => $this->model->toArray(),
-            //             ]);
+            if (in_array($this->c->model_fqdn(), [
+                'Playground/Task/Models/Tagged',
+            ])) {
+                $buildClass_slug_table = false;
+            } else {
+                $buildClass_slug_table = true;
+            }
+            // dd([
+            //     '__METHOD__' => __METHOD__,
+            //     '$this->c->model_fqdn()' => $this->c->model_fqdn(),
+            //     '$revision' => $revision,
+            //     '$buildClass_slug_table' => $buildClass_slug_table,
+            //     '$buildClass_rules_revision' => $buildClass_rules_revision,
+            //     '$this->c' => $this->c,
+            //     '$this->options()' => $this->options(),
+            //     '$this->model->revision()' => $this->model->revision(),
+            // ]);
         } elseif (in_array($this->c->type(), [
             'unlock',
         ])) {
@@ -382,6 +388,7 @@ PHP_CODE;
 
             if (! Str::of($rule)->contains('nullable')
                 && ! empty($column_meta['nullable'])
+                && ! in_array($column, $required)
             ) {
                 $rule .= "'nullable'";
             }

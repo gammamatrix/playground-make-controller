@@ -21,7 +21,7 @@ class CrudTest extends TestCase
 {
     public function test_command_make_destroy_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type destroy';
+        $command = 'playground:make:request testing --force --type destroy --package acme';
 
         /**
          * @var PendingCommand $result
@@ -32,7 +32,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_destroy_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type destroy';
+        $command = 'playground:make:request testing --skeleton --force --type destroy --package acme';
 
         /**
          * @var PendingCommand $result
@@ -43,7 +43,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_index_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type index';
+        $command = 'playground:make:request testing --force --type index --package acme';
 
         /**
          * @var PendingCommand $result
@@ -54,7 +54,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_index_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type index';
+        $command = 'playground:make:request testing --skeleton --force --type index --package acme';
 
         /**
          * @var PendingCommand $result
@@ -65,7 +65,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_store_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type store';
+        $command = 'playground:make:request testing --force --type store --package acme';
 
         /**
          * @var PendingCommand $result
@@ -76,7 +76,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_store_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type store';
+        $command = 'playground:make:request testing --skeleton --force --type store --package acme';
 
         /**
          * @var PendingCommand $result
@@ -87,7 +87,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_update_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type update';
+        $command = 'playground:make:request testing --force --type update --package acme';
 
         /**
          * @var PendingCommand $result
@@ -98,7 +98,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_update_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type update';
+        $command = 'playground:make:request testing --skeleton --force --type update --package acme';
 
         /**
          * @var PendingCommand $result
@@ -109,7 +109,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_other_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type other';
+        $command = 'playground:make:request testing --force --type other --package acme';
 
         /**
          * @var PendingCommand $result
@@ -120,7 +120,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_other_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type other';
+        $command = 'playground:make:request testing --skeleton --force --type other --package acme';
 
         /**
          * @var PendingCommand $result
@@ -131,7 +131,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_default_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force';
+        $command = 'playground:make:request testing --force --package acme';
 
         /**
          * @var PendingCommand $result
@@ -142,7 +142,7 @@ class CrudTest extends TestCase
 
     public function test_command_make_default_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force';
+        $command = 'playground:make:request testing --skeleton --force --package acme';
 
         /**
          * @var PendingCommand $result

@@ -22,7 +22,7 @@ class ApiTest extends TestCase
     public function test_command_make_playground_api_route_with_force_and_without_skeleton(): void
     {
         $command = sprintf(
-            'playground:make:route testing --force --type playground-api --model-file %1$s',
+            'playground:make:route testing --force --type playground-api --model-file %1$s --package acme',
             $this->getResourceFile('playground-model-api')
         );
 
@@ -36,7 +36,7 @@ class ApiTest extends TestCase
     public function test_command_make_api_route_with_force_and_with_skeleton(): void
     {
         $command = sprintf(
-            'playground:make:route testing --skeleton --force --type playground-api --model-file %1$s',
+            'playground:make:route testing --skeleton --force --type playground-api --model-file %1$s --package acme',
             $this->getResourceFile('playground-model-api')
         );
 
@@ -52,7 +52,7 @@ class ApiTest extends TestCase
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Provide a [--model-file] with a [create] section.');
 
-        $command = 'playground:make:route testing --skeleton --force --type playground-api';
+        $command = 'playground:make:route testing --skeleton --force --type playground-api --package acme';
 
         $this->artisan($command);
     }

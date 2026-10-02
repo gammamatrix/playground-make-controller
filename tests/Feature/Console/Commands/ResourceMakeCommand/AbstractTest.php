@@ -21,7 +21,7 @@ class AbstractTest extends TestCase
 {
     public function test_command_make_abstract_resource_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:resource testing --force --type abstract';
+        $command = 'playground:make:resource testing --force --type abstract --package acme';
 
         /**
          * @var PendingCommand $result
@@ -32,7 +32,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_resource_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource testing --skeleton --force --type abstract';
+        $command = 'playground:make:resource testing --skeleton --force --type abstract --package acme';
 
         /**
          * @var PendingCommand $result
@@ -43,7 +43,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_keys_resource_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:resource testing --force --type abstract-keys';
+        $command = 'playground:make:resource testing --force --type abstract-keys --package acme';
 
         /**
          * @var PendingCommand $result
@@ -54,7 +54,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_keys_resource_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource testing --skeleton --force --type abstract-keys';
+        $command = 'playground:make:resource testing --skeleton --force --type abstract-keys --package acme';
 
         /**
          * @var PendingCommand $result

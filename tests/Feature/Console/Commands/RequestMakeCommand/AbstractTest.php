@@ -21,7 +21,7 @@ class AbstractTest extends TestCase
 {
     public function test_command_make_abstract_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type abstract';
+        $command = 'playground:make:request testing --force --type abstract --package acme';
 
         /**
          * @var PendingCommand $result
@@ -32,7 +32,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type abstract';
+        $command = 'playground:make:request testing --skeleton --force --type abstract --package acme';
 
         /**
          * @var PendingCommand $result
@@ -43,7 +43,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_index_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type abstract-index';
+        $command = 'playground:make:request testing --force --type abstract-index --package acme';
 
         /**
          * @var PendingCommand $result
@@ -54,7 +54,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_index_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type abstract-index';
+        $command = 'playground:make:request testing --skeleton --force --type abstract-index --package acme';
 
         /**
          * @var PendingCommand $result
@@ -65,7 +65,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_store_request_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:request testing --force --type abstract-store';
+        $command = 'playground:make:request testing --force --type abstract-store --package acme';
 
         /**
          * @var PendingCommand $result
@@ -76,7 +76,7 @@ class AbstractTest extends TestCase
 
     public function test_command_make_abstract_store_request_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:request testing --skeleton --force --type abstract-store';
+        $command = 'playground:make:request testing --skeleton --force --type abstract-store --package acme';
 
         /**
          * @var PendingCommand $result

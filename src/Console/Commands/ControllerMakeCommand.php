@@ -364,6 +364,16 @@ class ControllerMakeCommand extends GeneratorCommand
             ]);
         }
 
+        // See TaggedController::getRedirectRoute)
+        if ($this->c->class() === 'TaggedController') {
+            $this->searches['primary_model_slug'] = 'task';
+            $this->searches['primary_model_slug_plural'] = 'tasks';
+            $this->searches['secondary_model_slug'] = 'task_list';
+            $this->searches['secondary_model_slug_plural'] = 'task_lists';
+            $this->searches['tertiary_model_slug'] = 'task_log';
+            $this->searches['tertiary_model_slug_plural'] = 'task_logs';
+        }
+
         $this->c->apply();
         $this->applyConfigurationToSearch();
         // dump([

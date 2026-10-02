@@ -22,7 +22,8 @@ trait BuildResources
             'playground-api-linked',
             'playground-api-tagged',
             'playground-resource',
-            'playground-resource-index',
+            // NOTE i do not think index belongs here
+            // 'playground-resource-index',
             'playground-resource-linked',
             'playground-resource-tagged',
         ])) {
@@ -38,6 +39,7 @@ trait BuildResources
         // dd([
         //     '__METHOD__' => __METHOD__,
         //     '$type' => $type,
+        //     '$this->options()' => $this->options(),
         // ]);
 
         $force = $this->hasOption('force') && $this->option('force');
@@ -154,11 +156,11 @@ trait BuildResources
 
             $resource['--module'] = $module;
             $resource['--skeleton'] = true;
-            //            dump([
-            //                '__METHOD__' => __METHOD__,
-            //                '$resource_type' => $resource_type,
-            //                '$resource' => $resource,
-            //            ]);
+            // dd([
+            //    '__METHOD__' => __METHOD__,
+            //    '$resource_type' => $resource_type,
+            //    '$resource' => $resource,
+            // ]);
             if (empty($this->call('playground:make:resource', $resource))) {
 
                 $path_resources_packages = $this->getResourcePackageFolder();

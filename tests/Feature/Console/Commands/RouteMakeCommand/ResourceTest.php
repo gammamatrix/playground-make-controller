@@ -22,7 +22,7 @@ class ResourceTest extends TestCase
     public function test_command_make_playground_resource_route_with_force_and_without_skeleton(): void
     {
         $command = sprintf(
-            'playground:make:route testing --force --type playground-resource --model-file %1$s',
+            'playground:make:route testing --force --type playground-resource --model-file %1$s --package acme',
             $this->getResourceFile('playground-model-resource')
         );
 
@@ -36,7 +36,7 @@ class ResourceTest extends TestCase
     public function test_command_make_resource_route_with_force_and_with_skeleton(): void
     {
         $command = sprintf(
-            'playground:make:route testing --skeleton --force --type playground-resource --model-file %1$s',
+            'playground:make:route testing --skeleton --force --type playground-resource --model-file %1$s --package acme',
             $this->getResourceFile('playground-model-resource')
         );
 
@@ -60,7 +60,7 @@ class ResourceTest extends TestCase
     public function test_command_make_playground_resource_index_route_with_force_and_without_skeleton(): void
     {
         $command = sprintf(
-            'playground:make:route testing --force --type playground-resource-index --model-file %1$s',
+            'playground:make:route testing --force --type playground-resource-index --model-file %1$s --package acme',
             $this->getResourceFile('playground-model-resource')
         );
 
@@ -74,7 +74,7 @@ class ResourceTest extends TestCase
     public function test_command_make_resource_index_route_with_force_and_with_skeleton(): void
     {
         $command = sprintf(
-            'playground:make:route testing --skeleton --force --type playground-resource-index --model-file %1$s',
+            'playground:make:route testing --skeleton --force --type playground-resource-index --model-file %1$s --package acme',
             $this->getResourceFile('playground-model-resource')
         );
 
@@ -87,7 +87,7 @@ class ResourceTest extends TestCase
 
     public function test_command_make_resource_index_route_without_model_file(): void
     {
-        $command = 'playground:make:route testing --skeleton --force --type playground-resource-index';
+        $command = 'playground:make:route testing --skeleton --force --type playground-resource-index --package acme';
 
         /**
          * @var PendingCommand $result

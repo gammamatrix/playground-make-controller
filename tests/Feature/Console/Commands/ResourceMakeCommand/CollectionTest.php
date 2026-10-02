@@ -21,7 +21,7 @@ class CollectionTest extends TestCase
 {
     public function test_command_make_resource_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:resource testing --force --type collection';
+        $command = 'playground:make:resource testing --force --type collection --package acme';
 
         /**
          * @var PendingCommand $result
@@ -32,7 +32,7 @@ class CollectionTest extends TestCase
 
     public function test_command_make_collection_resource_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource testing --skeleton --force --type collection';
+        $command = 'playground:make:resource testing --skeleton --force --type collection --package acme';
 
         /**
          * @var PendingCommand $result
@@ -43,7 +43,7 @@ class CollectionTest extends TestCase
 
     public function test_command_make_named_collection_resource_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource TestingCollection --skeleton --force';
+        $command = 'playground:make:resource TestingCollection --skeleton --force --package acme';
 
         /**
          * @var PendingCommand $result
@@ -54,7 +54,7 @@ class CollectionTest extends TestCase
 
     public function test_command_make_named_collection_resource_with_option_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource Testing --skeleton --force --collection';
+        $command = 'playground:make:resource Testing --skeleton --force --collection --package acme';
 
         /**
          * @var PendingCommand $result
@@ -65,7 +65,7 @@ class CollectionTest extends TestCase
 
     public function test_command_make_collection_resource_with_option_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource Testing --skeleton --force --collection';
+        $command = 'playground:make:resource Testing --skeleton --force --collection --package acme';
 
         /**
          * @var PendingCommand $result

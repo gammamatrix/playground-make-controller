@@ -27,7 +27,7 @@ class StubTest extends TestCase
 
         config(['playground-make.paths.stubs' => '/tmp/does-not-exist']);
 
-        $this->artisan('playground:make:resource testing --force --skeleton');
+        $this->artisan('playground:make:resource testing --force --skeleton --package acme');
 
         // $log->dump();
 
@@ -50,7 +50,7 @@ class StubTest extends TestCase
 
         config(['playground-make.paths.stubs' => '/tmp']);
 
-        $this->artisan('playground:make:resource testing --force --skeleton');
+        $this->artisan('playground:make:resource testing --force --skeleton --package acme');
         // $result->assertExitCode(1);
         // $result->expectsOutputToContain(__('playground-make::generator.stub.missing', [
         //     'stub_path' => '/tmp',

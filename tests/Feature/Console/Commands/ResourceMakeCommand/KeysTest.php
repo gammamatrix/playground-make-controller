@@ -21,7 +21,7 @@ class KeysTest extends TestCase
 {
     public function test_command_make_keys_resource_with_force_and_without_skeleton(): void
     {
-        $command = 'playground:make:resource testing --force --type keys';
+        $command = 'playground:make:resource testing --force --type keys --package acme';
 
         /**
          * @var PendingCommand $result
@@ -32,7 +32,7 @@ class KeysTest extends TestCase
 
     public function test_command_make_keys_resource_with_force_and_with_skeleton(): void
     {
-        $command = 'playground:make:resource testing --skeleton --force --type keys';
+        $command = 'playground:make:resource testing --skeleton --force --type keys --package acme';
 
         /**
          * @var PendingCommand $result

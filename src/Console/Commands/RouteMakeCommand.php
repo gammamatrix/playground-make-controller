@@ -301,7 +301,7 @@ class RouteMakeCommand extends GeneratorCommand
 
         $this->c->apply();
 
-        //if ($this->c->class() === 'task-lists') {
+        // if ($this->c->class() === 'task-lists') {
         //    dump([
         //        '__METHOD__' => __METHOD__,
         //        '$type' => $type,
@@ -316,7 +316,7 @@ class RouteMakeCommand extends GeneratorCommand
         //        '$this->c' => $this->c,
         //        '$this->searches' => $this->searches,
         //    ]);
-        //}
+        // }
     }
 
     protected function getConfigurationFilename(): string

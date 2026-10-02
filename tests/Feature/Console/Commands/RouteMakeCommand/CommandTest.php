@@ -34,7 +34,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:route testing --skeleton --force');
+        $result = $this->artisan('playground:make:route testing --skeleton --force --package acme');
         $result->assertExitCode(0);
     }
 
@@ -43,7 +43,7 @@ class CommandTest extends TestCase
         /**
          * @var PendingCommand $result
          */
-        $result = $this->artisan('playground:make:route testing --skeleton --force --type site --route demo --prefix example');
+        $result = $this->artisan('playground:make:route testing --skeleton --force --type site --route demo --prefix example --package acme');
         $result->assertExitCode(0);
     }
 }

@@ -151,7 +151,7 @@ class RequestMakeCommand extends GeneratorCommand
 
     protected function getConfigurationFilename(): string
     {
-        $this->configurationType = $this->getConfigurationType();
+        $type = $this->c->type();
 
         if (in_array($this->c->type(), [
             'form-request',
@@ -162,7 +162,7 @@ class RequestMakeCommand extends GeneratorCommand
                 '%1$s/%2$s%3$s.json',
                 Str::of($this->c->name())->kebab(),
                 Str::of($this->getType())->kebab(),
-                $this->configurationType ? '.'.Str::of($this->configurationType)->kebab() : ''
+                $type ? '.'.Str::of($type)->kebab() : ''
             );
         } else {
             return sprintf(
@@ -196,42 +196,55 @@ class RequestMakeCommand extends GeneratorCommand
     {
         $template = 'request/default.stub';
 
-        $this->configurationType = $this->getConfigurationType();
+        $type = $this->c->type();
 
-        if ($this->configurationType === 'abstract') {
+        if ($type === 'abstract') {
             $template = 'request/abstract.stub';
             $this->c->setOptions([
                 'abstract' => true,
             ]);
-        } elseif (in_array($this->configurationType, [
+        } elseif (in_array($type, [
             'abstract-index',
         ])) {
             $template = 'request/abstract.index.stub';
-        } elseif (in_array($this->configurationType, [
+        } elseif (in_array($type, [
             'abstract-store',
         ])) {
             $template = 'request/abstract.store.stub';
-        } elseif (in_array($this->configurationType, [
+        } elseif (in_array($type, [
             'destroy',
         ])) {
-            $template = 'request/destroy.stub';
-        } elseif (in_array($this->configurationType, [
+            if ($this->c->model_fqdn() === 'Playground/Task/Models/Tagged') {
+                $template = 'request/destroy-tagged.stub';
+            } else {
+                $template = 'request/destroy.stub';
+            }
+            // dd([
+            // '__METHOD__' => __METHOD__,
+            // '$this->options()' => $this->options(),
+            // '$this->c' => $this->c->toArray(),
+            // ]);
+        } elseif (in_array($type, [
             'index',
         ])) {
             $template = 'request/index.stub';
-        } elseif (in_array($this->configurationType, [
+        } elseif (in_array($type, [
             'store',
         ])) {
-            $template = 'request/store.stub';
-        } elseif (in_array($this->configurationType, [
+            if ($this->c->model_fqdn() === 'Playground/Task/Models/Tagged') {
+                $template = 'request/store-tagged.stub';
+            } else {
+                $template = 'request/store.stub';
+            }
+        } elseif (in_array($type, [
             'update',
         ])) {
             $template = 'request/update.stub';
-        } elseif (in_array($this->configurationType, [
+        } elseif (in_array($type, [
             'form-request',
         ])) {
             $template = 'request/FormRequest.php.stub';
-        } elseif (! empty($this->configurationType)) {
+        } elseif (! empty($type)) {
             $template = 'request/request.stub';
             // $this->useSubfolder = true;
         }
