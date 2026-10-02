@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2026-09-28 17:58:01</timestamp>
+  <timestamp>2026-10-02 00:36:59</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>171</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>159</crapLoad>
-    <totalCrap>5813.76</totalCrap>
+    <totalCrap>5836.34</totalCrap>
     <crapMethodPercent>6.43</crapMethodPercent>
   </stats>
   <methods>
@@ -204,9 +204,9 @@
       <methodName>buildClass_form</methodName>
       <methodSignature>buildClass_form(string $name): void</methodSignature>
       <fullMethod>buildClass_form(string $name): void</fullMethod>
-      <crap>16</crap>
-      <complexity>16</complexity>
-      <coverage>98.63</coverage>
+      <crap>17</crap>
+      <complexity>17</complexity>
+      <coverage>97.4</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -237,9 +237,9 @@
       <methodName>buildClass_rules_constant_for_only_fillable</methodName>
       <methodSignature>buildClass_rules_constant_for_only_fillable(Model $model, int $indent): string</methodSignature>
       <fullMethod>buildClass_rules_constant_for_only_fillable(Model $model, int $indent): string</fullMethod>
-      <crap>27.81</crap>
-      <complexity>20</complexity>
-      <coverage>73.08</coverage>
+      <crap>29.13</crap>
+      <complexity>21</complexity>
+      <coverage>73.58</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -413,9 +413,9 @@
       <methodName>skeleton_policy</methodName>
       <methodSignature>skeleton_policy(string $type): void</methodSignature>
       <fullMethod>skeleton_policy(string $type): void</fullMethod>
-      <crap>15.87</crap>
-      <complexity>13</complexity>
-      <coverage>74.29</coverage>
+      <crap>11.02</crap>
+      <complexity>11</complexity>
+      <coverage>94.83</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -424,9 +424,9 @@
       <methodName>skeleton_requests</methodName>
       <methodSignature>skeleton_requests(string $type): void</methodSignature>
       <fullMethod>skeleton_requests(string $type): void</fullMethod>
-      <crap>18.44</crap>
-      <complexity>18</complexity>
-      <coverage>88.89</coverage>
+      <crap>25.31</crap>
+      <complexity>20</complexity>
+      <coverage>76.32</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -446,9 +446,9 @@
       <methodName>skeleton_resources</methodName>
       <methodSignature>skeleton_resources(string $type): void</methodSignature>
       <fullMethod>skeleton_resources(string $type): void</fullMethod>
-      <crap>23.73</crap>
-      <complexity>22</complexity>
-      <coverage>84.71</coverage>
+      <crap>30.54</crap>
+      <complexity>23</complexity>
+      <coverage>75.76</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1348,9 +1348,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>14.39</crap>
-      <complexity>11</complexity>
-      <coverage>69.64</coverage>
+      <crap>19.01</crap>
+      <complexity>12</complexity>
+      <coverage>63.49</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1535,9 +1535,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub()</methodSignature>
       <fullMethod>getStub()</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
-      <coverage>100</coverage>
+      <crap>9.76</crap>
+      <complexity>9</complexity>
+      <coverage>78.95</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1612,9 +1612,9 @@
       <methodName>getStub</methodName>
       <methodSignature>getStub(): string</methodSignature>
       <fullMethod>getStub(): string</fullMethod>
-      <crap>10</crap>
-      <complexity>10</complexity>
-      <coverage>97.37</coverage>
+      <crap>12.05</crap>
+      <complexity>12</complexity>
+      <coverage>92.86</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
