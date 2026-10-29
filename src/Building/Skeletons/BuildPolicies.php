@@ -107,7 +107,9 @@ trait BuildPolicies
         // }
 
         if ($revision) {
-            $params['--revision'] = true;
+            if (array_key_exists('revision', $this->model?->attributes() ?? [])) {
+                $params['--revision'] = true;
+            }
         }
 
         if ($this->c->withTests()) {
