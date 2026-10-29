@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2026-10-02 00:36:59</timestamp>
+  <timestamp>2026-10-29 19:34:03</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>171</methodCount>
     <crapMethodCount>11</crapMethodCount>
     <crapLoad>159</crapLoad>
-    <totalCrap>5836.34</totalCrap>
+    <totalCrap>5846.36</totalCrap>
     <crapMethodPercent>6.43</crapMethodPercent>
   </stats>
   <methods>
@@ -347,9 +347,9 @@
       <methodName>preparePackageInfo_table</methodName>
       <methodSignature>preparePackageInfo_table(PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_table(PackageInfo $packageInfo): void</fullMethod>
-      <crap>2</crap>
+      <crap>2.5</crap>
       <complexity>2</complexity>
-      <coverage>100</coverage>
+      <coverage>50</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -380,9 +380,9 @@
       <methodName>preparePackageInfo_module</methodName>
       <methodSignature>preparePackageInfo_module(PackageInfo $packageInfo, array $options): void</methodSignature>
       <fullMethod>preparePackageInfo_module(PackageInfo $packageInfo, array $options): void</fullMethod>
-      <crap>20.82</crap>
+      <crap>21.75</crap>
       <complexity>20</complexity>
-      <coverage>87.27</coverage>
+      <coverage>83.64</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -402,9 +402,9 @@
       <methodName>preparePackageInfo_model_attribute</methodName>
       <methodSignature>preparePackageInfo_model_attribute(PackageInfo $packageInfo): void</methodSignature>
       <fullMethod>preparePackageInfo_model_attribute(PackageInfo $packageInfo): void</fullMethod>
-      <crap>3</crap>
+      <crap>4.94</crap>
       <complexity>3</complexity>
-      <coverage>100</coverage>
+      <coverage>40</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -413,9 +413,9 @@
       <methodName>skeleton_policy</methodName>
       <methodSignature>skeleton_policy(string $type): void</methodSignature>
       <fullMethod>skeleton_policy(string $type): void</fullMethod>
-      <crap>11.02</crap>
-      <complexity>11</complexity>
-      <coverage>94.83</coverage>
+      <crap>12.04</crap>
+      <complexity>12</complexity>
+      <coverage>93.22</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1348,9 +1348,9 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>19.01</crap>
+      <crap>24.64</crap>
       <complexity>12</complexity>
-      <coverage>63.49</coverage>
+      <coverage>55.56</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1405,7 +1405,7 @@
       <fullMethod>buildClass($name): string</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>100</coverage>
+      <coverage>93.75</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
