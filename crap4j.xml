@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2026-10-29 19:34:03</timestamp>
+  <timestamp>2026-11-01 16:59:16</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>171</methodCount>
-    <crapMethodCount>11</crapMethodCount>
-    <crapLoad>159</crapLoad>
-    <totalCrap>5846.36</totalCrap>
-    <crapMethodPercent>6.43</crapMethodPercent>
+    <methodCount>194</methodCount>
+    <crapMethodCount>15</crapMethodCount>
+    <crapLoad>230</crapLoad>
+    <totalCrap>7550.9</totalCrap>
+    <crapMethodPercent>7.73</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -501,9 +501,31 @@
       <methodName>setOptions</methodName>
       <methodSignature>setOptions(array $options): self</methodSignature>
       <fullMethod>setOptions(array $options): self</fullMethod>
-      <crap>34.87</crap>
-      <complexity>23</complexity>
-      <coverage>71.79</coverage>
+      <crap>39.58</crap>
+      <complexity>25</complexity>
+      <coverage>71.43</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>setActions</methodName>
+      <methodSignature>setActions(array $actions): void</methodSignature>
+      <fullMethod>setActions(array $actions): void</fullMethod>
+      <crap>42</crap>
+      <complexity>6</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration</package>
+      <className>Playground\Make\Controller\Configuration\Controller</className>
+      <methodName>actions</methodName>
+      <methodSignature>actions(): array</methodSignature>
+      <fullMethod>actions(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -725,6 +747,193 @@
       <complexity>1</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Action</className>
+      <methodName>setOptions</methodName>
+      <methodSignature>setOptions(array $options): self</methodSignature>
+      <fullMethod>setOptions(array $options): self</fullMethod>
+      <crap>110</crap>
+      <complexity>10</complexity>
+      <coverage>0</coverage>
+      <crapLoad>10</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Action</className>
+      <methodName>setMethod</methodName>
+      <methodSignature>setMethod(string $method): self</methodSignature>
+      <fullMethod>setMethod(string $method): self</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Action</className>
+      <methodName>lifecycles</methodName>
+      <methodSignature>lifecycles(): array</methodSignature>
+      <fullMethod>lifecycles(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Action</className>
+      <methodName>method</methodName>
+      <methodSignature>method(): string</methodSignature>
+      <fullMethod>method(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Action</className>
+      <methodName>type</methodName>
+      <methodSignature>type(): string</methodSignature>
+      <fullMethod>type(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>setOptions</methodName>
+      <methodSignature>setOptions(array $options): self</methodSignature>
+      <fullMethod>setOptions(array $options): self</fullMethod>
+      <crap>812</crap>
+      <complexity>28</complexity>
+      <coverage>0</coverage>
+      <crapLoad>29</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>class</methodName>
+      <methodSignature>class(): string</methodSignature>
+      <fullMethod>class(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>comments</methodName>
+      <methodSignature>comments(): array</methodSignature>
+      <fullMethod>comments(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>extends</methodName>
+      <methodSignature>extends(): string</methodSignature>
+      <fullMethod>extends(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>instance</methodName>
+      <methodSignature>instance(): string</methodSignature>
+      <fullMethod>instance(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>implements</methodName>
+      <methodSignature>implements(): array</methodSignature>
+      <fullMethod>implements(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>method</methodName>
+      <methodSignature>method(): string</methodSignature>
+      <fullMethod>method(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>type</methodName>
+      <methodSignature>type(): string</methodSignature>
+      <fullMethod>type(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>use_class</methodName>
+      <methodSignature>use_class(): array</methodSignature>
+      <fullMethod>use_class(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>uses</methodName>
+      <methodSignature>uses(): array</methodSignature>
+      <fullMethod>uses(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>params</methodName>
+      <methodSignature>params(): array</methodSignature>
+      <fullMethod>params(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Configuration\Controller</package>
+      <className>Playground\Make\Controller\Configuration\Controller\Lifecycle</className>
+      <methodName>render</methodName>
+      <methodSignature>render(Controller $controller): string</methodSignature>
+      <fullMethod>render(Controller $controller): string</fullMethod>
+      <crap>600</crap>
+      <complexity>24</complexity>
+      <coverage>0</coverage>
+      <crapLoad>24</crapLoad>
     </method>
     <method>
       <package>Playground\Make\Controller\Configuration\Controller</package>
@@ -1334,6 +1543,39 @@
     <method>
       <package>Playground\Make\Controller\Console\Commands</package>
       <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>addClassUses</methodName>
+      <methodSignature>addClassUses(string $uses): void</methodSignature>
+      <fullMethod>addClassUses(string $uses): void</fullMethod>
+      <crap>12</crap>
+      <complexity>3</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>initController</methodName>
+      <methodSignature>initController(string $file): void</methodSignature>
+      <fullMethod>initController(string $file): void</fullMethod>
+      <crap>6</crap>
+      <complexity>2</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
+      <methodName>prepareActions</methodName>
+      <methodSignature>prepareActions(): void</methodSignature>
+      <fullMethod>prepareActions(): void</fullMethod>
+      <crap>72</crap>
+      <complexity>8</complexity>
+      <coverage>0</coverage>
+      <crapLoad>8</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\ControllerMakeCommand</className>
       <methodName>initPackage</methodName>
       <methodSignature>initPackage(string $file): void</methodSignature>
       <fullMethod>initPackage(string $file): void</fullMethod>
@@ -1348,8 +1590,8 @@
       <methodName>prepareOptions</methodName>
       <methodSignature>prepareOptions(): void</methodSignature>
       <fullMethod>prepareOptions(): void</fullMethod>
-      <crap>24.64</crap>
-      <complexity>12</complexity>
+      <crap>38.47</crap>
+      <complexity>16</complexity>
       <coverage>55.56</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1790,6 +2032,17 @@
       <fullMethod>getConfigurationFilename(): string</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Make\Controller\Console\Commands</package>
+      <className>Playground\Make\Controller\Console\Commands\RouteMakeCommand</className>
+      <methodName>handleName</methodName>
+      <methodSignature>handleName(string $name): string</methodSignature>
+      <fullMethod>handleName(string $name): string</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
