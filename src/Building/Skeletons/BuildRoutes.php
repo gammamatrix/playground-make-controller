@@ -129,17 +129,6 @@ trait BuildRoutes
             'playground-api-tagged',
         ])) {
             $options['--route'] = $this->c->model_route();
-            //            if ($type === 'playground-resource-tagged') {
-            //                dd([
-            //                    '__METHOD__' => __METHOD__,
-            //                    '$name' => $name,
-            //                    '$type' => $type,
-            //                    '$modelFile' => $modelFile,
-            //                    '$options' => $options,
-            //                    '$this->options()' => $this->options(),
-            //                    '$this->c' => $this->c,
-            //                ]);
-            //            }
         } elseif (in_array($type, [
             'index',
             'playground-resource-index',
@@ -156,8 +145,8 @@ trait BuildRoutes
         //    '$type' => $type,
         //    '$modelFile' => $modelFile,
         //    '$options' => $options,
-        //    '$this->options()' => $this->options(),
-        //    '$this->c' => $this->c,
+        //    //'$this->options()' => $this->options(),
+        //    //'$this->c' => $this->c,
         // ]);
         // }
 

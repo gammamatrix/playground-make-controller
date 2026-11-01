@@ -90,9 +90,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_variable}} = new {{ model }}($validated);
 
         ${{model_variable}}->created_by_id = $user?->id;
-
+{{controller_store_pre_save}}
         ${{model_variable}}->save();
-
+{{controller_store_post_save}}
         return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
             'info' => $packageInfo,
         ]])->response($request)->setStatusCode(201);

@@ -647,9 +647,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
         ${{model_variable}} = new {{ model }}($validated);
 
         ${{model_variable}}->created_by_id = $user?->id;
-
+{{controller_store_pre_save}}
         ${{model_variable}}->save();
-
+{{controller_store_post_save}}
         if ($request->expectsJson()) {
             return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,
@@ -727,9 +727,9 @@ class {{ class }} extends {{ extends }}{{ implements }}
         $user = $request->user();
 
         ${{model_variable}}->modified_by_id = $user?->id;
-
+{{controller_update_pre_save}}
         ${{model_variable}}->update($validated);
-
+{{controller_update_post_save}}
         if ($request->expectsJson()) {
             return new Resources\{{ model }}(${{model_variable}})->additional(['meta' => [
                 'info' => $packageInfo,

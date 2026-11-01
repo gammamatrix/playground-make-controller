@@ -79,6 +79,7 @@ class Controller extends PrimaryConfiguration
         'privilege' => '',
         'route' => '',
         'view' => '',
+        'actions' => [],
         'implements' => [],
         'uses' => [],
         'packageInfo' => null,
@@ -95,6 +96,11 @@ class Controller extends PrimaryConfiguration
 
         return $properties;
     }
+
+    /**
+     * @var array<string, Controller\Action>
+     */
+    protected array $actions = [];
 
     /**
      * @var array<int, string>
@@ -242,6 +248,12 @@ class Controller extends PrimaryConfiguration
             $this->view = $options['view'];
         }
 
+        if (! empty($options['actions'])
+            && is_array($options['actions'])
+        ) {
+            $this->setActions($options['actions']);
+        }
+
         return $this;
     }
 
@@ -252,6 +264,92 @@ class Controller extends PrimaryConfiguration
     // {
     //     return $this->models;
     // }
+
+    //    /**
+    //     * @param  string  $action  The controller action
+    //     * @param  string  $lifecycle  preSave|postSave
+    //     * @param  string  $type  handler
+    //     * @param array{
+    //     *     comments?: string[],
+    //     *     extends?: ?string,
+    //     *     implements?: string[],
+    //     *     instance?: null|'new'|'self'|'static'|'this',
+    //     *     method?: ?string,
+    //     *     use_class?: string[],
+    //     *     uses?: string[],
+    //     * } $options
+    //     */
+    //    public function handleAction(
+    //        string $action,
+    //        string $lifecycle,
+    //        string $type,
+    //        array $options = [
+    //            'comments' => [],
+    //            'extends' => null,
+    //            'implements' => [],
+    //            'instance' => null,
+    //            'method' => null,
+    //            'use_class' => [],
+    //            'uses' => [],
+    //        ],
+    //    ): void {
+    //        if (empty($action) || empty($lifecycle) || empty($type)) {
+    //            return;
+    //        }
+    //        if (empty($this->actions[$action])) {
+    //            $this->actions[$action] = [];
+    //        }
+    //        if (empty($this->actions[$action][$lifecycle])) {
+    //            $this->actions[$action][$lifecycle] = [];
+    //        }
+    //        $this->actions[$action][$lifecycle]['type'] = $type;
+    //        $this->actions[$action][$lifecycle]['comments'] = [];
+    //        if (! empty($options['comments'])) {
+    //            foreach ($options['comments'] as $comment) {
+    //                if (is_string($comment) && ! empty($comment)) {
+    //                    $this->actions[$action][$lifecycle]['comments'][] = $comment;
+    //                }
+    //            }
+    //        }
+    //        //        $this->actions[$action][$lifecycle]['implements'] = [];
+    //        //        if (! empty($options['implements'])) {
+    //        //            foreach ($options['implements'] as $implement) {
+    //        //                if (is_string($implement)) {
+    //        //                    $this->actions[$action][$lifecycle]['implements'][] = $implement;
+    //        //                }
+    //        //            }
+    //        //        }
+    //        $this->actions[$action][$lifecycle]['instance'] = $options['instance'] ?? null;
+    //        $this->actions[$action][$lifecycle]['method'] = $options['method'] ?? null;
+    //        $this->actions[$action][$lifecycle]['use_class'] = $options['use_class'] ?? [];
+    //        $this->actions[$action][$lifecycle]['uses'] = $options['uses'] ?? [];
+    //    }
+
+    /**
+     * @param  array<mixed>  $actions
+     */
+    public function setActions(array $actions): void
+    {
+        $actionKeys = array_keys($actions);
+
+        foreach ($actionKeys as $actionKey) {
+            if (is_string($actionKey)
+                && ! empty($actionKey)
+                && ! empty($actions[$actionKey])
+                && is_array($actions[$actionKey])
+            ) {
+                $this->actions[$actionKey] = new Controller\Action($actions[$actionKey])->setMethod($actionKey);
+            }
+        }
+    }
+
+    /**
+     * @return array<string, Controller\Action>
+     */
+    public function actions(): array
+    {
+        return $this->actions;
+    }
 
     /**
      * @return array<int, string>

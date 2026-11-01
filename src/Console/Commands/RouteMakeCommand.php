@@ -336,6 +336,25 @@ class RouteMakeCommand extends GeneratorCommand
         );
     }
 
+    public function handleName(string $name): string
+    {
+        $name = ltrim($name, '\\/');
+
+        $name = str_replace('/', '\\', $name);
+
+        if ($this->qualifiedNameStudly && ! ctype_upper($name)) {
+            $name = Str::of($name)->studly()->toString();
+        }
+
+        $name = Str::of($name)->kebab()->toString();
+
+        $this->c->setOptions([
+            'name' => $name,
+        ]);
+
+        return $name;
+    }
+
     /**
      * Parse the class name and format according to the root namespace.
      *
@@ -388,16 +407,16 @@ class RouteMakeCommand extends GeneratorCommand
         $this->searches['controller'] = $this->c->controller();
         $this->searches['route_prefix'] = $this->c->route_prefix();
 
-        //         dump([
-        //            '__METHOD__' => __METHOD__,
-        //            '$name' => $name,
-        //            '$this->c->controller()' => $this->c->controller(),
-        //            '$this->c->type()' => $this->c->type(),
-        //            '$this->c->class()' => $this->c->class(),
-        //            // '$this->c' => $this->c,
-        //            // '$this->searches' => $this->searches,
-        //            // '$this->options()' => $this->options(),
-        //         ]);
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$name' => $name,
+        //    '$this->c->controller()' => $this->c->controller(),
+        //    '$this->c->type()' => $this->c->type(),
+        //    '$this->c->class()' => $this->c->class(),
+        //    // '$this->c' => $this->c,
+        //     '$this->searches' => $this->searches,
+        //    // '$this->options()' => $this->options(),
+        // ]);
 
         return $this->c->class();
     }
@@ -512,14 +531,14 @@ class RouteMakeCommand extends GeneratorCommand
             'playground-resource-tagged',
         ])) {
             if (! Str::endsWith($name, 'ed')) {
-                $name = Str::of($name)->plural()->kebab()->toString();
+                $name = Str::of($name)->lower()->plural()->kebab()->toString();
             }
         } elseif (in_array($this->c->type(), [
             'playground-api-linked',
             'playground-resource-linked',
         ])) {
             if (! Str::endsWith($name, 'ed')) {
-                $name = Str::of($name)->plural()->kebab()->toString();
+                $name = Str::of($name)->lower()->plural()->kebab()->toString();
             }
         } elseif (in_array($this->c->type(), [
             'api',

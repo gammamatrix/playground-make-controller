@@ -14,6 +14,7 @@ use Playground\Make\Building\Concerns;
 use Playground\Make\Configuration\Contracts\PrimaryConfiguration as PrimaryConfigurationContract;
 use Playground\Make\Console\Commands\GeneratorCommand;
 use Playground\Make\Controller\Building;
+use Playground\Make\Controller\Configuration\Controller;
 use Playground\Make\Controller\Configuration\Controller as Configuration;
 use Playground\Make\Package\Configuration\Package;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -149,6 +150,10 @@ class ControllerMakeCommand extends GeneratorCommand
         // 'secondary_model_slug_plural' => 'task_lists',
         // 'tertiary_model_slug' => 'task_log',
         // 'tertiary_model_slug_plural' => 'task_logs',
+        'controller_store_pre_save' => '',
+        'controller_store_post_save' => '',
+        'controller_update_pre_save' => '',
+        'controller_update_post_save' => '',
     ];
 
     /**
@@ -175,6 +180,103 @@ class ControllerMakeCommand extends GeneratorCommand
     protected string $path_destination_folder = 'src/Http/Controllers';
 
     protected ?Package $package = null;
+
+    /**
+     * @var array<string, Controller\Action>
+     */
+    protected array $actions = [];
+
+    /**
+     * @var string[]
+     */
+    protected array $classUses = [];
+
+    public function addClassUses(string $uses): void
+    {
+        if (! empty($uses) && ! in_array($uses, $this->classUses)) {
+            $this->classUses[] = $uses;
+        }
+    }
+
+    public function initController(string $file): void
+    {
+        $controller = null;
+        if (! empty($file)) {
+
+            $controller = new Controller(
+                $this->readJsonFileAsArray($file)
+            );
+            $controller->apply();
+            $this->actions = $controller->actions();
+
+            $this->prepareActions();
+        }
+
+        // dd([
+        //    '__METHOD__' => __METHOD__,
+        //    '$file' => $file,
+        //    '$controller' => $controller,
+        // ]);
+    }
+
+    /**
+     * @var string[]
+     */
+    protected array $searchesLifecycles = [
+        'controller_store_pre_save',
+        'controller_store_post_save',
+        'controller_update_pre_save',
+        'controller_update_post_save',
+    ];
+
+    public function prepareActions(): void
+    {
+        foreach ($this->searchesLifecycles as $searchesLifecycle) {
+            $this->searches[$searchesLifecycle] = '';
+        }
+        if (empty($this->actions)) {
+            return;
+        }
+
+        foreach ($this->actions as $actionKey => $action) {
+            foreach ($action->lifecycles() as $lifecycleKey => $lifecycles) {
+                $searchesLifecycle = sprintf(
+                    'controller_%1$s_%2$s',
+                    Str::of($actionKey)->snake()->toString(),
+                    Str::of($lifecycleKey)->snake()->toString(),
+                );
+                $this->searches[$searchesLifecycle] = '';
+                foreach ($lifecycles as $lifecycle) {
+                    $this->searches[$searchesLifecycle] .= $lifecycle->render($this->c);
+                    if (! empty($lifecycle->use_class())) {
+                        foreach ($lifecycle->use_class() as $use) {
+                            $this->addClassUses($use);
+                        }
+                    }
+                    dump([
+                        '__METHOD__' => __METHOD__,
+                        '$actionKey' => $actionKey,
+                        '$lifecycleKey' => $lifecycleKey,
+                        '$lifecycle' => $lifecycle,
+                        '$this->searches' => $this->searches,
+                        '$this->classUses' => $this->classUses,
+                    ]);
+                }
+                // dump([
+                //    '__METHOD__' => __METHOD__,
+                //    '$actionKey' => $actionKey,
+                //    '$lifecycleKey' => $lifecycleKey,
+                //    '$searchesLifecycle' => $searchesLifecycle,
+                //    // '$this->searches' => $this->searches,
+                // ]);
+
+            }
+        }
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$this->searches' => $this->searches,
+        // ]);
+    }
 
     public function initPackage(string $file): void
     {
@@ -246,6 +348,7 @@ class ControllerMakeCommand extends GeneratorCommand
         $options = $this->options();
 
         $initModel = false;
+        $initFromController = false;
         $initFromPackage = false;
 
         if ($this->hasOption('package-file')
@@ -253,6 +356,13 @@ class ControllerMakeCommand extends GeneratorCommand
         ) {
             $this->initPackage($this->option('package-file'));
             $initFromPackage = true;
+        }
+
+        if ($this->hasOption('controller-file')
+            && is_string($this->option('controller-file'))
+        ) {
+            $this->initController($this->option('controller-file'));
+            $initFromController = true;
         }
 
         $this->prepareOptionsFromOptions();
@@ -373,6 +483,19 @@ class ControllerMakeCommand extends GeneratorCommand
             $this->searches['tertiary_model_slug'] = 'task_log';
             $this->searches['tertiary_model_slug_plural'] = 'task_logs';
         }
+
+        $this->searches['use_class'] = '';
+        if (! empty($this->classUses)) {
+            // Apply class uses
+            foreach ($this->classUses as $classUse) {
+                // TODO deprecate the other way this is done in BuildUses::buildClass_uses_add
+                $this->searches['use_class'] .= sprintf('%1$suse \\%2$s;%3$s', str_repeat(' ', 4), $this->parseClassInput($classUse), PHP_EOL);
+            }
+        }
+        // dump([
+        //    '__METHOD__' => __METHOD__,
+        //    '$this->searches' => $this->searches,
+        // ]);
 
         $this->c->apply();
         $this->applyConfigurationToSearch();
@@ -792,6 +915,7 @@ class ControllerMakeCommand extends GeneratorCommand
             ['model-file',      null, InputOption::VALUE_OPTIONAL, 'The configuration file of the model for the '.strtolower($this->type)],
             ['model-package',   null, InputOption::VALUE_OPTIONAL, 'The model package to use for the '.strtolower($this->type)],
             ['package-file',      null, InputOption::VALUE_OPTIONAL, 'The configuration file of the package for the '.strtolower($this->type)],
+            ['controller-file',      null, InputOption::VALUE_OPTIONAL, 'The configuration file of the controller for the '.strtolower($this->type)],
             ['slug',            null, InputOption::VALUE_OPTIONAL, 'The slug of the '.strtolower($this->type)],
             ['route',           null, InputOption::VALUE_OPTIONAL, 'The base route of the '.strtolower($this->type)],
             ['view',            null, InputOption::VALUE_OPTIONAL, 'The base view of the '.strtolower($this->type)],

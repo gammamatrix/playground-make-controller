@@ -84,6 +84,7 @@ class InstanceTest extends TestCase
         'privilege' => '',
         'route' => '',
         'view' => '',
+        'actions' => [],
         'implements' => [],
         'uses' => [],
         'packageInfo' => null,
