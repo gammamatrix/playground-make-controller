@@ -231,9 +231,6 @@ class ControllerMakeCommand extends GeneratorCommand
 
     public function prepareActions(): void
     {
-        foreach ($this->searchesLifecycles as $searchesLifecycle) {
-            $this->searches[$searchesLifecycle] = '';
-        }
         if (empty($this->actions)) {
             return;
         }
@@ -253,14 +250,14 @@ class ControllerMakeCommand extends GeneratorCommand
                             $this->addClassUses($use);
                         }
                     }
-                    dump([
-                        '__METHOD__' => __METHOD__,
-                        '$actionKey' => $actionKey,
-                        '$lifecycleKey' => $lifecycleKey,
-                        '$lifecycle' => $lifecycle,
-                        '$this->searches' => $this->searches,
-                        '$this->classUses' => $this->classUses,
-                    ]);
+//                    dump([
+//                        '__METHOD__' => __METHOD__,
+//                        '$actionKey' => $actionKey,
+//                        '$lifecycleKey' => $lifecycleKey,
+//                        '$lifecycle' => $lifecycle,
+//                        '$this->searches' => $this->searches,
+//                        '$this->classUses' => $this->classUses,
+//                    ]);
                 }
                 // dump([
                 //    '__METHOD__' => __METHOD__,
@@ -356,6 +353,13 @@ class ControllerMakeCommand extends GeneratorCommand
         ) {
             $this->initPackage($this->option('package-file'));
             $initFromPackage = true;
+        }
+
+        $this->actions = [];
+        $this->classUses = [];
+
+        foreach ($this->searchesLifecycles as $searchesLifecycle) {
+            $this->searches[$searchesLifecycle] = '';
         }
 
         if ($this->hasOption('controller-file')
